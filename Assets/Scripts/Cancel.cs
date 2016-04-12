@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Cancel : MonoBehaviour 
 {
-	
 	void OnMouseDown()
     {
-        Destroy(GetComponentInParent<GameObject>());
+        GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().ChangeColliders(true);
+        Destroy(GameObject.FindGameObjectWithTag("Builder"));
     }
 }

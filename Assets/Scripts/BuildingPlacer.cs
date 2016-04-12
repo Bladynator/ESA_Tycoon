@@ -44,29 +44,39 @@ public class BuildingPlacer : MonoBehaviour
                 for (int y = 0; y < buildingToPlace.GetComponent<BuildingMain>().size.y; y++)
                 {
                     grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].placeAble = false;
+                    //grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].tag = "Default";
                 }
             }
-        
+
+            GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
+            
             ChangeColliders(true);
             Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
             Vector2 newPosition = transform.position;
             GameObject tempBuilding = (GameObject)Instantiate(buildingToPlace, newPosition, transform.rotation);
 
             tempBuilding.transform.localScale = size;
+            tempBuilding.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].ID;
+
+            GameObject.Find("Account").GetComponent<Account>().PushSave();
             Destroy(gameObject);
         }
     }
     
-    void ChangeColliders(bool toChange)
+    public void ChangeColliders(bool toChange)
     {
         GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
         foreach (GameObject tempField in allFields)
         {
             tempField.GetComponent<EmptyField>().Reset();
-            if (tempField.GetComponent<EmptyField>().ID != fieldID)
             {
                 tempField.GetComponent<BoxCollider2D>().enabled = toChange;
             }
+        }
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject tempField in allBuildings)
+        {
+            tempField.GetComponent<BoxCollider2D>().enabled = toChange;
         }
     }
 

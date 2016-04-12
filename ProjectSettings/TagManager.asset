@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - EmptyField
+  - Builder
+  - Building
+  - Default
   layers:
   - Default
   - TransparentFX

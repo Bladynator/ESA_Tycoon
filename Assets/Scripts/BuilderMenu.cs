@@ -3,7 +3,8 @@ using System.Collections;
 
 public class BuilderMenu : MonoBehaviour 
 {
-    string[] names = new string[5] { "engineer", "builder", "teamleader", "headquaters", "testingroom"};
+    string[] namesBuildings;
+    string[] namesButtons = new string[5] { "Buildings", "Decorations", "", "", "" };
     [SerializeField]
     GameObject[] buildingsPrefabs;
     [SerializeField]
@@ -11,19 +12,79 @@ public class BuilderMenu : MonoBehaviour
     public Transform fieldLocation;
     public Vector2 fieldGridLocation;
     public int fieldID;
-	
+    Account account;
+    int screenForBuilding = 0; // 0 = main, 1 = buildings
+    [SerializeField]
+    GUISkin redFont;
+    [SerializeField]
+    GUISkin standard;
+
+    void Start()
+    {
+        account = GameObject.Find("Account").GetComponent<Account>();
+        namesBuildings = new string[buildingsPrefabs.Length];
+        for(int i = 0; i < buildingsPrefabs.Length; i++)
+        {
+            namesBuildings[i] = buildingsPrefabs[i].GetComponent<BuildingMain>().buildingName;
+        }
+    }
+
+    public GameObject[] GetAllBuildings()
+    {
+        return buildingsPrefabs;
+    }
+
     void OnGUI()
     {
-        for(int i = 0; i < 5; i++)
+        switch (screenForBuilding)
         {
-            if(GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), names[i]))
+            case 0:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesButtons[i]))
+                        {
+                            screenForBuilding = (i + 1);
+                        }
+                    }
+                    break;
+                }
+            case 1:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelNeeded <= account.level)
+                        {
+                            if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString()))
+                            {
+                                Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y + 0.3f, fieldLocation.position.z);
+                                BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
+                                tempBuilding.buildingToPlace = buildingsPrefabs[i];
+                                tempBuilding.activePlaceOnGrid = fieldGridLocation;
+                                tempBuilding.builderPlacerTemp = builderPlacerTemp;
+                                tempBuilding.fieldID = fieldID;
+                                gameObject.SetActive(false);
+                                screenForBuilding = 0;
+                            }
+                        }
+                        else
+                        {
+                            GUI.skin = redFont;
+                            GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nLevel Needed: " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelNeeded.ToString());
+                            GUI.skin = standard;
+                        }
+                    }
+                    break;
+                }
+        }
+        if (GUI.Button(new Rect(0, Screen.height - Screen.height / 4 - 50, 50, 50), "Back"))
+        {
+            if (screenForBuilding != 0)
             {
-                Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y + 0.3f, fieldLocation.position.z);
-                BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
-                tempBuilding.buildingToPlace = buildingsPrefabs[i];
-                tempBuilding.activePlaceOnGrid = fieldGridLocation;
-                tempBuilding.builderPlacerTemp = builderPlacerTemp;
-                tempBuilding.fieldID = fieldID;
+                screenForBuilding = 0;
+            }
+            else
+            {
                 gameObject.SetActive(false);
             }
         }

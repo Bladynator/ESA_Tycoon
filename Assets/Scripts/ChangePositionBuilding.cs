@@ -5,8 +5,8 @@ public class ChangePositionBuilding : MonoBehaviour
 {
     BuildingPlacer buildingPlacer;
     [SerializeField]
-    int newPosition;
     Vector2 newPostionOnGrid;
+    int gridSize;
 
     void Start()
     {
@@ -15,29 +15,11 @@ public class ChangePositionBuilding : MonoBehaviour
 
     void OnMouseDown()
     {
-        switch (newPosition)
+        gridSize = GameObject.Find("Grid").GetComponent<Grid>().maxGridSize;
+        if (buildingPlacer.activePlaceOnGrid.x + newPostionOnGrid.x >= 0 && buildingPlacer.activePlaceOnGrid.y + newPostionOnGrid.y >= 0 && buildingPlacer.activePlaceOnGrid.x + newPostionOnGrid.x <= gridSize - buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().size.x - 1 && buildingPlacer.activePlaceOnGrid.y + newPostionOnGrid.y <= gridSize - buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().size.y + 1)
         {
-            case 1:
-                {
-                    newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x += 1, buildingPlacer.activePlaceOnGrid.y);
-                    break;
-                }
-            case 2:
-                {
-                    newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x -= 1, buildingPlacer.activePlaceOnGrid.y);
-                    break;
-                }
-            case 3:
-                {
-                    newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x, buildingPlacer.activePlaceOnGrid.y += 1);
-                    break;
-                }
-            case 4:
-                {
-                    newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x, buildingPlacer.activePlaceOnGrid.y -= 1);
-                    break;
-                }
+            newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x += newPostionOnGrid.x, buildingPlacer.activePlaceOnGrid.y += newPostionOnGrid.y);
+            buildingPlacer.ChangePosition(newPostionOnGrid);
         }
-        buildingPlacer.ChangePosition(newPostionOnGrid);
     }
 }

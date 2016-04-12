@@ -8,6 +8,7 @@ public class EmptyField : MonoBehaviour
     public Vector2 gridPosition;
     public BuilderMenu buildMenu;
     public bool placeAble = true;
+    public string building = "EmptyField";
     
     void OnMouseDown()
     {
