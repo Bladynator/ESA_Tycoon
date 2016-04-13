@@ -5,14 +5,27 @@ public class BuildingMain : MonoBehaviour
 {
     public string buildingName;
     public Vector2 size;
-    public int price, levelNeeded, timeToBuild;
-    public bool clicked, busy;
+    public int price, levelNeeded;
+    public bool clicked, busy, buildingBusy, clickedUpgrade;
     Texture2D background, emptyBar, fullBar;
-    public int level, ID, timeLeftToFinishBuild, taskDoing;
+    public int level, ID, taskDoing;
     [SerializeField]
-    int[] timesForTasks;
-    public float timeToFinishTask, timeToFinishTaskTotal;
-    bool waitOneSec = false;
+    int[] timesForTasks, timesForBuilding;
+    public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
+    public bool building = false;
+    bool waitOneSec = false, waitOneSecForBuilding = false;
+
+    int[,] priceForUpgrading = new int[5, 3] // level, money, RP
+        { { 1, 100, 0}, // level 1
+        { 3 , 300 , 0}, // level 2
+        { 5, 500, 10}, // level 3
+        { 8, 1000, 50}, // level 4
+        { 10 , 2000, 100 }}; // level 5
+
+    public void GiveInformation(int[,] information)
+    {
+        priceForUpgrading = information;
+    }
 
     public virtual void Start () 
 	{
@@ -23,6 +36,22 @@ public class BuildingMain : MonoBehaviour
 
     public virtual void Update()
     {
+        if(building)
+        {
+            if(timeLeftToFinishBuild <= 0)
+            {
+                building = false;
+                level++;
+                GameObject.Find("Account").GetComponent<Account>().PushSave();
+            }
+            else
+            {
+                if (!waitOneSecForBuilding)
+                {
+                    StartCoroutine(WaitForBuild());
+                }
+            }
+        }
         if(timeToFinishTask > 0)
         {
             busy = true;
@@ -45,6 +74,14 @@ public class BuildingMain : MonoBehaviour
         waitOneSec = false;
     }
 
+    IEnumerator WaitForBuild()
+    {
+        waitOneSecForBuilding = true;
+        timeLeftToFinishBuild--;
+        yield return new WaitForSeconds(1);
+        waitOneSecForBuilding = false;
+    }
+
     void OnMouseDown()
     {
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
@@ -56,18 +93,28 @@ public class BuildingMain : MonoBehaviour
         clicked = true;
     }
 
+    public void SetMaxTime()
+    {
+        timeToFinishBuildTotal = timesForBuilding[level];
+    }
+
     void OnGUI()
     {
         if (clicked)
         {
             GUI.DrawTexture(new Rect(Screen.width / 3, Screen.height / 4, Screen.width / 3, Screen.height / 2), background);
             GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 4, Screen.width / 3, Screen.height / 2), buildingName);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), level.ToString());
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), (level + 1).ToString());
             if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 4, 50, 50), "Back"))
             {
                 clicked = false;
             }
-            for(int i = 0; i < timesForTasks.Length; i++)
+            if (GUI.Button(new Rect(Screen.width / 3 + 50, Screen.height / 4, 100, 50), "Upgrade"))
+            {
+                clickedUpgrade = true;
+                clicked = false;
+            }
+            for (int i = 0; i < timesForTasks.Length; i++)
             {
                 if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 3 + (i * 50), 150, 50), (i + 1) + " Task " + timesForTasks[i] + " Sec"))
                 {
@@ -78,12 +125,64 @@ public class BuildingMain : MonoBehaviour
                 }
             }
         }
+        if(clickedUpgrade)
+        {
+            GUI.DrawTexture(new Rect(Screen.width / 3, Screen.height / 4, Screen.width / 3, Screen.height / 2), background);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), "Level Needed: " + priceForUpgrading[level, 0]);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 20, Screen.width / 3, Screen.height / 2), "Money Needed: " + priceForUpgrading[level, 1]);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 40, Screen.width / 3, Screen.height / 2), "Research Needed: " + priceForUpgrading[level, 2]);
+            if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 4, 50, 50), "Back"))
+            {
+                clickedUpgrade = false;
+                clicked = true;
+            }
+            if (GUI.Button(new Rect(Screen.width / 3 + 50, Screen.height / 4, 100, 50), "Upgrade") && CheckIfEnoughResources())
+            {
+                building = true;
+                timeLeftToFinishBuild = timesForBuilding[level];
+                SetMaxTime();
+                clickedUpgrade = false;
+            }
+        }
         if (busy)
         {
-            Vector3 tempPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, -transform.position.y));
-            GUI.DrawTexture(new Rect(tempPos.x - 25, tempPos.y - 80, 50, 15), emptyBar);
-            float perc = timeToFinishTaskTotal / timeToFinishTask;
-            GUI.DrawTexture(new Rect(tempPos.x - 23, tempPos.y - 78, 46 / perc, 11), fullBar);
+            ShowBar(timeToFinishTaskTotal, timeToFinishTask);
         }
+        if(building)
+        {
+            ShowBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+        }
+    }
+
+    bool CheckIfEnoughResources()
+    {
+        bool enough = true;
+        if(priceForUpgrading[level, 0] > GameObject.Find("Account").GetComponent<Account>().level)
+        {
+            enough = false;
+        }
+        if (priceForUpgrading[level, 1] > GameObject.Find("Account").GetComponent<Account>().money)
+        {
+            enough = false;
+        }
+        if (priceForUpgrading[level, 2] > GameObject.Find("Account").GetComponent<Account>().researchPoints)
+        {
+            enough = false;
+        }
+        if(enough)
+        {
+            GameObject.Find("Account").GetComponent<Account>().money -= priceForUpgrading[level, 1];
+            GameObject.Find("Account").GetComponent<Account>().researchPoints -= priceForUpgrading[level, 2];
+        }
+        return enough;
+    }
+
+    void ShowBar(float max, float min)
+    {
+        Vector3 tempPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, -transform.position.y));
+        GUI.Label(new Rect(tempPos.x - 25, tempPos.y - 105, 50, 25), min.ToString() + " Sec");
+        GUI.DrawTexture(new Rect(tempPos.x - 25, tempPos.y - 80, 50, 15), emptyBar);
+        float perc = max / min;
+        GUI.DrawTexture(new Rect(tempPos.x - 23, tempPos.y - 78, 46 / perc, 11), fullBar);
     }
 }

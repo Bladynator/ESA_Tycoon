@@ -59,14 +59,20 @@ MonoBehaviour:
   size: {x: 3, y: 4}
   price: 500
   levelNeeded: 5
-  timeToBuild: 50
   clicked: 0
+  busy: 0
+  buildingBusy: 0
+  clickedUpgrade: 0
   level: 0
-  timeToFinishTaskTotal: 0
   ID: 0
-  timeLeftToFinishBuild: 0
   taskDoing: 0
+  timesForTasks: 
+  timesForBuilding: 0a000000140000001e0000002800000032000000
   timeToFinishTask: 0
+  timeToFinishTaskTotal: 0
+  timeToFinishBuildTotal: 0
+  timeLeftToFinishBuild: 0
+  building: 0
 --- !u!212 &21284932
 SpriteRenderer:
   m_ObjectHideFlags: 1

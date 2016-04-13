@@ -5,21 +5,30 @@ using System;
 
 public class Account : MonoBehaviour 
 {
-    public int level = 1, money = 1000, researchPoints = 0;
+    public int level = 1, money = 1000, researchPoints = 0, exp = 0;
     SaveLoad saveLoad;
     string save;
     bool waitOneSec = false;
     int saveInSec = 5;
+    [SerializeField]
+    int[] expNeededForLevel;
+    int[] amountOfEachBuilding = new int[8]; // buildings
 	
 	void Start () 
 	{
         saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
         PlaceBuildings();
+        UpdateAmountOFBuildings();
 	}
-
+    
     void Update()
     {
+        if(exp >= expNeededForLevel[level])
+        {
+            exp -= expNeededForLevel[level];
+            level++;
+        }
         if (saveInSec <= 0)
         {
             saveInSec = 5;
@@ -28,6 +37,27 @@ public class Account : MonoBehaviour
         if (!waitOneSec)
         {
             StartCoroutine(ToSave());
+        }
+    }
+
+    public void UpdateAmountOFBuildings()
+    {
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject building in allBuildings)
+        {
+            string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
+            switch(nameOfBuilding)
+            {
+                case "Headquaters":
+                    {
+                        amountOfEachBuilding[0]++;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
     }
 
@@ -44,13 +74,30 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString();
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp;
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
+    }
+
+    string GetQuestLines()
+    {
+        string questsToString = "";
+        int[] quests = GameObject.Find("Quests").GetComponent<Quests>().questLineProgress;
+        foreach (int progress in quests)
+        {
+            questsToString += progress.ToString() + "<e>";
+        }
+        return questsToString;
     }
 
     public void PushLoad()
     {
         save = saveLoad.readStringFromFile("SaveFile");
+        if(save == null)
+        {
+            GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
+            GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
+            PushSave();
+        }
     }
 
     void PlaceBuildings()
@@ -61,6 +108,19 @@ public class Account : MonoBehaviour
         level = Convert.ToInt32(allInformation[1]);
         money = Convert.ToInt32(allInformation[2]);
         researchPoints = Convert.ToInt32(allInformation[3]);
+        exp = Convert.ToInt32(allInformation[6]);
+
+        string[] quests = Regex.Split(allInformation[5], "<e>");
+        int[] questsInt = new int[quests.Length];
+        for (int i = 0; i < quests.Length; i++)
+        {
+            if (quests[i] != "")
+            {
+                questsInt[i] = Convert.ToInt32(quests[i]);
+            }
+        }
+        GameObject.Find("Quests").GetComponent<Quests>().questLineProgress = questsInt;
+
         string[] buildingsToPlace = Regex.Split(allInformation[0], "<r>");
         int numberToPlace = 0;
         foreach (string tempBuilding in buildingsToPlace)
@@ -106,7 +166,12 @@ public class Account : MonoBehaviour
                         TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                         tempBuilding2.GetComponent<BuildingMain>().timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
                         tempBuilding2.GetComponent<BuildingMain>().level = Convert.ToInt32(informationOneBuilding[3]);
-                        tempBuilding2.GetComponent<BuildingMain>().timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]);
+                        if(Convert.ToInt32(informationOneBuilding[4]) > 0)
+                        {
+                            tempBuilding2.GetComponent<BuildingMain>().building = true;
+                            tempBuilding2.GetComponent<BuildingMain>().SetMaxTime();
+                        }
+                        tempBuilding2.GetComponent<BuildingMain>().timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
                         tempBuilding2.GetComponent<BuildingMain>().timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
                     }
                 }
@@ -146,6 +211,7 @@ public class Account : MonoBehaviour
                 {
                     for (int k = 0; k < tempBuildings.Length; k++)
                     {
+                        //Debug.Log(tempBuildings[k].GetComponent<BuildingMain>().ID);
                         if(tempBuildings[k].GetComponent<BuildingMain>().ID == grid[i, p].ID)
                         {
                             tempBuilding = tempBuildings[k].GetComponent<BuildingMain>();

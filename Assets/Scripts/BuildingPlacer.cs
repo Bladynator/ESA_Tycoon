@@ -76,7 +76,10 @@ public class BuildingPlacer : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempField in allBuildings)
         {
-            tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+            if (tempField.GetComponent<BoxCollider2D>() != null)
+            {
+                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+            }
         }
     }
 
@@ -93,7 +96,7 @@ public class BuildingPlacer : MonoBehaviour
                 tempBuilding.activePlaceOnGrid = activePlaceOnGrid;
                 tempBuilding.builderPlacerTemp = builderPlacerTemp;
                 tempBuilding.fieldID = tempField.GetComponent<EmptyField>().ID;
-                
+                GameObject.Find("Account").GetComponent<Account>().UpdateAmountOFBuildings();
                 Destroy(gameObject);
             }
         }
