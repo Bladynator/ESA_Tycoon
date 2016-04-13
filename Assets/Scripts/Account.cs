@@ -164,6 +164,11 @@ public class Account : MonoBehaviour
                         tempBuilding2.transform.localScale = size;
                         tempBuilding2.GetComponent<BuildingMain>().taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                         TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
+                        if (Convert.ToInt32(informationOneBuilding[2]) > 0)
+                        {
+                            tempBuilding2.GetComponent<BuildingMain>().busy = true;
+                            tempBuilding2.GetComponent<BuildingMain>().timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
+                        }
                         tempBuilding2.GetComponent<BuildingMain>().timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
                         tempBuilding2.GetComponent<BuildingMain>().level = Convert.ToInt32(informationOneBuilding[3]);
                         if(Convert.ToInt32(informationOneBuilding[4]) > 0)
@@ -172,7 +177,6 @@ public class Account : MonoBehaviour
                             tempBuilding2.GetComponent<BuildingMain>().SetMaxTime();
                         }
                         tempBuilding2.GetComponent<BuildingMain>().timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
-                        tempBuilding2.GetComponent<BuildingMain>().timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
                     }
                 }
             }

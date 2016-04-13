@@ -4,7 +4,7 @@ using System.Collections;
 public class HUD : MonoBehaviour 
 {
     Account account;
-    public Texture2D background, emptyBar, fullBar;
+    public Texture2D background, emptyBar, fullBar, taskDone;
 	
 	void Start () 
 	{
