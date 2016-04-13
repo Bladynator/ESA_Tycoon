@@ -103,6 +103,7 @@ public class BuildingMain : MonoBehaviour
         if(doneWithTask)
         {
             GetReward();
+            clicked = false;
         }
     }
 
