@@ -9,6 +9,7 @@ public class Account : MonoBehaviour
     SaveLoad saveLoad;
     string save;
     bool waitOneSec = false;
+    public bool doThe5SecSave = true;
     int saveInSec = 5;
     [SerializeField]
     int[] expNeededForLevel;
@@ -29,7 +30,7 @@ public class Account : MonoBehaviour
             exp -= expNeededForLevel[level];
             level++;
         }
-        if (saveInSec <= 0)
+        if (saveInSec <= 0 && doThe5SecSave)
         {
             saveInSec = 5;
             PushSave();
@@ -111,7 +112,7 @@ public class Account : MonoBehaviour
         exp = Convert.ToInt32(allInformation[6]);
 
         string[] quests = Regex.Split(allInformation[5], "<e>");
-        int[] questsInt = new int[quests.Length];
+        int[] questsInt = new int[quests.Length - 1];
         for (int i = 0; i < quests.Length; i++)
         {
             if (quests[i] != "")
@@ -177,6 +178,8 @@ public class Account : MonoBehaviour
                             tempBuilding2.GetComponent<BuildingMain>().SetMaxTime();
                         }
                         tempBuilding2.GetComponent<BuildingMain>().timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
+                        tempBuilding2.GetComponent<BuildingMain>().gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
+                        tempBuilding2.GetComponent<BuildingMain>().gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                     }
                 }
             }
@@ -225,7 +228,7 @@ public class Account : MonoBehaviour
                 fields += grid[i, p].building + "<e>";
                 if(tempBuilding != null)
                 {
-                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.timeToFinishTask + "<e>" + tempBuilding.level + "<e>" + tempBuilding.timeLeftToFinishBuild + "<e>" + tempBuilding.timeToFinishTaskTotal;
+                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.timeToFinishTask + "<e>" + tempBuilding.level + "<e>" + tempBuilding.timeLeftToFinishBuild + "<e>" + tempBuilding.timeToFinishTaskTotal + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y;
                 }
                 fields += "<r>";
             }

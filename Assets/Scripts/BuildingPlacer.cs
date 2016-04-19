@@ -3,12 +3,13 @@ using System.Collections;
 
 public class BuildingPlacer : MonoBehaviour 
 {
-    public GameObject buildingToPlace;
+    public GameObject buildingToPlace, oldBuilding;
     public Vector2 activePlaceOnGrid;
     public BuildingPlacer builderPlacerTemp;
     public int fieldID;
     EmptyField[,] grid;
     bool placeAble = true;
+    public bool rePos = false;
 
     void Start()
     {
@@ -57,10 +58,27 @@ public class BuildingPlacer : MonoBehaviour
 
             tempBuilding.transform.localScale = size;
             tempBuilding.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].ID;
-
+            tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
+            Destroy(oldBuilding);
+            GameObject.Find("Account").GetComponent<Account>().UpdateAmountOFBuildings();
             GameObject.Find("Account").GetComponent<Account>().PushSave();
+            GameObject.Find("Account").GetComponent<Account>().doThe5SecSave = true;
             Destroy(gameObject);
         }
+    }
+
+    public void Delete()
+    {
+        grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
+        for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
+        {
+            for (int y = 0; y < buildingToPlace.GetComponent<BuildingMain>().size.y; y++)
+            {
+                grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].placeAble = true;
+            }
+        }
+        GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = "EmptyField";
+        ChangeColliders(false);
     }
     
     public void ChangeColliders(bool toChange)
@@ -96,7 +114,8 @@ public class BuildingPlacer : MonoBehaviour
                 tempBuilding.activePlaceOnGrid = activePlaceOnGrid;
                 tempBuilding.builderPlacerTemp = builderPlacerTemp;
                 tempBuilding.fieldID = tempField.GetComponent<EmptyField>().ID;
-                GameObject.Find("Account").GetComponent<Account>().UpdateAmountOFBuildings();
+                tempBuilding.oldBuilding = oldBuilding;
+                tempBuilding.rePos = rePos;
                 Destroy(gameObject);
             }
         }

@@ -332,7 +332,7 @@ MonoBehaviour:
   emptyField: {fileID: 11495738, guid: 8d2046c76881aed498b3b0a67bf9df54, type: 2}
   allFields: {fileID: 115862, guid: 0e5191e0f3ad5524897f5f89ada19703, type: 2}
   maxGridSize: 24
-  distance: 38
+  distance: 35
   toTranslateAllFields: {x: 1, y: 1, z: 2}
 --- !u!4 &1838144052
 Transform:

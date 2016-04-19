@@ -6,19 +6,28 @@ public class Done : MonoBehaviour
     BuildingPlacer buildingPlacer;
     int price;
     Account account;
+    bool rePos;
 
     void Start()
     {
         buildingPlacer = GetComponentInParent<BuildingPlacer>();
         account = GameObject.Find("Account").GetComponent<Account>();
         price = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().price;
+        rePos = buildingPlacer.rePos;
     }
 
     void OnMouseDown()
     {
-        if (account.money >= price)
+        if (!rePos)
         {
-            account.money -= price;
+            if (account.money >= price)
+            {
+                account.money -= price;
+                buildingPlacer.Done();
+            }
+        }
+        else
+        {
             buildingPlacer.Done();
         }
     }

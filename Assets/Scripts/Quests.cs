@@ -94,7 +94,14 @@ public class Quests : MonoBehaviour
             {
                 if(GUI.Button(new Rect(0, Screen.height / 3 + (activeQuests * 50), 50, 50), i.ToString()))
                 {
-                    questOpen = i;
+                    if (questOpen == i)
+                    {
+                        questOpen = -1;
+                    }
+                    else
+                    {
+                        questOpen = i;
+                    }
                 }
                 activeQuests++;
             }
@@ -114,9 +121,13 @@ public class Quests : MonoBehaviour
     void ShowInformation(int toProgress, string text)
     {
         GUI.TextArea(new Rect(Screen.width / 2.5f, Screen.height / 3, 200, 100), text);
-        if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 1.7f, 100, 50), "Finish") && CheckIfRequirementsAreSet(questOpen, questLineProgress[toProgress]))
+        if (GUI.Button(new Rect(Screen.width / 2 + 25, Screen.height / 1.7f, 100, 50), "Finish") && CheckIfRequirementsAreSet(questOpen, questLineProgress[toProgress]))
         {
             questLineProgress[toProgress]++;
+            questOpen = -1;
+        }
+        if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height / 1.7f, 100, 50), "Back"))
+        {
             questOpen = -1;
         }
     }

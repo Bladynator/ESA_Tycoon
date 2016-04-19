@@ -11,6 +11,10 @@ public class BuildingMain : MonoBehaviour
     public int level, ID, taskDoing;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
+    public Vector2 gridPosition;
+    [SerializeField]
+    BuildingPlacer buildingPlacer;
+    Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
@@ -37,6 +41,7 @@ public class BuildingMain : MonoBehaviour
         emptyBar = GameObject.Find("HUD").GetComponent<HUD>().emptyBar;
         fullBar = GameObject.Find("HUD").GetComponent<HUD>().fullBar;
         taskDone = GameObject.Find("HUD").GetComponent<HUD>().taskDone;
+        account = GameObject.Find("Account").GetComponent<Account>();
     }
 
     public virtual void Update()
@@ -47,7 +52,7 @@ public class BuildingMain : MonoBehaviour
             {
                 building = false;
                 level++;
-                GameObject.Find("Account").GetComponent<Account>().PushSave();
+                account.PushSave();
             }
             else
             {
@@ -96,7 +101,7 @@ public class BuildingMain : MonoBehaviour
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject buildingTemp in buildings)
         {
-            //Debug.Log(buildingTemp.name);
+            Debug.Log(buildingTemp.name);
             buildingTemp.GetComponent<BuildingMain>().clicked = false;
         }
         clicked = true;
@@ -110,8 +115,8 @@ public class BuildingMain : MonoBehaviour
     void GetReward()
     {
         doneWithTask = false;
-        GameObject.Find("Account").GetComponent<Account>().money += taskRewards[0, taskDoing];
-        GameObject.Find("Account").GetComponent<Account>().researchPoints += taskRewards[1, taskDoing];
+        account.money += taskRewards[0, taskDoing];
+        account.researchPoints += taskRewards[1, taskDoing];
     }
 
     public void SetMaxTime()
@@ -141,10 +146,24 @@ public class BuildingMain : MonoBehaviour
                 {
                     timeToFinishTaskTotal = timesForTasks[i];
                     timeToFinishTask = timeToFinishTaskTotal;
-                    GameObject.Find("Account").GetComponent<Account>().PushSave();
+                    account.PushSave();
                     clicked = false;
                     busy = true;
                 }
+            }
+            if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 2, 50, 50), "Pos"))
+            {
+                Vector3 positionOfNewBuilding = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
+                BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(buildingPlacer, positionOfNewBuilding, transform.rotation);
+                tempBuilding.buildingToPlace = this.gameObject;
+                tempBuilding.activePlaceOnGrid = gridPosition;
+                tempBuilding.builderPlacerTemp = buildingPlacer;
+                tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
+                tempBuilding.oldBuilding = this.gameObject;
+                tempBuilding.rePos = true;
+                clicked = false;
+                account.doThe5SecSave = false;
+                tempBuilding.Delete();
             }
         }
         if(clickedUpgrade)
@@ -187,22 +206,22 @@ public class BuildingMain : MonoBehaviour
     bool CheckIfEnoughResources()
     {
         bool enough = true;
-        if(priceForUpgrading[level, 0] > GameObject.Find("Account").GetComponent<Account>().level)
+        if(priceForUpgrading[level, 0] > account.level)
         {
             enough = false;
         }
-        if (priceForUpgrading[level, 1] > GameObject.Find("Account").GetComponent<Account>().money)
+        if (priceForUpgrading[level, 1] > account.money)
         {
             enough = false;
         }
-        if (priceForUpgrading[level, 2] > GameObject.Find("Account").GetComponent<Account>().researchPoints)
+        if (priceForUpgrading[level, 2] > account.researchPoints)
         {
             enough = false;
         }
         if(enough)
         {
-            GameObject.Find("Account").GetComponent<Account>().money -= priceForUpgrading[level, 1];
-            GameObject.Find("Account").GetComponent<Account>().researchPoints -= priceForUpgrading[level, 2];
+            account.money -= priceForUpgrading[level, 1];
+            account.researchPoints -= priceForUpgrading[level, 2];
         }
         return enough;
     }
