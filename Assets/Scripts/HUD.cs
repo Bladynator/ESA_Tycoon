@@ -6,6 +6,7 @@ public class HUD : MonoBehaviour
     Account account;
     public Texture2D background, emptyBar, fullBar, taskDone;
     public BuilderMenu buildMenu;
+    public bool buildClicked = false;
 
     void Start () 
 	{
@@ -19,17 +20,21 @@ public class HUD : MonoBehaviour
         GUI.Label(new Rect(Screen.width / 1.1f, 0, 100, 25), account.money.ToString());
         GUI.Label(new Rect(Screen.width / 1.3f, 25, 150, 25), "ResearchPoints: ");
         GUI.Label(new Rect(Screen.width / 1.1f, 25, 100, 25), account.researchPoints.ToString());
-        if (GUI.Button(new Rect(0, Screen.height - 50, 50, 50), "Build"))
+        if (!buildClicked)
         {
-            GameObject obj = GameObject.Find("Main Camera").GetComponent<CameraChanger>().Field();
-            if (obj != null)
+            if (GUI.Button(new Rect(0, Screen.height - 50, 50, 50), "Build"))
             {
-                if (obj.GetComponent<EmptyField>() != null)
+                GameObject obj = GameObject.Find("Main Camera").GetComponent<CameraChanger>().Field();
+                if (obj != null)
                 {
-                    buildMenu.gameObject.SetActive(true);
-                    buildMenu.fieldLocation = obj.GetComponent<EmptyField>().transform;
-                    buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
-                    buildMenu.fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
+                    if (obj.GetComponent<EmptyField>() != null)
+                    {
+                        buildMenu.gameObject.SetActive(true);
+                        buildMenu.fieldLocation = obj.GetComponent<EmptyField>().transform;
+                        buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
+                        buildMenu.fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
+                        buildClicked = true;
+                    }
                 }
             }
         }

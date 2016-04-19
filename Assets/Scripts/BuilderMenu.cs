@@ -66,6 +66,7 @@ public class BuilderMenu : MonoBehaviour
                                 GameObject.Find("HUD").GetComponent<HUD>().enabled = false;
                                 GameObject.Find("Quests").GetComponent<Quests>().enabled = false;
                                 gameObject.SetActive(false);
+                                GameObject.Find("HUD").GetComponent<HUD>().buildClicked = false;
                                 screenForBuilding = 0;
                             }
                         }
@@ -87,6 +88,7 @@ public class BuilderMenu : MonoBehaviour
             }
             else
             {
+                GameObject.Find("HUD").GetComponent<HUD>().buildClicked = false;
                 gameObject.SetActive(false);
             }
         }

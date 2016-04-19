@@ -220,6 +220,7 @@ MonoBehaviour:
   fullBar: {fileID: 2800000, guid: 8ab7eba5732a6694b88ddc902b099249, type: 3}
   taskDone: {fileID: 2800000, guid: 0de97a75f5e186945a84ae4f275ba3df, type: 3}
   buildMenu: {fileID: 418011325}
+  buildClicked: 0
 --- !u!1 &1711023114
 GameObject:
   m_ObjectHideFlags: 0
