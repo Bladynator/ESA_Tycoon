@@ -39,6 +39,8 @@ public class BuildingPlacer : MonoBehaviour
     {
         if (placeAble)
         {
+            GameObject.Find("HUD").GetComponent<HUD>().enabled = true;
+            GameObject.Find("Quests").GetComponent<Quests>().enabled = true;
             grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
             for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
             {
@@ -88,7 +90,7 @@ public class BuildingPlacer : MonoBehaviour
         {
             tempField.GetComponent<EmptyField>().Reset();
             {
-                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+                tempField.GetComponent<BoxCollider>().enabled = toChange;
             }
         }
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");

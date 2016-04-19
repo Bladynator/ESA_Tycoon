@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 483572}
   - 212: {fileID: 21273466}
   - 114: {fileID: 11495738}
-  - 61: {fileID: 6169304}
+  - 65: {fileID: 6555234}
   m_Layer: 0
   m_Name: EmptyField
   m_TagString: EmptyField
@@ -25,25 +25,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.8598094, y: 1.5343404, z: 15.1483755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6169304
-BoxCollider2D:
+--- !u!65 &6555234
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166736}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7066667, y: 1.7066667}
+  m_Size: {x: 1.7066667, y: 1.7066667, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11495738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,7 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  gridPosition: {x: 0, y: 0}
   buildMenu: {fileID: 0}
+  placeAble: 1
+  building: EmptyField
 --- !u!212 &21273466
 SpriteRenderer:
   m_ObjectHideFlags: 1

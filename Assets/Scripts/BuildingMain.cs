@@ -101,7 +101,7 @@ public class BuildingMain : MonoBehaviour
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject buildingTemp in buildings)
         {
-            Debug.Log(buildingTemp.name);
+            //Debug.Log(buildingTemp.name);
             buildingTemp.GetComponent<BuildingMain>().clicked = false;
         }
         clicked = true;

@@ -12,6 +12,7 @@ public class EmptyField : MonoBehaviour
     
     void OnMouseDown()
     {
+        /*
         if (placeAble)
         {
             GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
@@ -36,6 +37,7 @@ public class EmptyField : MonoBehaviour
                 Reset();
             }
         }
+        */
     }
 
     public void ChangeColor(Color newColor)

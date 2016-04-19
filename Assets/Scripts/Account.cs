@@ -194,7 +194,7 @@ public class Account : MonoBehaviour
         {
             tempField.GetComponent<EmptyField>().Reset();
             {
-                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+                tempField.GetComponent<BoxCollider>().enabled = toChange;
             }
         }
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");

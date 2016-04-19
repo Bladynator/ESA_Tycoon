@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 454050}
   - 212: {fileID: 21209048}
   - 114: {fileID: 11483492}
-  - 61: {fileID: 6175706}
+  - 61: {fileID: 6172680}
   m_Layer: 0
   m_Name: 1
   m_TagString: Building
@@ -25,12 +25,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.612087, y: -3.7932124, z: 3.5097656}
+  m_LocalPosition: {x: 8.806386, y: 6.6588006, z: -10.404054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6175706
+--- !u!61 &6172680
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -39,11 +39,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.016971111, y: 0.47539377}
+  m_Offset: {x: 0.015639305, y: 0.43203497}
   serializedVersion: 2
-  m_Size: {x: 1.8220406, y: 1.4794693}
+  m_Size: {x: 1.7248849, y: 1.344732}
 --- !u!114 &11483492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +68,8 @@ MonoBehaviour:
   taskDoing: 0
   timesForTasks: 0a0000001e000000280000003200000006000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  gridPosition: {x: 0, y: 0}
+  buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   timeToFinishTask: 0
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
