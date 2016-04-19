@@ -34,8 +34,6 @@ public class CameraChanger : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         GameObject obj = null;
         
-        Debug.DrawRay(transform.position, transform.forward * 1000, Color.red, 10);
-        
         if (Physics.Raycast (ray, out hit))
         {
             obj = hit.transform.gameObject;

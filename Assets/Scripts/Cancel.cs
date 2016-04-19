@@ -7,7 +7,7 @@ public class Cancel : MonoBehaviour
     {
         GameObject.Find("HUD").GetComponent<HUD>().enabled = true;
         GameObject.Find("Quests").GetComponent<Quests>().enabled = true;
-        GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().ChangeColliders(true);
+        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
     }
 }

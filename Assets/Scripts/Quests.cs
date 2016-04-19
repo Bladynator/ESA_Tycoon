@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Quests : MonoBehaviour 
 {
+    Account account;
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[3, 10]
@@ -86,6 +87,11 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}}, };
     #endregion
 
+    void Start()
+    {
+        account = GameObject.Find("Account").GetComponent<Account>();
+    }
+
     void OnGUI()
     {
         for (int i = 0; i < questLineProgress.Length; i++)
@@ -134,8 +140,8 @@ public class Quests : MonoBehaviour
 
     bool CheckIfRequirementsAreSet(int questline, int quest)
     {
-        myInformation[0] = GameObject.Find("Account").GetComponent<Account>().money;
-        myInformation[1] = GameObject.Find("Account").GetComponent<Account>().researchPoints;
+        myInformation[0] = account.money;
+        myInformation[1] = account.researchPoints;
         bool ifEnough = true;
         for (int i = 0; i < 10; i++)
         {
@@ -148,12 +154,12 @@ public class Quests : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-                GameObject.Find("Account").GetComponent<Account>().money -= questRequirements[questline, quest, 0];
-                GameObject.Find("Account").GetComponent<Account>().researchPoints -= questRequirements[questline, quest, 1];
+                account.money -= questRequirements[questline, quest, 0];
+                account.researchPoints -= questRequirements[questline, quest, 1];
 
-                GameObject.Find("Account").GetComponent<Account>().money += questRewards[questline, quest, 0];
-                GameObject.Find("Account").GetComponent<Account>().researchPoints += questRewards[questline, quest, 1];
-                GameObject.Find("Account").GetComponent<Account>().exp += questRewards[questline, quest, 2];
+                account.money += questRewards[questline, quest, 0];
+                account.researchPoints += questRewards[questline, quest, 1];
+                account.exp += questRewards[questline, quest, 2];
             }
         }
         return ifEnough;

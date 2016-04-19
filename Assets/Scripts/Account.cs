@@ -9,7 +9,7 @@ public class Account : MonoBehaviour
     SaveLoad saveLoad;
     string save;
     bool waitOneSec = false;
-    public bool doThe5SecSave = true;
+    public bool autoSave = true;
     int saveInSec = 5;
     [SerializeField]
     int[] expNeededForLevel;
@@ -30,7 +30,7 @@ public class Account : MonoBehaviour
             exp -= expNeededForLevel[level];
             level++;
         }
-        if (saveInSec <= 0 && doThe5SecSave)
+        if (saveInSec <= 0 && autoSave)
         {
             saveInSec = 5;
             PushSave();
@@ -156,7 +156,7 @@ public class Account : MonoBehaviour
                         }
 
                         GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
-
+                        
                         ChangeColliders(true);
                         Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
                         //Vector2 newPosition = transform.position;
@@ -186,13 +186,13 @@ public class Account : MonoBehaviour
             numberToPlace++;
         }
     }
-
+    
     public void ChangeColliders(bool toChange)
     {
         GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
         foreach (GameObject tempField in allFields)
         {
-            tempField.GetComponent<EmptyField>().Reset();
+            tempField.GetComponent<EmptyField>().ChangeColor(Color.white);
             {
                 tempField.GetComponent<BoxCollider>().enabled = toChange;
             }
@@ -200,7 +200,10 @@ public class Account : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempField in allBuildings)
         {
-            tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+            if (tempField.GetComponent<BoxCollider2D>() != null)
+            {
+                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+            }
         }
     }
 

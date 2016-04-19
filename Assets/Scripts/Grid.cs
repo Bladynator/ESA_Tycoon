@@ -12,12 +12,7 @@ public class Grid : MonoBehaviour
     public int maxGridSize = 8, distance = 75;
     [SerializeField]
     Vector3 toTranslateAllFields = new Vector3(1,1,2);
-
-	void Start ()
-    {
-        //MakeGrid();
-	}
-
+    
     public void MakeGrid()
     {
         grid = new EmptyField[maxGridSize, maxGridSize];
@@ -37,7 +32,6 @@ public class Grid : MonoBehaviour
                 idToGive++;
                 tempField.gridPosition = new Vector2(x, y);
                 grid[x, y] = tempField;
-                // grid = something...blabla
             }
         }
 

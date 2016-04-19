@@ -162,7 +162,7 @@ public class BuildingMain : MonoBehaviour
                 tempBuilding.oldBuilding = this.gameObject;
                 tempBuilding.rePos = true;
                 clicked = false;
-                account.doThe5SecSave = false;
+                account.autoSave = false;
                 tempBuilding.Delete();
             }
         }

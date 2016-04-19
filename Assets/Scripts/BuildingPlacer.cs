@@ -10,10 +10,12 @@ public class BuildingPlacer : MonoBehaviour
     EmptyField[,] grid;
     bool placeAble = true;
     public bool rePos = false;
+    Account account;
 
     void Start()
     {
-        ChangeColliders(false);
+        account = GameObject.Find("Account").GetComponent<Account>();
+        account.ChangeColliders(false);
         grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
         {
@@ -30,7 +32,6 @@ public class BuildingPlacer : MonoBehaviour
                     placeAble = false;
                 }
                 grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].ChangeColor(newColor);
-
             }
         }
     }
@@ -47,13 +48,12 @@ public class BuildingPlacer : MonoBehaviour
                 for (int y = 0; y < buildingToPlace.GetComponent<BuildingMain>().size.y; y++)
                 {
                     grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].placeAble = false;
-                    //grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].tag = "Default";
                 }
             }
 
             GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
-            
-            ChangeColliders(true);
+
+            account.ChangeColliders(true);
             Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
             Vector2 newPosition = transform.position;
             GameObject tempBuilding = (GameObject)Instantiate(buildingToPlace, newPosition, transform.rotation);
@@ -62,9 +62,9 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].ID;
             tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
             Destroy(oldBuilding);
-            GameObject.Find("Account").GetComponent<Account>().UpdateAmountOFBuildings();
-            GameObject.Find("Account").GetComponent<Account>().PushSave();
-            GameObject.Find("Account").GetComponent<Account>().doThe5SecSave = true;
+            account.UpdateAmountOFBuildings();
+            account.PushSave();
+            account.autoSave = true;
             Destroy(gameObject);
         }
     }
@@ -80,27 +80,7 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = "EmptyField";
-        ChangeColliders(false);
-    }
-    
-    public void ChangeColliders(bool toChange)
-    {
-        GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
-        foreach (GameObject tempField in allFields)
-        {
-            tempField.GetComponent<EmptyField>().Reset();
-            {
-                tempField.GetComponent<BoxCollider>().enabled = toChange;
-            }
-        }
-        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
-        foreach (GameObject tempField in allBuildings)
-        {
-            if (tempField.GetComponent<BoxCollider2D>() != null)
-            {
-                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
-            }
-        }
+        account.ChangeColliders(false);
     }
 
     public void ChangePosition(Vector2 newPostion)
