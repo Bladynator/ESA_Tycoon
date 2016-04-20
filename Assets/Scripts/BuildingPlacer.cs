@@ -55,7 +55,7 @@ public class BuildingPlacer : MonoBehaviour
 
             account.ChangeColliders(true);
             Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
-            Vector2 newPosition = transform.position;
+            Vector3 newPosition = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].transform.position;
             GameObject tempBuilding = (GameObject)Instantiate(buildingToPlace, newPosition, transform.rotation);
 
             tempBuilding.transform.localScale = size;
@@ -90,7 +90,7 @@ public class BuildingPlacer : MonoBehaviour
         {
             if (tempField.GetComponent<EmptyField>().gridPosition == newPostion)
             {
-                Vector3 positionOfNewBuilding = new Vector3(tempField.transform.position.x, tempField.transform.position.y + 0.3f, tempField.transform.position.z);
+                Vector3 positionOfNewBuilding = new Vector3(tempField.transform.position.x, tempField.transform.position.y, tempField.transform.position.z);
                 BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
                 tempBuilding.buildingToPlace = buildingToPlace;
                 tempBuilding.activePlaceOnGrid = activePlaceOnGrid;

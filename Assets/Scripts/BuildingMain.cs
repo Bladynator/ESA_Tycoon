@@ -42,6 +42,7 @@ public class BuildingMain : MonoBehaviour
     public virtual void Start () 
 	{
         smallFont = new GUIStyle();
+        smallFont.normal.textColor = Color.black;
         background = GameObject.Find("HUD").GetComponent<HUD>().background;
         emptyBar = GameObject.Find("HUD").GetComponent<HUD>().emptyBar;
         fullBar = GameObject.Find("HUD").GetComponent<HUD>().fullBar;
@@ -205,8 +206,9 @@ public class BuildingMain : MonoBehaviour
         }
         if (doneWithTask)
         {
-            Vector3 tempPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, -transform.position.y));
-            if(GUI.Button(new Rect(tempPos.x - 23, tempPos.y - 78, 46, 30), taskDone, smallFont))
+            Vector2 tempPos = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y));
+            tempPos.y = Screen.height - tempPos.y;
+            if (GUI.Button(new Rect(tempPos.x - 23, tempPos.y - 78, 46, 30), taskDone, smallFont))
             {
                 GetReward();
             }
@@ -238,12 +240,11 @@ public class BuildingMain : MonoBehaviour
 
     void ShowBar(float max, float min)
     {
-        //Debug.Log(max + " / " + min);
-        Vector3 tempPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, -transform.position.y));
-        Debug.Log(tempPos);
-        GUI.Label(new Rect(tempPos.x - 25, tempPos.y - 90, 50, 25), min.ToString() + " Sec");
-        GUI.DrawTexture(new Rect(tempPos.x - 25, tempPos.y - 70, 50, 15), emptyBar);
+        Vector2 tempPos = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y));
+        tempPos.y = Screen.height - tempPos.y;
+        GUI.Label(new Rect(tempPos.x - 10, tempPos.y - 83, 50, 25), min.ToString() + " Sec", smallFont);
+        GUI.DrawTexture(new Rect(tempPos.x - 12, tempPos.y - 65, 50, 15), emptyBar);
         float perc = max / min;
-        GUI.DrawTexture(new Rect(tempPos.x - 23, tempPos.y - 68, 46 / perc, 11), fullBar);
+        GUI.DrawTexture(new Rect(tempPos.x - 10, tempPos.y - 63, 46 / perc, 11), fullBar);
     }
 }
