@@ -6,14 +6,19 @@ public class BuildingMain : MonoBehaviour
     public string buildingName;
     public Vector2 size;
     public int price, levelNeeded;
-    public bool clicked, busy, buildingBusy, clickedUpgrade;
-    Texture2D background, emptyBar, fullBar, taskDone;
-    public int level, ID, taskDoing;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
+
+    [HideInInspector]
+    public bool clicked, busy, buildingBusy, clickedUpgrade;
+    [HideInInspector]
     public Vector2 gridPosition;
+    Texture2D background, emptyBar, fullBar, taskDone;
+
+    [Header("Don't Change")]
     [SerializeField]
     BuildingPlacer buildingPlacer;
+    public int level, ID, taskDoing;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false;
@@ -64,18 +69,17 @@ public class BuildingMain : MonoBehaviour
         }
         if (busy)
         {
-            if (timeToFinishTask > 0)
+            if (timeToFinishTask <= 0)
             {
-                busy = true;
+                busy = false;
+                doneWithTask = true;
+            }
+            else
+            {
                 if (!waitOneSec)
                 {
                     StartCoroutine(WaitForTask());
                 }
-            }
-            else
-            {
-                busy = false;
-                doneWithTask = true;
             }
         }
     }
@@ -102,7 +106,13 @@ public class BuildingMain : MonoBehaviour
         foreach (GameObject buildingTemp in buildings)
         {
             //Debug.Log(buildingTemp.name);
-            buildingTemp.GetComponent<BuildingMain>().clicked = false;
+            if(buildingTemp != null)
+            {
+                if(buildingTemp.GetComponent<BuildingMain>() != null)
+                {
+                    buildingTemp.GetComponent<BuildingMain>().clicked = false;
+                }
+            }
         }
         clicked = true;
         if(doneWithTask)
@@ -228,10 +238,12 @@ public class BuildingMain : MonoBehaviour
 
     void ShowBar(float max, float min)
     {
+        //Debug.Log(max + " / " + min);
         Vector3 tempPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, -transform.position.y));
-        GUI.Label(new Rect(tempPos.x - 25, tempPos.y - 105, 50, 25), min.ToString() + " Sec");
-        GUI.DrawTexture(new Rect(tempPos.x - 25, tempPos.y - 80, 50, 15), emptyBar);
+        Debug.Log(tempPos);
+        GUI.Label(new Rect(tempPos.x - 25, tempPos.y - 90, 50, 25), min.ToString() + " Sec");
+        GUI.DrawTexture(new Rect(tempPos.x - 25, tempPos.y - 70, 50, 15), emptyBar);
         float perc = max / min;
-        GUI.DrawTexture(new Rect(tempPos.x - 23, tempPos.y - 78, 46 / perc, 11), fullBar);
+        GUI.DrawTexture(new Rect(tempPos.x - 23, tempPos.y - 68, 46 / perc, 11), fullBar);
     }
 }

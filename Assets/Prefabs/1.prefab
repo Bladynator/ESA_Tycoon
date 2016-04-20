@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.806386, y: 6.6588006, z: -10.404054}
+  m_LocalPosition: {x: -12.256649, y: 13.537623, z: 15.69434}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,17 +59,17 @@ MonoBehaviour:
   size: {x: 2, y: 2}
   price: 100
   levelNeeded: 1
+  timesForTasks: 0a0000001e000000280000003200000006000000
+  timesForBuilding: 0a000000140000001e0000002800000032000000
   clicked: 0
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
+  gridPosition: {x: 0, y: 0}
+  buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   level: 0
   ID: 0
   taskDoing: 0
-  timesForTasks: 0a0000001e000000280000003200000006000000
-  timesForBuilding: 0a000000140000001e0000002800000032000000
-  gridPosition: {x: 0, y: 0}
-  buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   timeToFinishTask: 0
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: f26fd82a2de21274eb53af8f048e6490, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ff3546811921474fa45ca5153e41112, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

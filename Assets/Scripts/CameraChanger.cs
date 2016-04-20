@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraChanger : MonoBehaviour 
 {
-    Camera camera;
+    public Camera camera;
     Vector3 hit_position = Vector3.zero;
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
@@ -26,6 +26,7 @@ public class CameraChanger : MonoBehaviour
             current_position = Input.mousePosition;
             LeftMouseDrag();
         }
+        transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
     }
 
     public GameObject Field()
@@ -60,13 +61,13 @@ public class CameraChanger : MonoBehaviour
         {
             transform.position = new Vector2(-32, position.y);
         }
-        if (transform.position.y > 13)
+        if (transform.position.y > 33)
         {
-            transform.position = new Vector2(position.x, 13);
+            transform.position = new Vector2(position.x, 33);
         }
-        if (transform.position.y < -8)
+        if (transform.position.y < 10)
         {
-            transform.position = new Vector2(position.x, -8);
+            transform.position = new Vector2(position.x, 10);
         }
     }
 
@@ -79,7 +80,7 @@ public class CameraChanger : MonoBehaviour
                 camera.orthographicSize -= 2;
             }
         }
-        if (camera.orthographicSize < 9)
+        if (camera.orthographicSize < 19)
         {
             if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
             {

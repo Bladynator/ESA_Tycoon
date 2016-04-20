@@ -4,6 +4,8 @@ using System.Collections;
 public class Quests : MonoBehaviour 
 {
     Account account;
+    [Header("Quest Setting")]
+    [Tooltip("Requirements")]
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[3, 10]
@@ -14,7 +16,7 @@ public class Quests : MonoBehaviour
     int questOpen = -1;
 
     int[] myInformation = new int[10];
-
+    
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
     { { {0,0,0,0,0,0,0,0,0,0}, // {money, RP, building1, buildings2, buildings3, buildings4, buildings5, buildings6, buildings7, buildings8}
@@ -50,7 +52,6 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}}, };
     #endregion
-
     #region questRewards
     int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp
     { { {0,0,0,0,0,0,0,0,0,0},
