@@ -52,6 +52,8 @@ public class BuildingMain : MonoBehaviour
 
     public virtual void Update()
     {
+        SortingLayers();
+
         if(building)
         {
             if(timeLeftToFinishBuild <= 0)
@@ -85,6 +87,13 @@ public class BuildingMain : MonoBehaviour
         }
     }
 
+    void SortingLayers()
+    {
+        int layerSort = Mathf.RoundToInt((gridPosition.x + size.x) + (gridPosition.y + size.y));
+        layerSort *= -layerSort;
+        GetComponent<SpriteRenderer>().sortingOrder = layerSort;
+    }
+
     IEnumerator WaitForTask()
     {
         waitOneSec = true;
@@ -115,7 +124,10 @@ public class BuildingMain : MonoBehaviour
                 }
             }
         }
-        clicked = true;
+        if (!busy && !building)
+        {
+            clicked = true;
+        }
         if(doneWithTask)
         {
             GetReward();

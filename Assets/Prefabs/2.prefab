@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1605048, y: 4.2453847, z: 3.5097656}
+  m_LocalPosition: {x: 7.6783566, y: 15.267868, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,11 +39,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.007977605, y: 0.47105417}
+  m_Offset: {x: 0.022328854, y: 1.0020351}
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.1466668}
+  m_Size: {x: 4.1933975, y: 3.2086296}
 --- !u!114 &11421306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,23 +56,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Builder
-  size: {x: 2, y: 2}
+  size: {x: 3, y: 3}
   price: 200
   levelNeeded: 2
+  timesForTasks: 500000005a00000050000000
+  timesForBuilding: 0a000000140000001e0000002800000032000000
   clicked: 0
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
+  gridPosition: {x: 0, y: 0}
+  buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   level: 0
   ID: 0
   taskDoing: 0
-  timesForTasks: 
-  timesForBuilding: 0a000000140000001e0000002800000032000000
   timeToFinishTask: 0
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
   building: 0
+  doneWithTask: 0
 --- !u!212 &21208214
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bc8ad36eb4b9da740a31aab8adb8f09a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ff3546811921474fa45ca5153e41112, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

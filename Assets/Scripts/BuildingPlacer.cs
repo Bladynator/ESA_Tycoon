@@ -80,6 +80,10 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = "EmptyField";
+        if(account == null)
+        {
+            account = GameObject.Find("Account").GetComponent<Account>();
+        }
         account.ChangeColliders(false);
     }
 
