@@ -65,6 +65,7 @@ public class BuildingPlacer : MonoBehaviour
             account.UpdateAmountOFBuildings();
             account.PushSave();
             account.autoSave = true;
+            GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
             Destroy(gameObject);
         }
     }

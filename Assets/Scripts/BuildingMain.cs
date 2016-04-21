@@ -48,6 +48,7 @@ public class BuildingMain : MonoBehaviour
         fullBar = GameObject.Find("HUD").GetComponent<HUD>().fullBar;
         taskDone = GameObject.Find("HUD").GetComponent<HUD>().taskDone;
         account = GameObject.Find("Account").GetComponent<Account>();
+        Input.simulateMouseWithTouches = true;
     }
 
     public virtual void Update()
@@ -85,6 +86,49 @@ public class BuildingMain : MonoBehaviour
                 }
             }
         }
+        /*
+        RaycastHit hit;
+        Ray ray;
+        if (Input.touchCount > 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                {
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.collider == transform.GetComponent<BoxCollider2D>())
+                        {
+                            OnMouseDown();
+                            // Here transform.collider is the collider of that gameobject on which you attach this script
+                            // Your Rest of the Logic Here
+                        }
+                    }
+                }
+
+                if (Input.GetTouch(i).phase == TouchPhase.Moved)
+                {
+                    // Logic for finger move on screen
+                }
+                /*
+                if (Input.GetTouch(i).phase == TouchPhase.Ended)
+                {
+                    if (Input.GetTouch(i).fingerId == fingerId)
+                    {
+                        fingerId = -1;
+                        // Logic when touch ends 
+                    }
+                }
+                
+            }
+        }
+
+        if (Input.touches.Length > 0)
+        {
+            OnMouseDown();
+        }
+        */
     }
 
     void SortingLayers()
@@ -109,7 +153,7 @@ public class BuildingMain : MonoBehaviour
         yield return new WaitForSeconds(1);
         waitOneSecForBuilding = false;
     }
-
+    
     void OnMouseDown()
     {
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");

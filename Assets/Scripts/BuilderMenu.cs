@@ -4,7 +4,7 @@ using System.Collections;
 public class BuilderMenu : MonoBehaviour 
 {
     string[] namesBuildings;
-    string[] namesButtons = new string[5] { "Buildings", "Decorations", "", "", "" };
+    string[] namesButtons = new string[5] { "Task Buildings", "Resource Buildings", "Decorations", "", "" };
     [SerializeField]
     GameObject[] buildingsPrefabs;
     [SerializeField]
@@ -66,7 +66,6 @@ public class BuilderMenu : MonoBehaviour
                                 GameObject.Find("HUD").GetComponent<HUD>().enabled = false;
                                 GameObject.Find("Quests").GetComponent<Quests>().enabled = false;
                                 gameObject.SetActive(false);
-                                GameObject.Find("HUD").GetComponent<HUD>().buildClicked = false;
                                 screenForBuilding = 0;
                             }
                         }
@@ -88,7 +87,7 @@ public class BuilderMenu : MonoBehaviour
             }
             else
             {
-                GameObject.Find("HUD").GetComponent<HUD>().buildClicked = false;
+                GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
                 gameObject.SetActive(false);
             }
         }
