@@ -61,6 +61,7 @@ MonoBehaviour:
   levelNeeded: 1
   timesForTasks: 0a0000001e000000280000003200000006000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  screen: {fileID: 22321252, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
   clicked: 0
   busy: 0
   buildingBusy: 0

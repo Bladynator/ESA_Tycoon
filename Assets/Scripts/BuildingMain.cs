@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BuildingMain : MonoBehaviour 
 {
@@ -8,6 +9,7 @@ public class BuildingMain : MonoBehaviour
     public int price, levelNeeded;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
+    public GUIStyle buildingText;
 
     [HideInInspector]
     public bool clicked, busy, buildingBusy, clickedUpgrade;
@@ -128,11 +130,13 @@ public class BuildingMain : MonoBehaviour
         if (!busy && !building)
         {
             clicked = true;
+            account.ChangeColliders(false);
         }
         if(doneWithTask)
         {
             GetReward();
             clicked = false;
+            account.ChangeColliders(true);
         }
     }
 
@@ -152,30 +156,32 @@ public class BuildingMain : MonoBehaviour
     {
         if (clicked)
         {
-            GUI.DrawTexture(new Rect(Screen.width / 3, Screen.height / 4, Screen.width / 3, Screen.height / 2), background);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 4, Screen.width / 3, Screen.height / 2), buildingName);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), (level + 1).ToString());
-            if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 4, 50, 50), "Back"))
+            GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 5, Screen.width / 2, Screen.height / 1.4f), background);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 4, Screen.width / 3, Screen.height / 2), buildingName, buildingText);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), (level + 1).ToString(), buildingText);
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5, 100, 100), "Back"))
             {
                 clicked = false;
+                account.ChangeColliders(true);
             }
-            if (GUI.Button(new Rect(Screen.width / 3 + 50, Screen.height / 4, 100, 50), "Upgrade"))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 100, 100, 100), "Upgrade"))
             {
                 clickedUpgrade = true;
                 clicked = false;
             }
             for (int i = 0; i < timesForTasks.Length; i++)
             {
-                if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 3 + (i * 50), 150, 50), (i + 1) + " Task " + timesForTasks[i] + " Sec"))
+                if (GUI.Button(new Rect(Screen.width / 1.7f, Screen.height / 5 + (i * 60), 150, 60), (i + 1) + " Task " + timesForTasks[i] + " Sec"))
                 {
                     timeToFinishTaskTotal = timesForTasks[i];
                     timeToFinishTask = timeToFinishTaskTotal;
                     account.PushSave();
                     clicked = false;
+                    account.ChangeColliders(true);
                     busy = true;
                 }
             }
-            if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 2, 50, 50), "Pos"))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 200, 100, 100), "Pos"))
             {
                 Vector3 positionOfNewBuilding = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
                 BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(buildingPlacer, positionOfNewBuilding, transform.rotation);
@@ -186,27 +192,29 @@ public class BuildingMain : MonoBehaviour
                 tempBuilding.oldBuilding = this.gameObject;
                 tempBuilding.rePos = true;
                 clicked = false;
+                account.ChangeColliders(true);
                 account.autoSave = false;
                 tempBuilding.Delete();
             }
         }
         if(clickedUpgrade)
         {
-            GUI.DrawTexture(new Rect(Screen.width / 3, Screen.height / 4, Screen.width / 3, Screen.height / 2), background);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), "Level Needed: " + priceForUpgrading[level, 0]);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 20, Screen.width / 3, Screen.height / 2), "Money Needed: " + priceForUpgrading[level, 1]);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 40, Screen.width / 3, Screen.height / 2), "Research Needed: " + priceForUpgrading[level, 2]);
-            if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 4, 50, 50), "Back"))
+            GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 5, Screen.width / 2, Screen.height / 1.4f), background);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), "Level Needed: " + priceForUpgrading[level, 0], buildingText);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 20, Screen.width / 3, Screen.height / 2), "Money Needed: " + priceForUpgrading[level, 1], buildingText);
+            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 40, Screen.width / 3, Screen.height / 2), "Research Needed: " + priceForUpgrading[level, 2], buildingText);
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5, 100, 100), "Back"))
             {
                 clickedUpgrade = false;
                 clicked = true;
             }
-            if (GUI.Button(new Rect(Screen.width / 3 + 50, Screen.height / 4, 100, 50), "Upgrade") && CheckIfEnoughResources())
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 100, 100, 100), "Upgrade") && CheckIfEnoughResources())
             {
                 building = true;
                 timeLeftToFinishBuild = timesForBuilding[level];
                 SetMaxTime();
                 clickedUpgrade = false;
+                account.ChangeColliders(true);
             }
         }
         if (busy)

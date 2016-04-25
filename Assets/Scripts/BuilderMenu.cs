@@ -78,7 +78,7 @@ public class BuilderMenu : MonoBehaviour
                     break;
                 }
         }
-        if (GUI.Button(new Rect(0, Screen.height - Screen.height / 4 - 50, 50, 50), "Back"))
+        if (GUI.Button(new Rect(0, Screen.height - Screen.height / 4 - 100, 100, 100), "Back"))
         {
             if (screenForBuilding != 0)
             {

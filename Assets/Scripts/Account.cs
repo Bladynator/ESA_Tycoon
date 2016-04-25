@@ -13,7 +13,7 @@ public class Account : MonoBehaviour
     int saveInSec = 5;
     [SerializeField]
     int[] expNeededForLevel;
-    int[] amountOfEachBuilding = new int[8]; // buildings
+    int[] amountOfEachBuilding = new int[8]; // 0 = HQ / 1 = 
 	
 	void Start () 
 	{
@@ -209,6 +209,10 @@ public class Account : MonoBehaviour
         }
         GameObject.Find("HUD").GetComponent<HUD>().enabled = toChange;
         GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
+        if(toChange)
+        {
+            GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
+        }
     }
 
     string GetFieldsToString()

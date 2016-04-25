@@ -4,6 +4,7 @@ using System.Collections;
 public class Quests : MonoBehaviour 
 {
     Account account;
+    public GUIStyle textStyle;
     [Header("Quest Setting")]
     [Tooltip("Requirements")]
     public int[] questLineProgress; // 0 = off
@@ -99,7 +100,7 @@ public class Quests : MonoBehaviour
         {
             if(questLineProgress[i] != 0)
             {
-                if(GUI.Button(new Rect(0, Screen.height / 3 + (activeQuests * 50), 50, 50), i.ToString()))
+                if(GUI.Button(new Rect(0, Screen.height / 4 + (activeQuests * 75), 75, 75), i.ToString()))
                 {
                     if (questOpen == i)
                     {
@@ -127,13 +128,13 @@ public class Quests : MonoBehaviour
 
     void ShowInformation(int toProgress, string text)
     {
-        GUI.TextArea(new Rect(Screen.width / 2.5f, Screen.height / 3, 200, 100), text);
-        if (GUI.Button(new Rect(Screen.width / 2 + 25, Screen.height / 1.7f, 100, 50), "Finish") && CheckIfRequirementsAreSet(questOpen, questLineProgress[toProgress]))
+        GUI.TextArea(new Rect(Screen.width / 3f, Screen.height / 4, 300, 100), text, textStyle);
+        if (GUI.Button(new Rect(Screen.width / 2 + 25, Screen.height / 1.7f, 150, 100), "Finish") && CheckIfRequirementsAreSet(questOpen, questLineProgress[toProgress]))
         {
             questLineProgress[toProgress]++;
             questOpen = -1;
         }
-        if (GUI.Button(new Rect(Screen.width / 2 - 75, Screen.height / 1.7f, 100, 50), "Back"))
+        if (GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 1.7f, 150, 100), "Back"))
         {
             questOpen = -1;
         }
