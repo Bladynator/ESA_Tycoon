@@ -43,8 +43,6 @@ public class Dialogs : MonoBehaviour
                 {
                     talk = false;
                     GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
-                    GameObject.Find("HUD").GetComponent<HUD>().enabled = true;
-                    GameObject.Find("Quests").GetComponent<Quests>().enabled = true;
                 }
                 else
                 {
@@ -87,8 +85,6 @@ public class Dialogs : MonoBehaviour
 
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
-        GameObject.Find("HUD").GetComponent<HUD>().enabled = false;
-        GameObject.Find("Quests").GetComponent<Quests>().enabled = false;
         talk = true;
         numberToSay = number;
         dialogNumberMain = dialogNumber;

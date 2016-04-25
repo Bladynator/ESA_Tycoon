@@ -200,11 +200,13 @@ public class Account : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempField in allBuildings)
         {
-            if (tempField.GetComponent<BoxCollider2D>() != null)
+            if (tempField.GetComponent<CircleCollider2D>() != null)
             {
-                tempField.GetComponent<BoxCollider2D>().enabled = toChange;
+                tempField.GetComponent<CircleCollider2D>().enabled = toChange;
             }
         }
+        GameObject.Find("HUD").GetComponent<HUD>().enabled = toChange;
+        GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
     }
 
     string GetFieldsToString()

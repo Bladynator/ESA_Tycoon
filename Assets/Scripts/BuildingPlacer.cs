@@ -40,8 +40,7 @@ public class BuildingPlacer : MonoBehaviour
     {
         if (placeAble)
         {
-            GameObject.Find("HUD").GetComponent<HUD>().enabled = true;
-            GameObject.Find("Quests").GetComponent<Quests>().enabled = true;
+            
             grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
             for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
             {
@@ -52,7 +51,6 @@ public class BuildingPlacer : MonoBehaviour
             }
 
             GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
-
             account.ChangeColliders(true);
             Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
             Vector3 newPosition = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].transform.position;

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 454050}
   - 212: {fileID: 21209048}
   - 114: {fileID: 11483492}
-  - 61: {fileID: 6172680}
+  - 58: {fileID: 5849324}
   m_Layer: 0
   m_Name: 1
   m_TagString: Building
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6294785, y: 24.259716, z: -15.3473015}
+  m_LocalPosition: {x: -10.36189, y: 12.21877, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6172680
-BoxCollider2D:
+--- !u!58 &5849324
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -39,11 +39,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.0049362183, y: 0.98833466}
+  m_Offset: {x: -0.011706114, y: 0.97742367}
   serializedVersion: 2
-  m_Size: {x: 4.225151, y: 3.1535192}
+  m_Radius: 1.4824
 --- !u!114 &11483492
 MonoBehaviour:
   m_ObjectHideFlags: 1

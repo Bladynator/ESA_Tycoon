@@ -63,8 +63,7 @@ public class BuilderMenu : MonoBehaviour
                                 tempBuilding.activePlaceOnGrid = fieldGridLocation;
                                 tempBuilding.builderPlacerTemp = builderPlacerTemp;
                                 tempBuilding.fieldID = fieldID;
-                                GameObject.Find("HUD").GetComponent<HUD>().enabled = false;
-                                GameObject.Find("Quests").GetComponent<Quests>().enabled = false;
+                                account.ChangeColliders(false);
                                 gameObject.SetActive(false);
                                 screenForBuilding = 0;
                             }
