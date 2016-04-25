@@ -120,7 +120,6 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  clicked: 0
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
@@ -136,6 +135,7 @@ MonoBehaviour:
   building: 0
   doneWithTask: 0
   canvas: {fileID: 182892, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
+  upgradeCanvas: {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
 --- !u!212 &21209048
 SpriteRenderer:
   m_ObjectHideFlags: 1

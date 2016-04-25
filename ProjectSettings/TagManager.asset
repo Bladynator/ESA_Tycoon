@@ -8,6 +8,7 @@ TagManager:
   - Builder
   - Building
   - Default
+  - Canvas
   layers:
   - Default
   - TransparentFX
