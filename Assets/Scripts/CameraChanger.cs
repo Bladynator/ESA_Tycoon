@@ -15,18 +15,21 @@ public class CameraChanger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameObject.FindGameObjectWithTag("Canvas") == null)
         {
-            hit_position = Input.mousePosition;
-            camera_position = transform.position;
+            if (Input.GetMouseButtonDown(0))
+            {
+                hit_position = Input.mousePosition;
+                camera_position = transform.position;
 
+            }
+            if (Input.GetMouseButton(0))
+            {
+                current_position = Input.mousePosition;
+                LeftMouseDrag();
+            }
+            transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
         }
-        if (Input.GetMouseButton(0))
-        {
-            current_position = Input.mousePosition;
-            LeftMouseDrag();
-        }
-        transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
     }
 
     public GameObject Field()

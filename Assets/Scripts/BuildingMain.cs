@@ -12,7 +12,7 @@ public class BuildingMain : MonoBehaviour
     public GUIStyle buildingText;
 
     [HideInInspector]
-    public bool clicked, busy, buildingBusy, clickedUpgrade;
+    public bool busy, buildingBusy, clickedUpgrade;
     [HideInInspector]
     public Vector2 gridPosition;
     Texture2D background, emptyBar, fullBar, taskDone;
@@ -36,13 +36,17 @@ public class BuildingMain : MonoBehaviour
         { 8, 1000, 50}, // level 4
         { 10 , 2000, 100 }}; // level 5
 
+    public GameObject canvas, upgradeCanvas;
+    GameObject tempCanvas;
+    Button[] allButtons;
+
     public void GiveInformation(int[,] information)
     {
         priceForUpgrading = information;
     }
 
-    public virtual void Start () 
-	{
+    public virtual void Start()
+    {
         smallFont = new GUIStyle();
         smallFont.normal.textColor = Color.black;
         background = GameObject.Find("HUD").GetComponent<HUD>().background;
@@ -53,13 +57,99 @@ public class BuildingMain : MonoBehaviour
         Input.simulateMouseWithTouches = true;
     }
 
+    public void SetupUpgradeCanvas(GameObject canvasTemp)
+    {
+        Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
+        allText[0].text = buildingName;
+        allText[1].text = "Level Needed: " + priceForUpgrading[level, 0];
+        allText[2].text = "Money Needed: " + priceForUpgrading[level, 1];
+        allText[3].text = "Research Needed: " + priceForUpgrading[level, 2];
+        allButtons = canvasTemp.GetComponentsInChildren<Button>();
+        allButtons[0].onClick.AddListener(delegate { BackClickedFromUpgrade(); });
+        allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
+    }
+
+    public void BackClickedFromUpgrade()
+    {
+        Destroy(tempCanvas);
+        tempCanvas = Instantiate(canvas);
+        setupBtn(tempCanvas);
+    }
+
+    public void UpgradeClickedFinal()
+    {
+        if(CheckIfEnoughResources())
+        {
+            building = true;
+            timeLeftToFinishBuild = timesForBuilding[level];
+            SetMaxTime();
+            backClicked();
+        }
+    }
+
+    public void setupBtn(GameObject canvasTemp)
+    {
+        Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
+        allText[0].text = buildingName;
+        allText[1].text = (level + 1).ToString();
+        allText[5].text = "Task 1";
+        allText[6].text = "Task 2";
+        allText[7].text = "Task 3";
+        allText[8].text = "Task 4";
+        allButtons = canvasTemp.GetComponentsInChildren<Button>();
+        allButtons[0].onClick.AddListener(delegate { backClicked(); });
+        allButtons[1].onClick.AddListener(delegate { UpgradeClicked(); });
+        allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
+        for (int i = 0; i < level + 1; i++)
+        {
+            allButtons[i + 3].onClick.AddListener(delegate { TaskClicked(i); });
+        }
+    }
+
+    public void TaskClicked(int task)
+    {
+        timeToFinishTaskTotal = timesForTasks[task];
+        timeToFinishTask = timeToFinishTaskTotal;
+        account.PushSave();
+        backClicked();
+        busy = true;
+    }
+
+    public void backClicked()
+    {
+        Destroy(tempCanvas);
+        account.ChangeColliders(true);
+    }
+
+    public void UpgradeClicked()
+    {
+        Destroy(tempCanvas);
+        tempCanvas = Instantiate(upgradeCanvas);
+        SetupUpgradeCanvas(tempCanvas);
+    }
+
+    public void ReposClicked()
+    {
+        Vector3 positionOfNewBuilding = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
+        BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(buildingPlacer, positionOfNewBuilding, transform.rotation);
+        tempBuilding.buildingToPlace = this.gameObject;
+        tempBuilding.activePlaceOnGrid = gridPosition;
+        tempBuilding.builderPlacerTemp = buildingPlacer;
+        tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
+        tempBuilding.oldBuilding = this.gameObject;
+        tempBuilding.rePos = true;
+        backClicked();
+        account.autoSave = false;
+        tempBuilding.Delete();
+    }
+
     public virtual void Update()
     {
         SortingLayers();
 
-        if(building)
+        if (building)
         {
-            if(timeLeftToFinishBuild <= 0)
+            if (timeLeftToFinishBuild <= 0)
             {
                 building = false;
                 level++;
@@ -115,27 +205,15 @@ public class BuildingMain : MonoBehaviour
     
     void OnMouseDown()
     {
-        GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
-        foreach (GameObject buildingTemp in buildings)
+        if (!busy && !building && !doneWithTask)
         {
-            //Debug.Log(buildingTemp.name);
-            if(buildingTemp != null)
-            {
-                if(buildingTemp.GetComponent<BuildingMain>() != null)
-                {
-                    buildingTemp.GetComponent<BuildingMain>().clicked = false;
-                }
-            }
-        }
-        if (!busy && !building)
-        {
-            clicked = true;
+            tempCanvas = Instantiate(canvas);
+            setupBtn(tempCanvas);
             account.ChangeColliders(false);
         }
         if(doneWithTask)
         {
             GetReward();
-            clicked = false;
             account.ChangeColliders(true);
         }
     }
@@ -154,69 +232,6 @@ public class BuildingMain : MonoBehaviour
 
     void OnGUI()
     {
-        if (clicked)
-        {
-            GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 5, Screen.width / 2, Screen.height / 1.4f), background);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 4, Screen.width / 3, Screen.height / 2), buildingName, buildingText);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), (level + 1).ToString(), buildingText);
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5, 100, 100), "Back"))
-            {
-                clicked = false;
-                account.ChangeColliders(true);
-            }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 100, 100, 100), "Upgrade"))
-            {
-                clickedUpgrade = true;
-                clicked = false;
-            }
-            for (int i = 0; i < timesForTasks.Length; i++)
-            {
-                if (GUI.Button(new Rect(Screen.width / 1.7f, Screen.height / 5 + (i * 60), 150, 60), (i + 1) + " Task " + timesForTasks[i] + " Sec"))
-                {
-                    timeToFinishTaskTotal = timesForTasks[i];
-                    timeToFinishTask = timeToFinishTaskTotal;
-                    account.PushSave();
-                    clicked = false;
-                    account.ChangeColliders(true);
-                    busy = true;
-                }
-            }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 200, 100, 100), "Pos"))
-            {
-                Vector3 positionOfNewBuilding = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
-                BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(buildingPlacer, positionOfNewBuilding, transform.rotation);
-                tempBuilding.buildingToPlace = this.gameObject;
-                tempBuilding.activePlaceOnGrid = gridPosition;
-                tempBuilding.builderPlacerTemp = buildingPlacer;
-                tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
-                tempBuilding.oldBuilding = this.gameObject;
-                tempBuilding.rePos = true;
-                clicked = false;
-                account.ChangeColliders(true);
-                account.autoSave = false;
-                tempBuilding.Delete();
-            }
-        }
-        if(clickedUpgrade)
-        {
-            GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 5, Screen.width / 2, Screen.height / 1.4f), background);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2, Screen.width / 3, Screen.height / 2), "Level Needed: " + priceForUpgrading[level, 0], buildingText);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 20, Screen.width / 3, Screen.height / 2), "Money Needed: " + priceForUpgrading[level, 1], buildingText);
-            GUI.Label(new Rect(Screen.width / 3 + 60, Screen.height / 2 + 40, Screen.width / 3, Screen.height / 2), "Research Needed: " + priceForUpgrading[level, 2], buildingText);
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5, 100, 100), "Back"))
-            {
-                clickedUpgrade = false;
-                clicked = true;
-            }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 5 + 100, 100, 100), "Upgrade") && CheckIfEnoughResources())
-            {
-                building = true;
-                timeLeftToFinishBuild = timesForBuilding[level];
-                SetMaxTime();
-                clickedUpgrade = false;
-                account.ChangeColliders(true);
-            }
-        }
         if (busy)
         {
             ShowBar(timeToFinishTaskTotal, timeToFinishTask);

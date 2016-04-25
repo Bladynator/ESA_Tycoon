@@ -21,7 +21,8 @@ public class Account : MonoBehaviour
         PushLoad();
         PlaceBuildings();
         UpdateAmountOFBuildings();
-	}
+        //GameObject.Find("CanvasBuilding").GetComponent<Canvas>().enabled = false;
+    }
     
     void Update()
     {
