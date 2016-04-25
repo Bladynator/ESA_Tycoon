@@ -126,20 +126,22 @@ public class Account : MonoBehaviour
         int numberToPlace = 0;
         foreach (string tempBuilding in buildingsToPlace)
         {
-            GameObject buildingToPlace;
+            GameObject thingToPlace;
             string[] informationOneBuilding = Regex.Split(tempBuilding, "<e>");
             for (int i = 0; i < allBuildingsToPlace.Length; i++)
             {
                 if (allBuildingsToPlace[i].GetComponent<BuildingMain>().buildingName == informationOneBuilding[0])
                 {
-                    buildingToPlace = allBuildingsToPlace[i];
+                    thingToPlace = allBuildingsToPlace[i];
+
                     if (informationOneBuilding[0] != "EmptyField")
                     {
+                        BuildingMain buildingToPlace = thingToPlace.GetComponent<BuildingMain>();
                         int placeOfGridX = 0;
                         int placeOfGridY = 0;
-                        for (int p = 0; p < buildingToPlace.GetComponent<BuildingMain>().size.x; p++)
+                        for (int p = 0; p < buildingToPlace.size.x; p++)
                         {
-                            for (int y = 0; y < buildingToPlace.GetComponent<BuildingMain>().size.y; y++)
+                            for (int y = 0; y < buildingToPlace.size.y; y++)
                             {
                                 GameObject[] allFieldsToFind = GameObject.FindGameObjectsWithTag("EmptyField");
                                 foreach(GameObject field in allFieldsToFind)
@@ -155,31 +157,31 @@ public class Account : MonoBehaviour
                             }
                         }
 
-                        GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
+                        GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.buildingName;
                         
                         ChangeColliders(true);
-                        Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
+                        Vector2 size = buildingToPlace.size;
                         //Vector2 newPosition = transform.position;
-                        GameObject tempBuilding2 = (GameObject)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
-                        tempBuilding2.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
+                        BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
+                        tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
                         tempBuilding2.transform.localScale = size;
-                        tempBuilding2.GetComponent<BuildingMain>().taskDoing = Convert.ToInt32(informationOneBuilding[1]);
+                        tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                         TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                         if (Convert.ToInt32(informationOneBuilding[2]) > 0)
                         {
-                            tempBuilding2.GetComponent<BuildingMain>().busy = true;
-                            tempBuilding2.GetComponent<BuildingMain>().timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
+                            tempBuilding2.busy = true;
+                            tempBuilding2.timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
                         }
-                        tempBuilding2.GetComponent<BuildingMain>().timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
-                        tempBuilding2.GetComponent<BuildingMain>().level = Convert.ToInt32(informationOneBuilding[3]);
+                        tempBuilding2.timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
+                        tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
                         if(Convert.ToInt32(informationOneBuilding[4]) > 0)
                         {
-                            tempBuilding2.GetComponent<BuildingMain>().building = true;
-                            tempBuilding2.GetComponent<BuildingMain>().SetMaxTime();
+                            tempBuilding2.building = true;
+                            tempBuilding2.SetMaxTime();
                         }
-                        tempBuilding2.GetComponent<BuildingMain>().timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
-                        tempBuilding2.GetComponent<BuildingMain>().gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
-                        tempBuilding2.GetComponent<BuildingMain>().gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
+                        tempBuilding2.timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
+                        tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
+                        tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                     }
                 }
             }
