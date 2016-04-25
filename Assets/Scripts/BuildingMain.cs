@@ -133,7 +133,7 @@ public class BuildingMain : MonoBehaviour
 
     void SortingLayers()
     {
-        int layerSort = Mathf.RoundToInt((gridPosition.x + size.x) + (gridPosition.y + size.y));
+        int layerSort = Mathf.RoundToInt(((gridPosition.x + size.x) + (gridPosition.y + size.y)) - (size.x / 2 + size.y / 2));
         layerSort *= -layerSort;
         GetComponent<SpriteRenderer>().sortingOrder = layerSort;
     }
