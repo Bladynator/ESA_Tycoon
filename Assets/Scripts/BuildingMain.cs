@@ -186,10 +186,10 @@ public class BuildingMain : MonoBehaviour
                 busy = false;
                 doneWithTask = true;
                 onceToCreate = true;
+                GetComponent<CircleCollider2D>().enabled = false;
                 Destroy(tempBar);
-                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 3, 0), transform.rotation);
+                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 5, 0), transform.rotation);
                 tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
-                account.ChangeColliders(false);
                 StopCoroutine(WaitForTask());
             }
             else
@@ -260,7 +260,7 @@ public class BuildingMain : MonoBehaviour
         account.researchPoints += taskRewards[1, taskDoing];
         Destroy(tempBar);
         onceToCreate = false;
-        account.ChangeColliders(true);
+        GetComponent<CircleCollider2D>().enabled = true;
         account.PushSave();
     }
 
