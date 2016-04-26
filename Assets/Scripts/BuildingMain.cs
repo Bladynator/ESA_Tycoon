@@ -15,7 +15,6 @@ public class BuildingMain : MonoBehaviour
     public bool busy, buildingBusy, clickedUpgrade;
     [HideInInspector]
     public Vector2 gridPosition;
-    Texture2D background, emptyBar, fullBar, taskDone;
 
     [Header("Don't Change")]
     [SerializeField]
@@ -23,7 +22,7 @@ public class BuildingMain : MonoBehaviour
     public int level, ID, taskDoing;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
-    public bool building = false, doneWithTask = false;
+    public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
     GUIStyle smallFont;
     int[,] taskRewards = new int[2, 5] // money - RP
@@ -36,8 +35,8 @@ public class BuildingMain : MonoBehaviour
         { 8, 1000, 50}, // level 4
         { 10 , 2000, 100 }}; // level 5
 
-    public GameObject canvas, upgradeCanvas;
-    GameObject tempCanvas;
+    public GameObject canvas, upgradeCanvas, buildingExtras, collectButton;
+    GameObject tempCanvas, tempBar;
     Button[] allButtons;
 
     public void GiveInformation(int[,] information)
@@ -49,12 +48,26 @@ public class BuildingMain : MonoBehaviour
     {
         smallFont = new GUIStyle();
         smallFont.normal.textColor = Color.black;
-        background = GameObject.Find("HUD").GetComponent<HUD>().background;
-        emptyBar = GameObject.Find("HUD").GetComponent<HUD>().emptyBar;
-        fullBar = GameObject.Find("HUD").GetComponent<HUD>().fullBar;
-        taskDone = GameObject.Find("HUD").GetComponent<HUD>().taskDone;
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
+        if (busy)
+        {
+            Busy();
+        }
+        if (building)
+        {
+            Building();
+        }
+    }
+
+    void Busy()
+    {
+        tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
+    }
+
+    void Building()
+    {
+        tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
     public void SetupUpgradeCanvas(GameObject canvasTemp)
@@ -73,21 +86,22 @@ public class BuildingMain : MonoBehaviour
     {
         Destroy(tempCanvas);
         tempCanvas = Instantiate(canvas);
-        setupBtn(tempCanvas);
+        setupFirstButtons(tempCanvas);
     }
 
     public void UpgradeClickedFinal()
     {
         if(CheckIfEnoughResources())
         {
+            Building();
             building = true;
             timeLeftToFinishBuild = timesForBuilding[level];
             SetMaxTime();
-            backClicked();
+            BackClicked();
         }
     }
 
-    public void setupBtn(GameObject canvasTemp)
+    public void setupFirstButtons(GameObject canvasTemp)
     {
         Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName;
@@ -97,7 +111,7 @@ public class BuildingMain : MonoBehaviour
         allText[7].text = "Task 3";
         allText[8].text = "Task 4";
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
-        allButtons[0].onClick.AddListener(delegate { backClicked(); });
+        allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[1].onClick.AddListener(delegate { UpgradeClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         for (int i = 0; i < level + 1; i++)
@@ -108,14 +122,15 @@ public class BuildingMain : MonoBehaviour
 
     public void TaskClicked(int task)
     {
+        Busy();
         timeToFinishTaskTotal = timesForTasks[task];
         timeToFinishTask = timeToFinishTaskTotal;
         account.PushSave();
-        backClicked();
+        BackClicked();
         busy = true;
     }
 
-    public void backClicked()
+    public void BackClicked()
     {
         Destroy(tempCanvas);
         account.ChangeColliders(true);
@@ -138,7 +153,7 @@ public class BuildingMain : MonoBehaviour
         tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
         tempBuilding.oldBuilding = this.gameObject;
         tempBuilding.rePos = true;
-        backClicked();
+        BackClicked();
         account.autoSave = false;
         tempBuilding.Delete();
     }
@@ -153,6 +168,7 @@ public class BuildingMain : MonoBehaviour
             {
                 building = false;
                 level++;
+                Destroy(tempBar);
                 account.PushSave();
             }
             else
@@ -165,14 +181,20 @@ public class BuildingMain : MonoBehaviour
         }
         if (busy)
         {
-            if (timeToFinishTask <= 0)
+            if (timeToFinishTask <= 0 && !onceToCreate)
             {
                 busy = false;
                 doneWithTask = true;
+                onceToCreate = true;
+                Destroy(tempBar);
+                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 3, 0), transform.rotation);
+                tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                account.ChangeColliders(false);
+                StopCoroutine(WaitForTask());
             }
             else
             {
-                if (!waitOneSec)
+                if (!waitOneSec && !onceToCreate && timeToFinishTask > 0)
                 {
                     StartCoroutine(WaitForTask());
                 }
@@ -191,8 +213,25 @@ public class BuildingMain : MonoBehaviour
     {
         waitOneSec = true;
         timeToFinishTask--;
+        DrawBar(timeToFinishTaskTotal, timeToFinishTask);
         yield return new WaitForSeconds(1);
         waitOneSec = false;
+    }
+
+    void DrawBar(float max, float min)
+    {
+        if (tempBar != null && tempBar != collectButton)
+        {
+            Image[] all = tempBar.GetComponentsInChildren<Image>();
+            foreach (Image temp in all)
+            {
+                if (temp.gameObject.tag == "Bar")
+                {
+                    temp.fillAmount = (min / max);
+                }
+            }
+            tempBar.GetComponentInChildren<Text>().text = "Time Left: " + min + " s";
+        }
     }
 
     IEnumerator WaitForBuild()
@@ -200,6 +239,7 @@ public class BuildingMain : MonoBehaviour
         waitOneSecForBuilding = true;
         timeLeftToFinishBuild--;
         yield return new WaitForSeconds(1);
+        DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
         waitOneSecForBuilding = false;
     }
     
@@ -208,47 +248,25 @@ public class BuildingMain : MonoBehaviour
         if (!busy && !building && !doneWithTask)
         {
             tempCanvas = Instantiate(canvas);
-            setupBtn(tempCanvas);
+            setupFirstButtons(tempCanvas);
             account.ChangeColliders(false);
-        }
-        if(doneWithTask)
-        {
-            GetReward();
-            account.ChangeColliders(true);
         }
     }
 
-    void GetReward()
+    public void GetReward()
     {
         doneWithTask = false;
         account.money += taskRewards[0, taskDoing];
         account.researchPoints += taskRewards[1, taskDoing];
+        Destroy(tempBar);
+        onceToCreate = false;
+        account.ChangeColliders(true);
+        account.PushSave();
     }
 
     public void SetMaxTime()
     {
         timeToFinishBuildTotal = timesForBuilding[level];
-    }
-
-    void OnGUI()
-    {
-        if (busy)
-        {
-            ShowBar(timeToFinishTaskTotal, timeToFinishTask);
-        }
-        if(building)
-        {
-            ShowBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
-        }
-        if (doneWithTask)
-        {
-            Vector2 tempPos = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y));
-            tempPos.y = Screen.height - tempPos.y;
-            if (GUI.Button(new Rect(tempPos.x - 23, tempPos.y - 78, 46, 30), taskDone, smallFont))
-            {
-                GetReward();
-            }
-        }
     }
 
     bool CheckIfEnoughResources()
@@ -272,15 +290,5 @@ public class BuildingMain : MonoBehaviour
             account.researchPoints -= priceForUpgrading[level, 2];
         }
         return enough;
-    }
-
-    void ShowBar(float max, float min)
-    {
-        Vector2 tempPos = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y));
-        tempPos.y = Screen.height - tempPos.y;
-        GUI.Label(new Rect(tempPos.x - 10, tempPos.y - 83, 50, 25), min.ToString() + " Sec", smallFont);
-        GUI.DrawTexture(new Rect(tempPos.x - 12, tempPos.y - 65, 50, 15), emptyBar);
-        float perc = max / min;
-        GUI.DrawTexture(new Rect(tempPos.x - 10, tempPos.y - 63, 46 / perc, 11), fullBar);
     }
 }

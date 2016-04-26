@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 427674}
   - 212: {fileID: 21208214}
   - 114: {fileID: 11421306}
-  - 61: {fileID: 6169460}
+  - 58: {fileID: 5853436}
   m_Layer: 0
   m_Name: 2
   m_TagString: Building
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.6783566, y: 15.267868, z: 3.5097656}
+  m_LocalPosition: {x: 483.77283, y: 211.23415, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6169460
-BoxCollider2D:
+--- !u!58 &5853436
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -39,11 +39,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.022328854, y: 1.0020351}
+  m_Offset: {x: -0.011706114, y: 0.97742367}
   serializedVersion: 2
-  m_Size: {x: 4.1933975, y: 3.2086296}
+  m_Radius: 1.4958038
 --- !u!114 &11421306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61,7 +61,65 @@ MonoBehaviour:
   levelNeeded: 2
   timesForTasks: 500000005a00000050000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
-  clicked: 0
+  buildingText:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
@@ -76,6 +134,9 @@ MonoBehaviour:
   timeLeftToFinishBuild: 0
   building: 0
   doneWithTask: 0
+  canvas: {fileID: 182892, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
+  upgradeCanvas: {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
+  buildingExtras: {fileID: 147002, guid: 53d23f640e823914badc13a1848526de, type: 2}
 --- !u!212 &21208214
 SpriteRenderer:
   m_ObjectHideFlags: 1

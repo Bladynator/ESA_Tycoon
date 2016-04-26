@@ -136,6 +136,7 @@ MonoBehaviour:
   doneWithTask: 0
   canvas: {fileID: 182892, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
   upgradeCanvas: {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
+  buildingExtras: {fileID: 147002, guid: 53d23f640e823914badc13a1848526de, type: 2}
 --- !u!212 &21209048
 SpriteRenderer:
   m_ObjectHideFlags: 1

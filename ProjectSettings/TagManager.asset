@@ -9,6 +9,7 @@ TagManager:
   - Building
   - Default
   - Canvas
+  - Bar
   layers:
   - Default
   - TransparentFX
