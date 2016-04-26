@@ -7,10 +7,17 @@ public class CameraChanger : MonoBehaviour
     Vector3 hit_position = Vector3.zero;
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
-
+    
+    public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
+    bool COMPUTERVERSION = true;
+    
     void Start () 
 	{
         camera = GetComponent<Camera>();
+        if(Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
+        {
+            COMPUTERVERSION = false;
+        }
 	}
 
     void Update()
@@ -29,6 +36,24 @@ public class CameraChanger : MonoBehaviour
                 LeftMouseDrag();
             }
             transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
+        }
+
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+            
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+            
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+            
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+            
+            camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+            
+            camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
         }
     }
 
@@ -76,18 +101,21 @@ public class CameraChanger : MonoBehaviour
 
     void OnGUI()
     {
-        if (camera.orthographicSize > 4)
+        if (COMPUTERVERSION)
         {
-            if (GUI.Button(new Rect(0, 0, 40, 40), "+"))
+            if (camera.orthographicSize > 4)
             {
-                camera.orthographicSize -= 2;
+                if (GUI.Button(new Rect(0, 0, 40, 40), "+"))
+                {
+                    camera.orthographicSize -= 2;
+                }
             }
-        }
-        if (camera.orthographicSize < 19)
-        {
-            if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
+            if (camera.orthographicSize < 19)
             {
-                camera.orthographicSize += 2;
+                if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
+                {
+                    camera.orthographicSize += 2;
+                }
             }
         }
     }

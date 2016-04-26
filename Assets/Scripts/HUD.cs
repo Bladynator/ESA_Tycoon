@@ -41,8 +41,8 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void EnableButton()
+    public void EnableButton(bool enable = true)
     {
-        buildButton.gameObject.SetActive(true);
+        buildButton.gameObject.SetActive(enable);
     }
 }

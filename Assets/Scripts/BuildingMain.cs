@@ -38,12 +38,7 @@ public class BuildingMain : MonoBehaviour
     public GameObject canvas, upgradeCanvas, buildingExtras, collectButton;
     GameObject tempCanvas, tempBar;
     Button[] allButtons;
-
-    public void GiveInformation(int[,] information)
-    {
-        priceForUpgrading = information;
-    }
-
+    
     public virtual void Start()
     {
         smallFont = new GUIStyle();
@@ -60,6 +55,76 @@ public class BuildingMain : MonoBehaviour
         }
     }
 
+    public virtual void Update()
+    {
+        SortingLayers();
+
+        #region BuildingTimer
+        if (building)
+        {
+            if (timeLeftToFinishBuild <= 0)
+            {
+                building = false;
+                level++;
+                Destroy(tempBar);
+                account.PushSave();
+            }
+            else
+            {
+                if (!waitOneSecForBuilding)
+                {
+                    StartCoroutine(WaitForBuild());
+                }
+            }
+        }
+        #endregion
+        #region TaskTimer
+        if (busy)
+        {
+            if (timeToFinishTask <= 0 && !onceToCreate)
+            {
+                busy = false;
+                doneWithTask = true;
+                onceToCreate = true;
+                GetComponent<CircleCollider2D>().enabled = false;
+                Destroy(tempBar);
+                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 5, 0), transform.rotation);
+                tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                StopCoroutine(WaitForTask());
+            }
+            else
+            {
+                if (!waitOneSec && !onceToCreate && timeToFinishTask > 0)
+                {
+                    StartCoroutine(WaitForTask());
+                }
+            }
+        } 
+        #endregion
+    }
+
+    void OnMouseDown()
+    {
+        if (!busy && !building && !doneWithTask)
+        {
+            tempCanvas = Instantiate(canvas);
+            setupFirstButtons(tempCanvas);
+            account.ChangeColliders(false);
+            GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
+        }
+    }
+
+    public void GiveInformation(int[,] information)
+    {
+        priceForUpgrading = information;
+    }
+
+    public void SetMaxTime()
+    {
+        timeToFinishBuildTotal = timesForBuilding[level];
+    }
+
+    #region Canvas
     void Busy()
     {
         tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
@@ -70,6 +135,23 @@ public class BuildingMain : MonoBehaviour
         tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
+    void DrawBar(float max, float min)
+    {
+        if (tempBar != null && tempBar != collectButton)
+        {
+            Image[] all = tempBar.GetComponentsInChildren<Image>();
+            foreach (Image temp in all)
+            {
+                if (temp.gameObject.tag == "Bar")
+                {
+                    temp.fillAmount = (min / max);
+                }
+            }
+            tempBar.GetComponentInChildren<Text>().text = "Time Left: " + min + " s";
+        }
+    }
+
+    #region ButtonInnit
     public void SetupUpgradeCanvas(GameObject canvasTemp)
     {
         Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
@@ -80,25 +162,6 @@ public class BuildingMain : MonoBehaviour
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
         allButtons[0].onClick.AddListener(delegate { BackClickedFromUpgrade(); });
         allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
-    }
-
-    public void BackClickedFromUpgrade()
-    {
-        Destroy(tempCanvas);
-        tempCanvas = Instantiate(canvas);
-        setupFirstButtons(tempCanvas);
-    }
-
-    public void UpgradeClickedFinal()
-    {
-        if(CheckIfEnoughResources())
-        {
-            Building();
-            building = true;
-            timeLeftToFinishBuild = timesForBuilding[level];
-            SetMaxTime();
-            BackClicked();
-        }
     }
 
     public void setupFirstButtons(GameObject canvasTemp)
@@ -119,6 +182,27 @@ public class BuildingMain : MonoBehaviour
             allButtons[i + 3].onClick.AddListener(delegate { TaskClicked(i); });
         }
     }
+    #endregion
+
+    #region Buttons
+    public void BackClickedFromUpgrade()
+    {
+        Destroy(tempCanvas);
+        tempCanvas = Instantiate(canvas);
+        setupFirstButtons(tempCanvas);
+    }
+
+    public void UpgradeClickedFinal()
+    {
+        if (CheckIfEnoughResources())
+        {
+            Building();
+            building = true;
+            timeLeftToFinishBuild = timesForBuilding[level];
+            SetMaxTime();
+            BackClicked();
+        }
+    }
 
     public void TaskClicked(int task)
     {
@@ -134,6 +218,7 @@ public class BuildingMain : MonoBehaviour
     {
         Destroy(tempCanvas);
         account.ChangeColliders(true);
+        GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
 
     public void UpgradeClicked()
@@ -157,50 +242,8 @@ public class BuildingMain : MonoBehaviour
         account.autoSave = false;
         tempBuilding.Delete();
     }
-
-    public virtual void Update()
-    {
-        SortingLayers();
-
-        if (building)
-        {
-            if (timeLeftToFinishBuild <= 0)
-            {
-                building = false;
-                level++;
-                Destroy(tempBar);
-                account.PushSave();
-            }
-            else
-            {
-                if (!waitOneSecForBuilding)
-                {
-                    StartCoroutine(WaitForBuild());
-                }
-            }
-        }
-        if (busy)
-        {
-            if (timeToFinishTask <= 0 && !onceToCreate)
-            {
-                busy = false;
-                doneWithTask = true;
-                onceToCreate = true;
-                GetComponent<CircleCollider2D>().enabled = false;
-                Destroy(tempBar);
-                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 5, 0), transform.rotation);
-                tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
-                StopCoroutine(WaitForTask());
-            }
-            else
-            {
-                if (!waitOneSec && !onceToCreate && timeToFinishTask > 0)
-                {
-                    StartCoroutine(WaitForTask());
-                }
-            }
-        }
-    }
+    #endregion 
+    #endregion
 
     void SortingLayers()
     {
@@ -209,6 +252,7 @@ public class BuildingMain : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = layerSort;
     }
 
+    #region Timers
     IEnumerator WaitForTask()
     {
         waitOneSec = true;
@@ -218,22 +262,6 @@ public class BuildingMain : MonoBehaviour
         waitOneSec = false;
     }
 
-    void DrawBar(float max, float min)
-    {
-        if (tempBar != null && tempBar != collectButton)
-        {
-            Image[] all = tempBar.GetComponentsInChildren<Image>();
-            foreach (Image temp in all)
-            {
-                if (temp.gameObject.tag == "Bar")
-                {
-                    temp.fillAmount = (min / max);
-                }
-            }
-            tempBar.GetComponentInChildren<Text>().text = "Time Left: " + min + " s";
-        }
-    }
-
     IEnumerator WaitForBuild()
     {
         waitOneSecForBuilding = true;
@@ -241,18 +269,9 @@ public class BuildingMain : MonoBehaviour
         yield return new WaitForSeconds(1);
         DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
         waitOneSecForBuilding = false;
-    }
+    } 
+    #endregion
     
-    void OnMouseDown()
-    {
-        if (!busy && !building && !doneWithTask)
-        {
-            tempCanvas = Instantiate(canvas);
-            setupFirstButtons(tempCanvas);
-            account.ChangeColliders(false);
-        }
-    }
-
     public void GetReward()
     {
         doneWithTask = false;
@@ -263,12 +282,7 @@ public class BuildingMain : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = true;
         account.PushSave();
     }
-
-    public void SetMaxTime()
-    {
-        timeToFinishBuildTotal = timesForBuilding[level];
-    }
-
+    
     bool CheckIfEnoughResources()
     {
         bool enough = true;
