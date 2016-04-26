@@ -88,7 +88,7 @@ public class BuildingMain : MonoBehaviour
                 onceToCreate = true;
                 GetComponent<CircleCollider2D>().enabled = false;
                 Destroy(tempBar);
-                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 5, 0), transform.rotation);
+                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 3, 0), transform.rotation);
                 tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
                 StopCoroutine(WaitForTask());
             }
