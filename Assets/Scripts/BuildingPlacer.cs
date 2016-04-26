@@ -34,13 +34,39 @@ public class BuildingPlacer : MonoBehaviour
                 grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].ChangeColor(newColor);
             }
         }
+        CheckBorders();
+    }
+
+    void Update()
+    {
+        CheckBorders();
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y);
+    }
+
+    void CheckBorders()
+    {
+        if (activePlaceOnGrid.x == 0)
+        {
+            Destroy(GameObject.Find("DownLeft"));
+        }
+        if (activePlaceOnGrid.y == 0)
+        {
+            Destroy(GameObject.Find("DownRight")); 
+        }
+        if (activePlaceOnGrid.x == GameObject.Find("Grid").GetComponent<Grid>().maxGridSize - buildingToPlace.GetComponent<BuildingMain>().size.x)
+        {
+            Destroy(GameObject.Find("TopRight"));
+        }
+        if (activePlaceOnGrid.y == GameObject.Find("Grid").GetComponent<Grid>().maxGridSize - buildingToPlace.GetComponent<BuildingMain>().size.y)
+        {
+            Destroy(GameObject.Find("TopLeft"));
+        }
     }
 
     public void Done()
     {
         if (placeAble)
         {
-            
             grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
             for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
             {
@@ -104,6 +130,5 @@ public class BuildingPlacer : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
     }
 }

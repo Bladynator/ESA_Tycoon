@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour 
 {
     Account account;
-    public Texture2D background, emptyBar, fullBar, taskDone;
     public BuilderMenu buildMenu;
     public Button buildButton;
     public Text money;
@@ -24,7 +23,7 @@ public class HUD : MonoBehaviour
         researchPoints.text = "ResearchPoints: " + account.researchPoints;
         level.text = "Level: " + account.level;
     }
-
+    
     public void EnableBuildMenu()
     {
         buildButton.gameObject.SetActive(false);
@@ -40,7 +39,7 @@ public class HUD : MonoBehaviour
             }
         }
     }
-
+    
     public void EnableButton(bool enable = true)
     {
         buildButton.gameObject.SetActive(enable);
