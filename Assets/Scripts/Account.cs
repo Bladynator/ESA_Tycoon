@@ -7,21 +7,19 @@ public class Account : MonoBehaviour
 {
     public int level = 1, money = 1000, researchPoints = 0, exp = 0;
     SaveLoad saveLoad;
+    
     string save;
     bool waitOneSec = false;
     public bool autoSave = true;
     int saveInSec = 5;
     [SerializeField]
     int[] expNeededForLevel;
-    int[] amountOfEachBuilding = new int[8]; // 0 = HQ / 1 = 
+    public int[] amountOfEachBuilding = new int[8]; // 0 = HQ / 1 = 
 	
 	void Start () 
 	{
         saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
-        PlaceBuildings();
-        UpdateAmountOFBuildings();
-        //GameObject.Find("CanvasBuilding").GetComponent<Canvas>().enabled = false;
     }
     
     void Update()
@@ -50,7 +48,7 @@ public class Account : MonoBehaviour
             string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
             switch(nameOfBuilding)
             {
-                case "Headquaters":
+                case "Engineer":
                     {
                         amountOfEachBuilding[0]++;
                         break;
@@ -98,7 +96,11 @@ public class Account : MonoBehaviour
         {
             GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
             GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
-            PushSave();
+        }
+        else
+        {
+            PlaceBuildings();
+            UpdateAmountOFBuildings();
         }
     }
 

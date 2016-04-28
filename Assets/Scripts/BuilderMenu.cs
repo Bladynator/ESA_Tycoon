@@ -57,15 +57,7 @@ public class BuilderMenu : MonoBehaviour
                         {
                             if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString()))
                             {
-                                Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y, fieldLocation.position.z);
-                                BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
-                                tempBuilding.buildingToPlace = buildingsPrefabs[i];
-                                tempBuilding.activePlaceOnGrid = fieldGridLocation;
-                                tempBuilding.builderPlacerTemp = builderPlacerTemp;
-                                tempBuilding.fieldID = fieldID;
-                                account.ChangeColliders(false);
-                                gameObject.SetActive(false);
-                                screenForBuilding = 0;
+                                PlaceBuilder(i);
                             }
                         }
                         else
@@ -90,5 +82,18 @@ public class BuilderMenu : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    public void PlaceBuilder(int i)
+    {
+        Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y, fieldLocation.position.z);
+        BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
+        tempBuilding.buildingToPlace = buildingsPrefabs[i];
+        tempBuilding.activePlaceOnGrid = fieldGridLocation;
+        tempBuilding.builderPlacerTemp = builderPlacerTemp;
+        tempBuilding.fieldID = fieldID;
+        account.ChangeColliders(false);
+        gameObject.SetActive(false);
+        screenForBuilding = 0;
     }
 }

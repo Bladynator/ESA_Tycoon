@@ -10,6 +10,8 @@ public class HUD : MonoBehaviour
     public Text money;
     public Text researchPoints;
     public Text level;
+    public Text cityName;
+    public GameObject[] canvas;
 
     void Start () 
 	{
@@ -22,6 +24,12 @@ public class HUD : MonoBehaviour
         money.text = account.money.ToString();
         researchPoints.text = account.researchPoints.ToString();
         level.text = account.level.ToString();
+    }
+
+    public void SetName(string name)
+    {
+        cityName.text = name;
+        canvas[3].SetActive(true);
     }
     
     public void EnableBuildMenu()
@@ -37,6 +45,18 @@ public class HUD : MonoBehaviour
                 buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
                 buildMenu.fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
             }
+        }
+        else
+        {
+            EnableButton();
+        }
+    }
+
+    public void CanvasEnabled(bool enabled)
+    {
+        for (int i = 0; i < canvas.Length; i++)
+        {
+            canvas[i].SetActive(enabled);
         }
     }
     
