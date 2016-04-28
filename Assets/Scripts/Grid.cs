@@ -10,9 +10,7 @@ public class Grid : MonoBehaviour
     EmptyField emptyField;
     [SerializeField]
     GameObject allFields;
-    public int maxGridSize = 8, distance = 75;
-    [SerializeField]
-    Vector3 toTranslateAllFields = new Vector3(1,1,2);
+    public int maxGridSize = 8;
     
     public void MakeGrid()
     {
@@ -24,7 +22,7 @@ public class Grid : MonoBehaviour
         {
             for (int y = 0; y < maxGridSize; y++)
             {
-                Vector3 newPos = new Vector3((x - y) * 2.15f, (x + y) * 1.25f, 0);
+                Vector3 newPos = new Vector3((x - y) * 2.09f, (x + y) * 1.19f, 0);
                 EmptyField tempField = (EmptyField)Instantiate(emptyField, newPos, emptyField.transform.rotation);
                 tempField.transform.SetParent(allFieldsTemp.transform);
                 tempField.ID = idToGive;

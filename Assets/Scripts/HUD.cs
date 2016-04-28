@@ -19,9 +19,9 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        money.text = "Money: " + account.money;
-        researchPoints.text = "ResearchPoints: " + account.researchPoints;
-        level.text = "Level: " + account.level;
+        money.text = account.money.ToString();
+        researchPoints.text = account.researchPoints.ToString();
+        level.text = account.level.ToString();
     }
     
     public void EnableBuildMenu()
