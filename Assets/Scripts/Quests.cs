@@ -58,7 +58,7 @@ public class Quests : MonoBehaviour
     #region questRewards
     int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp
     { { {0,0,0,0,0,0,0,0,0,0},
-        {0,0,100,0,0,0,0,0,0,0},
+        {100,0,100,0,0,0,0,0,0,0},
         {0,50,100,0,0,0,0,0,0,0},
         {50,50,100,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -108,6 +108,7 @@ public class Quests : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < questLineProgress.Length; i++)
         {
             if(questLineProgress[i] != 0)
@@ -181,15 +182,12 @@ public class Quests : MonoBehaviour
         {
             if (ifEnough)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    account.money -= questRequirements[questline, quest, 0];
-                    account.researchPoints -= questRequirements[questline, quest, 1];
+                account.money -= questRequirements[questline, quest, 0];
+                account.researchPoints -= questRequirements[questline, quest, 1];
 
-                    account.money += questRewards[questline, quest, 0];
-                    account.researchPoints += questRewards[questline, quest, 1];
-                    account.exp += questRewards[questline, quest, 2];
-                }
+                account.money += questRewards[questline, quest, 0];
+                account.researchPoints += questRewards[questline, quest, 1];
+                account.exp += questRewards[questline, quest, 2];
             }
         }
         return ifEnough;
