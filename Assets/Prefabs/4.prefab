@@ -58,7 +58,7 @@ MonoBehaviour:
   buildingName: Flag
   size: {x: 1, y: 1}
   price: 400
-  levelNeeded: 4
+  levelNeeded: 1
   timesForTasks: 
   timesForBuilding: 0a000000140000001e0000002800000032000000
   buildingText:
@@ -135,10 +135,6 @@ MonoBehaviour:
   building: 0
   doneWithTask: 0
   onceToCreate: 0
-  canvas: {fileID: 0}
-  upgradeCanvas: {fileID: 0}
-  buildingExtras: {fileID: 0}
-  collectButton: {fileID: 0}
 --- !u!212 &21215244
 SpriteRenderer:
   m_ObjectHideFlags: 1

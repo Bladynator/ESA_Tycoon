@@ -6,6 +6,7 @@ using System;
 public class Account : MonoBehaviour 
 {
     public int level = 1, money = 1000, researchPoints = 0, exp = 0;
+    public string nameTown;
     SaveLoad saveLoad;
     
     string save;
@@ -84,7 +85,7 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp;
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown;
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
     }
 
@@ -123,6 +124,8 @@ public class Account : MonoBehaviour
         money = Convert.ToInt32(allInformation[2]);
         researchPoints = Convert.ToInt32(allInformation[3]);
         exp = Convert.ToInt32(allInformation[6]);
+        nameTown = allInformation[7];
+        GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
 
         string[] quests = Regex.Split(allInformation[5], "<e>");
         int[] questsInt = new int[quests.Length - 1];

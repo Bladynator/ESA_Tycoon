@@ -1318,6 +1318,11 @@ MonoBehaviour:
   - {fileID: 1306187641}
   - {fileID: 448113423}
   - {fileID: 1783448032}
+  buildingCanvas:
+  - {fileID: 182892, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
+  - {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
+  - {fileID: 147002, guid: 53d23f640e823914badc13a1848526de, type: 2}
+  - {fileID: 129386, guid: f248daee6a06b1248ab82d5b73c7b5a3, type: 2}
 --- !u!1 &1306187641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1635,7 @@ MonoBehaviour:
   money: 1000
   researchPoints: 0
   exp: 0
+  nameTown: 
   autoSave: 1
   expNeededForLevel: 0000000064000000c80000002c010000f4010000f401000020030000000000000000000000000000
   amountOfEachBuilding: 0000000000000000000000000000000000000000000000000000000000000000

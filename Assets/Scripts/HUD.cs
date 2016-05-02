@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
     public Text level;
     public Text cityName;
     public GameObject[] canvas;
+    public GameObject[] buildingCanvas;
 
     void Start () 
 	{
@@ -31,6 +32,7 @@ public class HUD : MonoBehaviour
         cityName.text = name;
         canvas[2].SetActive(true);
         canvas[3].SetActive(true);
+        account.nameTown = name;
     }
     
     public void EnableBuildMenu()

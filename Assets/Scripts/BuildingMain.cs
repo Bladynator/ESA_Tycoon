@@ -35,7 +35,7 @@ public class BuildingMain : MonoBehaviour
         { 8, 1000, 50}, // level 4
         { 10 , 2000, 100 }}; // level 5
 
-    public GameObject canvas, upgradeCanvas, buildingExtras, collectButton;
+    GameObject[] canvas;
     GameObject tempCanvas, tempBar;
     Button[] allButtons;
     
@@ -53,6 +53,7 @@ public class BuildingMain : MonoBehaviour
         {
             Building();
         }
+        canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
     }
 
     public virtual void Update()
@@ -88,7 +89,7 @@ public class BuildingMain : MonoBehaviour
                 onceToCreate = true;
                 GetComponent<CircleCollider2D>().enabled = false;
                 Destroy(tempBar);
-                tempBar = (GameObject)Instantiate(collectButton, transform.position + new Vector3(0, 3, 0), transform.rotation);
+                tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
                 tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
                 StopCoroutine(WaitForTask());
             }
@@ -107,7 +108,7 @@ public class BuildingMain : MonoBehaviour
     {
         if (!busy && !building && !doneWithTask)
         {
-            tempCanvas = Instantiate(canvas);
+            tempCanvas = Instantiate(canvas[0]);
             setupFirstButtons(tempCanvas);
             account.ChangeColliders(false);
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
@@ -127,17 +128,17 @@ public class BuildingMain : MonoBehaviour
     #region Canvas
     void Busy()
     {
-        tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
     void Building()
     {
-        tempBar = (GameObject)Instantiate(buildingExtras, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
     void DrawBar(float max, float min)
     {
-        if (tempBar != null && tempBar != collectButton)
+        if (tempBar != null && tempBar != canvas[3])
         {
             Image[] all = tempBar.GetComponentsInChildren<Image>();
             foreach (Image temp in all)
@@ -188,7 +189,7 @@ public class BuildingMain : MonoBehaviour
     public void BackClickedFromUpgrade()
     {
         Destroy(tempCanvas);
-        tempCanvas = Instantiate(canvas);
+        tempCanvas = Instantiate(canvas[0]);
         setupFirstButtons(tempCanvas);
     }
 
@@ -224,7 +225,7 @@ public class BuildingMain : MonoBehaviour
     public void UpgradeClicked()
     {
         Destroy(tempCanvas);
-        tempCanvas = Instantiate(upgradeCanvas);
+        tempCanvas = Instantiate(canvas[1]);
         SetupUpgradeCanvas(tempCanvas);
     }
 
