@@ -29,6 +29,7 @@ public class HUD : MonoBehaviour
     public void SetName(string name)
     {
         cityName.text = name;
+        canvas[2].SetActive(true);
         canvas[3].SetActive(true);
     }
     

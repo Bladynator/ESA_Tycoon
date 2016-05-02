@@ -18,6 +18,7 @@ public class BuilderMenu : MonoBehaviour
     GUISkin redFont;
     [SerializeField]
     GUISkin standard;
+    public bool tutorialBack = false;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class BuilderMenu : MonoBehaviour
                         if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesButtons[i]))
                         {
                             screenForBuilding = (i + 1);
+                            tutorialBack = false;
                         }
                     }
                     break;
@@ -58,6 +60,8 @@ public class BuilderMenu : MonoBehaviour
                             if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString()))
                             {
                                 PlaceBuilder(i);
+                                tutorialBack = false;
+                                GameObject.Find("Tutorial").GetComponent<Tutorial>().DestroyArrow();
                             }
                         }
                         else

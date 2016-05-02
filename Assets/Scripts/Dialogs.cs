@@ -10,10 +10,10 @@ public class Dialogs : MonoBehaviour
     {"This is the HEADQUARTERS. The base of all operations.","QUESTS are the TASKS YOU need to perform to execute your mission properly.\nGo ahead and have a look.","","","","","","","",""},
     {"Here you can find FACILITIES which you will need for your mission and upgrading the SPACE CENTER.","","","","","","","","",""},
     {"Good job! You completed your first TASK.","","","","","","","","",""},
-    {"","heey","hello","","","","","","",""},
-    {"","heey","hello","","","","","","",""},
-    {"","heey","hello","","","","","","",""},
-        {"","heey","hello","","","","","","",""}};
+    {"RESEARCH POINTS are the secondary currency.\nThe better you learn, the more you get.","","","","","","","","",""},
+    {"Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","","",""},
+    {"With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!\nPlace a FLAG of your choice to show who’s in charge.","","","","","","","","",""},
+        {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""}};
 
     public bool talk = false, waitForInput = false;
     public string msg01;
@@ -68,12 +68,6 @@ public class Dialogs : MonoBehaviour
                 pos = 0;
                 ActivateTalking(dialogNumberMain, numberToSay);
             }
-        }
-
-        // testing ONLY!   !!!!!!!!!!!!!!!!!!!!!!! KEYCODES NEEDS TO BE REPLACED WITH CLICK !!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ActivateTalking(0);
         }
     }
     

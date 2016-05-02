@@ -53,6 +53,16 @@ public class Account : MonoBehaviour
                         amountOfEachBuilding[0]++;
                         break;
                     }
+                case "Builder":
+                    {
+                        amountOfEachBuilding[1]++;
+                        break;
+                    }
+                case "Flag":
+                    {
+                        amountOfEachBuilding[2]++;
+                        break;
+                    }
                 default:
                     {
                         break;

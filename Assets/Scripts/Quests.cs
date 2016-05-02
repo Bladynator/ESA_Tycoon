@@ -10,7 +10,7 @@ public class Quests : MonoBehaviour
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[3, 10]
-    {{"","Construct a Research and Development center (RnD).","yesyes","yesyesyes","yesyesyesyes","","","","",""},
+    {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
     {"","1","2","3","4","5","","","",""},
     {"","heey","hello","","","","","","",""}};
     int activeQuests = 0;
@@ -25,8 +25,8 @@ public class Quests : MonoBehaviour
     { { {0,0,0,0,0,0,0,0,0,0}, // {money, RP, building1, buildings2, buildings3, buildings4, buildings5, buildings6, buildings7, buildings8}
         {0,0,1,0,0,0,0,0,0,0},
         {0,0,0,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,1,0,0,0,0,0}, // flag
+        {0,0,0,0,0,0,0,0,0,0},  // none
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -59,7 +59,7 @@ public class Quests : MonoBehaviour
     int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp
     { { {0,0,0,0,0,0,0,0,0,0},
         {100,0,100,0,0,0,0,0,0,0},
-        {0,50,100,0,0,0,0,0,0,0},
+        {0,0,100,0,0,0,0,0,0,0},
         {50,50,100,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
