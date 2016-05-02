@@ -536,6 +536,7 @@ MonoBehaviour:
   msg01: 
   currentTime: 0
   tutorial: 0
+  canvas: {fileID: 146722, guid: 250cb767ccc3de543962084613c4c30f, type: 2}
   dialogStyle:
     m_Name: 
     m_Normal:
@@ -975,6 +976,8 @@ MonoBehaviour:
   hq: {fileID: 175066, guid: 04e48c8b266bfba4d93165a04ead00c9, type: 2}
   tutorialDoing: 0
   arrow: {fileID: 184266, guid: 15495b5c35a25a94aa91ad18c8e1a4ba, type: 2}
+  canvas: {fileID: 199650, guid: 8d0c178cc911f6e4185d5c5c9a5f5bef, type: 2}
+  nameInputCanvas: {fileID: 167920, guid: e6afababa3a047e40a8f231ec47a958b, type: 2}
   arrowLocations:
   - {fileID: 2039846838}
   - {fileID: 1704494389}
