@@ -9,7 +9,6 @@ public class BuildingMain : MonoBehaviour
     public int price, levelNeeded;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
-    public GUIStyle buildingText;
 
     [HideInInspector]
     public bool busy, buildingBusy, clickedUpgrade;
@@ -41,8 +40,6 @@ public class BuildingMain : MonoBehaviour
     
     public virtual void Start()
     {
-        smallFont = new GUIStyle();
-        smallFont.normal.textColor = Color.black;
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)

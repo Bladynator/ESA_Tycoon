@@ -28,9 +28,6 @@ public class Dialogs : MonoBehaviour
     GameObject canvas;
     GameObject tempCanvas;
 
-    public GUIStyle dialogStyle;
-    public Texture2D backgroundDialog;
-
     void Update()
     {
         if (talk)

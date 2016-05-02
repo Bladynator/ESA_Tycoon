@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Quests : MonoBehaviour 
 {
     Account account;
-    public GUIStyle textStyle;
     [Header("Quest Setting")]
     [Tooltip("Requirements")]
     public int[] questLineProgress; // 0 = off
