@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Quests : MonoBehaviour 
 {
@@ -17,8 +18,13 @@ public class Quests : MonoBehaviour
     public int questOpen = -1;
 
     int[] myInformation = new int[10];
+    int[] questsActive = new int[3];
 
-    public bool tutorialBack = false;
+    public bool tutorialBack = false, wait = false;
+    [SerializeField]
+    GameObject questCanvas, questInfoCanvas;
+    GameObject tempQuestCanvas, tempQuestInfoCanvas;
+    Button[] questButtons = new Button[3];
     
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
@@ -94,71 +100,90 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
+        tempQuestCanvas = Instantiate(questCanvas);
+        questButtons = tempQuestCanvas.GetComponentsInChildren<Button>();
+        for(int i = 0; i < 3; i++)
+        {
+            questButtons[i].gameObject.SetActive(false);
+        }
     }
 
-    void OnGUI()
+    void Update()
     {
         for (int i = 0; i < questLineProgress.Length; i++)
         {
             if (questLineProgress[i] != 0)
             {
-                if (CheckIfRequirementsAreSet(i, questLineProgress[i]))
+                if (CheckIfRequirementsAreSet(i, questLineProgress[i]) && !wait)
                 {
                     ShowInformation(i, allText[i, questLineProgress[i]], false, questLineProgress[i]);
+                    wait = true;
                 }
             }
         }
+    }
 
+    public void ResetQuests()
+    {
         for (int i = 0; i < questLineProgress.Length; i++)
         {
-            if(questLineProgress[i] != 0)
+            if (questLineProgress[i] != 0)
             {
-                if(GUI.Button(new Rect(0, Screen.height / 4 + (activeQuests * 75), 75, 75), i.ToString()))
-                {
-                    if (questOpen == i)
-                    {
-                        questOpen = -1;
-                    }
-                    else
-                    {
-                        questOpen = i;
-                    }
-                }
+                questsActive[activeQuests] = i;
+                questButtons[activeQuests].gameObject.SetActive(true);
+                questButtons[activeQuests].onClick.AddListener(delegate { OpenQuest(activeQuests); });
                 activeQuests++;
             }
         }
         activeQuests = 0;
-        ShowQuest();
     }
 
-    void ShowQuest()
+    void OpenQuest(int button)
     {
-        if (questOpen != -1)
+        int i = questsActive[button];
+        if (questOpen == i)
         {
-            ShowInformation(questOpen, allText[questOpen, questLineProgress[questOpen]], true);
+            questOpen = -1;
         }
+        else
+        {
+            questOpen = i;
+        }
+        ShowInformation(questOpen, allText[questOpen, questLineProgress[questOpen]], true);
+    }
+
+    void PressedBack()
+    {
+        questOpen = -1;
+        if (tutorialBack)
+        {
+            tutorialBack = false;
+        }
+        Destroy(tempQuestInfoCanvas);
+    }
+
+    void PressedCollect(int toProgress)
+    {
+        questLineProgress[toProgress]++;
+        wait = false;
+        Destroy(tempQuestInfoCanvas);
     }
 
     void ShowInformation(int toProgress, string text, bool showButton, int questDone = 0)
     {
-        GUI.TextArea(new Rect(Screen.width / 3f, Screen.height / 4, 300, 100), text, textStyle);
+        tempQuestInfoCanvas = Instantiate(questInfoCanvas);
+        Button[] buttons = tempQuestInfoCanvas.GetComponentsInChildren<Button>();
+        buttons[0].onClick.AddListener(delegate { PressedBack(); });
+        buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
+        tempQuestInfoCanvas.GetComponentInChildren<Text>().text = text;
+        
         if (showButton)
         {
-            if (GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 1.7f, 150, 100), "Back"))
-            {
-                questOpen = -1;
-                if (tutorialBack)
-                {
-                    tutorialBack = false;
-                }
-            }
+            buttons[1].gameObject.SetActive(false);
         }
         else
         {
-            if (GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 1.7f, 150, 100), "Collect") && CheckIfRequirementsAreSet(toProgress, questDone, true))
-            {
-                questLineProgress[toProgress]++;
-            }
+            buttons[0].gameObject.SetActive(false);
         }
     }
 

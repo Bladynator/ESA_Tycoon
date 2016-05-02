@@ -508,6 +508,9 @@ MonoBehaviour:
   questLineProgress: 000000000000000000000000
   questOpen: -1
   tutorialBack: 0
+  wait: 0
+  questCanvas: {fileID: 140008, guid: a2b81e4221e0e8e4ba20e7ed594b0a18, type: 2}
+  questInfoCanvas: {fileID: 171184, guid: 26410d9742d2a5344bbebe5f6ff9de70, type: 2}
 --- !u!4 &515960242
 Transform:
   m_ObjectHideFlags: 0
