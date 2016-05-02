@@ -23,7 +23,6 @@ public class BuildingMain : MonoBehaviour
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
-    GUIStyle smallFont;
     int[,] taskRewards = new int[2, 5] // money - RP
         { {10,20,30,40,50 }, {10,20,30,40,50 } };
 

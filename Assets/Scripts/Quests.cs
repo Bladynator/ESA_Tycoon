@@ -27,7 +27,7 @@ public class Quests : MonoBehaviour
     
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
-    { { {0,0,0,0,0,0,0,0,0,0}, // {money, RP, building1, buildings2, buildings3, buildings4, buildings5, buildings6, buildings7, buildings8}
+    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, buildings3, buildings4, buildings5, buildings6, buildings7, buildings8}
         {0,0,1,0,0,0,0,0,0,0},
         {0,0,0,1,0,0,0,0,0,0},
         {0,0,0,0,1,0,0,0,0,0}, // flag
@@ -63,9 +63,9 @@ public class Quests : MonoBehaviour
     #region questRewards
     int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp
     { { {0,0,0,0,0,0,0,0,0,0},
-        {100,0,100,0,0,0,0,0,0,0},
-        {0,0,100,0,0,0,0,0,0,0},
-        {50,50,100,0,0,0,0,0,0,0},
+        {100,0,50,0,0,0,0,0,0,0},
+        {0,0,40,0,0,0,0,0,0,0},
+        {50,50,10,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
