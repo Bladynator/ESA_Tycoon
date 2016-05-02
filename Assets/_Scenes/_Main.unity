@@ -379,9 +379,8 @@ MonoBehaviour:
   fieldLocation: {fileID: 0}
   fieldGridLocation: {x: 0, y: 0}
   fieldID: 0
-  redFont: {fileID: 11400000, guid: c93ddf834cb5d3446adf029140696bb7, type: 2}
-  standard: {fileID: 11400000, guid: e72bf5b37993d6448bcc0386ff304572, type: 2}
   tutorialBack: 0
+  canvas: {fileID: 122658, guid: d3da824a1f6227a48810168e43e6e10f, type: 2}
 --- !u!1 &448113423
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class BuilderMenu : MonoBehaviour 
 {
@@ -13,13 +15,12 @@ public class BuilderMenu : MonoBehaviour
     public Vector2 fieldGridLocation;
     public int fieldID;
     Account account;
-    int screenForBuilding = 0; // 0 = main, 1 = buildings
-    [SerializeField]
-    GUISkin redFont;
-    [SerializeField]
-    GUISkin standard;
     public bool tutorialBack = false;
-
+    [SerializeField]
+    GameObject canvas;
+    GameObject tempCanvas;
+    Button[] allButtons = new Button[5];
+    
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
@@ -30,66 +31,57 @@ public class BuilderMenu : MonoBehaviour
         }
     }
 
+    public void MakeButtons()
+    {
+        tempCanvas = Instantiate(canvas);
+        allButtons = tempCanvas.GetComponentsInChildren<Button>();
+        for (int i = 0; i < allButtons.Length; i++)
+        {
+            allButtons[i].onClick.AddListener(delegate { PressedType(i); });
+            allButtons[i].GetComponentInChildren<Text>().text = namesButtons[i];
+        }
+    }
+
+    void PressedType(int p)
+    {
+        tutorialBack = false;
+
+        for (int i = 0; i < allButtons.Length; i++)
+        {
+            allButtons[i].GetComponentInChildren<Text>().text = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
+        }
+
+        allButtons[0].onClick.AddListener(delegate { PressedBuilding(0); });
+        allButtons[1].onClick.AddListener(delegate { PressedBuilding(1); });
+        allButtons[2].onClick.AddListener(delegate { PressedBuilding(2); });
+        allButtons[3].onClick.AddListener(delegate { PressedBuilding(3); });
+        allButtons[4].onClick.AddListener(delegate { PressedBuilding(4); });
+    }
+
+    void PressedBuilding(int i)
+    {
+        PlaceBuilder(i);
+        tutorialBack = false;
+        if (GameObject.Find("Tutorial") != null)
+        {
+            GameObject.Find("Tutorial").GetComponent<Tutorial>().DestroyArrow();
+        }
+    }
+
     public GameObject[] GetAllBuildings()
     {
         return buildingsPrefabs;
     }
 
-    void OnGUI()
+    void Reset()
     {
-        switch (screenForBuilding)
-        {
-            case 0:
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesButtons[i]))
-                        {
-                            screenForBuilding = (i + 1);
-                            tutorialBack = false;
-                        }
-                    }
-                    break;
-                }
-            case 1:
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelNeeded <= account.level)
-                        {
-                            if (GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString()))
-                            {
-                                PlaceBuilder(i);
-                                tutorialBack = false;
-                                GameObject.Find("Tutorial").GetComponent<Tutorial>().DestroyArrow();
-                            }
-                        }
-                        else
-                        {
-                            GUI.skin = redFont;
-                            GUI.Button(new Rect(0 + (i * Screen.width / 5), Screen.height - Screen.height / 4, Screen.width / 5, Screen.height / 4), namesBuildings[i] + "\nLevel Needed: " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelNeeded.ToString());
-                            GUI.skin = standard;
-                        }
-                    }
-                    break;
-                }
-        }
-        if (GUI.Button(new Rect(0, Screen.height - Screen.height / 4 - 100, 100, 100), "Back"))
-        {
-            if (screenForBuilding != 0)
-            {
-                screenForBuilding = 0;
-            }
-            else
-            {
-                GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-                gameObject.SetActive(false);
-            }
-        }
+        Destroy(tempCanvas);
+        allButtons = new Button[5];
     }
-
+    
     public void PlaceBuilder(int i)
     {
+        Reset();
         Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y, fieldLocation.position.z);
         BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
         tempBuilding.buildingToPlace = buildingsPrefabs[i];
@@ -98,6 +90,5 @@ public class BuilderMenu : MonoBehaviour
         tempBuilding.fieldID = fieldID;
         account.ChangeColliders(false);
         gameObject.SetActive(false);
-        screenForBuilding = 0;
     }
 }

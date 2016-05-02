@@ -87,10 +87,13 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
             Destroy(oldBuilding);
             account.UpdateAmountOFBuildings();
-            if (!GameObject.Find("Tutorial").GetComponent<Tutorial>().tutorialDoing)
+            if (GameObject.Find("Tutorial") != null)
             {
-                account.PushSave();
-                account.autoSave = true;
+                if (!GameObject.Find("Tutorial").GetComponent<Tutorial>().tutorialDoing)
+                {
+                    account.PushSave();
+                    account.autoSave = true;
+                }
             }
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
             Destroy(gameObject);

@@ -112,6 +112,7 @@ public class Account : MonoBehaviour
         {
             PlaceBuildings();
             UpdateAmountOFBuildings();
+            Destroy(GameObject.Find("Tutorial"));
         }
         GameObject.Find("Quests").GetComponent<Quests>().ResetQuests();
     }
