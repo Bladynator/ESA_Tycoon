@@ -43,7 +43,6 @@ public class HUD : MonoBehaviour
         {
             if (obj.GetComponent<EmptyField>() != null)
             {
-                buildMenu.gameObject.SetActive(true);
                 buildMenu.MakeButtons();
                 buildMenu.fieldLocation = obj.GetComponent<EmptyField>().transform;
                 buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
@@ -66,6 +65,10 @@ public class HUD : MonoBehaviour
     
     public void EnableButton(bool enable = true)
     {
+        if(!enable)
+        {
+            account.ChangeColliders(false);
+        }
         buildButton.gameObject.SetActive(enable);
     }
 }

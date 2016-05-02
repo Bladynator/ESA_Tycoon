@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BuildingMain : MonoBehaviour 
 {
@@ -100,7 +101,7 @@ public class BuildingMain : MonoBehaviour
         #endregion
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         if (!busy && !building && !doneWithTask)
         {

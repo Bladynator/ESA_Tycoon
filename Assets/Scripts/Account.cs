@@ -225,7 +225,7 @@ public class Account : MonoBehaviour
                 tempField.GetComponent<CircleCollider2D>().enabled = toChange;
             }
         }
-        GameObject.Find("HUD").GetComponent<HUD>().enabled = toChange;
+        //GameObject.Find("HUD").GetComponent<HUD>().enabled = toChange;
         GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
         if(toChange)
         {

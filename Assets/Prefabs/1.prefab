@@ -61,65 +61,6 @@ MonoBehaviour:
   levelNeeded: 1
   timesForTasks: 0a0000001e000000280000003200000006000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
-  buildingText:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
@@ -135,10 +76,6 @@ MonoBehaviour:
   building: 0
   doneWithTask: 0
   onceToCreate: 0
-  canvas: {fileID: 182892, guid: 66f6e494dc82c3145afc749fb08df63b, type: 2}
-  upgradeCanvas: {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
-  buildingExtras: {fileID: 147002, guid: 53d23f640e823914badc13a1848526de, type: 2}
-  collectButton: {fileID: 129386, guid: f248daee6a06b1248ab82d5b73c7b5a3, type: 2}
 --- !u!212 &21209048
 SpriteRenderer:
   m_ObjectHideFlags: 1
