@@ -24,8 +24,8 @@ public class BuildingMain : MonoBehaviour
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
-    int[,] taskRewards = new int[2, 5] // money - RP
-        { {10,20,30,40,50 }, {10,20,30,40,50 } };
+    int[,] taskRewards = new int[2, 4] // money - RP
+        { {10,20,30,40 }, {10,20,30,40 } };
 
     int[,] priceForUpgrading = new int[5, 3] // level, money, RP
         { { 1, 100, 0}, // level 1
@@ -128,11 +128,19 @@ public class BuildingMain : MonoBehaviour
     #region Canvas
     void Busy()
     {
+        if(canvas == null)
+        {
+            canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
+        }
         tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
     void Building()
     {
+        if (canvas == null)
+        {
+            canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
+        }
         tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
@@ -178,9 +186,21 @@ public class BuildingMain : MonoBehaviour
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[1].onClick.AddListener(delegate { UpgradeClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
-        for (int i = 0; i < level + 1; i++)
+
+        allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
+        allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0, 0] + " Coins " + timesForTasks[0] + " Sec.";
+        allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
+        allButtons[4].GetComponentInChildren<Text>().text = taskRewards[0, 1] + " Coins " + timesForTasks[1] + " Sec.";
+        allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
+        allButtons[5].GetComponentInChildren<Text>().text = taskRewards[0, 2] + " Coins " + timesForTasks[2] + " Sec.";
+        allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
+        allButtons[6].GetComponentInChildren<Text>().text = taskRewards[0, 3] + " Coins " + timesForTasks[3] + " Sec.";
+        for (int i = 0; i < 4; i++)
         {
-            allButtons[i + 3].onClick.AddListener(delegate { TaskClicked(i); });
+            if(level < i)
+            {
+                allButtons[i + 3].enabled = false;
+            }
         }
     }
     #endregion
@@ -210,6 +230,7 @@ public class BuildingMain : MonoBehaviour
         Busy();
         timeToFinishTaskTotal = timesForTasks[task];
         timeToFinishTask = timeToFinishTaskTotal;
+        taskDoing = task;
         account.PushSave();
         BackClicked();
         busy = true;
