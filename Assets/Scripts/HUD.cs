@@ -38,6 +38,14 @@ public class HUD : MonoBehaviour
     public void EnableBuildMenu()
     {
         buildButton.gameObject.SetActive(false);
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject tempField in allBuildings)
+        {
+            if (tempField.GetComponent<CircleCollider2D>() != null)
+            {
+                tempField.GetComponent<CircleCollider2D>().enabled = false;
+            }
+        }
         GameObject obj = GameObject.Find("Main Camera").GetComponent<CameraChanger>().Field();
         if (obj != null)
         {
