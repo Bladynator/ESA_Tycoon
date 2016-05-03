@@ -27,7 +27,7 @@ public class Quests : MonoBehaviour
     
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
-    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, buildings3, buildings4, buildings5, buildings6, buildings7, buildings8}
+    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, Flag, buildings4, buildings5, buildings6, buildings7, buildings8}
         {0,0,1,0,0,0,0,0,0,0},
         {0,0,0,1,0,0,0,0,0,0},
         {0,0,0,0,1,0,0,0,0,0}, // flag
@@ -38,7 +38,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}},
 
-        { {0,0,0,0,0,0,0,0,0,1},
+      { {0,0,0,0,0,0,0,0,0,1},
         {0,0,0,1,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -49,7 +49,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}},
 
-        { {0,0,0,0,0,0,0,0,0,1},
+      { {0,0,0,0,0,0,0,0,0,1},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -135,6 +135,10 @@ public class Quests : MonoBehaviour
 
     public void ResetQuests()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            questButtons[i].gameObject.SetActive(false);
+        }
         for (int i = 0; i < questLineProgress.Length; i++)
         {
             if (questLineProgress[i] != 0)
