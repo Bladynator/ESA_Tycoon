@@ -35,6 +35,7 @@ public class BuilderMenu : MonoBehaviour
     {
         tempCanvas = Instantiate(canvas);
         allButtons = tempCanvas.GetComponentsInChildren<Button>();
+        tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         for (int i = 0; i < allButtons.Length; i++)
         {
             allButtons[i].onClick.AddListener(delegate { PressedType(i); });
@@ -73,10 +74,11 @@ public class BuilderMenu : MonoBehaviour
         return buildingsPrefabs;
     }
 
-    void Reset()
+    public void Reset()
     {
         Destroy(tempCanvas);
         allButtons = new Button[5];
+        GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
     
     public void PlaceBuilder(int i)

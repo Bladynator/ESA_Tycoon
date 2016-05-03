@@ -103,12 +103,15 @@ public class BuildingMain : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (!busy && !building && !doneWithTask)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            tempCanvas = Instantiate(canvas[0]);
-            setupFirstButtons(tempCanvas);
-            account.ChangeColliders(false);
-            GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
+            if (!busy && !building && !doneWithTask)
+            {
+                tempCanvas = Instantiate(canvas[0]);
+                setupFirstButtons(tempCanvas);
+                account.ChangeColliders(false);
+                GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
+            }
         }
     }
 
