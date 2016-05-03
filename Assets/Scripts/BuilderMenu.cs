@@ -20,7 +20,8 @@ public class BuilderMenu : MonoBehaviour
     GameObject canvas;
     GameObject tempCanvas;
     Button[] allButtons = new Button[5];
-    
+    Image reset;
+
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
@@ -35,6 +36,8 @@ public class BuilderMenu : MonoBehaviour
     {
         tempCanvas = Instantiate(canvas);
         allButtons = tempCanvas.GetComponentsInChildren<Button>();
+        reset = GameObject.Find("ResetButton").GetComponent<Image>();
+        reset.raycastTarget = true;
         tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         for (int i = 0; i < allButtons.Length; i++)
         {
@@ -77,8 +80,10 @@ public class BuilderMenu : MonoBehaviour
     public void Reset()
     {
         Destroy(tempCanvas);
+        reset.raycastTarget = false;
         allButtons = new Button[5];
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
+        account.ChangeColliders(true);
     }
     
     public void PlaceBuilder(int i)
