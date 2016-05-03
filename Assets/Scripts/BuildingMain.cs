@@ -10,6 +10,10 @@ public class BuildingMain : MonoBehaviour
     public int price, levelNeeded;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
+    [SerializeField]
+    bool resourceBuilding = true;
+    [SerializeField]
+    string minigame = "";
 
     [HideInInspector]
     public bool busy, buildingBusy, clickedUpgrade;
@@ -186,15 +190,28 @@ public class BuildingMain : MonoBehaviour
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[1].onClick.AddListener(delegate { UpgradeClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
-
-        allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
-        allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0, 0] + " Coins " + timesForTasks[0] + " Sec.";
-        allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
-        allButtons[4].GetComponentInChildren<Text>().text = taskRewards[0, 1] + " Coins " + timesForTasks[1] + " Sec.";
-        allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
-        allButtons[5].GetComponentInChildren<Text>().text = taskRewards[0, 2] + " Coins " + timesForTasks[2] + " Sec.";
-        allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
-        allButtons[6].GetComponentInChildren<Text>().text = taskRewards[0, 3] + " Coins " + timesForTasks[3] + " Sec.";
+        if (resourceBuilding)
+        {
+            allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
+            allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0, 0] + " Coins " + timesForTasks[0] + " Sec.";
+            allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
+            allButtons[4].GetComponentInChildren<Text>().text = taskRewards[0, 1] + " Coins " + timesForTasks[1] + " Sec.";
+            allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
+            allButtons[5].GetComponentInChildren<Text>().text = taskRewards[0, 2] + " Coins " + timesForTasks[2] + " Sec.";
+            allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
+            allButtons[6].GetComponentInChildren<Text>().text = taskRewards[0, 3] + " Coins " + timesForTasks[3] + " Sec.";
+        }
+        else
+        {
+            allButtons[3].onClick.AddListener(delegate { ClickedMinigame(0, minigame); });
+            allButtons[3].GetComponentInChildren<Text>().text = "Easy";
+            allButtons[4].onClick.AddListener(delegate { ClickedMinigame(1, minigame); });
+            allButtons[4].GetComponentInChildren<Text>().text = "Medium";
+            allButtons[5].onClick.AddListener(delegate { ClickedMinigame(2, minigame); });
+            allButtons[5].GetComponentInChildren<Text>().text = "Hard";
+            allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
+            allButtons[6].GetComponentInChildren<Text>().text = "Endless";
+        }
         for (int i = 0; i < 4; i++)
         {
             if(level < i)
@@ -211,6 +228,11 @@ public class BuildingMain : MonoBehaviour
         Destroy(tempCanvas);
         tempCanvas = Instantiate(canvas[0]);
         setupFirstButtons(tempCanvas);
+    }
+
+    void ClickedMinigame(int minigameDifficulty, string minigame)
+    {
+
     }
 
     public void UpgradeClickedFinal()
