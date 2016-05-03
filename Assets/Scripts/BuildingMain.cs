@@ -232,7 +232,9 @@ public class BuildingMain : MonoBehaviour
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
-
+        // empty
+        // Load scenemanager and store difficulty in dontdestroyonload
+        // New class for just switching?
     }
 
     public void UpgradeClickedFinal()
