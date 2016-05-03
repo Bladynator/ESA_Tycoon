@@ -115,11 +115,22 @@ public class Quests : MonoBehaviour
             {
                 if (CheckIfRequirementsAreSet(i, questLineProgress[i]) && !wait)
                 {
+                    if(allText[i, questLineProgress[i]] == "")
+                    {
+                        questLineProgress[i] = 0;
+                        ResetQuests();
+                        break;
+                    }
                     ShowInformation(i, allText[i, questLineProgress[i]], false, questLineProgress[i]);
                     wait = true;
                 }
             }
         }
+    }
+
+    public void ShowQuests(bool show)
+    {
+        tempQuestCanvas.SetActive(show);
     }
 
     public void ResetQuests()
