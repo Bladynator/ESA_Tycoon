@@ -190,6 +190,10 @@ public class Account : MonoBehaviour
                             tempBuilding2.busy = true;
                             tempBuilding2.timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
                         }
+                        if(Convert.ToInt32(informationOneBuilding[1]) != -1)
+                        {
+                            tempBuilding2.busy = true;
+                        }
                         tempBuilding2.timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
                         tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
                         if(Convert.ToInt32(informationOneBuilding[4]) > 0)

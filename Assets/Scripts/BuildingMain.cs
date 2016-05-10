@@ -23,7 +23,7 @@ public class BuildingMain : MonoBehaviour
     [Header("Don't Change")]
     [SerializeField]
     BuildingPlacer buildingPlacer;
-    public int level, ID, taskDoing;
+    public int level, ID, taskDoing = -1;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
@@ -323,6 +323,7 @@ public class BuildingMain : MonoBehaviour
         doneWithTask = false;
         account.money += taskRewards[0, taskDoing];
         account.researchPoints += taskRewards[1, taskDoing];
+        taskDoing = -1;
         Destroy(tempBar);
         onceToCreate = false;
         GetComponent<CircleCollider2D>().enabled = true;
