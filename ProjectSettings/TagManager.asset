@@ -10,6 +10,7 @@ TagManager:
   - Default
   - Canvas
   - Bar
+  - Destroyer
   layers:
   - Default
   - TransparentFX

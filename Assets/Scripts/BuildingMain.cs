@@ -232,6 +232,7 @@ public class BuildingMain : MonoBehaviour
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
+        account.PushSave();
         // empty
         // Load scenemanager and store difficulty in dontdestroyonload
         // New class for just switching?
