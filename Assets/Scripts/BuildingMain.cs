@@ -171,17 +171,6 @@ public class BuildingMain : MonoBehaviour
     }
 
     #region ButtonInnit
-    public void SetupUpgradeCanvas(GameObject canvasTemp)
-    {
-        Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
-        allText[0].text = buildingName;
-        allText[1].text = "Level Needed: " + priceForUpgrading[level, 0];
-        allText[2].text = "Money Needed: " + priceForUpgrading[level, 1];
-        allText[3].text = "Research Needed: " + priceForUpgrading[level, 2];
-        allButtons = canvasTemp.GetComponentsInChildren<Button>();
-        allButtons[0].onClick.AddListener(delegate { BackClickedFromUpgrade(); });
-        allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
-    }
 
     public void setupFirstButtons(GameObject canvasTemp)
     {
@@ -192,9 +181,10 @@ public class BuildingMain : MonoBehaviour
         allText[6].text = "Task 2";
         allText[7].text = "Task 3";
         allText[8].text = "Task 4";
+        allText[9].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
-        allButtons[1].onClick.AddListener(delegate { UpgradeClicked(); });
+        allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         if (resourceBuilding)
         {
@@ -229,13 +219,6 @@ public class BuildingMain : MonoBehaviour
     #endregion
 
     #region Buttons
-    
-    public void BackClickedFromUpgrade()
-    {
-        Destroy(tempCanvas);
-        tempCanvas = Instantiate(canvas[0]);
-        setupFirstButtons(tempCanvas);
-    }
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
@@ -277,13 +260,6 @@ public class BuildingMain : MonoBehaviour
         Destroy(tempCanvas);
         account.ChangeColliders(true);
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-    }
-
-    public void UpgradeClicked()
-    {
-        Destroy(tempCanvas);
-        tempCanvas = Instantiate(canvas[1]);
-        SetupUpgradeCanvas(tempCanvas);
     }
 
     public void ReposClicked()
