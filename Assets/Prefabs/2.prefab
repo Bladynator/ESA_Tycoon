@@ -61,6 +61,8 @@ MonoBehaviour:
   levelNeeded: 1
   timesForTasks: 500000005a00000050000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  resourceBuilding: 0
+  minigame: Minigame1
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0

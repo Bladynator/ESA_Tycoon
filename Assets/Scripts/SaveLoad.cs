@@ -5,10 +5,6 @@ using System;
 
 public class SaveLoad : MonoBehaviour
 {
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void writeStringToFile(string str, string filename)
     {
