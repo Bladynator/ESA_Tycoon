@@ -7,6 +7,7 @@ public class MiniGameController : MonoBehaviour
     public int difficultyMiniGame = 0;
     public int score;
     public bool backFromMinigame = false;
+    public int[] highscores = new int[3] {0,0,0 };
 
 	void Awake()
     {

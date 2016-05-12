@@ -88,8 +88,22 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown;
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores();
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
+    }
+    string GetHighscores()
+    {
+        int[] allScores = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores;
+        string scores = "";
+        for(int i = 0; i < 3; i++)
+        {
+            scores += allScores[i].ToString();
+            if(i != 2)
+            {
+                scores += "e";
+            }
+        }
+        return scores;
     }
 
     string GetQuestLines()
@@ -130,6 +144,13 @@ public class Account : MonoBehaviour
         researchPoints = Convert.ToInt32(allInformation[3]);
         exp = Convert.ToInt32(allInformation[6]);
         nameTown = allInformation[7];
+
+        string[] allScores = Regex.Split(allInformation[8], "e");
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i] = Convert.ToInt32(allScores[i]);
+        }
+
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
 
         string[] quests = Regex.Split(allInformation[5], "<e>");

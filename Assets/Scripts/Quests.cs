@@ -27,7 +27,7 @@ public class Quests : MonoBehaviour
     
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
-    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, Flag, buildings4, buildings5, buildings6, buildings7, buildings8}
+    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, Flag, minigame1Score, buildings5, buildings6, buildings7, buildings8}
         {0,0,1,0,0,0,0,0,0,0},
         {0,0,0,1,0,0,0,0,0,0},
         {0,0,0,0,1,0,0,0,0,0}, // flag
@@ -39,7 +39,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}},
 
       { {0,0,0,0,0,0,0,0,0,1},
-        {0,0,0,0,0,1,0,0,0,0},
+        {0,0,0,0,0,10,0,0,0,0}, // minigame1 score
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -205,9 +205,13 @@ public class Quests : MonoBehaviour
     {
         myInformation[0] = account.money;
         myInformation[1] = account.researchPoints;
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 3; i++)
         {
             myInformation[i + 2] = account.amountOfEachBuilding[i];
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            myInformation[i + 5] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
         }
         bool ifEnough = true;
         for (int i = 0; i < 10; i++)
