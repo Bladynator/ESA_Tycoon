@@ -15,7 +15,7 @@ public class Account : MonoBehaviour
     int saveInSec = 5;
     [SerializeField]
     int[] expNeededForLevel;
-    public int[] amountOfEachBuilding = new int[8]; // 0 = HQ / 1 = 
+    public int[] amountOfEachBuilding = new int[8] {0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
 	
 	void Start () 
 	{
@@ -43,6 +43,7 @@ public class Account : MonoBehaviour
 
     public void UpdateAmountOFBuildings()
     {
+        amountOfEachBuilding = new int[8] {0,0,0,0,0,0,0,0 };
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject building in allBuildings)
         {

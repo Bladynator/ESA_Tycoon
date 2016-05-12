@@ -58,9 +58,11 @@ MonoBehaviour:
   buildingName: Flag
   size: {x: 1, y: 1}
   price: 400
-  levelNeeded: 1
+  levelsNeeded: 01000000040000000600000009000000
   timesForTasks: 
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  resourceBuilding: 1
+  minigame: 
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0

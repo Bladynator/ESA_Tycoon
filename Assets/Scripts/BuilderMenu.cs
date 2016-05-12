@@ -55,11 +55,26 @@ public class BuilderMenu : MonoBehaviour
             allButtons[i].GetComponentInChildren<Text>().text = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
         }
 
-        allButtons[0].onClick.AddListener(delegate { PressedBuilding(0); });
-        allButtons[1].onClick.AddListener(delegate { PressedBuilding(1); });
-        allButtons[2].onClick.AddListener(delegate { PressedBuilding(2); });
-        allButtons[3].onClick.AddListener(delegate { PressedBuilding(3); });
-        allButtons[4].onClick.AddListener(delegate { PressedBuilding(4); });
+        if (buildingsPrefabs[0].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[0]] <= account.level)
+        {
+            allButtons[0].onClick.AddListener(delegate { PressedBuilding(0); });
+        }
+        if (buildingsPrefabs[1].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[1]] <= account.level)
+        {
+            allButtons[1].onClick.AddListener(delegate { PressedBuilding(1); });
+        }
+        if (buildingsPrefabs[2].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[2]] <= account.level)
+        {
+            allButtons[2].onClick.AddListener(delegate { PressedBuilding(2); });
+        }
+        if (buildingsPrefabs[3].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[3]] <= account.level)
+        {
+            allButtons[3].onClick.AddListener(delegate { PressedBuilding(3); });
+        }
+        if (buildingsPrefabs[4].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[4]] <= account.level)
+        {
+            allButtons[4].onClick.AddListener(delegate { PressedBuilding(4); });
+        }
     }
 
     void PressedBuilding(int i)

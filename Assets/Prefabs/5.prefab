@@ -58,9 +58,11 @@ MonoBehaviour:
   buildingName: Testing Room
   size: {x: 3, y: 4}
   price: 500
-  levelNeeded: 5
+  levelsNeeded: 02000000040000000600000008000000
   timesForTasks: 
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  resourceBuilding: 1
+  minigame: 
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0

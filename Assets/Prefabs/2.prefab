@@ -58,7 +58,7 @@ MonoBehaviour:
   buildingName: Builder
   size: {x: 3, y: 3}
   price: 200
-  levelNeeded: 1
+  levelsNeeded: 0100000004000000080000000c000000
   timesForTasks: 500000005a00000050000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   resourceBuilding: 0
