@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     public Text researchPoints;
     public Text level;
     public Text cityName;
+    public Image expBar;
     public GameObject[] canvas;
     public GameObject[] buildingCanvas;
 
@@ -25,6 +26,8 @@ public class HUD : MonoBehaviour
         money.text = account.money.ToString();
         researchPoints.text = account.researchPoints.ToString();
         level.text = account.level.ToString();
+        float amount = (float)account.exp / (float)account.expNeededForLevel[account.level];
+        expBar.fillAmount = amount;
     }
 
     public void SetName(string name)

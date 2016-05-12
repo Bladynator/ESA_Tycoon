@@ -13,8 +13,7 @@ public class Account : MonoBehaviour
     bool waitOneSec = false;
     public bool autoSave = true;
     int saveInSec = 5;
-    [SerializeField]
-    int[] expNeededForLevel;
+    public int[] expNeededForLevel;
     public int[] amountOfEachBuilding = new int[8] {0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
 	
 	void Start () 
