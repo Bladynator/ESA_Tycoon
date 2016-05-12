@@ -224,6 +224,7 @@ public class BuildingMain : MonoBehaviour
     #endregion
 
     #region Buttons
+    
     public void BackClickedFromUpgrade()
     {
         Destroy(tempCanvas);

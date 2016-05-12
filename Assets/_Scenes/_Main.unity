@@ -220,7 +220,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -396, y: -113}
@@ -453,7 +453,7 @@ RectTransform:
   - {fileID: 416761863}
   - {fileID: 1863929179}
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -413.95996, y: 299.00006}
@@ -676,7 +676,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -140, y: -41}
@@ -708,7 +708,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -395, y: -112}
@@ -744,7 +744,7 @@ RectTransform:
   m_Children:
   - {fileID: 1966303547}
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -396, y: -220}
@@ -931,11 +931,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0005264282, y: 67}
-  m_SizeDelta: {x: 1008, y: 464}
+  m_AnchoredPosition: {x: -0.002453804, y: -0.5}
+  m_SizeDelta: {x: 1057.6, y: 599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846582070
 MonoBehaviour:
@@ -978,6 +978,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 418011325}
         m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1263913155}
+        m_MethodName: ResetBuildingCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1326,6 +1337,7 @@ MonoBehaviour:
   researchPoints: {fileID: 1413742256}
   level: {fileID: 416761864}
   cityName: {fileID: 966457750}
+  expBar: {fileID: 1737989336}
   canvas:
   - {fileID: 1941609588}
   - {fileID: 1306187641}
@@ -1366,7 +1378,7 @@ RectTransform:
   - {fileID: 1413742255}
   - {fileID: 154815733}
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 412, y: 212}
@@ -1471,7 +1483,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -134, y: -99}
@@ -1610,7 +1622,7 @@ RectTransform:
   m_Children:
   - {fileID: 966457749}
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -415, y: 318.00006}
@@ -1863,7 +1875,7 @@ RectTransform:
   - {fileID: 280862348}
   - {fileID: 2123506093}
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 412, y: 260}
@@ -2213,6 +2225,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 846582069}
   - {fileID: 625757929}
   - {fileID: 1306187642}
   - {fileID: 1941609589}
@@ -2223,7 +2236,6 @@ RectTransform:
   - {fileID: 269074750}
   - {fileID: 565357377}
   - {fileID: 568385079}
-  - {fileID: 846582069}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
@@ -2257,7 +2269,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985861095}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -316, y: 101}
