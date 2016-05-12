@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Dialogs : MonoBehaviour 
 {
-    string[,] dialogText = new string[10,10]
+    string[,] dialogText = new string[12,10]
         {{"Hi Chief! Welcome to 2016. My name is PAOLO and I’m an Engineer, just like YOU.","I will help you fulfill your mission.","In order to start your mission you need to develop a SPACE CENTER.","Start by giving it a name.","","","","","",""},
     {"Good! Cool name!","","","","","","","","",""},
     {"Here YOU have some MONEY to get started.","MONEY is the primary currency. Use it wisely.","","","","","","","",""},
@@ -13,7 +13,9 @@ public class Dialogs : MonoBehaviour
     {"Good job! You completed your first TASK.","","","","","","","","",""},
     {"RESEARCH POINTS are the secondary currency. The better you learn, the more you get.","","","","","","","","",""},
     {"Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","","",""},
+    {"Now, let’s assign a TASK to the EXHIBIT to generate revenue.","Click on exhibit to assign new task.","","","","","","","",""},
     {"With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!","Place a FLAG of your choice to show who’s in charge.","","","","","","","",""},
+    {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""},
         {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""}};
 
     public bool talk = false, waitForInput = false;
@@ -80,6 +82,7 @@ public class Dialogs : MonoBehaviour
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
         tempCanvas = Instantiate(canvas);
+        pos = 0;
         talk = true;
         numberToSay = number;
         dialogNumberMain = dialogNumber;

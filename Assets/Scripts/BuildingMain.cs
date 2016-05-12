@@ -30,7 +30,7 @@ public class BuildingMain : MonoBehaviour
     public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
     int[,] taskRewards = new int[2, 4] // money - RP
-        { {10,20,30,40 }, {10,20,30,40 } };
+        { {50,20,30,40 }, {10,20,30,40 } };
 
     int[,] priceForUpgrading = new int[5, 3] // level, money, RP
         { { 1, 100, 0}, // level 1
@@ -42,6 +42,8 @@ public class BuildingMain : MonoBehaviour
     GameObject[] canvas;
     GameObject tempCanvas, tempBar;
     Button[] allButtons;
+
+    public bool ableToSave = true;
     
     public virtual void Start()
     {
@@ -70,7 +72,10 @@ public class BuildingMain : MonoBehaviour
                 building = false;
                 level++;
                 Destroy(tempBar);
-                account.PushSave();
+                if(ableToSave)
+                {
+                    account.PushSave();
+                }
             }
             else
             {
@@ -234,7 +239,10 @@ public class BuildingMain : MonoBehaviour
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
-        account.PushSave();
+        if (ableToSave)
+        {
+            account.PushSave();
+        }
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame(minigame, minigameDifficulty);
     }
 
@@ -256,7 +264,10 @@ public class BuildingMain : MonoBehaviour
         timeToFinishTaskTotal = timesForTasks[task];
         timeToFinishTask = timeToFinishTaskTotal;
         taskDoing = task;
-        account.PushSave();
+        if (ableToSave)
+        {
+            account.PushSave();
+        }
         BackClicked();
         busy = true;
     }
@@ -328,7 +339,10 @@ public class BuildingMain : MonoBehaviour
         Destroy(tempBar);
         onceToCreate = false;
         GetComponent<CircleCollider2D>().enabled = true;
-        account.PushSave();
+        if (ableToSave)
+        {
+            account.PushSave();
+        }
     }
     
     bool CheckIfEnoughResources()

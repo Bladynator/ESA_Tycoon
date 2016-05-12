@@ -46,28 +46,31 @@ public class Account : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject building in allBuildings)
         {
-            string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
-            switch(nameOfBuilding)
+            if (building.GetComponent<BuildingMain>() != null)
             {
-                case "Engineer":
-                    {
-                        amountOfEachBuilding[0]++;
-                        break;
-                    }
-                case "Builder":
-                    {
-                        amountOfEachBuilding[1]++;
-                        break;
-                    }
-                case "Flag":
-                    {
-                        amountOfEachBuilding[2]++;
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
+                switch (nameOfBuilding)
+                {
+                    case "Engineer":
+                        {
+                            amountOfEachBuilding[0]++;
+                            break;
+                        }
+                    case "Builder":
+                        {
+                            amountOfEachBuilding[1]++;
+                            break;
+                        }
+                    case "Flag":
+                        {
+                            amountOfEachBuilding[2]++;
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
             }
         }
     }

@@ -59,9 +59,9 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   price: 200
   levelsNeeded: 0100000004000000080000000c000000
-  timesForTasks: 500000005a00000050000000
+  timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
-  resourceBuilding: 0
+  resourceBuilding: 1
   minigame: Minigame1
   busy: 0
   buildingBusy: 0

@@ -20,7 +20,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     GameObject[] arrowLocations;
     GameObject tempArrow, tempCanvas, tempNameInputCanvas;
-    bool arrowSpawned = false;
+    bool arrowSpawned = false, once = false;
 
     void Start () 
 	{
@@ -248,9 +248,27 @@ public class Tutorial : MonoBehaviour
                         case 3:
                             {
                                 ShowDialog(8, false);
+                                GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+                                foreach(GameObject temp in allBuildings)
+                                {
+                                    temp.GetComponent<BuildingMain>().ableToSave = false;
+                                }
                                 break;
                             }
                         case 4:
+                            {
+                                if(account.money == 1250)
+                                {
+                                    questPart++;
+                                }
+                                break;
+                            }
+                        case 5:
+                            {
+                                ShowDialog(9, false);
+                                break;
+                            }
+                        case 6:
                             {
                                 ShowArrow(0);
                                 if (questLine.questOpen != -1)
@@ -261,7 +279,7 @@ public class Tutorial : MonoBehaviour
                                 }
                                 break;
                             }
-                        case 5:
+                        case 7:
                             {
                                 ShowArrow(1);
                                 if (questLine.tutorialBack == false)
@@ -306,7 +324,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 7:
                             {
-                                ShowDialog(9, false);
+                                ShowDialog(10, false);
                                 break;
                             }
                         case 8:
@@ -315,6 +333,11 @@ public class Tutorial : MonoBehaviour
                                 account.PushSave();
                                 tutorialDoing = false;
                                 questPart++;
+                                GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+                                foreach (GameObject temp in allBuildings)
+                                {
+                                    temp.GetComponent<BuildingMain>().ableToSave = true;
+                                }
                                 Destroy(gameObject);
                                 break;
                             }
