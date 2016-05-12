@@ -248,6 +248,8 @@ public class Tutorial : MonoBehaviour
                         case 3:
                             {
                                 ShowDialog(8, false);
+                                hud.EnableButton(false);
+                                questLine.ShowQuests(false);
                                 GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
                                 foreach(GameObject temp in allBuildings)
                                 {
@@ -271,6 +273,8 @@ public class Tutorial : MonoBehaviour
                         case 6:
                             {
                                 ShowArrow(0);
+                                questLine.ShowQuests(true);
+                                hud.EnableButton(true);
                                 if (questLine.questOpen != -1)
                                 {
                                     questLine.tutorialBack = true;
@@ -324,13 +328,13 @@ public class Tutorial : MonoBehaviour
                             }
                         case 7:
                             {
+                                hud.EnableButton(true);
+                                questLine.ShowQuests(true);
                                 ShowDialog(10, false);
                                 break;
                             }
                         case 8:
                             {
-                                account.autoSave = true;
-                                account.PushSave();
                                 tutorialDoing = false;
                                 questPart++;
                                 GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
@@ -339,6 +343,10 @@ public class Tutorial : MonoBehaviour
                                     temp.GetComponent<BuildingMain>().ableToSave = true;
                                 }
                                 Destroy(gameObject);
+                                questLine.questLineProgress[1] = 1;
+                                questLine.ResetQuests();
+                                account.autoSave = true;
+                                account.PushSave();
                                 break;
                             }
                         case -1:

@@ -85,6 +85,7 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.transform.localScale = size;
             tempBuilding.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].ID;
             tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
+            tempBuilding.GetComponent<BuildingMain>().taskDoing = -1;
             Destroy(oldBuilding);
             account.UpdateAmountOFBuildings();
             if (GameObject.Find("Tutorial") != null)

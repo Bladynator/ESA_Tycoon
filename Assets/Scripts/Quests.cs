@@ -11,7 +11,7 @@ public class Quests : MonoBehaviour
     [SerializeField]
     string[,] allText = new string[3, 10]
     {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
-    {"","1","2","3","4","5","","","",""},
+    {"","Play the second minigame","2","3","4","5","","","",""},
     {"","heey","hello","","","","","","",""}};
     int activeQuests = 0;
     public int questOpen = -1;
@@ -39,7 +39,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}},
 
       { {0,0,0,0,0,0,0,0,0,1},
-        {0,0,0,1,0,0,0,0,0,0},
+        {0,0,0,0,0,1,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -74,7 +74,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}},
 
         { {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,100,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
