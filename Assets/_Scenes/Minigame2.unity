@@ -510,7 +510,7 @@ MonoBehaviour:
   theOneToCharge: -1
   difficulty: 0
   score: 0
-  canvasEnd: {fileID: 0}
+  canvasEnd: {fileID: 153488, guid: 9067123df0cf0bc4f863d5f3cc618da9, type: 2}
 --- !u!4 &567862869
 Transform:
   m_ObjectHideFlags: 0

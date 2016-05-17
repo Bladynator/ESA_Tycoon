@@ -3901,7 +3901,7 @@ MonoBehaviour:
   score: 0
   amountsToShow: 02000000040000000600000002000000
   canvasEnd: {fileID: 153488, guid: 9067123df0cf0bc4f863d5f3cc618da9, type: 2}
-  CanvasTimer: {fileID: 0}
+  CanvasTimer: {fileID: 218015779}
 --- !u!4 &858064461
 Transform:
   m_ObjectHideFlags: 0

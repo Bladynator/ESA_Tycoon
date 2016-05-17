@@ -547,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigameToLoad: 
   canvas:
+  - {fileID: 1559978030}
   - {fileID: 1982067436}
   - {fileID: 1408342643}
   - {fileID: 942759803}
