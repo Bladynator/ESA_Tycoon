@@ -6,6 +6,10 @@ public class RotateSatellite : MonoBehaviour
 {
     private float baseAngle = 0.0f;
     Quaternion newRotation;
+    public LayerMask mask;
+    [SerializeField]
+    Controller2 controller;
+    float rotation;
 
     void Start()
     {
@@ -15,15 +19,76 @@ public class RotateSatellite : MonoBehaviour
 
         var direction = transform.forward;
         direction = new Vector3(0, direction.z, 0);
-        var endPoint = transform.position + direction * 10;
+        var endPoint = transform.position + direction * 13;
         GetComponent<LineRenderer>().SetPosition(1, endPoint);
     }
 
     void Update()
     {
+        if(controller.resources[1] <= 50)
+        {
+            rotation = 0.4f + (controller.resources[1] / 200);
+        }
+        else
+        {
+            rotation = 1;
+        }
         if (newRotation != null)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 1);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * rotation);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * 50, Mathf.Infinity, mask);
+        switch(hit.collider.name)
+        {
+            case "Earth":
+                {
+                    controller.charging = true;
+                    controller.overcharging = false;
+                    controller.theOneToCharge = 0;
+                    break;
+                }
+            case "CriticalE":
+                {
+                    controller.charging = true;
+                    controller.overcharging = true;
+                    controller.theOneToCharge = 0;
+                    break;
+                }
+            case "Asteroid":
+                {
+                    controller.charging = true;
+                    controller.overcharging = false;
+                    controller.theOneToCharge = 1;
+                    break;
+                }
+            case "CriticalA":
+                {
+                    controller.overcharging = true;
+                    controller.charging = true;
+                    controller.theOneToCharge = 1;
+                    break;
+                }
+            case "Sun":
+                {
+                    controller.charging = true;
+                    controller.overcharging = false;
+                    controller.theOneToCharge = 2;
+                    break;
+                }
+            case "CriticalS":
+                {
+                    controller.overcharging = true;
+                    controller.charging = true;
+                    controller.theOneToCharge = 2;
+                    break;
+                }
+            default:
+                {
+                    controller.charging = false;
+                    controller.overcharging = false;
+                    controller.theOneToCharge = -1;
+                    break;
+                }
         }
     }
 

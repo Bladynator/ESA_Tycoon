@@ -97,9 +97,9 @@ public class Controller3 : MonoBehaviour
     void PressedEnd()
     {
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().score = score;
-        if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2] < score)
+        if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[0] < score)
         {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2] = score;
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[0] = score;
         }
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty); // back to tycoon
     }
