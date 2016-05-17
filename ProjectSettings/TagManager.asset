@@ -11,6 +11,8 @@ TagManager:
   - Canvas
   - Bar
   - Destroyer
+  - Connect
+  - Liner
   layers:
   - Default
   - TransparentFX
