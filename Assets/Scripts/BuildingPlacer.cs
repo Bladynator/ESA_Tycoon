@@ -4,7 +4,7 @@ using System.Collections;
 public class BuildingPlacer : MonoBehaviour 
 {
     public GameObject buildingToPlace, oldBuilding;
-    public Vector2 activePlaceOnGrid;
+    public Vector2 activePlaceOnGrid, oldActivePlace;
     public BuildingPlacer builderPlacerTemp;
     public int fieldID;
     EmptyField[,] grid;
@@ -96,22 +96,34 @@ public class BuildingPlacer : MonoBehaviour
                     account.autoSave = true;
                 }
             }
+            else
+            {
+                GameObject.Find("Account").GetComponent<Account>().PushSave();
+                GameObject.Find("Account").GetComponent<Account>().autoSave = true;
+            }
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
             Destroy(gameObject);
         }
     }
 
-    public void Delete()
+    public void Delete(bool toFields = true)
     {
+        string newName = "EmptyField";
+        Vector2 newActivePlace = activePlaceOnGrid;
+        if (!toFields)
+        {
+            newName = buildingToPlace.GetComponent<BuildingMain>().buildingName;
+            newActivePlace = oldActivePlace;
+        }
         grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
         {
             for (int y = 0; y < buildingToPlace.GetComponent<BuildingMain>().size.y; y++)
             {
-                grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].placeAble = true;
+                grid[(int)newActivePlace.x + y, (int)newActivePlace.y + i].placeAble = toFields;
             }
         }
-        GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = "EmptyField";
+        GameObject.Find("Grid").GetComponent<Grid>().grid[(int)newActivePlace.x, (int)newActivePlace.y].building = newName;
         if(account == null)
         {
             account = GameObject.Find("Account").GetComponent<Account>();
@@ -134,6 +146,7 @@ public class BuildingPlacer : MonoBehaviour
                 tempBuilding.fieldID = tempField.GetComponent<EmptyField>().ID;
                 tempBuilding.oldBuilding = oldBuilding;
                 tempBuilding.rePos = rePos;
+                tempBuilding.oldActivePlace = oldActivePlace;
                 Destroy(gameObject);
             }
         }

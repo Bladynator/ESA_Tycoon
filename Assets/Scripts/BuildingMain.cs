@@ -272,6 +272,7 @@ public class BuildingMain : MonoBehaviour
         tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
         tempBuilding.oldBuilding = this.gameObject;
         tempBuilding.rePos = true;
+        tempBuilding.oldActivePlace = gridPosition;
         BackClicked();
         account.autoSave = false;
         tempBuilding.Delete();

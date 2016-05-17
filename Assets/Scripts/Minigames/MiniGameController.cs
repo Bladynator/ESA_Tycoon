@@ -9,6 +9,7 @@ public class MiniGameController : MonoBehaviour
     public int currencyGotFromMinigame = 0;
     public bool backFromMinigame = false;
     public int[] highscores = new int[3] {0,0,0 };
+    public string minigameToLoad = "";
 
 	void Awake()
     {
@@ -18,11 +19,16 @@ public class MiniGameController : MonoBehaviour
 	public void ActivateMiniGame(string minigame, int difficulty, int currencyGot = 0)
     {
         difficultyMiniGame = difficulty;
-        SceneManager.LoadScene(minigame);
+        minigameToLoad = minigame;
         if(minigame == "_Main")
         {
+            SceneManager.LoadScene("_Main");
             backFromMinigame = true;
             currencyGotFromMinigame = currencyGot;
+        }
+        else
+        {
+            SceneManager.LoadScene("Tutorial");
         }
     }
 }
