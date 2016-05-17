@@ -17,6 +17,7 @@ public class Controller : MonoBehaviour
     GameObject canvasEnd;
     GameObject tempCanvas;
     int difficulty;
+    int lastLocation = 0;
 
     void Start()
     {
@@ -34,12 +35,21 @@ public class Controller : MonoBehaviour
     IEnumerator waitForSec(float sec)
     {
         waitingForSpawn = true;
-        int randomHeight = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, spawns.Length)));
-        GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(8, spawns[randomHeight].transform.position.y), this.transform.rotation);
-        spawnSpeed[difficulty] -= reduction[difficulty];
-        if(spawnSpeed[difficulty] <= endspeed[difficulty])
+        for (int i = 0; i < 2; i++)
         {
-            spawnSpeed[difficulty] = endspeed[difficulty];
+            int randomHeight = 0;
+            do
+            {
+                randomHeight = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, spawns.Length)));
+            }
+            while (randomHeight == lastLocation);
+            GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(8, spawns[randomHeight].transform.position.y), this.transform.rotation);
+            spawnSpeed[difficulty] -= reduction[difficulty];
+            if (spawnSpeed[difficulty] <= endspeed[difficulty])
+            {
+                spawnSpeed[difficulty] = endspeed[difficulty];
+            }
+            lastLocation = randomHeight;
         }
         yield return new WaitForSeconds(sec);
         waitingForSpawn = false;

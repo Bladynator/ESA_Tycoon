@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     public int hp = 3;
     GameObject[] locations;
-    int currentLocation = 1;
+    int currentLocation = 2;
     bool waiting = false, waitingScore = false;
     public int endScore = 0;
 
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (currentLocation != 2)
+        if (currentLocation != 4)
         {
             if (GUI.Button(new Rect(0, Screen.height - 75, 75, 75), "v") || Input.GetKeyDown("down"))
             {
