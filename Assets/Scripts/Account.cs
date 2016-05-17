@@ -132,6 +132,10 @@ public class Account : MonoBehaviour
             Destroy(GameObject.Find("Tutorial"));
         }
         GameObject.Find("Quests").GetComponent<Quests>().ResetQuests();
+        if(GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame)
+        {
+            researchPoints += GameObject.Find("MiniGameController").GetComponent<MiniGameController>().currencyGotFromMinigame;
+        }
     }
 
     void PlaceBuildings()
