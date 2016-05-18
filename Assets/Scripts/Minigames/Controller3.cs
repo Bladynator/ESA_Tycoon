@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class Controller3 : MonoBehaviour 
