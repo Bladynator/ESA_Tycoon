@@ -12,6 +12,9 @@ public class BuildingMain : MonoBehaviour
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
     [SerializeField]
+    int[] taskRewards = new int[4] // money - RP
+        {50,20,30,40 };
+    [SerializeField]
     bool resourceBuilding = true;
     [SerializeField]
     string minigame = "";
@@ -29,15 +32,9 @@ public class BuildingMain : MonoBehaviour
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
-    int[,] taskRewards = new int[2, 4] // money - RP
-        { {50,20,30,40 }, {10,20,30,40 } };
+    
 
-    int[,] priceForUpgrading = new int[5, 3] // level, money, RP
-        { { 1, 100, 0}, // level 1
-        { 3 , 300 , 0}, // level 2
-        { 5, 500, 10}, // level 3
-        { 8, 1000, 50}, // level 4
-        { 10 , 2000, 100 }}; // level 5
+    int[,] priceForUpgrading = new int[5, 3]; // level, money, RP
 
     GameObject[] canvas;
     GameObject tempCanvas, tempBar;
@@ -58,6 +55,10 @@ public class BuildingMain : MonoBehaviour
             Building();
         }
         canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
+        if(!resourceBuilding)
+        {
+            taskRewards = new int[4];
+        }
     }
 
     public virtual void Update()
@@ -96,9 +97,17 @@ public class BuildingMain : MonoBehaviour
                 onceToCreate = true;
                 GetComponent<CircleCollider2D>().enabled = false;
                 Destroy(tempBar);
-                tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
-                tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
                 StopCoroutine(WaitForTask());
+                Destroy(tempBar);
+                if (!resourceBuilding)
+                {
+                    GetReward();
+                }
+                else
+                {
+                    tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
+                    tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                }
             }
             else
             {
@@ -189,13 +198,13 @@ public class BuildingMain : MonoBehaviour
         if (resourceBuilding)
         {
             allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
-            allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0, 0] + " Coins " + timesForTasks[0] + " Sec.";
+            allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0] + " Coins " + timesForTasks[0] + " Sec.";
             allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
-            allButtons[4].GetComponentInChildren<Text>().text = taskRewards[0, 1] + " Coins " + timesForTasks[1] + " Sec.";
+            allButtons[4].GetComponentInChildren<Text>().text = taskRewards[1] + " Coins " + timesForTasks[1] + " Sec.";
             allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
-            allButtons[5].GetComponentInChildren<Text>().text = taskRewards[0, 2] + " Coins " + timesForTasks[2] + " Sec.";
+            allButtons[5].GetComponentInChildren<Text>().text = taskRewards[2] + " Coins " + timesForTasks[2] + " Sec.";
             allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
-            allButtons[6].GetComponentInChildren<Text>().text = taskRewards[0, 3] + " Coins " + timesForTasks[3] + " Sec.";
+            allButtons[6].GetComponentInChildren<Text>().text = taskRewards[3] + " Coins " + timesForTasks[3] + " Sec.";
         }
         else
         {
@@ -222,6 +231,7 @@ public class BuildingMain : MonoBehaviour
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
+        TaskClicked(minigameDifficulty);
         if (ableToSave)
         {
             account.PushSave();
@@ -310,8 +320,7 @@ public class BuildingMain : MonoBehaviour
     public void GetReward()
     {
         doneWithTask = false;
-        account.money += taskRewards[0, taskDoing];
-        account.researchPoints += taskRewards[1, taskDoing];
+        account.money += taskRewards[0];
         taskDoing = -1;
         Destroy(tempBar);
         onceToCreate = false;

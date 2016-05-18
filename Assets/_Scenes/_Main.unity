@@ -114,8 +114,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyMiniGame: 0
   score: 0
+  currencyGotFromMinigame: 0
   backFromMinigame: 0
   highscores: 000000000000000000000000
+  minigameToLoad: 
 --- !u!4 &27170018
 Transform:
   m_ObjectHideFlags: 0
