@@ -52,7 +52,7 @@ public class BuilderMenu : MonoBehaviour
 
         for (int i = 0; i < allButtons.Length; i++)
         {
-            allButtons[i].GetComponentInChildren<Text>().text = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
+            allButtons[i].GetComponentInChildren<Text>().text = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString() + "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
         }
         for(int i = 0; i < 5; i++)
         {
@@ -62,7 +62,7 @@ public class BuilderMenu : MonoBehaviour
 
     void ButtonMakingBuildings(int i)
     {
-        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money)
+        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
         {
             allButtons[i].GetComponent<Image>().color = Color.white;
             allButtons[i].onClick.AddListener(delegate { PressedBuilding(i); });

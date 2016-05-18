@@ -7,7 +7,7 @@ public class BuildingMain : MonoBehaviour
 {
     public string buildingName;
     public Vector2 size;
-    public int price;
+    public int price, rpPrice;
     public int[] levelsNeeded;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;

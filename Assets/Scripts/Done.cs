@@ -4,7 +4,7 @@ using System.Collections;
 public class Done : MonoBehaviour 
 {
     BuildingPlacer buildingPlacer;
-    int price;
+    int price, rpPrice;
     Account account;
     bool rePos;
 
@@ -13,6 +13,7 @@ public class Done : MonoBehaviour
         buildingPlacer = GetComponentInParent<BuildingPlacer>();
         account = GameObject.Find("Account").GetComponent<Account>();
         price = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().price;
+        rpPrice = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().rpPrice;
         rePos = buildingPlacer.rePos;
     }
 
@@ -20,8 +21,9 @@ public class Done : MonoBehaviour
     {
         if (!rePos)
         {
-            if (account.money >= price)
+            if (account.money >= price && account.researchPoints >= rpPrice)
             {
+                account.researchPoints -= rpPrice;
                 account.money -= price;
                 buildingPlacer.Done();
             }
