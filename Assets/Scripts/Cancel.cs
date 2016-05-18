@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Cancel : MonoBehaviour 
 {
-	void OnMouseDown()
+	public void OnMouseDown()
     {
         
         GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(false);

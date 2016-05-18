@@ -58,16 +58,19 @@ MonoBehaviour:
   buildingName: Testing Room
   size: {x: 3, y: 4}
   price: 500
+  rpPrice: 0
   levelsNeeded: 02000000040000000600000008000000
   timesForTasks: 
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskRewards: 32000000140000001e00000028000000
   resourceBuilding: 1
+  decoration: 0
   minigame: 
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
   gridPosition: {x: 0, y: 0}
-  buildingPlacer: {fileID: 0}
+  buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   level: 0
   ID: 0
   taskDoing: 0
@@ -78,6 +81,7 @@ MonoBehaviour:
   building: 0
   doneWithTask: 0
   onceToCreate: 0
+  ableToSave: 1
 --- !u!212 &21284932
 SpriteRenderer:
   m_ObjectHideFlags: 1

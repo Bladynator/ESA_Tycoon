@@ -15,7 +15,7 @@ public class BuildingMain : MonoBehaviour
     int[] taskRewards = new int[4] // money - RP
         {50,20,30,40 };
     [SerializeField]
-    bool resourceBuilding = true;
+    bool resourceBuilding = true, decoration = false;
     [SerializeField]
     string minigame = "";
 
@@ -185,49 +185,87 @@ public class BuildingMain : MonoBehaviour
     {
         Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName;
-        allText[1].text = (level + 1).ToString();
-        allText[5].text = "Task 1";
-        allText[6].text = "Task 2";
-        allText[7].text = "Task 3";
-        allText[8].text = "Task 4";
-        allText[9].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
-        allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
-        if (resourceBuilding)
+        if (!decoration)
         {
-            allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
-            allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0] + " Coins " + timesForTasks[0] + " Sec.";
-            allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
-            allButtons[4].GetComponentInChildren<Text>().text = taskRewards[1] + " Coins " + timesForTasks[1] + " Sec.";
-            allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
-            allButtons[5].GetComponentInChildren<Text>().text = taskRewards[2] + " Coins " + timesForTasks[2] + " Sec.";
-            allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
-            allButtons[6].GetComponentInChildren<Text>().text = taskRewards[3] + " Coins " + timesForTasks[3] + " Sec.";
+            allText[1].text = (level + 1).ToString();
+            allText[5].text = "Task 1";
+            allText[6].text = "Task 2";
+            allText[7].text = "Task 3";
+            allText[8].text = "Task 4";
+            allText[9].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
+            allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
+            
+            if (resourceBuilding)
+            {
+                allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
+                allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0] + " Coins " + timesForTasks[0] + " Sec.";
+                allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
+                allButtons[4].GetComponentInChildren<Text>().text = taskRewards[1] + " Coins " + timesForTasks[1] + " Sec.";
+                allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
+                allButtons[5].GetComponentInChildren<Text>().text = taskRewards[2] + " Coins " + timesForTasks[2] + " Sec.";
+                allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
+                allButtons[6].GetComponentInChildren<Text>().text = taskRewards[3] + " Coins " + timesForTasks[3] + " Sec.";
+            }
+            else
+            {
+                allButtons[3].onClick.AddListener(delegate { ClickedMinigame(0, minigame); });
+                allButtons[3].GetComponentInChildren<Text>().text = "Easy";
+                allButtons[4].onClick.AddListener(delegate { ClickedMinigame(1, minigame); });
+                allButtons[4].GetComponentInChildren<Text>().text = "Medium";
+                allButtons[5].onClick.AddListener(delegate { ClickedMinigame(2, minigame); });
+                allButtons[5].GetComponentInChildren<Text>().text = "Hard";
+                allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
+                allButtons[6].GetComponentInChildren<Text>().text = "Endless";
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                if (level < i)
+                {
+                    allButtons[i + 3].enabled = false;
+                }
+            }
         }
         else
         {
-            allButtons[3].onClick.AddListener(delegate { ClickedMinigame(0, minigame); });
-            allButtons[3].GetComponentInChildren<Text>().text = "Easy";
-            allButtons[4].onClick.AddListener(delegate { ClickedMinigame(1, minigame); });
-            allButtons[4].GetComponentInChildren<Text>().text = "Medium";
-            allButtons[5].onClick.AddListener(delegate { ClickedMinigame(2, minigame); });
-            allButtons[5].GetComponentInChildren<Text>().text = "Hard";
-            allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
-            allButtons[6].GetComponentInChildren<Text>().text = "Endless";
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            if(level < i)
+            allButtons[1].onClick.AddListener(delegate { DeleteDeco(); });
+            for (int i = 3; i < allButtons.Length; i++)
             {
-                allButtons[i + 3].enabled = false;
+                allButtons[i].gameObject.SetActive(false);
+            }
+            Destroy(allText[1]);
+            allText[3].text = "Destroy";
+            for (int i = 5; i < allText.Length; i++)
+            {
+                Destroy(allText[i]);
             }
         }
     }
     #endregion
 
     #region Buttons
+
+    void DeleteDeco()
+    {
+        Vector3 positionOfNewBuilding = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
+        BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(buildingPlacer, positionOfNewBuilding, transform.rotation);
+        tempBuilding.buildingToPlace = this.gameObject;
+        tempBuilding.activePlaceOnGrid = gridPosition;
+        tempBuilding.builderPlacerTemp = buildingPlacer;
+        tempBuilding.fieldID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)gridPosition.x, (int)gridPosition.y].ID;
+        tempBuilding.oldBuilding = this.gameObject;
+        tempBuilding.rePos = true;
+        tempBuilding.oldActivePlace = gridPosition;
+        BackClicked();
+        tempBuilding.Delete();
+        GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete();
+        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+        Destroy(GameObject.FindGameObjectWithTag("Builder"));
+        Destroy(gameObject);
+        account.PushSave();
+    }
 
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {

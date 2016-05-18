@@ -226,7 +226,7 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396, y: -113}
+  m_AnchoredPosition: {x: -457, y: -113}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &280862347
@@ -750,7 +750,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396, y: -220}
+  m_AnchoredPosition: {x: -457, y: -220}
   m_SizeDelta: {x: 113, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625757930
@@ -1478,7 +1478,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134, y: -99}
+  m_AnchoredPosition: {x: -28, y: 87}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1711023114
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptyField: {fileID: 11495738, guid: 8d2046c76881aed498b3b0a67bf9df54, type: 2}
   allFields: {fileID: 115862, guid: 0e5191e0f3ad5524897f5f89ada19703, type: 2}
-  maxGridSize: 24
+  maxGridSize: 12
 --- !u!4 &1838144052
 Transform:
   m_ObjectHideFlags: 0
