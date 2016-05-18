@@ -52,7 +52,13 @@ public class BuilderMenu : MonoBehaviour
 
         for (int i = 0; i < allButtons.Length; i++)
         {
-            allButtons[i].GetComponentInChildren<Text>().text = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString() + "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
+            string buttonText;
+            buttonText = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
+            if(buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice != 0)
+            {
+                buttonText += "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
+            }
+            allButtons[i].GetComponentInChildren<Text>().text = buttonText;
         }
         for(int i = 0; i < 5; i++)
         {
