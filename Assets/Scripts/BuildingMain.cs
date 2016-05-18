@@ -236,7 +236,7 @@ public class BuildingMain : MonoBehaviour
                 allButtons[i].gameObject.SetActive(false);
             }
             Destroy(allText[1]);
-            allText[3].text = "Destroy";
+            allText[300].text = "Destroy";
             for (int i = 5; i < allText.Length; i++)
             {
                 Destroy(allText[i]);
