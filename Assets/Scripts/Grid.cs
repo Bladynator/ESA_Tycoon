@@ -11,7 +11,9 @@ public class Grid : MonoBehaviour
     [SerializeField]
     GameObject allFields;
     public int maxGridSize = 8;
-    
+    [SerializeField]
+    BuildingButtons buildings;
+
     public void MakeGrid()
     {
         grid = new EmptyField[maxGridSize, maxGridSize];
@@ -26,7 +28,7 @@ public class Grid : MonoBehaviour
                 EmptyField tempField = (EmptyField)Instantiate(emptyField, newPos, emptyField.transform.rotation);
                 tempField.transform.SetParent(allFieldsTemp.transform);
                 tempField.ID = idToGive;
-                tempField.buildMenu = GameObject.Find("BuilderMenu").GetComponent<BuilderMenu>();
+                tempField.buildMenu = buildings;
                 idToGive++;
                 tempField.gridPosition = new Vector2(x, y);
                 grid[x, y] = tempField;

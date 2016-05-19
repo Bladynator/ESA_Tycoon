@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &176750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 445128}
+  - 114: {fileID: 11477648}
+  m_Layer: 0
+  m_Name: BuilderMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445128
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14836998, y: 0.18989225, z: 3.5097656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11477648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1295ad87ee52d1944b65e799d6e1b577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingsPrefabs:
+  - {fileID: 103908, guid: 7fb493b92ef6a3c41ac2329c247345d1, type: 2}
+  - {fileID: 174516, guid: c015f06615843814bbaab53deb7c4588, type: 2}
+  - {fileID: 175066, guid: 04e48c8b266bfba4d93165a04ead00c9, type: 2}
+  - {fileID: 173014, guid: 9bbd560cd10d97d4d9293c6539ffaac3, type: 2}
+  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  builderPlacerTemp: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
+  fieldLocation: {fileID: 0}
+  fieldGridLocation: {x: 0, y: 0}
+  fieldID: 0
+  tutorialBack: 0
+  canvas: {fileID: 122658, guid: d3da824a1f6227a48810168e43e6e10f, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 176750}
+  m_IsPrefabParent: 1

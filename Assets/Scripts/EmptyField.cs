@@ -5,7 +5,7 @@ public class EmptyField : MonoBehaviour
 {
     public int ID;
     public Vector2 gridPosition;
-    public BuilderMenu buildMenu;
+    public BuildingButtons buildMenu;
     public bool placeAble = true;
     public string building = "EmptyField";
     

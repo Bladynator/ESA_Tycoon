@@ -54,10 +54,12 @@ public class HUD : MonoBehaviour
         {
             if (obj.GetComponent<EmptyField>() != null)
             {
+                /*
                 buildMenu.MakeButtons();
                 buildMenu.fieldLocation = obj.GetComponent<EmptyField>().transform;
                 buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
                 buildMenu.fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
+                */
             }
         }
         else

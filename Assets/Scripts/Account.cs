@@ -10,7 +10,9 @@ public class Account : MonoBehaviour
     public int level = 1, money = 1000, researchPoints = 0, exp = 0;
     public string nameTown;
     SaveLoad saveLoad;
-    
+    [SerializeField]
+    BuildingButtons buildings;
+
     string save;
     bool waitOneSec = false;
     public bool autoSave = true;
@@ -146,7 +148,7 @@ public class Account : MonoBehaviour
 
     void PlaceBuildings()
     {
-        GameObject[] allBuildingsToPlace = GameObject.Find("BuilderMenu").GetComponent<BuilderMenu>().GetAllBuildings();
+        GameObject[] allBuildingsToPlace = buildings.GetAllBuildings();
         GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
         string[] allInformation = Regex.Split(save, "<DB>");
         level = Convert.ToInt32(allInformation[1]);

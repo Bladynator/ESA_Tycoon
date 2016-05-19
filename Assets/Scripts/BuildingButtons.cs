@@ -3,10 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class BuilderMenu : MonoBehaviour 
+public class BuildingButtons : MonoBehaviour 
 {
     string[] namesBuildings;
-    string[] namesButtons = new string[5] { "Task Buildings", "Resource Buildings", "Decorations", "", "" };
     [SerializeField]
     GameObject[] buildingsPrefabs;
     [SerializeField]
@@ -16,9 +15,6 @@ public class BuilderMenu : MonoBehaviour
     public int fieldID;
     Account account;
     public bool tutorialBack = false;
-    [SerializeField]
-    GameObject canvas;
-    GameObject tempCanvas;
     Button[] allButtons = new Button[5];
     Image reset;
 
@@ -26,27 +22,27 @@ public class BuilderMenu : MonoBehaviour
     {
         account = GameObject.Find("Account").GetComponent<Account>();
         namesBuildings = new string[buildingsPrefabs.Length];
-        for(int i = 0; i < buildingsPrefabs.Length; i++)
+        for (int i = 0; i < buildingsPrefabs.Length; i++)
         {
             namesBuildings[i] = buildingsPrefabs[i].GetComponent<BuildingMain>().buildingName;
         }
+        
+        MakeButtons();
     }
 
     public void MakeButtons()
     {
-        tempCanvas = Instantiate(canvas);
-        allButtons = tempCanvas.GetComponentsInChildren<Button>();
+        allButtons = GetComponentsInChildren<Button>();
         reset = GameObject.Find("ResetButton").GetComponent<Image>();
         reset.raycastTarget = true;
-        tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         for (int i = 0; i < allButtons.Length; i++)
         {
             allButtons[i].onClick.AddListener(delegate { PressedType(i); });
-            allButtons[i].GetComponentInChildren<Text>().text = namesButtons[i];
         }
+        GameObject.Find("Resource").GetComponent<Button>().onClick.Invoke();
     }
 
-    void PressedType(int p)
+    public void PressedType(int p)
     {
         tutorialBack = false;
 
@@ -54,13 +50,13 @@ public class BuilderMenu : MonoBehaviour
         {
             string buttonText;
             buttonText = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
-            if(buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice != 0)
+            if (buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice != 0)
             {
                 buttonText += "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
             }
             allButtons[i].GetComponentInChildren<Text>().text = buttonText;
         }
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             ButtonMakingBuildings(i);
         }
@@ -94,18 +90,18 @@ public class BuilderMenu : MonoBehaviour
         return buildingsPrefabs;
     }
 
-    public void Reset()
-    {
-        Destroy(tempCanvas);
-        //reset.raycastTarget = false;
-        allButtons = new Button[5];
-        GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-        account.ChangeColliders(true);
-    }
-    
     public void PlaceBuilder(int i)
     {
-        Reset();
+        GameObject obj = GameObject.Find("Main Camera").GetComponent<CameraChanger>().Field();
+        if (obj != null)
+        {
+            if (obj.GetComponent<EmptyField>() != null)
+            {
+                fieldLocation = obj.GetComponent<EmptyField>().transform;
+                fieldID = obj.GetComponent<EmptyField>().ID;
+                fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
+            }
+        }
         Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y, fieldLocation.position.z);
         BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);
         tempBuilding.buildingToPlace = buildingsPrefabs[i];
