@@ -14,7 +14,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     GameObject hq;
     public bool tutorialDoing = false;
-    BuilderMenu builderMenu;
+    BuildingButtons builderMenu;
     [SerializeField]
     GameObject arrow, canvas, nameInputCanvas;
     [SerializeField]

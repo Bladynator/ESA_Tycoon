@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour 
 {
     Account account;
-    public BuilderMenu buildMenu;
+    public BuildingButtons buildMenu;
     public Button buildButton;
     public Text money;
     public Text researchPoints;

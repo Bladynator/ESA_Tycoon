@@ -3773,7 +3773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96568eb39c73133409e197ac7e2966b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildMenu: {fileID: 0}
+  buildMenu: {fileID: 445618935}
   buildButton: {fileID: 625757930}
   money: {fileID: 280862349}
   researchPoints: {fileID: 1413742256}
@@ -6069,8 +6069,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.989
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
