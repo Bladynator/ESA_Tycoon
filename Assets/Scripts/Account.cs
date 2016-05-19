@@ -53,7 +53,7 @@ public class Account : MonoBehaviour
                 string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
                 switch (nameOfBuilding)
                 {
-                    case "Engineer":
+                    case "R&D center":
                         {
                             amountOfEachBuilding[0]++;
                             break;
