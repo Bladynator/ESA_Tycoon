@@ -306,8 +306,11 @@ public class Account : MonoBehaviour
 
     public void ResetSave(string reset)
     {
-        File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
-        SceneManager.LoadScene("_Main");
+        if (reset == "DELETE")
+        {
+            File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
+            SceneManager.LoadScene("_Main");
+        }
     }
 
     public void GoToScene(string scene)
