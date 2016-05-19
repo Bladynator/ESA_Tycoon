@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17e9fe3f1d2e074db9506249bab148a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Engineer
+  buildingName: R&D center
   size: {x: 2, y: 2}
   price: 100
   rpPrice: 0
