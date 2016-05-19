@@ -2126,6 +2126,10 @@ MonoBehaviour:
   - {fileID: 175066, guid: 04e48c8b266bfba4d93165a04ead00c9, type: 2}
   - {fileID: 173014, guid: 9bbd560cd10d97d4d9293c6539ffaac3, type: 2}
   - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
   builderPlacerTemp: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   fieldLocation: {fileID: 0}
   fieldGridLocation: {x: 0, y: 0}

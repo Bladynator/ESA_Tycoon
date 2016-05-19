@@ -15,14 +15,14 @@ public class BuildingButtons : MonoBehaviour
     public int fieldID;
     Account account;
     public bool tutorialBack = false;
-    Button[] allButtons = new Button[5];
+    Button[] allButtons = new Button[6];
     Image reset;
 
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
         namesBuildings = new string[buildingsPrefabs.Length];
-        for (int i = 0; i < buildingsPrefabs.Length; i++)
+        for (int i = 0; i < namesBuildings.Length; i++)
         {
             namesBuildings[i] = buildingsPrefabs[i].GetComponent<BuildingMain>().buildingName;
         }
@@ -42,36 +42,36 @@ public class BuildingButtons : MonoBehaviour
         GameObject.Find("Resource").GetComponent<Button>().onClick.Invoke();
     }
 
-    public void PressedType(int p)
+    public void PressedType(int i)
     {
         tutorialBack = false;
 
-        for (int i = 0; i < allButtons.Length; i++)
+        for (int p = 0; p < allButtons.Length; p++)
         {
             string buttonText;
-            buttonText = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
-            if (buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice != 0)
+            buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().price.ToString();
+            if (buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpPrice != 0)
             {
-                buttonText += "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
+                buttonText += "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpPrice.ToString();
             }
-            allButtons[i].GetComponentInChildren<Text>().text = buttonText;
+            allButtons[p].GetComponentInChildren<Text>().text = buttonText;
         }
-        for (int i = 0; i < 3; i++)
+        for (int p = 0; p < 3; p++)
         {
-            ButtonMakingBuildings(i);
+            ButtonMakingBuildings((i * 3) + p, p);
         }
     }
 
-    void ButtonMakingBuildings(int i)
+    void ButtonMakingBuildings(int i, int p)
     {
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
         {
-            allButtons[i].GetComponent<Image>().color = Color.white;
-            allButtons[i].onClick.AddListener(delegate { PressedBuilding(i); });
+            allButtons[p].GetComponent<Image>().color = Color.white;
+            allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
         }
         else
         {
-            allButtons[i].GetComponent<Image>().color = Color.red;
+            allButtons[p].GetComponent<Image>().color = Color.red;
         }
     }
 
