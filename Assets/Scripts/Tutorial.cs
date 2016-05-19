@@ -19,8 +19,8 @@ public class Tutorial : MonoBehaviour
     GameObject arrow, canvas, nameInputCanvas;
     [SerializeField]
     GameObject[] arrowLocations;
-    GameObject tempArrow, tempCanvas, tempNameInputCanvas;
-    bool arrowSpawned = false, once = false;
+    GameObject tempArrow;
+    bool arrowSpawned = false, once = false, onceName = false, onceCanvas = false;
 
     void Start () 
 	{
@@ -59,6 +59,7 @@ public class Tutorial : MonoBehaviour
                         case 2:
                             {
                                 MakeCanvasName(townName);
+                                onceName = true;
                                 break;
                             }
                         case 3:
@@ -371,17 +372,17 @@ public class Tutorial : MonoBehaviour
     {
         hud.SetName(name);
         questPart++;
-        Destroy(tempNameInputCanvas);
+        nameInputCanvas.SetActive(false);
     }
 
     void MakeCanvasName(string name)
     {
-        if (tempNameInputCanvas == null)
+        if (!onceName)
         {
-            tempNameInputCanvas = Instantiate(nameInputCanvas);
-            tempNameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(name); });
-            tempNameInputCanvas.GetComponentInChildren<InputField>().text = name;
-            tempNameInputCanvas.GetComponentInChildren<InputField>().onEndEdit.AddListener(delegate { tempNameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(tempNameInputCanvas.GetComponentInChildren<InputField>().text); }); });
+            nameInputCanvas.SetActive(true);
+            nameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(name); });
+            nameInputCanvas.GetComponentInChildren<InputField>().text = name;
+            nameInputCanvas.GetComponentInChildren<InputField>().onEndEdit.AddListener(delegate { nameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(nameInputCanvas.GetComponentInChildren<InputField>().text); }); });
         }
     }
 
@@ -395,17 +396,18 @@ public class Tutorial : MonoBehaviour
         {
             hud.canvas[time].SetActive(true);
         }
-
-        Destroy(tempCanvas);
+        onceCanvas = false;
+        canvas.SetActive(false);
     }
 
     void MakeCanvas(string text, int addedMoney, int addedRP, int time)
     {
-        if(tempCanvas == null)
+        if(!onceCanvas)
         {
-            tempCanvas = Instantiate(canvas);
-            tempCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
-            tempCanvas.GetComponentInChildren<Text>().text = text;
+            onceCanvas = true;
+            canvas.SetActive(true);
+            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
+            canvas.GetComponentInChildren<Text>().text = text;
         }
     }
 
