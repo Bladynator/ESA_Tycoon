@@ -5,7 +5,7 @@ using System;
 
 public class BuildingButtons : MonoBehaviour 
 {
-    string[] namesBuildings;
+    string[] namesBuildings = new string[9];
     [SerializeField]
     GameObject[] buildingsPrefabs;
     [SerializeField]
@@ -26,7 +26,7 @@ public class BuildingButtons : MonoBehaviour
         {
             namesBuildings[i] = buildingsPrefabs[i].GetComponent<BuildingMain>().buildingName;
         }
-        
+        account.namesBuildings = namesBuildings;
         MakeButtons();
     }
 
@@ -35,10 +35,9 @@ public class BuildingButtons : MonoBehaviour
         allButtons = GetComponentsInChildren<Button>();
         reset = GameObject.Find("ResetButton").GetComponent<Image>();
         reset.raycastTarget = true;
-        for (int i = 0; i < allButtons.Length; i++)
-        {
-            allButtons[i].onClick.AddListener(delegate { PressedType(i); });
-        }
+        allButtons[0].onClick.AddListener(delegate { PressedType(0); });
+        allButtons[1].onClick.AddListener(delegate { PressedType(1); });
+        allButtons[2].onClick.AddListener(delegate { PressedType(2); });
         GameObject.Find("Resource").GetComponent<Button>().onClick.Invoke();
     }
 
@@ -46,10 +45,9 @@ public class BuildingButtons : MonoBehaviour
     {
         tutorialBack = false;
 
-        for (int p = 0; p < allButtons.Length; p++)
+        for (int p = 0; p < 3; p++)
         {
-            string buttonText;
-            buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().price.ToString();
+            string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().price.ToString();
             if (buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpPrice != 0)
             {
                 buttonText += "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpPrice.ToString();

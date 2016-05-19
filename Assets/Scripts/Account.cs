@@ -12,6 +12,7 @@ public class Account : MonoBehaviour
     SaveLoad saveLoad;
     [SerializeField]
     BuildingButtons buildings;
+    public string[] namesBuildings;
 
     string save;
     bool waitOneSec = false;
@@ -48,32 +49,17 @@ public class Account : MonoBehaviour
     {
         amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 };
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
-        foreach (GameObject building in allBuildings)
+        for(int i = 0; i < allBuildings.Length; i++)
         {
-            if (building.GetComponent<BuildingMain>() != null)
+            if (allBuildings[i].GetComponent<BuildingMain>() != null)
             {
-                string nameOfBuilding = building.GetComponent<BuildingMain>().buildingName;
-                switch (nameOfBuilding)
+                string nameOfBuilding = allBuildings[i].GetComponent<BuildingMain>().buildingName;
+                for(int p = 0; p < namesBuildings.Length; p++)
                 {
-                    case "R&D center":
-                        {
-                            amountOfEachBuilding[0]++;
-                            break;
-                        }
-                    case "Builder":
-                        {
-                            amountOfEachBuilding[1]++;
-                            break;
-                        }
-                    case "Flag":
-                        {
-                            amountOfEachBuilding[2]++;
-                            break;
-                        }
-                    default:
-                        {
-                            break;
-                        }
+                    if(nameOfBuilding == namesBuildings[p])
+                    {
+                        amountOfEachBuilding[p]++;
+                    }
                 }
             }
         }
