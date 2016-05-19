@@ -37,7 +37,7 @@ public class BuildingMain : MonoBehaviour
     int[,] priceForUpgrading = new int[5, 3]; // level, money, RP
 
     GameObject[] canvas;
-    GameObject tempCanvas, tempBar;
+    GameObject tempBar;
     Button[] allButtons;
 
     public bool ableToSave = true;
@@ -126,8 +126,8 @@ public class BuildingMain : MonoBehaviour
         {
             if (!busy && !building && !doneWithTask)
             {
-                tempCanvas = Instantiate(canvas[0]);
-                setupFirstButtons(tempCanvas);
+                canvas[0].SetActive(true);
+                setupFirstButtons(canvas[0]);
                 account.ChangeColliders(false);
                 GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
             }
@@ -305,7 +305,7 @@ public class BuildingMain : MonoBehaviour
 
     public void BackClicked()
     {
-        Destroy(tempCanvas);
+        canvas[0].SetActive(false);
         account.ChangeColliders(true);
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
