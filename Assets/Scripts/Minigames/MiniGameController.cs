@@ -11,6 +11,8 @@ public class MiniGameController : MonoBehaviour
     public int[] highscores = new int[3] {0,0,0 };
     public string minigameToLoad = "";
 
+    public bool fromClickToStart = false;
+
 	void Awake()
     {
         DontDestroyOnLoad(gameObject);

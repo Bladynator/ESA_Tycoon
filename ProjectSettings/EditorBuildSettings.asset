@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/Minigame3.unity
   - enabled: 1
     path: Assets/_Scenes/Tutorial.unity
+  - enabled: 1
+    path: Assets/_Scenes/ClickToStart.unity

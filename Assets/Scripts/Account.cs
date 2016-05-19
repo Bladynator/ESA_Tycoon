@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Text.RegularExpressions;
 using System;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Account : MonoBehaviour 
 {
@@ -124,6 +126,10 @@ public class Account : MonoBehaviour
         {
             GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
             GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
+            if(!GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart)
+            {
+                GoToScene("ClickToStart");
+            }
         }
         else
         {
@@ -296,5 +302,16 @@ public class Account : MonoBehaviour
             }
         }
         return fields;
+    }
+
+    public void ResetSave(string reset)
+    {
+        File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
+        SceneManager.LoadScene("_Main");
+    }
+
+    public void GoToScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
