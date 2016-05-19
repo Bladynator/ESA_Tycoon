@@ -3390,7 +3390,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: acceed1f1c7f7944cb4732ce0aa0f8fd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4269,7 +4269,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.4994774, y: -5.456968e-12}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 831, y: 455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846582070
