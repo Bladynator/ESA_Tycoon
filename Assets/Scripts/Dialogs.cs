@@ -28,7 +28,6 @@ public class Dialogs : MonoBehaviour
 
     [SerializeField]
     GameObject canvas;
-    GameObject tempCanvas;
 
     void Update()
     {
@@ -39,7 +38,7 @@ public class Dialogs : MonoBehaviour
                 pos++;
                 currentTime = Time.time;
                 msg01 = output.Substring(0, pos);
-                tempCanvas.GetComponentInChildren<Text>().text = msg01;
+                canvas.GetComponentInChildren<Text>().text = msg01;
             }
             
             if(msg01 == output && !waitForInput && Input.GetMouseButtonDown(0))
@@ -52,7 +51,7 @@ public class Dialogs : MonoBehaviour
                     {
                         GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
                     }
-                    Destroy(tempCanvas);
+                    canvas.SetActive(false);
                 }
                 else
                 {
@@ -63,7 +62,7 @@ public class Dialogs : MonoBehaviour
             if (msg01 != output && Input.GetMouseButtonDown(0))
             {
                 msg01 = output;
-                tempCanvas.GetComponentInChildren<Text>().text = msg01;
+                canvas.GetComponentInChildren<Text>().text = msg01;
             }
         }
 
@@ -73,7 +72,7 @@ public class Dialogs : MonoBehaviour
             {
                 waitForInput = false;
                 pos = 0;
-                Destroy(tempCanvas);
+                canvas.SetActive(true);
                 ActivateTalking(dialogNumberMain, numberToSay);
             }
         }
@@ -81,7 +80,7 @@ public class Dialogs : MonoBehaviour
 
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
-        tempCanvas = Instantiate(canvas);
+        canvas.SetActive(true);
         pos = 0;
         talk = true;
         numberToSay = number;

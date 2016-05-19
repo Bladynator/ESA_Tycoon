@@ -22,7 +22,8 @@ public class Quests : MonoBehaviour
     public bool tutorialBack = false, wait = false;
     [SerializeField]
     GameObject questInfoCanvas, questScreen;
-    GameObject tempQuestInfoCanvas;
+    [SerializeField]
+    Button[] buttons;
     Button[] questButtons = new Button[3];
     
     #region questRequirements
@@ -172,24 +173,24 @@ public class Quests : MonoBehaviour
         {
             tutorialBack = false;
         }
-        Destroy(tempQuestInfoCanvas);
+        questInfoCanvas.SetActive(false);
     }
 
     void PressedCollect(int toProgress)
     {
         questLineProgress[toProgress]++;
         wait = false;
-        Destroy(tempQuestInfoCanvas);
+        questInfoCanvas.SetActive(false);
     }
 
     void ShowInformation(int toProgress, string text, bool showButton, int questDone = 0)
     {
-        tempQuestInfoCanvas = Instantiate(questInfoCanvas);
-        Button[] buttons = tempQuestInfoCanvas.GetComponentsInChildren<Button>();
+        questInfoCanvas.SetActive(true);
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
         buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
-        tempQuestInfoCanvas.GetComponentInChildren<Text>().text = text;
-        
+        questInfoCanvas.GetComponentInChildren<Text>().text = text;
+        buttons[0].gameObject.SetActive(true);
+        buttons[1].gameObject.SetActive(true);
         if (showButton)
         {
             buttons[1].gameObject.SetActive(false);
