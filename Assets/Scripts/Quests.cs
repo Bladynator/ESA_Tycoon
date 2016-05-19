@@ -21,8 +21,8 @@ public class Quests : MonoBehaviour
 
     public bool tutorialBack = false, wait = false;
     [SerializeField]
-    GameObject questCanvas, questInfoCanvas;
-    GameObject tempQuestCanvas, tempQuestInfoCanvas;
+    GameObject questInfoCanvas, questScreen;
+    GameObject tempQuestInfoCanvas;
     Button[] questButtons = new Button[3];
     
     #region questRequirements
@@ -99,8 +99,7 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        tempQuestCanvas = Instantiate(questCanvas);
-        questButtons = tempQuestCanvas.GetComponentsInChildren<Button>();
+        questButtons = GameObject.Find("QuestsScreen").GetComponentsInChildren<Button>();
         for(int i = 0; i < 3; i++)
         {
             questButtons[i].gameObject.SetActive(false);
@@ -130,7 +129,7 @@ public class Quests : MonoBehaviour
 
     public void ShowQuests(bool show)
     {
-        tempQuestCanvas.SetActive(show);
+        questScreen.SetActive(show);
     }
 
     public void ResetQuests()

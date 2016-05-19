@@ -101,6 +101,7 @@ public class CameraChanger : MonoBehaviour
 
     void OnGUI()
     {
+        /*
         if (COMPUTERVERSION)
         {
             if (camera.orthographicSize > 4)
@@ -118,5 +119,6 @@ public class CameraChanger : MonoBehaviour
                 }
             }
         }
+        */
     }
 }
