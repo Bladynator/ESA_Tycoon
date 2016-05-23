@@ -137,6 +137,7 @@ public class Quests : MonoBehaviour
 
     public void ResetQuests()
     {
+        texts = new List<string>();
         questButton.gameObject.SetActive(false);
         for (int i = 0; i < questLineProgress.Length; i++)
         {
@@ -181,16 +182,13 @@ public class Quests : MonoBehaviour
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
         
         Text[] allTexts = questInfoCanvas.GetComponentsInChildren<Text>();
-        for(int i = 0; i < text.Count; i++)
-        {
-            allTexts[i].text = text[i];
-        }
         for (int i = 0; i < allTexts.Length; i++)
         {
-            if(allTexts[i].text == "")
-            {
-                allTexts[i].gameObject.SetActive(false);
-            }
+            allTexts[i].text = "";
+        }
+        for (int i = 0; i < text.Count; i++)
+        {
+            allTexts[i].text = text[i];
         }
         buttons[0].gameObject.SetActive(true);
         buttons[1].gameObject.SetActive(true);

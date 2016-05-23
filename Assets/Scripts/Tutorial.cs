@@ -38,7 +38,7 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(questPart);
+        Debug.Log(questPart);
         switch (activeQuest)
         {
             case 1:
@@ -280,7 +280,7 @@ public class Tutorial : MonoBehaviour
                                 ShowArrow(0);
                                 questLine.ShowQuests(true);
                                 hud.EnableButton(true);
-                                if (questLine.questOpen != -1)
+                                if (!account.waitForInput)
                                 {
                                     questLine.tutorialBack = true;
                                     questPart++;
