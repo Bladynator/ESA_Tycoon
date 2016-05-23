@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Quests : MonoBehaviour 
 {
@@ -24,7 +25,9 @@ public class Quests : MonoBehaviour
     GameObject questInfoCanvas, questScreen;
     [SerializeField]
     Button[] buttons;
-    Button[] questButtons = new Button[3];
+    Button questButton;
+
+    List<string> texts = new List<string>();
     
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
@@ -100,11 +103,8 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        questButtons = GameObject.Find("QuestsScreen").GetComponentsInChildren<Button>();
-        for(int i = 0; i < 3; i++)
-        {
-            questButtons[i].gameObject.SetActive(false);
-        }
+        questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Button>();
+        questButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -121,7 +121,9 @@ public class Quests : MonoBehaviour
                         ResetQuests();
                         break;
                     }
-                    ShowInformation(i, allText[i, questLineProgress[i]], false, questLineProgress[i]);
+                    texts.Add(allText[i, questLineProgress[i]]);
+                    ShowInformation(i, texts, false, questLineProgress[i]);
+                    texts = new List<string>();
                     wait = true;
                 }
             }
@@ -135,35 +137,23 @@ public class Quests : MonoBehaviour
 
     public void ResetQuests()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            questButtons[i].gameObject.SetActive(false);
-        }
+        questButton.gameObject.SetActive(false);
         for (int i = 0; i < questLineProgress.Length; i++)
         {
             if (questLineProgress[i] != 0)
             {
-                questsActive[activeQuests] = i;
-                questButtons[activeQuests].gameObject.SetActive(true);
-                questButtons[activeQuests].onClick.AddListener(delegate { OpenQuest(activeQuests); });
-                activeQuests++;
+                questButton.gameObject.SetActive(true);
+                questButton.onClick.AddListener(delegate { OpenQuest(); });
+                texts.Add(allText[i, questLineProgress[i]]);
             }
         }
-        activeQuests = 0;
     }
 
-    void OpenQuest(int button)
+    void OpenQuest()
     {
-        int i = questsActive[button];
-        if (questOpen == i)
-        {
-            questOpen = -1;
-        }
-        else
-        {
-            questOpen = i;
-        }
-        ShowInformation(questOpen, allText[questOpen, questLineProgress[questOpen]], true);
+        texts = new List<string>();
+        ResetQuests();
+        ShowInformation(questOpen, texts, true);
     }
 
     void PressedBack()
@@ -173,6 +163,7 @@ public class Quests : MonoBehaviour
         {
             tutorialBack = false;
         }
+        texts = new List<string>();
         questInfoCanvas.SetActive(false);
     }
 
@@ -181,14 +172,26 @@ public class Quests : MonoBehaviour
         questLineProgress[toProgress]++;
         wait = false;
         questInfoCanvas.SetActive(false);
+        texts = new List<string>();
     }
 
-    void ShowInformation(int toProgress, string text, bool showButton, int questDone = 0)
+    void ShowInformation(int toProgress, List<string> text, bool showButton, int questDone = 0)
     {
         questInfoCanvas.SetActive(true);
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
         buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
-        questInfoCanvas.GetComponentInChildren<Text>().text = text;
+        Text[] allTexts = questInfoCanvas.GetComponentsInChildren<Text>();
+        for(int i = 0; i < text.Count; i++)
+        {
+            allTexts[i].text = text[i];
+        }
+        for (int i = 0; i < allTexts.Length; i++)
+        {
+            if(allTexts[i].text == "")
+            {
+                allTexts[i].gameObject.SetActive(false);
+            }
+        }
         buttons[0].gameObject.SetActive(true);
         buttons[1].gameObject.SetActive(true);
         if (showButton)
@@ -199,6 +202,7 @@ public class Quests : MonoBehaviour
         {
             buttons[0].gameObject.SetActive(false);
         }
+        texts = new List<string>();
     }
 
     public bool CheckIfRequirementsAreSet(int questline, int quest, bool clickedCollect = false)
