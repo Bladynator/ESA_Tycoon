@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
     public Image expBar;
     public GameObject[] canvas;
     public GameObject[] buildingCanvas;
+    public GameObject reset;
 
     void Start () 
 	{

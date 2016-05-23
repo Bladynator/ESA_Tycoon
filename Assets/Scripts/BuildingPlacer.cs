@@ -129,6 +129,7 @@ public class BuildingPlacer : MonoBehaviour
             account = GameObject.Find("Account").GetComponent<Account>();
         }
         account.ChangeColliders(false);
+        GameObject.Find("HUD").GetComponent<HUD>().reset.SetActive(false);
     }
 
     public void ChangePosition(Vector2 newPostion)
