@@ -977,7 +977,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 234563670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1801302261}
+        m_MethodName: WaitForInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &234563670
@@ -1044,7 +1055,7 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -381, y: -128}
+  m_AnchoredPosition: {x: -298, y: -7}
   m_SizeDelta: {x: 88, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &272195752
@@ -2321,15 +2332,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingsPrefabs:
-  - {fileID: 103908, guid: 7fb493b92ef6a3c41ac2329c247345d1, type: 2}
   - {fileID: 174516, guid: c015f06615843814bbaab53deb7c4588, type: 2}
-  - {fileID: 175066, guid: 04e48c8b266bfba4d93165a04ead00c9, type: 2}
   - {fileID: 173014, guid: 9bbd560cd10d97d4d9293c6539ffaac3, type: 2}
+  - {fileID: 175066, guid: 04e48c8b266bfba4d93165a04ead00c9, type: 2}
+  - {fileID: 103908, guid: 7fb493b92ef6a3c41ac2329c247345d1, type: 2}
   - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
-  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
-  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
-  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
-  - {fileID: 116320, guid: c0579964408822040824aa3348da2e24, type: 2}
+  - {fileID: 123700, guid: 930a10c65a88cb74185e02c2322e34a8, type: 2}
+  - {fileID: 194780, guid: 03cafe7d005532d40b13921ed650ea40, type: 2}
+  - {fileID: 194780, guid: 03cafe7d005532d40b13921ed650ea40, type: 2}
+  - {fileID: 194780, guid: 03cafe7d005532d40b13921ed650ea40, type: 2}
   builderPlacerTemp: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   fieldLocation: {fileID: 0}
   fieldGridLocation: {x: 0, y: 0}
@@ -2447,7 +2458,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 448819407}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1801302261}
+        m_MethodName: WaitForInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &448819407
@@ -3363,7 +3385,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 88116a7de59ab4944a5055eb9a890f35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 899628363b150fd4092ae7b8a8816ca8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3406,7 +3428,7 @@ RectTransform:
   m_RootOrder: 9
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54, y: -68}
+  m_AnchoredPosition: {x: -381, y: -124}
   m_SizeDelta: {x: 88, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &568385078
@@ -3438,7 +3460,7 @@ RectTransform:
   m_RootOrder: 10
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144, y: -33}
+  m_AnchoredPosition: {x: -382, y: -122}
   m_SizeDelta: {x: 88, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &608380793
@@ -4699,6 +4721,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 846582068}
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1801302261}
+        m_MethodName: WaitForInput
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8004,7 +8037,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: 59}
+  m_AnchoredPosition: {x: -234, y: 90}
   m_SizeDelta: {x: 88, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1709304385
@@ -8787,6 +8820,7 @@ MonoBehaviour:
   namesBuildings: []
   autoSave: 1
   justLeveld: 0
+  waitForInput: 0
   expNeededForLevel: 0000000064000000c80000002c01000090010000f401000020030000e8030000e8030000e8030000
   amountOfEachBuilding: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &1801302262
@@ -10455,7 +10489,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -302, y: 91}
+  m_AnchoredPosition: {x: -307, y: -138}
   m_SizeDelta: {x: 88, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2067111275

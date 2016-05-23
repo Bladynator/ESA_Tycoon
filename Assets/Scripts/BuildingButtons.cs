@@ -62,8 +62,9 @@ public class BuildingButtons : MonoBehaviour
 
     void ButtonMakingBuildings(int i, int p)
     {
-        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
+        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
         {
+            allButtons[p].onClick.RemoveAllListeners();
             allButtons[p].GetComponent<Image>().color = Color.white;
             allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
         }

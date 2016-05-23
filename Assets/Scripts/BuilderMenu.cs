@@ -68,7 +68,7 @@ public class BuilderMenu : MonoBehaviour
 
     void ButtonMakingBuildings(int i)
     {
-        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeeded[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
+        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
         {
             allButtons[i].GetComponent<Image>().color = Color.white;
             allButtons[i].onClick.AddListener(delegate { PressedBuilding(i); });
@@ -105,6 +105,7 @@ public class BuilderMenu : MonoBehaviour
     
     public void PlaceBuilder(int i)
     {
+        Debug.Log("t");
         Reset();
         Vector3 positionOfNewBuilding = new Vector3(fieldLocation.position.x, fieldLocation.position.y, fieldLocation.position.z);
         BuildingPlacer tempBuilding = (BuildingPlacer)Instantiate(builderPlacerTemp, positionOfNewBuilding, transform.rotation);

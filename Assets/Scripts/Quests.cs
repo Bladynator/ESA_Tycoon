@@ -32,9 +32,9 @@ public class Quests : MonoBehaviour
     #region questRequirements
     int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
     { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, Flag, minigame1Score, buildings5, buildings6, buildings7, buildings8}
+        {0,0,0,0,0,1,0,0,0,0},
         {0,0,1,0,0,0,0,0,0,0},
-        {0,0,0,1,0,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,0,0}, // flag
+        {0,0,0,0,0,0,0,0,1,0}, // flag
         {0,0,0,0,0,0,0,0,0,0},  // none
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -151,9 +151,9 @@ public class Quests : MonoBehaviour
 
     void OpenQuest()
     {
-        texts = new List<string>();
         ResetQuests();
         ShowInformation(questOpen, texts, true);
+        texts = new List<string>();
     }
 
     void PressedBack()
@@ -179,7 +179,7 @@ public class Quests : MonoBehaviour
     {
         questInfoCanvas.SetActive(true);
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
-        buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
+        
         Text[] allTexts = questInfoCanvas.GetComponentsInChildren<Text>();
         for(int i = 0; i < text.Count; i++)
         {
@@ -200,6 +200,8 @@ public class Quests : MonoBehaviour
         }
         else
         {
+            buttons[1].onClick.RemoveAllListeners();
+            buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
             buttons[0].gameObject.SetActive(false);
         }
         texts = new List<string>();
@@ -209,14 +211,16 @@ public class Quests : MonoBehaviour
     {
         myInformation[0] = account.money;
         myInformation[1] = account.researchPoints;
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 8; i++)
         {
             myInformation[i + 2] = account.amountOfEachBuilding[i];
         }
-        for(int i = 0; i < 3; i++)
+        /*
+        for(int i = 0; i < 1; i++)
         {
-            myInformation[i + 5] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
+            myInformation[i + 9] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
         }
+        */
         bool ifEnough = true;
         for (int i = 0; i < 10; i++)
         {
@@ -229,9 +233,6 @@ public class Quests : MonoBehaviour
         {
             if (ifEnough)
             {
-                account.money -= questRequirements[questline, quest, 0];
-                account.researchPoints -= questRequirements[questline, quest, 1];
-
                 account.money += questRewards[questline, quest, 0];
                 account.researchPoints += questRewards[questline, quest, 1];
                 account.exp += questRewards[questline, quest, 2];

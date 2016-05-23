@@ -16,7 +16,7 @@ public class Account : MonoBehaviour
 
     string save;
     bool waitOneSec = false;
-    public bool autoSave = true, justLeveld = false;
+    public bool autoSave = true, justLeveld = false, waitForInput = false;
     int saveInSec = 5;
     public int[] expNeededForLevel;
     public int[] amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
@@ -66,6 +66,11 @@ public class Account : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void WaitForInput(bool toChangeTo)
+    {
+        waitForInput = toChangeTo;
     }
 
     IEnumerator ToSave()

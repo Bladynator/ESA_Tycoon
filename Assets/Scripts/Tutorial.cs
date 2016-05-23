@@ -38,6 +38,7 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(questPart);
         switch (activeQuest)
         {
             case 1:
@@ -86,14 +87,16 @@ public class Tutorial : MonoBehaviour
                         case 7:
                             {
                                 ShowDialog(3);
+                                account.waitForInput = true;
                                 break;
                             }
                         case 8:
                             {
                                 ShowArrow(0);
                                 questLine.ShowQuests(true);
-                                if (questLine.questOpen != -1)
+                                if (!account.waitForInput)
                                 {
+                                    account.waitForInput = true;
                                     questLine.tutorialBack = true;
                                     questPart++;
                                     DestroyArrow();
@@ -103,8 +106,9 @@ public class Tutorial : MonoBehaviour
                         case 9:
                             {
                                 ShowArrow(1);
-                                if (questLine.tutorialBack == false)
+                                if (!account.waitForInput)
                                 {
+                                    account.waitForInput = true;
                                     questPart++;
                                     DestroyArrow();
                                 }
@@ -159,13 +163,13 @@ public class Tutorial : MonoBehaviour
                         case 3:
                             {
                                 ShowDialog(6, false);
-                                questLine.tutorialBack = true;
-                                ShowArrow(0);
+                                account.waitForInput = true;
+                                ShowArrow(4);
                                 break;
                             }
                         case 4:
                             {
-                                if (questLine.questOpen != -1)
+                                if (!account.waitForInput)
                                 {
                                     questLine.tutorialBack = true;
                                     questPart = 20;
@@ -343,6 +347,7 @@ public class Tutorial : MonoBehaviour
                                 {
                                     temp.GetComponent<BuildingMain>().ableToSave = true;
                                 }
+                                account.exp += 20;
                                 Destroy(gameObject);
                                 questLine.questLineProgress[1] = 1;
                                 questLine.ResetQuests();

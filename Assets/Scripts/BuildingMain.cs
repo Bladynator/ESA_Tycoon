@@ -8,7 +8,10 @@ public class BuildingMain : MonoBehaviour
     public string buildingName;
     public Vector2 size;
     public int price, rpPrice;
-    public int[] levelsNeeded;
+    public int[] levelsNeededNewBuilding;
+    public int[] levelsNeededUpgrade;
+    public int[] moneyNeededUpgrade;
+    public int[] rpNeededUpgrade;
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
     [SerializeField]
@@ -37,7 +40,11 @@ public class BuildingMain : MonoBehaviour
     bool waitOneSec = false, waitOneSecForBuilding = false;
     
 
-    int[,] priceForUpgrading = new int[5, 3]; // level, money, RP
+    int[,] priceForUpgrading = new int[4, 3]
+        { { 1, 100, 0}, // level 1
+        { 4 , 300 , 0}, // level 2
+        { 6, 500, 10}, // level 3
+        { 8, 1000, 50}}; // level 4; // level, money, RP
 
     GameObject[] canvas;
     GameObject tempBar;
@@ -47,6 +54,15 @@ public class BuildingMain : MonoBehaviour
     
     public virtual void Start()
     {
+        if (!decoration)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                priceForUpgrading[i, 0] = levelsNeededUpgrade[i];
+                priceForUpgrading[i, 1] = moneyNeededUpgrade[i];
+                priceForUpgrading[i, 2] = rpNeededUpgrade[i];
+            }
+        }
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)
@@ -137,11 +153,6 @@ public class BuildingMain : MonoBehaviour
                 GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
             }
         }
-    }
-
-    public void GiveInformation(int[,] information)
-    {
-        priceForUpgrading = information;
     }
 
     public void SetMaxTime()
