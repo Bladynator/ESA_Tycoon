@@ -16,7 +16,7 @@ public class Account : MonoBehaviour
 
     string save;
     bool waitOneSec = false;
-    public bool autoSave = true;
+    public bool autoSave = true, justLeveld = false;
     int saveInSec = 5;
     public int[] expNeededForLevel;
     public int[] amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
@@ -33,6 +33,7 @@ public class Account : MonoBehaviour
         {
             exp -= expNeededForLevel[level];
             level++;
+            justLeveld = true;
         }
         if (saveInSec <= 0 && autoSave)
         {
