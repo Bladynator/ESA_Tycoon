@@ -59,7 +59,7 @@ MonoBehaviour:
   size: {x: 3, y: 4}
   price: 500
   rpPrice: 0
-  levelsNeeded: 02000000040000000600000008000000
+  levelsNeeded: 0200000007000000
   timesForTasks: 
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskRewards: 32000000140000001e00000028000000
