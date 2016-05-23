@@ -15,11 +15,12 @@ public class BuildingMain : MonoBehaviour
     int[] taskRewards = new int[4] // money - RP
         {50,20,30,40 };
     [SerializeField]
-    bool resourceBuilding = true, decoration = false;
+    public bool resourceBuilding = true, decoration = false;
     [SerializeField]
     string minigame = "";
     [SerializeField]
     Sprite[] buildingSprites;
+    public int[] exp;
 
     [HideInInspector]
     public bool busy, buildingBusy, clickedUpgrade;
@@ -76,6 +77,7 @@ public class BuildingMain : MonoBehaviour
                 building = false;
                 level++;
                 Destroy(tempBar);
+                account.exp += exp[level];
                 if(ableToSave)
                 {
                     account.PushSave();

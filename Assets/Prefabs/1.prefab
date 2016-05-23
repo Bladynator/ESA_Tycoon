@@ -55,6 +55,7 @@ MonoBehaviour:
   decoration: 0
   minigame: 
   buildingSprites: []
+  exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0

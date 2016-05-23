@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17e9fe3f1d2e074db9506249bab148a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Testing Room
+  buildingName: Launchpad
   size: {x: 3, y: 4}
   price: 500
   rpPrice: 0
@@ -66,6 +66,8 @@ MonoBehaviour:
   resourceBuilding: 1
   decoration: 0
   minigame: 
+  buildingSprites: []
+  exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
   clickedUpgrade: 0
