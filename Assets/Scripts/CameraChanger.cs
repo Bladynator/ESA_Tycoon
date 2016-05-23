@@ -85,9 +85,9 @@ public class CameraChanger : MonoBehaviour
         {
             transform.position = new Vector2(13, position.y);
         }
-        if (transform.position.x < -32)
+        if (transform.position.x < -12)
         {
-            transform.position = new Vector2(-32, position.y);
+            transform.position = new Vector2(-12, position.y);
         }
         if (transform.position.y > 33)
         {

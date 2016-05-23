@@ -18,6 +18,8 @@ public class BuildingMain : MonoBehaviour
     bool resourceBuilding = true, decoration = false;
     [SerializeField]
     string minigame = "";
+    [SerializeField]
+    Sprite[] buildingSprites;
 
     [HideInInspector]
     public bool busy, buildingBusy, clickedUpgrade;
@@ -59,6 +61,7 @@ public class BuildingMain : MonoBehaviour
         {
             taskRewards = new int[4];
         }
+        //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
     }
 
     public virtual void Update()
