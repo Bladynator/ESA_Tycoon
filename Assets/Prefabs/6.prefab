@@ -78,7 +78,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   level: 0
   ID: 0
-  taskDoing: 0
+  taskDoing: -1
   timeToFinishTask: 0
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0

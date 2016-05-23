@@ -199,9 +199,14 @@ public class BuildingMain : MonoBehaviour
 
     public void setupFirstButtons(GameObject canvasTemp)
     {
+        allButtons = canvasTemp.GetComponentsInChildren<Button>();
+        for (int i = 0; i < allButtons.Length; i++)
+        {
+            allButtons[i].onClick.RemoveAllListeners();
+        }
         Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName;
-        allButtons = canvasTemp.GetComponentsInChildren<Button>();
+        
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         if (!decoration)

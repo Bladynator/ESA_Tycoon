@@ -41,6 +41,7 @@ public class BuilderMenu : MonoBehaviour
         tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         for (int i = 0; i < allButtons.Length; i++)
         {
+            allButtons[i].onClick.RemoveAllListeners();
             allButtons[i].onClick.AddListener(delegate { PressedType(i); });
             allButtons[i].GetComponentInChildren<Text>().text = namesButtons[i];
         }
