@@ -12,6 +12,7 @@ public class MiniGameController : MonoBehaviour
     public string minigameToLoad = "";
 
     public bool fromClickToStart = false;
+    public int levelPlayer = 1;
 
 	void Awake()
     {

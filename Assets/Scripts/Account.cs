@@ -25,6 +25,7 @@ public class Account : MonoBehaviour
 	{
         saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
     }
     
     void Update()
@@ -34,6 +35,7 @@ public class Account : MonoBehaviour
             exp -= expNeededForLevel[level];
             level++;
             justLeveld = true;
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
         }
         if (saveInSec <= 0 && autoSave)
         {
