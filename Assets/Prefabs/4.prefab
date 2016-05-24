@@ -59,7 +59,7 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   price: 200
   rpPrice: 0
-  levelsNeededNewBuilding: 0200000007000000
+  levelsNeededNewBuilding: 02000000070000005a000000
   levelsNeededUpgrade: 02000000040000000700000009000000
   moneyNeededUpgrade: 64000000640000006400000064000000
   rpNeededUpgrade: 64000000640000006400000064000000

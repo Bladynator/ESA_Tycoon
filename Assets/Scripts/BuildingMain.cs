@@ -63,6 +63,8 @@ public class BuildingMain : MonoBehaviour
                 priceForUpgrading[i, 2] = rpNeededUpgrade[i];
             }
         }
+        price = moneyNeededUpgrade[0];
+        rpPrice = rpNeededUpgrade[0];
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)

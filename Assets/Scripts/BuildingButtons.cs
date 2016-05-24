@@ -27,6 +27,7 @@ public class BuildingButtons : MonoBehaviour
             namesBuildings[i] = buildingsPrefabs[i].GetComponent<BuildingMain>().buildingName;
         }
         account.namesBuildings = namesBuildings;
+        account.UpdateAmountOFBuildings();
         MakeButtons();
     }
 
@@ -60,17 +61,20 @@ public class BuildingButtons : MonoBehaviour
         }
         for (int p = 0; p < 3; p++)
         {
-            ButtonMakingBuildings((i * 3) + p, p);
+            ButtonMakingBuildings(i * 3 + p, p);
         }
     }
 
     void ButtonMakingBuildings(int i, int p)
     {
+        //Debug.Log(i + " / " + p);
+        //Debug.Log(buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] + " / " + account.level);// + " / " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]]);
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
         {
             allButtons[p].onClick.RemoveAllListeners();
             allButtons[p].GetComponent<Image>().color = Color.white;
             allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
+            allButtons[p].GetComponent<Image>().color = Color.white;
         }
         else
         {
