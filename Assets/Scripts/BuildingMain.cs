@@ -36,7 +36,6 @@ public class BuildingMain : MonoBehaviour
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
-    bool waitOneSec = false, waitOneSecForBuilding = false;
 
     float currentTime = 0;
     

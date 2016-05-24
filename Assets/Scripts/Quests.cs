@@ -15,7 +15,6 @@ public class Quests : MonoBehaviour
     {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
     {"","Play the second minigame","2","3","4","5","","","",""},
     {"","heey","hello","","","","","","",""}};
-    int activeQuests = 0;
     public int questOpen = -1;
 
     int[] myInformation = new int[10];
