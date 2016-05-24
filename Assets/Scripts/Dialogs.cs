@@ -81,6 +81,7 @@ public class Dialogs : MonoBehaviour
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
         canvas.SetActive(true);
+        msg01 = "";
         pos = 0;
         talk = true;
         numberToSay = number;

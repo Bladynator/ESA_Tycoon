@@ -8,7 +8,7 @@ public class BuildingPlacer : MonoBehaviour
     public BuildingPlacer builderPlacerTemp;
     public int fieldID;
     EmptyField[,] grid;
-    bool placeAble = true;
+    public bool placeAble = true;
     public bool rePos = false;
     Account account;
 

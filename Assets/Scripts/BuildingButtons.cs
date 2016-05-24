@@ -33,6 +33,10 @@ public class BuildingButtons : MonoBehaviour
     public void MakeButtons()
     {
         allButtons = GetComponentsInChildren<Button>();
+        for(int i = 0; i < 3; i++)
+        {
+            allButtons[i].onClick.RemoveAllListeners();
+        }
         reset = GameObject.Find("ResetButton").GetComponent<Image>();
         reset.raycastTarget = true;
         allButtons[0].onClick.AddListener(delegate { PressedType(0); });

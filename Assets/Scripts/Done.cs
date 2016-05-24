@@ -19,18 +19,21 @@ public class Done : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!rePos)
+        if (buildingPlacer.placeAble)
         {
-            if (account.money >= price && account.researchPoints >= rpPrice)
+            if (!rePos)
             {
-                account.researchPoints -= rpPrice;
-                account.money -= price;
+                if (account.money >= price && account.researchPoints >= rpPrice)
+                {
+                    account.researchPoints -= rpPrice;
+                    account.money -= price;
+                    buildingPlacer.Done();
+                }
+            }
+            else
+            {
                 buildingPlacer.Done();
             }
-        }
-        else
-        {
-            buildingPlacer.Done();
         }
     }
 }

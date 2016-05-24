@@ -38,7 +38,7 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(activeQuest + " / " + questPart);
+        //Debug.Log(activeQuest + " / " + questPart);
         switch (activeQuest)
         {
             case 1:
@@ -180,6 +180,7 @@ public class Tutorial : MonoBehaviour
                         case 5:
                             {
                                 ShowArrow(4);
+                                questPart = -3;
                                 if (!builderMenu.tutorialBack)
                                 {
                                     DestroyArrow();
@@ -415,7 +416,6 @@ public class Tutorial : MonoBehaviour
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
             canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
             canvas.GetComponentInChildren<Text>().text = text;
-            GameObject.Find("Collect").GetComponentInChildren<Text>().text = "Collect";
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Quests : MonoBehaviour 
 {
@@ -182,6 +183,7 @@ public class Quests : MonoBehaviour
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
         
         Text[] allTexts = questInfoCanvas.GetComponentsInChildren<Text>();
+        allTexts = allTexts.Take(allTexts.Length - 1).ToArray();
         for (int i = 0; i < allTexts.Length; i++)
         {
             allTexts[i].text = "";
