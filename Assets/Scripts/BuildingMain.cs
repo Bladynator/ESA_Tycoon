@@ -38,6 +38,8 @@ public class BuildingMain : MonoBehaviour
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
     public bool building = false, doneWithTask = false, onceToCreate = false;
     bool waitOneSec = false, waitOneSecForBuilding = false;
+
+    float currentTime = 0;
     
 
     int[,] priceForUpgrading = new int[4, 3]
@@ -87,61 +89,50 @@ public class BuildingMain : MonoBehaviour
     {
         SortingLayers();
 
-        #region BuildingTimer
-        if (building)
+        if(Time.time >= currentTime + 1f)
         {
-            if (timeLeftToFinishBuild <= 0)
+            currentTime = Time.time;
+            if (busy)
             {
-                building = false;
-                level++;
-                Destroy(tempBar);
-                account.exp += exp[level];
-                //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
-                if (ableToSave)
+                timeToFinishTask--;
+                DrawBar(timeToFinishTaskTotal, timeToFinishTask);
+                if (timeToFinishTask <= 0 && !onceToCreate)
                 {
-                    account.PushSave();
+                    busy = false;
+                    doneWithTask = true;
+                    onceToCreate = true;
+                    GetComponent<CircleCollider2D>().enabled = false;
+                    Destroy(tempBar);
+                    if (!resourceBuilding)
+                    {
+                        GetReward();
+                    }
+                    else
+                    {
+                        tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
+                        tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                    }
                 }
+
             }
-            else
+            if(building)
             {
-                if (!waitOneSecForBuilding)
+                timeLeftToFinishBuild--;
+                DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+                if (timeLeftToFinishBuild <= 0)
                 {
-                    StartCoroutine(WaitForBuild());
+                    building = false;
+                    level++;
+                    Destroy(tempBar);
+                    account.exp += exp[level];
+                    //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                    if (ableToSave)
+                    {
+                        account.PushSave();
+                    }
                 }
             }
         }
-        #endregion
-        #region TaskTimer
-        if (busy)
-        {
-            if (timeToFinishTask <= 0 && !onceToCreate)
-            {
-                busy = false;
-                doneWithTask = true;
-                onceToCreate = true;
-                GetComponent<CircleCollider2D>().enabled = false;
-                Destroy(tempBar);
-                StopCoroutine(WaitForTask());
-                Destroy(tempBar);
-                if (!resourceBuilding)
-                {
-                    GetReward();
-                }
-                else
-                {
-                    tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
-                    tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
-                }
-            }
-            else
-            {
-                if (!waitOneSec && !onceToCreate && timeToFinishTask > 0)
-                {
-                    StartCoroutine(WaitForTask());
-                }
-            }
-        } 
-        #endregion
     }
 
     public void OnMouseUp()
@@ -358,26 +349,6 @@ public class BuildingMain : MonoBehaviour
         layerSort *= -layerSort;
         GetComponent<SpriteRenderer>().sortingOrder = layerSort;
     }
-
-    #region Timers
-    IEnumerator WaitForTask()
-    {
-        waitOneSec = true;
-        timeToFinishTask--;
-        DrawBar(timeToFinishTaskTotal, timeToFinishTask);
-        yield return new WaitForSeconds(1);
-        waitOneSec = false;
-    }
-
-    IEnumerator WaitForBuild()
-    {
-        waitOneSecForBuilding = true;
-        timeLeftToFinishBuild--;
-        yield return new WaitForSeconds(1);
-        DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
-        waitOneSecForBuilding = false;
-    } 
-    #endregion
     
     public void GetReward()
     {
