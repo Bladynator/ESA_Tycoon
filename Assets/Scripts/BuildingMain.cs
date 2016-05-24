@@ -144,7 +144,7 @@ public class BuildingMain : MonoBehaviour
         #endregion
     }
 
-    public void OnMouseDown()
+    public void OnMouseUp()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
