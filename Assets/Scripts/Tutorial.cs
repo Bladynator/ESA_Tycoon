@@ -38,7 +38,7 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(questPart);
+        Debug.Log(activeQuest + " / " + questPart);
         switch (activeQuest)
         {
             case 1:
@@ -207,9 +207,9 @@ public class Tutorial : MonoBehaviour
                         case 20:
                             {
                                 ShowArrow(1);
-                                if (questLine.tutorialBack == false)
+                                if (account.waitForInput == false)
                                 {
-                                    questLine.tutorialBack = true;
+                                    account.waitForInput = true;
                                     DestroyArrow();
                                     questPart = 5;
                                     builderMenu.tutorialBack = true;
@@ -342,6 +342,7 @@ public class Tutorial : MonoBehaviour
                             {
                                 tutorialDoing = false;
                                 questPart++;
+                                DestroyArrow();
                                 GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
                                 foreach (GameObject temp in allBuildings)
                                 {
@@ -411,8 +412,10 @@ public class Tutorial : MonoBehaviour
         {
             onceCanvas = true;
             canvas.SetActive(true);
+            canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
             canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
             canvas.GetComponentInChildren<Text>().text = text;
+            GameObject.Find("Collect").GetComponentInChildren<Text>().text = "Collect";
         }
     }
 
