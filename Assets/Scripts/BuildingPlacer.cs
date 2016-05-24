@@ -88,7 +88,7 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.GetComponent<BuildingMain>().taskDoing = -1;
             Destroy(oldBuilding);
             account.UpdateAmountOFBuildings();
-            if (!tempBuilding.GetComponent<BuildingMain>().decoration)
+            if (!tempBuilding.GetComponent<BuildingMain>().decoration && !rePos)
             {
                 account.exp += tempBuilding.GetComponent<BuildingMain>().exp[tempBuilding.GetComponent<BuildingMain>().level];
             }

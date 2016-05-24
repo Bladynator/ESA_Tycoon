@@ -94,7 +94,8 @@ public class BuildingMain : MonoBehaviour
                 level++;
                 Destroy(tempBar);
                 account.exp += exp[level];
-                if(ableToSave)
+                //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                if (ableToSave)
                 {
                     account.PushSave();
                 }
