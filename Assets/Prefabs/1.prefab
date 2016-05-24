@@ -52,9 +52,9 @@ MonoBehaviour:
   timesForTasks: 0a0000001e000000280000003200000006000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskRewards: 32000000140000001e00000028000000
-  resourceBuilding: 1
+  resourceBuilding: 0
   decoration: 0
-  minigame: 
+  minigame: Minigame1
   buildingSprites: []
   exp: 28000000320000003c00000050000000
   busy: 0

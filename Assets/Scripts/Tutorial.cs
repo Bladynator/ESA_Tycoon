@@ -249,7 +249,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 2:
                             {
-                                MakeCanvas("You got: 500 Gold!", 500, 0, 2);
+                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 2);
                                 break;
                             }
                         case 3:
@@ -266,7 +266,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                if(account.money == 650)
+                                if(account.money == 1150)
                                 {
                                     questPart++;
                                 }
@@ -341,6 +341,11 @@ public class Tutorial : MonoBehaviour
                                 break;
                             }
                         case 8:
+                            {
+                                MakeCanvas("You got: 1000 Gold! & 1000 RP!", 1000, 1000, 3);
+                                break;
+                            }
+                        case 9:
                             {
                                 tutorialDoing = false;
                                 questPart++;
