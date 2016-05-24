@@ -7,7 +7,6 @@ public class BuildingMain : MonoBehaviour
 {
     public string buildingName;
     public Vector2 size;
-    public int price, rpPrice;
     public int[] levelsNeededNewBuilding;
     public int[] levelsNeededUpgrade;
     public int[] moneyNeededUpgrade;
@@ -65,8 +64,6 @@ public class BuildingMain : MonoBehaviour
                 priceForUpgrading[i, 2] = rpNeededUpgrade[i];
             }
         }
-        price = moneyNeededUpgrade[0];
-        rpPrice = rpNeededUpgrade[0];
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)

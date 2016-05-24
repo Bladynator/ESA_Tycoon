@@ -16,7 +16,7 @@ public class Tutorial : MonoBehaviour
     public bool tutorialDoing = false;
     BuildingButtons builderMenu;
     [SerializeField]
-    GameObject arrow, canvas, nameInputCanvas;
+    GameObject arrow, canvas, nameInputCanvas, skymap;
     [SerializeField]
     GameObject[] arrowLocations;
     GameObject tempArrow;
@@ -54,6 +54,7 @@ public class Tutorial : MonoBehaviour
                                 hud.CanvasEnabled(false);
                                 questLine.ShowQuests(false);
                                 dialogs.tutorial = true;
+                                skymap.SetActive(false);
                                 ShowDialog(0);
                                 break;
                             }
@@ -353,6 +354,7 @@ public class Tutorial : MonoBehaviour
                                 Destroy(gameObject);
                                 questLine.questLineProgress[1] = 1;
                                 questLine.ResetQuests();
+                                skymap.SetActive(true);
                                 account.autoSave = true;
                                 account.PushSave();
                                 break;

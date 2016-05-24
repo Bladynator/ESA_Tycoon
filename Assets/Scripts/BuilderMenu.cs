@@ -54,10 +54,10 @@ public class BuilderMenu : MonoBehaviour
         for (int i = 0; i < allButtons.Length; i++)
         {
             string buttonText;
-            buttonText = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().price.ToString();
-            if(buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice != 0)
+            buttonText = namesBuildings[i] + "\nPrice: " + buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
+            if(buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] != 0)
             {
-                buttonText += "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice.ToString();
+                buttonText += "\nRP: " + buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
             }
             allButtons[i].GetComponentInChildren<Text>().text = buttonText;
         }
@@ -69,7 +69,7 @@ public class BuilderMenu : MonoBehaviour
 
     void ButtonMakingBuildings(int i)
     {
-        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().price <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpPrice <= account.researchPoints)
+        if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
         {
             allButtons[i].GetComponent<Image>().color = Color.white;
             allButtons[i].onClick.AddListener(delegate { PressedBuilding(i); });

@@ -12,8 +12,8 @@ public class Done : MonoBehaviour
     {
         buildingPlacer = GetComponentInParent<BuildingPlacer>();
         account = GameObject.Find("Account").GetComponent<Account>();
-        price = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().price;
-        rpPrice = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().rpPrice;
+        price = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().moneyNeededUpgrade[0];
+        rpPrice = buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().rpNeededUpgrade[0];
         rePos = buildingPlacer.rePos;
     }
 
