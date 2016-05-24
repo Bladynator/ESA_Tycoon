@@ -57,7 +57,7 @@ public class BuildingMain : MonoBehaviour
     {
         if (!decoration)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 priceForUpgrading[i, 0] = levelsNeededUpgrade[i];
                 priceForUpgrading[i, 1] = moneyNeededUpgrade[i];

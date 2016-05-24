@@ -48,15 +48,20 @@ public class BuildingButtons : MonoBehaviour
 
     public void PressedType(int i)
     {
+        Button[] typeButtons = GameObject.Find("BuildMenu").GetComponentsInChildren<Button>();
         tutorialBack = false;
+        typeButtons[i].interactable = false;
+        for(int p = 0; p < 3; p++)
+        {
+            if(p != i)
+            {
+                typeButtons[p].interactable = true;
+            }
+        }
 
         for (int p = 0; p < 3; p++)
         {
-            string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
-            if (buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0] != 0)
-            {
-                buttonText += "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
-            }
+            string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
             allButtons[p].GetComponentInChildren<Text>().text = buttonText;
         }
         for (int p = 0; p < 3; p++)
@@ -67,12 +72,13 @@ public class BuildingButtons : MonoBehaviour
 
     void ButtonMakingBuildings(int i, int p)
     {
+        allButtons[p].onClick.RemoveAllListeners();
+        account.UpdateAmountOFBuildings();
         //Debug.Log(i + " / " + p);
         //Debug.Log(buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] + " / " + account.level);// + " / " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]]);
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
         {
-            allButtons[p].onClick.RemoveAllListeners();
-            allButtons[p].GetComponent<Image>().color = Color.white;
+            
             allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
             allButtons[p].GetComponent<Image>().color = Color.white;
         }
@@ -116,6 +122,6 @@ public class BuildingButtons : MonoBehaviour
         tempBuilding.builderPlacerTemp = builderPlacerTemp;
         tempBuilding.fieldID = fieldID;
         account.ChangeColliders(false);
-        gameObject.SetActive(false);
+        GameObject.Find("BuildMenu").gameObject.SetActive(false);
     }
 }

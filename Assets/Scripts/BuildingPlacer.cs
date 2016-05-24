@@ -87,11 +87,11 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
             tempBuilding.GetComponent<BuildingMain>().taskDoing = -1;
             Destroy(oldBuilding);
-            account.UpdateAmountOFBuildings();
             if (!tempBuilding.GetComponent<BuildingMain>().decoration && !rePos)
             {
                 account.exp += tempBuilding.GetComponent<BuildingMain>().exp[tempBuilding.GetComponent<BuildingMain>().level];
             }
+            account.UpdateAmountOFBuildings();
             if (GameObject.Find("Tutorial") != null)
             {
                 if (!GameObject.Find("Tutorial").GetComponent<Tutorial>().tutorialDoing)
