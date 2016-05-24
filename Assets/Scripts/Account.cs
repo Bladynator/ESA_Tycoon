@@ -281,11 +281,13 @@ public class Account : MonoBehaviour
                 {
                     for (int k = 0; k < tempBuildings.Length; k++)
                     {
-                        //Debug.Log(tempBuildings[k].GetComponent<BuildingMain>().ID + " / " + grid[i, p].ID);
-                        if(tempBuildings[k].GetComponent<BuildingMain>().ID == grid[i, p].ID)
+                        if (tempBuildings[k].GetComponent<BuildingMain>() != null)
                         {
-                            tempBuilding = tempBuildings[k].GetComponent<BuildingMain>();
-                            break;
+                            if (tempBuildings[k].GetComponent<BuildingMain>().ID == grid[i, p].ID)
+                            {
+                                tempBuilding = tempBuildings[k].GetComponent<BuildingMain>();
+                                break;
+                            }
                         }
                     }
                 }
