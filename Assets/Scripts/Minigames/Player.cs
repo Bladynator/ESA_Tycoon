@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     {
         locations = GameObject.Find("Controller").GetComponent<Controller>().spawns;
     }
-
+    
     void Update()
     {
         transform.position = new Vector2(-8, locations[currentLocation].transform.position.y);
