@@ -17,6 +17,8 @@ public class BuildingButtons : MonoBehaviour
     public bool tutorialBack = false;
     Button[] allButtons = new Button[6];
     Image reset;
+    [SerializeField]
+    Image pressed, unpressed;
 
     void Start()
     {
@@ -51,18 +53,25 @@ public class BuildingButtons : MonoBehaviour
         Button[] typeButtons = GameObject.Find("BuildMenu").GetComponentsInChildren<Button>();
         tutorialBack = false;
         typeButtons[i].interactable = false;
+        typeButtons[i].image = unpressed;
         for(int p = 0; p < 3; p++)
         {
             if(p != i)
             {
                 typeButtons[p].interactable = true;
+                typeButtons[p].image = pressed;
             }
         }
 
         for (int p = 0; p < 3; p++)
         {
-            string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
-            allButtons[p].GetComponentInChildren<Text>().text = buttonText;
+            //string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
+            Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
+            allText[0].text = namesBuildings[(i * 3) + p];
+            allText[1].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.x + "x" + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.y;
+            allText[2].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
+            allText[3].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
+            //allButtons[p].GetComponentInChildren<Text>().text = buttonText;
         }
         for (int p = 0; p < 3; p++)
         {

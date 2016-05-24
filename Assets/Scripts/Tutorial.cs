@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class Tutorial : MonoBehaviour 
 {
@@ -384,6 +385,7 @@ public class Tutorial : MonoBehaviour
 
     void PressedDoneButton(string name)
     {
+        name = name.Replace("<DB>", "");
         hud.SetName(name);
         questPart++;
         nameInputCanvas.SetActive(false);
