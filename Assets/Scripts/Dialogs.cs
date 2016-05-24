@@ -68,7 +68,7 @@ public class Dialogs : MonoBehaviour
 
         if (waitForInput)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 waitForInput = false;
                 pos = 0;
