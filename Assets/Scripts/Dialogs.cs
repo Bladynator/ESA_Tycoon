@@ -41,7 +41,7 @@ public class Dialogs : MonoBehaviour
                 canvas.GetComponentInChildren<Text>().text = msg01;
             }
             
-            if(msg01 == output && !waitForInput && Input.GetMouseButtonDown(0))
+            if(msg01 == output && !waitForInput && Input.GetMouseButtonUp(0))
             {
                 numberToSay++;
                 if(dialogText[dialogNumberMain, numberToSay] == "")
@@ -59,7 +59,7 @@ public class Dialogs : MonoBehaviour
                 }
             }
             
-            if (msg01 != output && Input.GetMouseButtonDown(0))
+            if (msg01 != output && Input.GetMouseButtonUp(0))
             {
                 msg01 = output;
                 canvas.GetComponentInChildren<Text>().text = msg01;
