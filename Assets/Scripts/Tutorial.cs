@@ -158,7 +158,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 2:
                             {
-                                MakeCanvas("You got 10 Research Points!", 0, 10, 1);
+                                MakeCanvas("You got 500 Research Points!", 0, 500, 1);
                                 break;
                             }
                         case 3:
@@ -266,7 +266,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                if(account.money == 1250)
+                                if(account.money == 650)
                                 {
                                     questPart++;
                                 }
