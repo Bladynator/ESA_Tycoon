@@ -214,11 +214,11 @@ public class BuildingMain : MonoBehaviour
         if (!decoration)
         {
             allText[1].text = (level + 1).ToString();
-            allText[5].text = "Task 1";
-            allText[6].text = "Task 2";
-            allText[7].text = "Task 3";
-            allText[8].text = "Task 4";
-            allText[9].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
+            allText[4].text = "Task 1";
+            allText[5].text = "Task 2";
+            allText[6].text = "Task 3";
+            allText[7].text = "Task 4";
+            allText[8].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
             allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
             
             if (resourceBuilding)
