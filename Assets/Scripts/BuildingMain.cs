@@ -49,6 +49,7 @@ public class BuildingMain : MonoBehaviour
     GameObject tempBar;
     Button[] allButtons;
     Image[] allImages;
+    Text[] allText;
 
     public bool ableToSave = true;
     
@@ -208,13 +209,14 @@ public class BuildingMain : MonoBehaviour
         {
             allButtons[i].onClick.RemoveAllListeners();
         }
-        Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
+        allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName;
         allImages[8].sprite = buildingSprites[level];
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         if (!decoration)
         {
+            allText[2].text = "Upgrade";
             allText[1].text = (level + 1).ToString();
             allText[4].text = "Task 1";
             allText[5].text = "Task 2";
@@ -258,17 +260,20 @@ public class BuildingMain : MonoBehaviour
             allButtons[1].onClick.AddListener(delegate { DeleteDeco(); });
             for (int i = 3; i < allButtons.Length; i++)
             {
-                //allButtons[i].gameObject.SetActive(false);
+                allButtons[i].gameObject.SetActive(false);
             }
-            //allText[1].gameObject.SetActive(false);
-            //Destroy(allText[1]);
-            allText[3].text = "Destroy";
-            /*
+            allText[1].gameObject.SetActive(false);
+            allText[2].text = "Destroy";
+            
             for (int i = 5; i < allText.Length; i++)
             {
-                Destroy(allText[i]);
+                allText[i].gameObject.SetActive(false);
             }
-            */
+            for (int i = 9; i < allImages.Length; i++)
+            {
+                allImages[i].gameObject.SetActive(false);
+            }
+
         }
     }
     #endregion
@@ -334,6 +339,19 @@ public class BuildingMain : MonoBehaviour
     public void BackClicked()
     {
         canvas[0].SetActive(false);
+        for (int i = 0; i < allButtons.Length; i++)
+        {
+            allButtons[i].gameObject.SetActive(true);
+        }
+        allText[1].gameObject.SetActive(true);
+        for (int i = 5; i < allText.Length; i++)
+        {
+            allText[i].gameObject.SetActive(true);
+        }
+        for (int i = 9; i < allImages.Length; i++)
+        {
+            allImages[i].gameObject.SetActive(true);
+        }
         account.ChangeColliders(true);
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
