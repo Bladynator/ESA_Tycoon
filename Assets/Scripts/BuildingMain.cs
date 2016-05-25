@@ -48,6 +48,7 @@ public class BuildingMain : MonoBehaviour
     GameObject[] canvas;
     GameObject tempBar;
     Button[] allButtons;
+    Image[] allImages;
 
     public bool ableToSave = true;
     
@@ -202,13 +203,14 @@ public class BuildingMain : MonoBehaviour
     public void setupFirstButtons(GameObject canvasTemp)
     {
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
+        allImages = canvasTemp.GetComponentsInChildren<Image>();
         for (int i = 0; i < allButtons.Length; i++)
         {
             allButtons[i].onClick.RemoveAllListeners();
         }
         Text[] allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName;
-        
+        allImages[8].sprite = buildingSprites[level];
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         if (!decoration)
