@@ -267,7 +267,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                if(account.money == 1150)
+                                if(account.money >= 1150)
                                 {
                                     questPart++;
                                 }
@@ -343,7 +343,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 8:
                             {
-                                MakeCanvas("You got: 1000 Gold! & 1000 RP!", 1000, 1000, 3);
+                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 3);
                                 break;
                             }
                         case 9:
