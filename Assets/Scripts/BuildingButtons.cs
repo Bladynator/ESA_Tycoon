@@ -18,7 +18,7 @@ public class BuildingButtons : MonoBehaviour
     Button[] allButtons = new Button[6];
     Image reset;
     [SerializeField]
-    Image pressed, unpressed;
+    Sprite pressed, unpressed;
     [SerializeField]
     Color tempColour;
 
@@ -55,13 +55,13 @@ public class BuildingButtons : MonoBehaviour
         Button[] typeButtons = GameObject.Find("BuildMenu").GetComponentsInChildren<Button>();
         tutorialBack = false;
         typeButtons[i].interactable = false;
-        typeButtons[i].image = unpressed;
+        typeButtons[i].image.sprite = unpressed;
         for(int p = 0; p < 3; p++)
         {
             if(p != i)
             {
                 typeButtons[p].interactable = true;
-                typeButtons[p].image = pressed;
+                typeButtons[p].image.sprite = pressed;
             }
         }
 
