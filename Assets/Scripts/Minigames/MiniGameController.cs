@@ -16,7 +16,12 @@ public class MiniGameController : MonoBehaviour
 
 	void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
+
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 	
 	public void ActivateMiniGame(string minigame, int difficulty, int currencyGot = 0)
