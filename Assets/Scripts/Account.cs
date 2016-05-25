@@ -212,7 +212,7 @@ public class Account : MonoBehaviour
                         //Vector2 newPosition = transform.position;
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
-                        tempBuilding2.transform.localScale = size;
+                        tempBuilding2.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
                         tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                         TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                         if (Convert.ToInt32(informationOneBuilding[2]) > 0)
@@ -247,9 +247,12 @@ public class Account : MonoBehaviour
         GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
         foreach (GameObject tempField in allFields)
         {
-            tempField.GetComponent<EmptyField>().ChangeColor(Color.white);
+            if (tempField.GetComponent<EmptyField>() != null)
             {
-                tempField.GetComponent<BoxCollider>().enabled = toChange;
+                tempField.GetComponent<EmptyField>().ChangeColor(Color.white);
+                {
+                    tempField.GetComponent<BoxCollider>().enabled = toChange;
+                }
             }
         }
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");

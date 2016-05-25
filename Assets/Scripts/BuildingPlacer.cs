@@ -82,7 +82,7 @@ public class BuildingPlacer : MonoBehaviour
             Vector3 newPosition = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].transform.position;
             GameObject tempBuilding = (GameObject)Instantiate(buildingToPlace, newPosition, transform.rotation);
 
-            tempBuilding.transform.localScale = size;
+            tempBuilding.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
             tempBuilding.GetComponent<BuildingMain>().ID = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].ID;
             tempBuilding.GetComponent<BuildingMain>().gridPosition = activePlaceOnGrid;
             tempBuilding.GetComponent<BuildingMain>().taskDoing = -1;

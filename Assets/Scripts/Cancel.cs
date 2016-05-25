@@ -7,6 +7,7 @@ public class Cancel : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().rePos)
         {
+            GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(false);
             if (GameObject.Find("Tutorial") != null)
             {
                 if (!GameObject.Find("Tutorial").GetComponent<Tutorial>().tutorialDoing)
@@ -21,7 +22,10 @@ public class Cancel : MonoBehaviour
                 GameObject.Find("Account").GetComponent<Account>().autoSave = true;
             }
         }
-        GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(true);
+        else
+        {
+            GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(true);
+        }
         GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
     }
