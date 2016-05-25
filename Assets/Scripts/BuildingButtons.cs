@@ -19,6 +19,8 @@ public class BuildingButtons : MonoBehaviour
     Image reset;
     [SerializeField]
     Image pressed, unpressed;
+    [SerializeField]
+    Color tempColour;
 
     void Start()
     {
@@ -68,6 +70,8 @@ public class BuildingButtons : MonoBehaviour
             //string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
             Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
             allText[0].text = namesBuildings[(i * 3) + p];
+            allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<SpriteRenderer>().sprite;
+            //allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().buildingSprites[0];
             allText[1].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.x + "x" + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.y;
             allText[2].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
             allText[3].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
@@ -93,7 +97,7 @@ public class BuildingButtons : MonoBehaviour
         }
         else
         {
-            allButtons[p].GetComponent<Image>().color = Color.red;
+            allButtons[p].GetComponent<Image>().color = tempColour;
         }
     }
 

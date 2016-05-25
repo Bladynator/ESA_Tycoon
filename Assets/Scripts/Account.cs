@@ -234,6 +234,7 @@ public class Account : MonoBehaviour
                         tempBuilding2.timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
                         tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
                         tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
+                        break;
                     }
                 }
             }

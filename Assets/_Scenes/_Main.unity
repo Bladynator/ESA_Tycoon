@@ -2774,6 +2774,7 @@ MonoBehaviour:
   tutorialBack: 0
   pressed: {fileID: 0}
   unpressed: {fileID: 0}
+  tempColour: {r: 1, g: 1, b: 1, a: 0.209}
 --- !u!1 &448113423
 GameObject:
   m_ObjectHideFlags: 0

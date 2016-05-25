@@ -20,8 +20,7 @@ public class BuildingMain : MonoBehaviour
     public bool resourceBuilding = true, decoration = false;
     [SerializeField]
     string minigame = "";
-    [SerializeField]
-    Sprite[] buildingSprites;
+    public Sprite[] buildingSprites;
     public int[] exp;
 
     [HideInInspector]
@@ -257,7 +256,7 @@ public class BuildingMain : MonoBehaviour
             allButtons[1].onClick.AddListener(delegate { DeleteDeco(); });
             for (int i = 3; i < allButtons.Length; i++)
             {
-                allButtons[i].gameObject.SetActive(false);
+                //allButtons[i].gameObject.SetActive(false);
             }
             //allText[1].gameObject.SetActive(false);
             //Destroy(allText[1]);
