@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: R&D Center
-  size: {x: 2, y: 2}
+  size: {x: 3, y: 3}
   levelsNeededNewBuilding: 01000000050000005a000000
   levelsNeededUpgrade: 01000000040000000600000008000000
   moneyNeededUpgrade: 58020000640000006400000064000000
@@ -55,7 +55,11 @@ MonoBehaviour:
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame1
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: 11f16ff83fb8ace4db7198942dcb1158, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -99,7 +103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5ff3546811921474fa45ca5153e41112, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11f16ff83fb8ace4db7198942dcb1158, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

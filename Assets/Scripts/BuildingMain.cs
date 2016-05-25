@@ -63,6 +63,19 @@ public class BuildingMain : MonoBehaviour
                 priceForUpgrading[i, 2] = rpNeededUpgrade[i];
             }
         }
+        if(size.x != size.y)
+        {
+            float newSize;
+            if (size.x < size.y)
+            {
+                newSize = size.x;
+            }
+            else
+            {
+                newSize = size.y;
+            }
+            transform.localScale = new Vector3(newSize, newSize, 1);
+        }
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)
@@ -246,12 +259,15 @@ public class BuildingMain : MonoBehaviour
             {
                 allButtons[i].gameObject.SetActive(false);
             }
-            Destroy(allText[1]);
+            //allText[1].gameObject.SetActive(false);
+            //Destroy(allText[1]);
             allText[3].text = "Destroy";
+            /*
             for (int i = 5; i < allText.Length; i++)
             {
                 Destroy(allText[i]);
             }
+            */
         }
     }
     #endregion

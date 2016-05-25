@@ -67,7 +67,11 @@ MonoBehaviour:
   resourceBuilding: 1
   decoration: 0
   minigame: Minigame1
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: 9ec7da8b75a7c2648845c0912a2e1157, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   exp: 00000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -111,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8bd84ce7a0d84a54eb529c6d51e98e53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ec7da8b75a7c2648845c0912a2e1157, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
