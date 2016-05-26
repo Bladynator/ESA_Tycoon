@@ -267,7 +267,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                if(account.money >= 1150)
+                                if(account.money >= 1130)
                                 {
                                     questPart++;
                                 }
