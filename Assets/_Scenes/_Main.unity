@@ -10439,7 +10439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptyField: {fileID: 11495738, guid: 8d2046c76881aed498b3b0a67bf9df54, type: 2}
   allFields: {fileID: 115862, guid: 0e5191e0f3ad5524897f5f89ada19703, type: 2}
-  maxGridSize: 12
+  maxGridSize: 15
   buildings: {fileID: 445618935}
 --- !u!4 &1838144052
 Transform:
@@ -11398,7 +11398,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.793515
+  orthographic size: 12.708118
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

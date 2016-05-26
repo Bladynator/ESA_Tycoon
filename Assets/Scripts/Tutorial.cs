@@ -454,7 +454,7 @@ public class Tutorial : MonoBehaviour
 
     void PlaceHQ(GameObject hq)
     {
-        Vector2 activePlaceOnGrid = new Vector2(5, 5);
+        Vector2 activePlaceOnGrid = new Vector2(2, 5);
         EmptyField[,] grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < hq.GetComponent<BuildingMain>().size.x; i++)
         {
