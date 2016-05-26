@@ -215,6 +215,7 @@ public class BuildingMain : MonoBehaviour
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
+        GameObject.Find("FullBarLevelBuilding").GetComponent<Image>().fillAmount = (float)(level + 1) / 4;
         if (!decoration)
         {
             allText[2].text = "Upgrade";
