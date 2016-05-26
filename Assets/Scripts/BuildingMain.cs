@@ -210,19 +210,20 @@ public class BuildingMain : MonoBehaviour
             allButtons[i].onClick.RemoveAllListeners();
         }
         allText = canvasTemp.GetComponentsInChildren<Text>();
-        allText[0].text = buildingName;
+        allText[0].text = buildingName + " - LVL " + (level + 1).ToString();
         allImages[8].sprite = buildingSprites[level];
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
+        GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         if (!decoration)
         {
             allText[2].text = "Upgrade";
-            allText[1].text = (level + 1).ToString();
+            allText[1].text = "";
             allText[4].text = "Task 1";
             allText[5].text = "Task 2";
             allText[6].text = "Task 3";
             allText[7].text = "Task 4";
-            allText[8].text = "Money: " + priceForUpgrading[level, 1] + "\n" + "RP      : " + priceForUpgrading[level, 2];
+            allText[8].text = priceForUpgrading[level, 1] + "\n" + priceForUpgrading[level, 2] + "\n" + priceForUpgrading[level, 0];
             allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
             
             if (resourceBuilding)
