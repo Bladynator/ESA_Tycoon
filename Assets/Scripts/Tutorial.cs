@@ -256,7 +256,6 @@ public class Tutorial : MonoBehaviour
                         case 3:
                             {
                                 ShowDialog(8, false);
-                                hud.EnableButton(false);
                                 questLine.ShowQuests(false);
                                 GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
                                 foreach(GameObject temp in allBuildings)
@@ -267,7 +266,8 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                if(account.money >= 1130)
+                                hud.buildButton.gameObject.SetActive(false);
+                                if (account.money >= 1130)
                                 {
                                     questPart++;
                                 }
@@ -280,9 +280,9 @@ public class Tutorial : MonoBehaviour
                             }
                         case 6:
                             {
+                                hud.buildButton.gameObject.SetActive(false);
                                 ShowArrow(0);
                                 questLine.ShowQuests(true);
-                                hud.EnableButton(true);
                                 if (!account.waitForInput)
                                 {
                                     questLine.tutorialBack = true;
@@ -298,6 +298,7 @@ public class Tutorial : MonoBehaviour
                                 {
                                     questPart = -6;
                                     DestroyArrow();
+                                    hud.buildButton.gameObject.SetActive(true);
                                 }
                                 break;
                             }
