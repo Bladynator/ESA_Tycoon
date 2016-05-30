@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
+
 public class Tutorial : MonoBehaviour 
 {
     Quests questLine;
@@ -31,8 +32,8 @@ public class Tutorial : MonoBehaviour
         account = GameObject.Find("Account").GetComponent<Account>();
         builderMenu = hud.buildMenu;
     }
-	
-	void FixedUpdate () 
+    
+    void FixedUpdate () 
 	{
         activeQuest = questLine.questLineProgress[0];
     }

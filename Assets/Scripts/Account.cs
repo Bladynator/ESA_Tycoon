@@ -4,6 +4,10 @@ using System.Text.RegularExpressions;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
+using Facebook.Unity.Mobile.IOS;
+using Facebook.Unity.Mobile.Android;
+using Facebook.Unity.Editor;
+using Facebook.Unity;
 
 public class Account : MonoBehaviour 
 {
@@ -27,7 +31,24 @@ public class Account : MonoBehaviour
         PushLoad();
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
     }
-    
+
+    private void ShareCallback(IShareResult result)
+    {
+        if (result.Cancelled || !string.IsNullOrEmpty(result.Error))
+        {
+            Debug.Log("ShareLink Error: " + result.Error);
+        }
+        else if (!string.IsNullOrEmpty(result.PostId))
+        {
+            // Print post identifier of the shared content
+            Debug.Log(result.PostId);
+        }
+        else {
+            // Share succeeded without postID
+            Debug.Log("ShareLink success!");
+        }
+    }
+
     void Update()
     {
         if(exp >= expNeededForLevel[level])
@@ -45,6 +66,22 @@ public class Account : MonoBehaviour
         if (!waitOneSec)
         {
             StartCoroutine(ToSave());
+        }
+    }
+
+    public void Share()
+    {
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            IOSFacebook temp = new IOSFacebook();
+            System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
+            temp.ShareLink(new System.Uri("https://developers.facebook.com/"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
+        }
+        else if (Application.platform == RuntimePlatform.Android)
+        {
+            AndroidFacebook temp = new AndroidFacebook();
+            System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
+            temp.ShareLink(new System.Uri("https://developers.facebook.com/"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
         }
     }
 
