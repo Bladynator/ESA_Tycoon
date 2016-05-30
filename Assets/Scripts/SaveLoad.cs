@@ -48,7 +48,7 @@ public class SaveLoad : MonoBehaviour
         {
             string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
             path = path.Substring(0, path.LastIndexOf('/'));
-            return Path.Combine(Path.Combine(path, "Documents"), filename);
+            return path + "/Documents/" + filename;
         }
         else if (Application.platform == RuntimePlatform.Android)
         {

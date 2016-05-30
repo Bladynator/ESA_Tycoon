@@ -8,16 +8,11 @@ public class CameraChanger : MonoBehaviour
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
     
-    public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
-    bool COMPUTERVERSION = true;
+    public float orthoZoomSpeed = 0.2f;        // The rate of change of the orthographic size in orthographic mode.
     
     void Start () 
 	{
         camera = GetComponent<Camera>();
-        if(Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
-        {
-            COMPUTERVERSION = false;
-        }
 	}
 
     void Update()
@@ -54,6 +49,21 @@ public class CameraChanger : MonoBehaviour
             camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
             
             camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+
+            if (camera.orthographicSize > 4)
+            {
+                if (GUI.Button(new Rect(0, 0, 40, 40), "+"))
+                {
+                    camera.orthographicSize -= 2;
+                }
+            }
+            if (camera.orthographicSize < 19)
+            {
+                if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
+                {
+                    camera.orthographicSize += 2;
+                }
+            }
         }
     }
 
@@ -97,28 +107,5 @@ public class CameraChanger : MonoBehaviour
         {
             transform.position = new Vector2(position.x, 10);
         }
-    }
-
-    void OnGUI()
-    {
-        /*
-        if (COMPUTERVERSION)
-        {
-            if (camera.orthographicSize > 4)
-            {
-                if (GUI.Button(new Rect(0, 0, 40, 40), "+"))
-                {
-                    camera.orthographicSize -= 2;
-                }
-            }
-            if (camera.orthographicSize < 19)
-            {
-                if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
-                {
-                    camera.orthographicSize += 2;
-                }
-            }
-        }
-        */
     }
 }

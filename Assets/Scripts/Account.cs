@@ -75,13 +75,13 @@ public class Account : MonoBehaviour
         {
             IOSFacebook temp = new IOSFacebook();
             System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
-            temp.ShareLink(new System.Uri("https://developers.facebook.com/"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
+            temp.ShareLink(new System.Uri("http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Asteroid_Impact_Mission2"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
         }
         else if (Application.platform == RuntimePlatform.Android)
         {
             AndroidFacebook temp = new AndroidFacebook();
             System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
-            temp.ShareLink(new System.Uri("https://developers.facebook.com/"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
+            temp.ShareLink(new System.Uri("http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Asteroid_Impact_Mission2"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
         }
     }
 
