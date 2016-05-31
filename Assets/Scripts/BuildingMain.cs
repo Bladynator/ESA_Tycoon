@@ -400,22 +400,22 @@ public class BuildingMain : MonoBehaviour
     bool CheckIfEnoughResources()
     {
         bool enough = true;
-        if(priceForUpgrading[level, 0] > account.level)
+        if(priceForUpgrading[level + 1, 0] > account.level)
         {
             enough = false;
         }
-        if (priceForUpgrading[level, 1] > account.money)
+        if (priceForUpgrading[level + 1, 1] > account.money)
         {
             enough = false;
         }
-        if (priceForUpgrading[level, 2] > account.researchPoints)
+        if (priceForUpgrading[level + 1, 2] > account.researchPoints)
         {
             enough = false;
         }
         if(enough)
         {
-            account.money -= priceForUpgrading[level, 1];
-            account.researchPoints -= priceForUpgrading[level, 2];
+            account.money -= priceForUpgrading[level + 1, 1];
+            account.researchPoints -= priceForUpgrading[level + 1, 2];
         }
         return enough;
     }
