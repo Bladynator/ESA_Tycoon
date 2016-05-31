@@ -9,7 +9,7 @@ public class Dialogs : MonoBehaviour
     {"Good! Cool name!","","","","","","","","",""},
     {"Here YOU have some MONEY to get started.","MONEY is the primary currency. Use it wisely.","","","","","","","",""},
     {"This is the HEADQUARTERS. The base of all operations.","QUESTS are the TASKS YOU need to perform to execute your mission properly.","Go ahead and have a look.","","","","","","",""},
-    {"Here you can find FACILITIES which you will need for your mission and upgrading the SPACE CENTER.","","","","","","","","",""},
+    {"","","","","","","","","",""},
     {"Good job! You completed your first TASK.","","","","","","","","",""},
     {"RESEARCH POINTS are the secondary currency. The better you learn, the more you get.","","","","","","","","",""},
     {"Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","","",""},

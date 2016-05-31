@@ -68,12 +68,12 @@ public class Tutorial : MonoBehaviour
                             }
                         case 3:
                             {
-                                ShowDialog(1);
+                                MakeCanvas("You got: 1000 Gold!", 0, 0, 0);
                                 break;
                             }
                         case 4:
                             {
-                                MakeCanvas("You got: 1000 Gold!", 0, 0, 0);
+                                ShowDialog(1);
                                 break;
                             }
                         case 5:
@@ -119,7 +119,8 @@ public class Tutorial : MonoBehaviour
                             }
                         case 10:
                             {
-                                ShowDialog(4);
+                                questPart++;
+                                //ShowDialog(4);
                                 break;
                             }
                         case 11:
@@ -281,6 +282,8 @@ public class Tutorial : MonoBehaviour
                             }
                         case 6:
                             {
+                                questPart = -6;
+                                /*
                                 hud.buildButton.gameObject.SetActive(false);
                                 ShowArrow(0);
                                 questLine.ShowQuests(true);
@@ -290,6 +293,7 @@ public class Tutorial : MonoBehaviour
                                     questPart++;
                                     DestroyArrow();
                                 }
+                                */
                                 break;
                             }
                         case 7:

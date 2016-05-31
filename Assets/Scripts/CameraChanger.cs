@@ -50,19 +50,13 @@ public class CameraChanger : MonoBehaviour
             
             camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
 
-            if (camera.orthographicSize > 4)
+            if (camera.orthographicSize < 4)
             {
-                if (GUI.Button(new Rect(0, 0, 40, 40), "+"))
-                {
-                    camera.orthographicSize -= 2;
-                }
+                camera.orthographicSize = 4;
             }
-            if (camera.orthographicSize < 19)
+            if (camera.orthographicSize > 19)
             {
-                if (GUI.Button(new Rect(0, 40, 40, 40), "-"))
-                {
-                    camera.orthographicSize += 2;
-                }
+                camera.orthographicSize = 19;
             }
         }
     }
