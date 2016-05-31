@@ -8,6 +8,7 @@ using Facebook.Unity.Mobile.IOS;
 using Facebook.Unity.Mobile.Android;
 using Facebook.Unity.Editor;
 using Facebook.Unity;
+using UnityEngine.UI;
 
 public class Account : MonoBehaviour 
 {
@@ -343,8 +344,9 @@ public class Account : MonoBehaviour
         return fields;
     }
 
-    public void ResetSave(string reset)
+    public void ResetSave()
     {
+        string reset = GameObject.Find("InputField").GetComponent<InputField>().text;
         if (reset == "DELETE")
         {
             File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
