@@ -340,6 +340,7 @@ public class Tutorial : MonoBehaviour
                             {
                                 hud.EnableButton(true);
                                 questLine.ShowQuests(true);
+                                account.exp += 20;
                                 ShowDialog(10, false);
                                 break;
                             }
@@ -350,6 +351,11 @@ public class Tutorial : MonoBehaviour
                             }
                         case 9:
                             {
+                                ShowDialog(11, false);
+                                break;
+                            }
+                        case 10:
+                            {
                                 tutorialDoing = false;
                                 questPart++;
                                 DestroyArrow();
@@ -358,7 +364,6 @@ public class Tutorial : MonoBehaviour
                                 {
                                     temp.GetComponent<BuildingMain>().ableToSave = true;
                                 }
-                                account.exp += 20;
                                 Destroy(gameObject);
                                 questLine.questLineProgress[1] = 1;
                                 questLine.ResetQuests();

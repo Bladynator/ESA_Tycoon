@@ -56,7 +56,8 @@ public class BuildingButtons : MonoBehaviour
         tutorialBack = false;
         typeButtons[i].interactable = false;
         typeButtons[i].image.sprite = unpressed;
-        for(int p = 0; p < 3; p++)
+        //account.UpdateAmountOFBuildings();
+        for (int p = 0; p < 3; p++)
         {
             if(p != i)
             {
@@ -67,7 +68,7 @@ public class BuildingButtons : MonoBehaviour
 
         for (int p = 0; p < 3; p++)
         {
-            //string buttonText = namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
+            //Debug.Log(namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString());
             Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
             allText[0].text = namesBuildings[(i * 3) + p];
             allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<SpriteRenderer>().sprite;
@@ -86,6 +87,10 @@ public class BuildingButtons : MonoBehaviour
     void ButtonMakingBuildings(int i, int p)
     {
         allButtons[p].onClick.RemoveAllListeners();
+        if(account == null)
+        {
+            account = GameObject.Find("Account").GetComponent<Account>();
+        }
         account.UpdateAmountOFBuildings();
         //Debug.Log(i + " / " + p);
         //Debug.Log(buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] + " / " + account.level);// + " / " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]]);

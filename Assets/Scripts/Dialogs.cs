@@ -16,7 +16,7 @@ public class Dialogs : MonoBehaviour
     {"Now, let’s assign a TASK to the EXHIBIT to generate revenue.","Click on exhibit to assign new task.","","","","","","","",""},
     {"With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!","Place a FLAG of your choice to show who’s in charge.","","","","","","","",""},
     {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""},
-        {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""}};
+        {"Let me tell you one last thing before we finish...","You can play mini games in the mission buildings, if you want to.","They are pretty exciting and help you understand the mission better.","That’s it for now. Good luck on your mission Chief! And if you need any help, I’ll be there for you. Cheers!","","","","","",""}};
 
     public bool talk = false, waitForInput = false;
     public string msg01;
