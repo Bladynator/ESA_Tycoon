@@ -249,13 +249,38 @@ public class BuildingMain : MonoBehaviour
                 allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
                 allButtons[6].GetComponentInChildren<Text>().text = "Endless";
             }
-            for (int i = 0; i < 4; i++)
+            // bad code
+            for(int i = 3; i < 7; i++)
             {
-                if (level + 1 <= i)
-                {
-                    allButtons[i + 3].enabled = false;
-                }
+                allButtons[i].enabled = true;
             }
+
+            switch(level)
+            {
+                case 0:
+                    {
+                        allButtons[4].enabled = false;
+                        allButtons[5].enabled = false;
+                        allButtons[6].enabled = false;
+                        break;
+                    }
+                case 1:
+                    {
+                        allButtons[5].enabled = false;
+                        allButtons[6].enabled = false;
+                        break;
+                    }
+                case 2:
+                    {
+                        allButtons[6].enabled = false;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            // end bad code
         }
         else
         {
