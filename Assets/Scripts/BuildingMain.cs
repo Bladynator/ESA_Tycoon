@@ -411,7 +411,7 @@ public class BuildingMain : MonoBehaviour
     public void GetReward()
     {
         doneWithTask = false;
-        account.money += taskRewards[0];
+        account.money += taskRewards[taskDoing];
         taskDoing = -1;
         Destroy(tempBar);
         onceToCreate = false;
