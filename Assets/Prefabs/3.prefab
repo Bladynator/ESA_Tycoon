@@ -87,7 +87,7 @@ MonoBehaviour:
   timeLeftToFinishBuild: 0
   building: 0
   doneWithTask: 0
-  onceToCreate: 1
+  onceToCreate: 0
   ableToSave: 1
 --- !u!212 &21272168
 SpriteRenderer:

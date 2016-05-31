@@ -251,7 +251,7 @@ public class BuildingMain : MonoBehaviour
             }
             for (int i = 0; i < 4; i++)
             {
-                if (level < i)
+                if (level + 1 <= i)
                 {
                     allButtons[i + 3].enabled = false;
                 }
