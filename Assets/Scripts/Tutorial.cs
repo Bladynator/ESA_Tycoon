@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     Account account;
     int activeQuest;
     int questPart = 1, oldQuestPart;
+    int activeArrow = 0;
     string townName = "ESA ESTEC";
     [SerializeField]
     GameObject hq;
@@ -119,19 +120,29 @@ public class Tutorial : MonoBehaviour
                             }
                         case 10:
                             {
-                                questPart++;
-                                //ShowDialog(4);
+                                ShowArrow(4);
+                                account.ChangeColliders(true);
+                                if(GameObject.Find("BuildMenu") != null)
+                                {
+                                    GameObject.Find("BuildMenu").GetComponentInChildren<BuildingButtons>().tutorialBack = true;
+                                    questPart++;
+                                    DestroyArrow();
+                                    ShowArrow(3);
+                                }
                                 break;
                             }
                         case 11:
                             {
-                                ShowArrow(4);
-                                account.ChangeColliders(true);
-                                questPart++;
+                                if(GameObject.Find("BuildMenu").GetComponentInChildren<BuildingButtons>().tutorialBack == false)
+                                {
+                                    questPart++;
+                                }
                                 break;
                             }
                         case 12:
                             {
+                                DestroyArrow();
+                                ShowArrow(2);
                                 questPart = -2;
                                 break;
                             }
@@ -183,7 +194,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 5:
                             {
-                                ShowArrow(4);
+                                //ShowArrow(4);
                                 questPart = -3;
                                 if (!builderMenu.tutorialBack)
                                 {
@@ -441,18 +452,13 @@ public class Tutorial : MonoBehaviour
 
     void ShowArrow(int location)
     {
-        if (!arrowSpawned)
-        {
-            arrowSpawned = true;
-            tempArrow = (GameObject)Instantiate(arrow, arrowLocations[location].transform.position, arrowLocations[location].transform.rotation);
-        }
-        tempArrow.transform.position = arrowLocations[location].transform.position;
+        arrowLocations[location].SetActive(true);
+        activeArrow = location;
     }
 
     public void DestroyArrow()
     {
-        Destroy(tempArrow);
-        arrowSpawned = false;
+        arrowLocations[activeArrow].SetActive(false);
     }
 
     void ShowDialog(int part, bool tutorial = true)

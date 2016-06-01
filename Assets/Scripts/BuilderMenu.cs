@@ -39,17 +39,19 @@ public class BuilderMenu : MonoBehaviour
         reset = GameObject.Find("ResetButton").GetComponent<Image>();
         reset.raycastTarget = true;
         tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
+        /*
         for (int i = 0; i < allButtons.Length; i++)
         {
             allButtons[i].onClick.RemoveAllListeners();
             allButtons[i].onClick.AddListener(delegate { PressedType(i); });
             allButtons[i].GetComponentInChildren<Text>().text = namesButtons[i];
         }
+        */
     }
 
     void PressedType(int p)
     {
-        tutorialBack = false;
+        
 
         for (int i = 0; i < allButtons.Length; i++)
         {

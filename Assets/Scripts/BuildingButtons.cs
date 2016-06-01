@@ -52,8 +52,11 @@ public class BuildingButtons : MonoBehaviour
 
     public void PressedType(int i)
     {
+        if (i == 1)
+        {
+            tutorialBack = false;
+        }
         Button[] typeButtons = GameObject.Find("BuildMenu").GetComponentsInChildren<Button>();
-        tutorialBack = false;
         typeButtons[i].interactable = false;
         typeButtons[i].image.sprite = unpressed;
         //account.UpdateAmountOFBuildings();
