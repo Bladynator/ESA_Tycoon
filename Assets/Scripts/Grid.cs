@@ -34,8 +34,7 @@ public class Grid : MonoBehaviour
                 grid[x, y] = tempField;
             }
         }
-
-        //GameObject.Find("BuilderMenu").SetActive(false);
+        
         allFieldsTemp.transform.position = new Vector3(-8.6f, 6.4f, 6.4f);
     }
 }

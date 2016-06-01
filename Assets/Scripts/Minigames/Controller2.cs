@@ -82,7 +82,7 @@ public class Controller2 : MonoBehaviour
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2] = score;
         }
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty, score); // back to tycoon
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty, score);
     }
 
     void FixedUpdate()

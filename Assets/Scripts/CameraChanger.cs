@@ -8,7 +8,7 @@ public class CameraChanger : MonoBehaviour
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
     
-    public float orthoZoomSpeed = 0.2f;        // The rate of change of the orthographic size in orthographic mode.
+    public float orthoZoomSpeed = 0.2f;
     
     void Start () 
 	{

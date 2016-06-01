@@ -41,11 +41,10 @@ public class Account : MonoBehaviour
         }
         else if (!string.IsNullOrEmpty(result.PostId))
         {
-            // Print post identifier of the shared content
             Debug.Log(result.PostId);
         }
-        else {
-            // Share succeeded without postID
+        else
+        {
             Debug.Log("ShareLink success!");
         }
     }
@@ -239,7 +238,6 @@ public class Account : MonoBehaviour
                                     }
                                 }
                                 GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX + y, placeOfGridY + p].placeAble = false;
-                                //grid[(int)activePlaceOnGrid.x + y, (int)activePlaceOnGrid.y + i].tag = "Default";
                             }
                         }
 
@@ -247,7 +245,6 @@ public class Account : MonoBehaviour
                         
                         ChangeColliders(true);
                         Vector2 size = buildingToPlace.size;
-                        //Vector2 newPosition = transform.position;
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
                         tempBuilding2.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
@@ -301,7 +298,6 @@ public class Account : MonoBehaviour
                 tempField.GetComponent<CircleCollider2D>().enabled = toChange;
             }
         }
-        //GameObject.Find("HUD").GetComponent<HUD>().enabled = toChange;
         GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
         if(toChange)
         {

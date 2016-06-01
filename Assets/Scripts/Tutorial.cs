@@ -41,7 +41,6 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(activeQuest + " / " + questPart);
         switch (activeQuest)
         {
             case 1:
@@ -194,7 +193,6 @@ public class Tutorial : MonoBehaviour
                             }
                         case 5:
                             {
-                                //ShowArrow(4);
                                 questPart = -3;
                                 if (!builderMenu.tutorialBack)
                                 {
@@ -280,7 +278,6 @@ public class Tutorial : MonoBehaviour
                         case 4:
                             {
                                 hud.buildButton.interactable = false;
-                                //hud.buildButton.gameObject.SetActive(false);
                                 if (account.money >= 1130)
                                 {
                                     questPart++;
@@ -295,17 +292,6 @@ public class Tutorial : MonoBehaviour
                         case 6:
                             {
                                 questPart = -6;
-                                /*
-                                hud.buildButton.gameObject.SetActive(false);
-                                ShowArrow(0);
-                                questLine.ShowQuests(true);
-                                if (!account.waitForInput)
-                                {
-                                    questLine.tutorialBack = true;
-                                    questPart++;
-                                    DestroyArrow();
-                                }
-                                */
                                 break;
                             }
                         case 7:
@@ -316,7 +302,6 @@ public class Tutorial : MonoBehaviour
                                     questPart = -6;
                                     DestroyArrow();
                                     hud.buildButton.interactable = true;
-                                    //hud.buildButton.gameObject.SetActive(true);
                                 }
                                 break;
                             }

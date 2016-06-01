@@ -43,7 +43,6 @@ public class HUD : MonoBehaviour
     
     public void EnableBuildMenu()
     {
-        //buildButton.gameObject.SetActive(false);
         buildButton.interactable = false;
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempField in allBuildings)
@@ -54,19 +53,7 @@ public class HUD : MonoBehaviour
             }
         }
         GameObject obj = GameObject.Find("Main Camera").GetComponent<CameraChanger>().Field();
-        if (obj != null)
-        {
-            if (obj.GetComponent<EmptyField>() != null)
-            {
-                /*
-                buildMenu.MakeButtons();
-                buildMenu.fieldLocation = obj.GetComponent<EmptyField>().transform;
-                buildMenu.fieldID = obj.GetComponent<EmptyField>().ID;
-                buildMenu.fieldGridLocation = obj.GetComponent<EmptyField>().gridPosition;
-                */
-            }
-        }
-        else
+        if (obj == null)
         {
             EnableButton();
         }
@@ -87,6 +74,5 @@ public class HUD : MonoBehaviour
             account.ChangeColliders(false);
         }
         buildButton.interactable = enable;
-        //buildButton.gameObject.SetActive(enable);
     }
 }

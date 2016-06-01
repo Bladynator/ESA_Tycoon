@@ -59,7 +59,6 @@ public class BuildingButtons : MonoBehaviour
         Button[] typeButtons = GameObject.Find("BuildMenu").GetComponentsInChildren<Button>();
         typeButtons[i].interactable = false;
         typeButtons[i].image.sprite = unpressed;
-        //account.UpdateAmountOFBuildings();
         for (int p = 0; p < 3; p++)
         {
             if(p != i)
@@ -71,15 +70,12 @@ public class BuildingButtons : MonoBehaviour
 
         for (int p = 0; p < 3; p++)
         {
-            //Debug.Log(namesBuildings[(i*3) + p] + "\nPrice: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString() + "\nRP: " + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString());
             Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
             allText[0].text = namesBuildings[(i * 3) + p];
             allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<SpriteRenderer>().sprite;
-            //allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().buildingSprites[0];
             allText[1].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.x + "x" + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.y;
             allText[2].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
             allText[3].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
-            //allButtons[p].GetComponentInChildren<Text>().text = buttonText;
         }
         for (int p = 0; p < 3; p++)
         {
@@ -95,8 +91,6 @@ public class BuildingButtons : MonoBehaviour
             account = GameObject.Find("Account").GetComponent<Account>();
         }
         account.UpdateAmountOFBuildings();
-        //Debug.Log(i + " / " + p);
-        //Debug.Log(buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] + " / " + account.level);// + " / " + buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]]);
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
         {
             

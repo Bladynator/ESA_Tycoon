@@ -133,7 +133,6 @@ public class Quests : MonoBehaviour
     public void ShowQuests(bool show)
     {
         questScreen.GetComponentInChildren<Button>().interactable = show;
-        //questScreen.SetActive(show);
     }
 
     public void ResetQuests()
