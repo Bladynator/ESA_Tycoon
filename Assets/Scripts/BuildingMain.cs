@@ -242,16 +242,16 @@ public class BuildingMain : MonoBehaviour
             if (level != 3)
             {
                 allText[8].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+                allButtons[1].interactable = true;
+                allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
+                if (!CheckIfEnoughResources())
+                {
+                    allButtons[1].interactable = false;
+                }
             }
             else
             {
                 allText[8].text = "Max Level";
-            }
-            allButtons[1].interactable = true;
-            allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
-            if(!CheckIfEnoughResources())
-            {
-                allButtons[1].interactable = false;
             }
             
             if (resourceBuilding)
@@ -449,11 +449,11 @@ public class BuildingMain : MonoBehaviour
             account.PushSave();
         }
     }
-    
+
     bool CheckIfEnoughResources()
     {
         bool enough = true;
-        if(priceForUpgrading[level + 1, 0] > account.level)
+        if (priceForUpgrading[level + 1, 0] > account.level)
         {
             enough = false;
         }
@@ -465,7 +465,8 @@ public class BuildingMain : MonoBehaviour
         {
             enough = false;
         }
-        if(enough)
+
+        if (enough)
         {
             account.money -= priceForUpgrading[level + 1, 1];
             account.researchPoints -= priceForUpgrading[level + 1, 2];
