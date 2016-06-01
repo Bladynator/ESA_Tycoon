@@ -279,7 +279,8 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                hud.buildButton.gameObject.SetActive(false);
+                                hud.buildButton.interactable = false;
+                                //hud.buildButton.gameObject.SetActive(false);
                                 if (account.money >= 1130)
                                 {
                                     questPart++;
@@ -314,7 +315,8 @@ public class Tutorial : MonoBehaviour
                                 {
                                     questPart = -6;
                                     DestroyArrow();
-                                    hud.buildButton.gameObject.SetActive(true);
+                                    hud.buildButton.interactable = true;
+                                    //hud.buildButton.gameObject.SetActive(true);
                                 }
                                 break;
                             }

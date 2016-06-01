@@ -43,7 +43,8 @@ public class HUD : MonoBehaviour
     
     public void EnableBuildMenu()
     {
-        buildButton.gameObject.SetActive(false);
+        //buildButton.gameObject.SetActive(false);
+        buildButton.interactable = false;
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempField in allBuildings)
         {
@@ -85,6 +86,7 @@ public class HUD : MonoBehaviour
         {
             account.ChangeColliders(false);
         }
-        buildButton.gameObject.SetActive(enable);
+        buildButton.interactable = enable;
+        //buildButton.gameObject.SetActive(enable);
     }
 }
