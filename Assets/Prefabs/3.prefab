@@ -63,6 +63,11 @@ MonoBehaviour:
   rpNeededUpgrade: 00000000000000006400000064000000
   timesForTasks: 0a0000005802000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskNames:
+  - Task
+  - Task2
+  - Task3
+  - Task 4
   taskRewards: 14000000780500001e00000028000000
   resourceBuilding: 1
   decoration: 0

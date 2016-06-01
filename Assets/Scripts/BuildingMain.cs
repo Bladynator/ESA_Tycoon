@@ -14,6 +14,8 @@ public class BuildingMain : MonoBehaviour
     [SerializeField]
     int[] timesForTasks, timesForBuilding;
     [SerializeField]
+    string[] taskNames = new string[4];
+    [SerializeField]
     int[] taskRewards = new int[4] // money - RP
         {50,20,30,40 };
     [SerializeField]
@@ -211,7 +213,7 @@ public class BuildingMain : MonoBehaviour
         }
         allText = canvasTemp.GetComponentsInChildren<Text>();
         allText[0].text = buildingName + " - LVL " + (level + 1).ToString();
-        allImages[8].sprite = buildingSprites[level];
+        allImages[16].sprite = buildingSprites[level];
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
@@ -225,18 +227,23 @@ public class BuildingMain : MonoBehaviour
             allText[6].text = "Task 3";
             allText[7].text = "Task 4";
             allText[8].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+            allButtons[1].interactable = true;
             allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
+            if(!CheckIfEnoughResources())
+            {
+                allButtons[1].interactable = false;
+            }
             
             if (resourceBuilding)
             {
                 allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
-                allButtons[3].GetComponentInChildren<Text>().text = taskRewards[0] + " Coins " + timesForTasks[0] + " Sec.";
+                allButtons[3].GetComponentInChildren<Text>().text = taskNames[0] + "\n" + taskRewards[0] + "      " + timesForTasks[0];
                 allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
-                allButtons[4].GetComponentInChildren<Text>().text = taskRewards[1] + " Coins " + timesForTasks[1] + " Sec.";
+                allButtons[4].GetComponentInChildren<Text>().text = taskNames[1] + "\n" + taskRewards[1] + "      " + timesForTasks[1];
                 allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
-                allButtons[5].GetComponentInChildren<Text>().text = taskRewards[2] + " Coins " + timesForTasks[2] + " Sec.";
+                allButtons[5].GetComponentInChildren<Text>().text = taskNames[2] + "\n" + taskRewards[2] + "      " + timesForTasks[2];
                 allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
-                allButtons[6].GetComponentInChildren<Text>().text = taskRewards[3] + " Coins " + timesForTasks[3] + " Sec.";
+                allButtons[6].GetComponentInChildren<Text>().text = taskNames[3] + "\n" + taskRewards[3] + "      " + timesForTasks[3];
             }
             else
             {
@@ -252,27 +259,27 @@ public class BuildingMain : MonoBehaviour
             // bad code
             for(int i = 3; i < 7; i++)
             {
-                allButtons[i].enabled = true;
+                allButtons[i].interactable = true;
             }
 
             switch(level)
             {
                 case 0:
                     {
-                        allButtons[4].enabled = false;
-                        allButtons[5].enabled = false;
-                        allButtons[6].enabled = false;
+                        allButtons[4].interactable = false;
+                        allButtons[5].interactable = false;
+                        allButtons[6].interactable = false;
                         break;
                     }
                 case 1:
                     {
-                        allButtons[5].enabled = false;
-                        allButtons[6].enabled = false;
+                        allButtons[5].interactable = false;
+                        allButtons[6].interactable = false;
                         break;
                     }
                 case 2:
                     {
-                        allButtons[6].enabled = false;
+                        allButtons[6].interactable = false;
                         break;
                     }
                 default:
