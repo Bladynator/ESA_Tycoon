@@ -991,7 +991,6 @@ GameObject:
   - 222: {fileID: 174793050}
   - 114: {fileID: 174793049}
   - 95: {fileID: 174793052}
-  - 111: {fileID: 174793051}
   m_Layer: 5
   m_Name: Arrow0
   m_TagString: Untagged
@@ -1049,20 +1048,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 174793047}
---- !u!111 &174793051
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 174793047}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc186da8128fcda4f9287826357a2ff6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &174793052
 Animator:
   serializedVersion: 3
@@ -2039,7 +2024,6 @@ GameObject:
   - 222: {fileID: 332630205}
   - 114: {fileID: 332630204}
   - 95: {fileID: 332630203}
-  - 111: {fileID: 332630202}
   m_Layer: 5
   m_Name: Arrow0 (4)
   m_TagString: Untagged
@@ -2064,20 +2048,6 @@ RectTransform:
   m_AnchoredPosition: {x: -299.04, y: -89.6}
   m_SizeDelta: {x: 89.3, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &332630202
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 332630200}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc186da8128fcda4f9287826357a2ff6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &332630203
 Animator:
   serializedVersion: 3
@@ -8372,7 +8342,6 @@ GameObject:
   - 222: {fileID: 1254097582}
   - 114: {fileID: 1254097581}
   - 95: {fileID: 1254097580}
-  - 111: {fileID: 1254097579}
   m_Layer: 5
   m_Name: Arrow0 (2)
   m_TagString: Untagged
@@ -8397,20 +8366,6 @@ RectTransform:
   m_AnchoredPosition: {x: -197, y: 80.5}
   m_SizeDelta: {x: 89.3, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1254097579
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1254097577}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc186da8128fcda4f9287826357a2ff6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1254097580
 Animator:
   serializedVersion: 3
@@ -9865,7 +9820,6 @@ GameObject:
   - 222: {fileID: 1639135346}
   - 114: {fileID: 1639135345}
   - 95: {fileID: 1639135344}
-  - 111: {fileID: 1639135343}
   m_Layer: 5
   m_Name: Arrow0 (1)
   m_TagString: Untagged
@@ -9890,20 +9844,6 @@ RectTransform:
   m_AnchoredPosition: {x: 68.7, y: 108}
   m_SizeDelta: {x: 89.3, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1639135343
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1639135341}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc186da8128fcda4f9287826357a2ff6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1639135344
 Animator:
   serializedVersion: 3
@@ -11548,7 +11488,6 @@ GameObject:
   - 222: {fileID: 1872300578}
   - 114: {fileID: 1872300577}
   - 95: {fileID: 1872300576}
-  - 111: {fileID: 1872300575}
   m_Layer: 5
   m_Name: Arrow0 (3)
   m_TagString: Untagged
@@ -11573,20 +11512,6 @@ RectTransform:
   m_AnchoredPosition: {x: -61.6, y: -85.5}
   m_SizeDelta: {x: 89.3, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1872300575
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1872300573}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc186da8128fcda4f9287826357a2ff6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1872300576
 Animator:
   serializedVersion: 3
