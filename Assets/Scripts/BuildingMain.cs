@@ -228,6 +228,9 @@ public class BuildingMain : MonoBehaviour
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         GameObject.Find("FullBarLevelBuilding").GetComponent<Image>().fillAmount = (float)(level + 1) / 4;
+
+        ChangeResourceIconsTasks(true);
+
         if (!decoration)
         {
             allText[2].text = "Upgrade";
@@ -260,6 +263,7 @@ public class BuildingMain : MonoBehaviour
             }
             else
             {
+                ChangeResourceIconsTasks(false);
                 allButtons[3].onClick.AddListener(delegate { ClickedMinigame(0, minigame); });
                 allButtons[3].GetComponentInChildren<Text>().text = "Easy";
                 allButtons[4].onClick.AddListener(delegate { ClickedMinigame(1, minigame); });
@@ -269,38 +273,23 @@ public class BuildingMain : MonoBehaviour
                 allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
                 allButtons[6].GetComponentInChildren<Text>().text = "Endless";
             }
-            // bad code
             for(int i = 3; i < 7; i++)
             {
                 allButtons[i].interactable = true;
             }
 
-            switch(level)
+            if(level < 3)
             {
-                case 0:
-                    {
-                        allButtons[4].interactable = false;
-                        allButtons[5].interactable = false;
-                        allButtons[6].interactable = false;
-                        break;
-                    }
-                case 1:
-                    {
-                        allButtons[5].interactable = false;
-                        allButtons[6].interactable = false;
-                        break;
-                    }
-                case 2:
-                    {
-                        allButtons[6].interactable = false;
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                allButtons[6].interactable = false;
             }
-            // end bad code
+            if(level < 2)
+            {
+                allButtons[5].interactable = false;
+            }
+            if(level < 1)
+            {
+                allButtons[4].interactable = false;
+            }
         }
         else
         {
@@ -326,6 +315,21 @@ public class BuildingMain : MonoBehaviour
     #endregion
 
     #region Buttons
+
+    void ChangeResourceIconsTasks(bool toChange)
+    {
+        allImages[5].enabled = toChange;
+        allImages[6].enabled = toChange;
+
+        allImages[8].enabled = toChange;
+        allImages[9].enabled = toChange;
+
+        allImages[11].enabled = toChange;
+        allImages[12].enabled = toChange;
+
+        allImages[14].enabled = toChange;
+        allImages[15].enabled = toChange;
+    }
 
     void DeleteDeco()
     {
