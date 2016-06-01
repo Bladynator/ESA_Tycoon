@@ -28,9 +28,16 @@ public class HUD : MonoBehaviour
         money.text = account.money.ToString();
         researchPoints.text = account.researchPoints.ToString();
         level.text = "LVL " + account.level.ToString();
-        exp.text = account.exp + "/" + account.expNeededForLevel[account.level] + " XP";
-        float amount = (float)account.exp / (float)account.expNeededForLevel[account.level];
-        expBar.fillAmount = amount;
+        if (account.level != 10)
+        {
+            exp.text = account.exp + "/" + account.expNeededForLevel[account.level] + " XP";
+            float amount = (float)account.exp / (float)account.expNeededForLevel[account.level];
+            expBar.fillAmount = amount;
+        }
+        else
+        {
+            exp.text = "Max Level";
+        }
     }
 
     public void SetName(string name)

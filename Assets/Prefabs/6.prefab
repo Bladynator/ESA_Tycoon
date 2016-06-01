@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8776417, y: -2.7532823, z: 3.5097656}
+  m_LocalPosition: {x: 29.507572, y: 18.818878, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,9 +41,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.027920365, y: 0.4427351}
+  m_Offset: {x: 0.027920365, y: 0.76}
   serializedVersion: 2
-  m_Radius: 0.6219559
+  m_Radius: 1.0122871
 --- !u!114 &11496478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,18 +56,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Mission Control
-  size: {x: 3, y: 3}
+  size: {x: 2, y: 2}
   levelsNeededNewBuilding: 02000000050000005a000000
   levelsNeededUpgrade: 02000000040000000700000009000000
   moneyNeededUpgrade: 90010000701700006400000064000000
   rpNeededUpgrade: 00000000640000006400000064000000
   timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskNames:
+  - 
+  - 
+  - 
+  - 
   taskRewards: 32000000140000001e00000028000000
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame3
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: b6483112ee1806a4184e6f80a9477715, type: 3}
+  - {fileID: 21300000, guid: 6b7cf137ac94ed04ba8d2d52b62a7c11, type: 3}
+  - {fileID: 21300000, guid: d165d9680eb3f1a4ca5d7e5c34bdf194, type: 3}
+  - {fileID: 21300000, guid: 5444ceb8635027945bb8367ce1286bb2, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -111,7 +120,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd4077b1379c3b149a2bd1012e7ab1ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6483112ee1806a4184e6f80a9477715, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

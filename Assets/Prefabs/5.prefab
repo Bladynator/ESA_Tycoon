@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3349175, y: 16.585102, z: 3.5097656}
+  m_LocalPosition: {x: -2.8562422, y: 36.773975, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,9 +41,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.027920365, y: 0.4427351}
+  m_Offset: {x: 0.027920365, y: 1.04}
   serializedVersion: 2
-  m_Radius: 0.6219559
+  m_Radius: 1.3958282
 --- !u!114 &11491094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,11 +63,20 @@ MonoBehaviour:
   rpNeededUpgrade: f4010000000000006400000064000000
   timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskNames:
+  - 
+  - 
+  - 
+  - 
   taskRewards: 32000000140000001e00000028000000
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame2
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: 5ce808ad4a3784b4ea10fcfe3c50f4bf, type: 3}
+  - {fileID: 21300000, guid: 1f37ec7f9070769408f3395a248dba91, type: 3}
+  - {fileID: 21300000, guid: 0c981cd1bf1d5c14da0c7efe436426c1, type: 3}
+  - {fileID: 21300000, guid: f6d2589a0ffdf344db4730f6b47fa0d3, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -111,7 +120,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dd4077b1379c3b149a2bd1012e7ab1ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ce808ad4a3784b4ea10fcfe3c50f4bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

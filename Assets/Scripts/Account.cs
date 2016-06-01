@@ -51,12 +51,15 @@ public class Account : MonoBehaviour
 
     void Update()
     {
-        if(exp >= expNeededForLevel[level])
+        if (level != 10)
         {
-            exp -= expNeededForLevel[level];
-            level++;
-            justLeveld = true;
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
+            if (exp >= expNeededForLevel[level])
+            {
+                exp -= expNeededForLevel[level];
+                level++;
+                justLeveld = true;
+                GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
+            }
         }
         if (saveInSec <= 0 && autoSave)
         {
@@ -75,13 +78,13 @@ public class Account : MonoBehaviour
         {
             IOSFacebook temp = new IOSFacebook();
             System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
-            temp.ShareLink(new System.Uri("http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Asteroid_Impact_Mission2"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
+            temp.ShareLink(new System.Uri("http://www.esa.int/aim"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
         }
         else if (Application.platform == RuntimePlatform.Android)
         {
             AndroidFacebook temp = new AndroidFacebook();
             System.Uri temp3 = new System.Uri("http://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/03/asteroid_collision/15339990-1-eng-GB/Asteroid_collision_node_full_image_2.jpg");
-            temp.ShareLink(new System.Uri("http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Asteroid_Impact_Mission2"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
+            temp.ShareLink(new System.Uri("http://www.esa.int/aim"), "AIM - Space Challenge", "The Tycoon for AIM!", temp3, callback: ShareCallback);
         }
     }
 
@@ -248,6 +251,7 @@ public class Account : MonoBehaviour
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
                         tempBuilding2.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
+                        //tempBuilding2.transform.localScale = new Vector2(3 * 0.98f, 3 * 0.95f);
                         tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                         TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                         if (Convert.ToInt32(informationOneBuilding[2]) > 0)

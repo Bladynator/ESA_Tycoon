@@ -79,6 +79,10 @@ public class BuildingMain : MonoBehaviour
             }
             transform.localScale = new Vector3(newSize, newSize, 1);
         }
+        else if(size.x == 2 && size.y == 2)
+        {
+            transform.localScale = new Vector2(3 * 0.98f, 3 * 0.95f);
+        }
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
         if (busy)
@@ -94,7 +98,10 @@ public class BuildingMain : MonoBehaviour
         {
             taskRewards = new int[4];
         }
-        //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+        if (buildingSprites[level] != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+        }
     }
 
     public virtual void Update()
@@ -137,7 +144,10 @@ public class BuildingMain : MonoBehaviour
                     level++;
                     Destroy(tempBar);
                     account.exp += exp[level];
-                    //GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                    if (buildingSprites[level] != null)
+                    {
+                        GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                    }
                     if (ableToSave)
                     {
                         account.PushSave();
@@ -226,7 +236,10 @@ public class BuildingMain : MonoBehaviour
             allText[5].text = "Task 2";
             allText[6].text = "Task 3";
             allText[7].text = "Task 4";
-            allText[8].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+            if (level != 3)
+            {
+                allText[8].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+            }
             allButtons[1].interactable = true;
             allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
             if(!CheckIfEnoughResources())

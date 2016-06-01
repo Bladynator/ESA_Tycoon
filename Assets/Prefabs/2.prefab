@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934b0d3a2740d92489f869df0167e930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Exhibit
+  buildingName: Exhibition Centre
   size: {x: 3, y: 3}
   levelsNeededNewBuilding: 01000000050000005a000000
   levelsNeededUpgrade: 01000000040000000600000008000000
@@ -63,15 +63,20 @@ MonoBehaviour:
   rpNeededUpgrade: 2c010000000000006400000064000000
   timesForTasks: 0a0000005802000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskNames:
+  - 
+  - 
+  - 
+  - 
   taskRewards: 1e000000340800001e00000028000000
   resourceBuilding: 1
   decoration: 0
   minigame: Minigame1
   buildingSprites:
-  - {fileID: 21300000, guid: 022a96db32ada41429d828f799178743, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 2c3e54c8ed06bd249a66fd9a6fdc6a79, type: 3}
+  - {fileID: 21300000, guid: 74e5504ec9941ac4888eeb8addeb9c23, type: 3}
+  - {fileID: 21300000, guid: a8806d7dd5f4a10428149398b7e065f4, type: 3}
+  - {fileID: 21300000, guid: 4d8ddad22ded7e04bac1f5236bb9fb21, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0

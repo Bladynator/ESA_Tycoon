@@ -56,13 +56,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Science College
-  size: {x: 3, y: 3}
+  size: {x: 2, y: 2}
   levelsNeededNewBuilding: 02000000070000005a000000
   levelsNeededUpgrade: 02000000040000000700000009000000
   moneyNeededUpgrade: 20030000a00f00006400000064000000
   rpNeededUpgrade: 00000000000000006400000064000000
   timesForTasks: 0a0000005802000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
+  taskNames:
+  - 
+  - 
+  - 
+  - 
   taskRewards: 28000000f00a00001e00000028000000
   resourceBuilding: 0
   decoration: 0
