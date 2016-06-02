@@ -349,8 +349,10 @@ MonoBehaviour:
   buildingToPlace: {fileID: 0}
   oldBuilding: {fileID: 0}
   activePlaceOnGrid: {x: 0, y: 0}
+  oldActivePlace: {x: 0, y: 0}
   builderPlacerTemp: {fileID: 0}
   fieldID: 0
+  placeAble: 1
   rePos: 0
 --- !u!114 &11458228
 MonoBehaviour:
@@ -472,7 +474,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: c1f1983715192d443acc30c1223477b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3af82b0dd0635e4487162772a58a63f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -502,7 +504,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 3b43cd40391888b488bb41a80347de8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b24e11ac268ea9843bea7f10aaf2891d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -562,7 +564,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 15b98db57f4ce1443871bc098c7b5deb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1433163dadb56884bb357a00f15ff727, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -592,7 +594,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 50cc6da1e4f90dd498d74ce2f05f0460, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccefcc4903b407a4e9d56d6cf5375ecc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
