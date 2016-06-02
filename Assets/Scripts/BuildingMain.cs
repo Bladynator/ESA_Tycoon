@@ -295,7 +295,7 @@ public class BuildingMain : MonoBehaviour
                 allButtons[4].interactable = false;
             }
 
-            if(!resourceBuilding && level < 2)
+            if(!resourceBuilding && account.level < 2)
             {
                 allButtons[3].interactable = false;
             }
