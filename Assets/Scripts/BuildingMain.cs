@@ -183,7 +183,14 @@ public class BuildingMain : MonoBehaviour
         {
             canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
         }
-        tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
+        if (!resourceBuilding)
+        {
+            tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
+        }
+        else
+        {
+            tempBar = (GameObject)Instantiate(canvas[4], transform.position + new Vector3(0, 3, 0), transform.rotation);
+        }
     }
 
     void Building()
@@ -192,7 +199,7 @@ public class BuildingMain : MonoBehaviour
         {
             canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
         }
-        tempBar = (GameObject)Instantiate(canvas[2], transform.position + new Vector3(0, 3, 0), transform.rotation);
+        tempBar = (GameObject)Instantiate(canvas[5], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
     void DrawBar(float max, float min)
@@ -207,7 +214,19 @@ public class BuildingMain : MonoBehaviour
                     temp.fillAmount = (min / max);
                 }
             }
-            tempBar.GetComponentInChildren<Text>().text = "Time Left: " + min + " s";
+
+            if(min < 60)
+            {
+                tempBar.GetComponentInChildren<Text>().text = min + " s";
+            }
+            else if(min < 3600)
+            {
+                tempBar.GetComponentInChildren<Text>().text = min / 60 + " m";
+            }
+            else if(min < 216000)
+            {
+                tempBar.GetComponentInChildren<Text>().text = min / 60 / 60 + " h";
+            }
         }
     }
 
