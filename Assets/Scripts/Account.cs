@@ -302,7 +302,7 @@ public class Account : MonoBehaviour
                 tempField.GetComponent<CircleCollider2D>().enabled = toChange;
             }
         }
-        GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
+        //GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
         if(toChange)
         {
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
@@ -349,6 +349,7 @@ public class Account : MonoBehaviour
         string reset = GameObject.Find("InputField").GetComponent<InputField>().text;
         if (reset == "DELETE")
         {
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = false;
             File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
             SceneManager.LoadScene("_Main");
         }

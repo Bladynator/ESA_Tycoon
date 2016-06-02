@@ -311,7 +311,10 @@ public class BuildingMain : MonoBehaviour
             }
             for (int i = 9; i < allImages.Length; i++)
             {
-                allImages[i].gameObject.SetActive(false);
+                if (i != 16)
+                {
+                    allImages[i].gameObject.SetActive(false);
+                }
             }
 
         }

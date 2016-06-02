@@ -104,7 +104,7 @@ public class Quests : MonoBehaviour
     {
         account = GameObject.Find("Account").GetComponent<Account>();
         questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Button>();
-        questButton.gameObject.SetActive(false);
+        //questButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -138,12 +138,12 @@ public class Quests : MonoBehaviour
     public void ResetQuests()
     {
         texts = new List<string>();
-        questButton.gameObject.SetActive(false);
+        questButton.interactable = false;
         for (int i = 0; i < questLineProgress.Length; i++)
         {
             if (questLineProgress[i] != 0)
             {
-                questButton.gameObject.SetActive(true);
+                questButton.interactable = true;
                 questButton.onClick.AddListener(delegate { OpenQuest(); });
                 texts.Add(allText[i, questLineProgress[i]]);
             }

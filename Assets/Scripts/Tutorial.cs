@@ -271,7 +271,10 @@ public class Tutorial : MonoBehaviour
                                 GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
                                 foreach(GameObject temp in allBuildings)
                                 {
-                                    temp.GetComponent<BuildingMain>().ableToSave = false;
+                                    if (temp.GetComponent<BuildingMain>() != null)
+                                    {
+                                        temp.GetComponent<BuildingMain>().ableToSave = false;
+                                    }
                                 }
                                 break;
                             }
