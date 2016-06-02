@@ -9,7 +9,7 @@ public class Grid : MonoBehaviour
     [SerializeField]
     EmptyField emptyField;
     [SerializeField]
-    GameObject allFields;
+    GameObject allFields, gradient;
     public int maxGridSize = 8;
     [SerializeField]
     BuildingButtons buildings;
@@ -34,7 +34,9 @@ public class Grid : MonoBehaviour
                 grid[x, y] = tempField;
             }
         }
-        
+        GameObject tempGra = (GameObject)Instantiate(gradient, new Vector3(-8.6f, 6.4f, 6.4f), emptyField.transform.rotation);
+        tempGra.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        //tempGra.transform.localScale = new Vector3(maxGridSize, maxGridSize);
         allFieldsTemp.transform.position = new Vector3(-8.6f, 6.4f, 6.4f);
     }
 }
