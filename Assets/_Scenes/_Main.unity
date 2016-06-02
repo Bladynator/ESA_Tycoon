@@ -6996,7 +6996,7 @@ MonoBehaviour:
   canvas: {fileID: 1962433533}
   nameInputCanvas: {fileID: 219173597}
   skymap: {fileID: 563529423}
-  menu: {fileID: 0}
+  menu: {fileID: 1795559826}
   arrowLocations:
   - {fileID: 174793047}
   - {fileID: 1639135341}
