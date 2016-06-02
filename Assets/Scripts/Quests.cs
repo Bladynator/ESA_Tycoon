@@ -21,8 +21,9 @@ public class Quests : MonoBehaviour
     int[] questsActive = new int[3];
 
     public bool tutorialBack = false, wait = false;
+    bool onceCanvas = false;
     [SerializeField]
-    GameObject questInfoCanvas, questScreen;
+    GameObject questInfoCanvas, questScreen, canvas;
     [SerializeField]
     Button[] buttons;
     Button questButton;
@@ -238,5 +239,26 @@ public class Quests : MonoBehaviour
             }
         }
         return ifEnough;
+    }
+
+
+    void PressedCollectButton(int addedMoney, int addedRP, int time)
+    {
+        account.money += addedMoney;
+        account.researchPoints += addedRP;
+        onceCanvas = false;
+        canvas.SetActive(false);
+    }
+
+    void MakeCanvas(string text, int addedMoney, int addedRP, int time)
+    {
+        if (!onceCanvas)
+        {
+            onceCanvas = true;
+            canvas.SetActive(true);
+            canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
+            canvas.GetComponentInChildren<Text>().text = text;
+        }
     }
 }

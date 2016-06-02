@@ -21,6 +21,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     GameObject arrow, canvas, nameInputCanvas, skymap;
     [SerializeField]
+    Button menu;
+    [SerializeField]
     GameObject[] arrowLocations;
     GameObject tempArrow;
     bool arrowSpawned = false, once = false, onceName = false, onceCanvas = false;
@@ -50,6 +52,7 @@ public class Tutorial : MonoBehaviour
                         case 1:
                             {
                                 tutorialDoing = true;
+                                menu.interactable = false;
                                 account.ChangeColliders(false);
                                 account.autoSave = false;
                                 hud.EnableButton(false);
@@ -372,6 +375,7 @@ public class Tutorial : MonoBehaviour
                                 Destroy(gameObject);
                                 questLine.questLineProgress[1] = 1;
                                 questLine.ResetQuests();
+                                menu.interactable = true;
                                 skymap.SetActive(true);
                                 account.autoSave = true;
                                 account.PushSave();
