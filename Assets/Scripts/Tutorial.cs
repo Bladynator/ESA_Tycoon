@@ -410,8 +410,14 @@ public class Tutorial : MonoBehaviour
             nameInputCanvas.SetActive(true);
             nameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(name); });
             nameInputCanvas.GetComponentInChildren<InputField>().text = name;
-            nameInputCanvas.GetComponentInChildren<InputField>().onEndEdit.AddListener(delegate { nameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(nameInputCanvas.GetComponentInChildren<InputField>().text); }); });
+            nameInputCanvas.GetComponentInChildren<InputField>().onEndEdit.AddListener(delegate { MakeDoneButton(); });
         }
+    }
+
+    void MakeDoneButton()
+    {
+        nameInputCanvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+        nameInputCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedDoneButton(nameInputCanvas.GetComponentInChildren<InputField>().text); });
     }
 
     void PressedCollectButton(int addedMoney, int addedRP, int time)
