@@ -255,13 +255,15 @@ public class BuildingMain : MonoBehaviour
         {
             allText[2].text = "Upgrade";
             allText[1].text = "";
+            /*
             allText[4].text = "Task 1";
             allText[5].text = "Task 2";
             allText[6].text = "Task 3";
             allText[7].text = "Task 4";
+            */
             if (level != 3)
             {
-                allText[8].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+                allText[3].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
                 allButtons[1].interactable = true;
                 allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
                 if (!CheckIfEnoughResources())
@@ -271,26 +273,36 @@ public class BuildingMain : MonoBehaviour
             }
             else
             {
-                allText[8].text = "Max Level";
+                allText[3].text = "Max Level";
             }
             
             if (resourceBuilding)
             {
-                for(int i = 0; i < 4; i++)
+                allText[4].text = "Tasks";
+                for (int i = 0; i < 4; i++)
                 {
                     int tempi = i;
                     allButtons[tempi + 3].onClick.AddListener(delegate { TaskClicked(tempi); });
-                    allButtons[tempi + 3].GetComponentInChildren<Text>().text = taskNames[tempi] + "\n" + taskRewards[tempi] + "      " + timesForTasks[tempi];
+                    Text[] allText2 = allButtons[tempi + 3].GetComponentsInChildren<Text>();
+                    allText2[0].text = taskNames[tempi];
+                    allText2[1].text = taskRewards[tempi].ToString();
+                    allText2[2].text = timesForTasks[tempi].ToString();
+                    allText2[3].text = "";
                 }
             }
             else
             {
+                allText[4].text = "Mini Game\nDifficulty";
                 ChangeResourceIconsTasks(false);
                 for (int i = 0; i < 4; i++)
                 {
                     int tempi = i;
                     allButtons[tempi + 3].onClick.AddListener(delegate { ClickedMinigame(tempi, minigame); });
-                    allButtons[tempi + 3].GetComponentInChildren<Text>().text = minigameDiff[tempi];
+                    Text[] allText2 = allButtons[tempi + 3].GetComponentsInChildren<Text>();
+                    allText2[0].text = "";
+                    allText2[1].text = "";
+                    allText2[2].text = "";
+                    allText2[3].text = minigameDiff[tempi];
                 }
             }
             for(int i = 3; i < 7; i++)
@@ -476,7 +488,7 @@ public class BuildingMain : MonoBehaviour
         Destroy(tempBar);
         onceToCreate = false;
         GetComponent<CircleCollider2D>().enabled = true;
-        Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
+        Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleReward, transform.position, transform.rotation);
         if (ableToSave)
         {
             account.PushSave();
