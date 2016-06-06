@@ -35,13 +35,38 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         CheckBorders();
-        transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
+        
+        //transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
     }
 
     void Update()
     {
         CheckBorders();
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y);
+        Transform[] Arrows = GetComponentsInChildren<Transform>();
+        int tempSize = (int)buildingToPlace.GetComponent<BuildingMain>().size.x;
+        switch (tempSize)
+        {
+            case 1:
+                {
+
+                    break;
+                }
+            case 2:
+                {
+                    Arrows[1].localPosition = new Vector2(1.33f, 1.02f);
+                    Arrows[2].localPosition = new Vector2(-1.27f, 1f);
+                    Arrows[3].localPosition = new Vector2(1.35f, -0.37f);
+                    Arrows[4].localPosition = new Vector2(-1.29f, -0.38f);
+                    Arrows[5].localPosition = new Vector2(0.85f, 2.08f);
+                    Arrows[6].localPosition = new Vector2(-0.66f, 2.08f);
+                    break;
+                }
+            case 3:
+                {
+                    break;
+                }
+        }
     }
 
     void CheckBorders()
