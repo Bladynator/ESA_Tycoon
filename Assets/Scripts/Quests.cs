@@ -122,9 +122,9 @@ public class Quests : MonoBehaviour
                         ResetQuests();
                         break;
                     }
-                    texts.Add(allText[i, questLineProgress[i]]);
-                    ShowInformation(i, texts, false, questLineProgress[i]);
-                    texts = new List<string>();
+                    //texts.Add(allText[i, questLineProgress[i]]);
+                    MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i);
+                    //texts = new List<string>();
                     wait = true;
                 }
             }
@@ -154,7 +154,7 @@ public class Quests : MonoBehaviour
     void OpenQuest()
     {
         ResetQuests();
-        ShowInformation(questOpen, texts, true);
+        ShowInformation(questOpen, texts);
         texts = new List<string>();
     }
 
@@ -169,15 +169,7 @@ public class Quests : MonoBehaviour
         questInfoCanvas.SetActive(false);
     }
 
-    void PressedCollect(int toProgress)
-    {
-        questLineProgress[toProgress]++;
-        wait = false;
-        questInfoCanvas.SetActive(false);
-        texts = new List<string>();
-    }
-
-    void ShowInformation(int toProgress, List<string> text, bool showButton, int questDone = 0)
+    void ShowInformation(int toProgress, List<string> text)
     {
         questInfoCanvas.SetActive(true);
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
@@ -194,20 +186,11 @@ public class Quests : MonoBehaviour
         }
         buttons[0].gameObject.SetActive(true);
         buttons[1].gameObject.SetActive(true);
-        if (showButton)
-        {
-            buttons[1].gameObject.SetActive(false);
-        }
-        else
-        {
-            buttons[1].onClick.RemoveAllListeners();
-            buttons[1].onClick.AddListener(delegate { PressedCollect(toProgress); });
-            buttons[0].gameObject.SetActive(false);
-        }
+        buttons[1].gameObject.SetActive(false);
         texts = new List<string>();
     }
 
-    public bool CheckIfRequirementsAreSet(int questline, int quest, bool clickedCollect = false)
+    bool CheckIfRequirementsAreSet(int questline, int quest)
     {
         myInformation[0] = account.money;
         myInformation[1] = account.researchPoints;
@@ -229,35 +212,27 @@ public class Quests : MonoBehaviour
                 ifEnough = false;
             }
         }
-        if (clickedCollect)
-        {
-            if (ifEnough)
-            {
-                account.money += questRewards[questline, quest, 0];
-                account.researchPoints += questRewards[questline, quest, 1];
-                account.exp += questRewards[questline, quest, 2];
-            }
-        }
         return ifEnough;
     }
-
-
-    void PressedCollectButton(int addedMoney, int addedRP, int time)
+    
+    void PressedCollectButton(int addedMoney, int addedRP, int quest)
     {
         account.money += addedMoney;
         account.researchPoints += addedRP;
         onceCanvas = false;
+        wait = false;
+        questLineProgress[quest]++;
         canvas.SetActive(false);
     }
 
-    void MakeCanvas(string text, int addedMoney, int addedRP, int time)
+    void MakeCanvas(string text, int addedMoney, int addedRP, int quest)
     {
         if (!onceCanvas)
         {
             onceCanvas = true;
             canvas.SetActive(true);
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, time); });
+            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, quest); });
             canvas.GetComponentInChildren<Text>().text = text;
         }
     }

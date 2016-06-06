@@ -19,13 +19,12 @@ public class Tutorial : MonoBehaviour
     public bool tutorialDoing = false;
     BuildingButtons builderMenu;
     [SerializeField]
-    GameObject arrow, canvas, nameInputCanvas, skymap;
+    GameObject canvas, nameInputCanvas, skymap;
     [SerializeField]
     Button menu;
     [SerializeField]
     GameObject[] arrowLocations;
-    GameObject tempArrow;
-    bool arrowSpawned = false, once = false, onceName = false, onceCanvas = false;
+    bool onceName = false, onceCanvas = false;
 
     void Start () 
 	{
