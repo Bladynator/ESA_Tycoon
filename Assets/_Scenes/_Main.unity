@@ -9260,6 +9260,8 @@ MonoBehaviour:
   - {fileID: 179326, guid: 1fb03a7e93804684aa587d0e86d070b8, type: 2}
   - {fileID: 157058, guid: 99cd6d62cb1db7948a82814e55484029, type: 2}
   reset: {fileID: 846582068}
+  particleUpgrade: {fileID: 149828, guid: 89c9aed33651d654991c229f906239d0, type: 2}
+  particleReward: {fileID: 149828, guid: 89c9aed33651d654991c229f906239d0, type: 2}
 --- !u!1 &1282240962
 GameObject:
   m_ObjectHideFlags: 0

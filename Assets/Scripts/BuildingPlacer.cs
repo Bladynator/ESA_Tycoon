@@ -35,6 +35,7 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         CheckBorders();
+        transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
     }
 
     void Update()

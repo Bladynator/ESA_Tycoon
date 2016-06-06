@@ -16,6 +16,8 @@ public class HUD : MonoBehaviour
     public GameObject[] canvas;
     public GameObject[] buildingCanvas;
     public GameObject reset;
+    public GameObject particleUpgrade;
+    public GameObject particleReward;
 
     void Start () 
 	{

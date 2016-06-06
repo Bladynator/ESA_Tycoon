@@ -144,6 +144,7 @@ public class BuildingMain : MonoBehaviour
                     level++;
                     Destroy(tempBar);
                     account.exp += exp[level];
+                    Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
                     if (buildingSprites[level] != null)
                     {
                         GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
@@ -467,6 +468,7 @@ public class BuildingMain : MonoBehaviour
         Destroy(tempBar);
         onceToCreate = false;
         GetComponent<CircleCollider2D>().enabled = true;
+        Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
         if (ableToSave)
         {
             account.PushSave();
