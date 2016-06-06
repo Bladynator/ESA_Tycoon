@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class Account : MonoBehaviour 
 {
-    public int level = 1, money = 1000, researchPoints = 0, exp = 0;
+    public int level = 1, money = 0, researchPoints = 0, exp = 0;
     public string nameTown;
     SaveLoad saveLoad;
     [SerializeField]

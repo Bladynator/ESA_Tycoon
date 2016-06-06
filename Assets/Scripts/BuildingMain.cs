@@ -21,7 +21,7 @@ public class BuildingMain : MonoBehaviour
     [SerializeField]
     public bool resourceBuilding = true, decoration = false;
     [SerializeField]
-    string minigame = "";
+    string minigame = "", buildingInformation;
     public Sprite[] buildingSprites;
     public int[] exp;
 
@@ -339,10 +339,18 @@ public class BuildingMain : MonoBehaviour
             }
 
         }
+
+        allButtons[allButtons.Length - 1].onClick.AddListener(delegate { GiveBuildingInformation(buildingInformation); });
+
     }
     #endregion
 
     #region Buttons
+
+    void GiveBuildingInformation(string info)
+    {
+        GameObject.Find("TextInformationBuilding").GetComponent<Text>().text = info;
+    }
 
     void ChangeResourceIconsTasks(bool toChange)
     {
