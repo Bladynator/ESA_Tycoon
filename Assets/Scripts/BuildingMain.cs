@@ -263,10 +263,10 @@ public class BuildingMain : MonoBehaviour
             */
             if (level != 3)
             {
-                allText[3].text = priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2] + "\n" + priceForUpgrading[level + 1, 0];
+                allText[3].text = priceForUpgrading[level + 1, 0] + "\n" + priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2];
                 allButtons[1].interactable = true;
                 allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
-                if (!CheckIfEnoughResources())
+                if (!CheckIfEnoughResources(false))
                 {
                     allButtons[1].interactable = false;
                 }
@@ -495,7 +495,7 @@ public class BuildingMain : MonoBehaviour
         }
     }
 
-    bool CheckIfEnoughResources()
+    bool CheckIfEnoughResources(bool remove = true)
     {
         bool enough = true;
         if (priceForUpgrading[level + 1, 0] > account.level)
@@ -511,7 +511,7 @@ public class BuildingMain : MonoBehaviour
             enough = false;
         }
 
-        if (enough)
+        if (enough && remove)
         {
             account.money -= priceForUpgrading[level + 1, 1];
             account.researchPoints -= priceForUpgrading[level + 1, 2];
