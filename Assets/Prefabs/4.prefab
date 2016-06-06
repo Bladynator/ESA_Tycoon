@@ -72,6 +72,9 @@ MonoBehaviour:
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame1
+  buildingInformation: At the Science College, students are being educated to become
+    Engineers, Scientists and Astronauts. The collaboration between your Space Centre
+    and the school provides you with money.
   buildingSprites:
   - {fileID: 21300000, guid: 5ffa6aff24073bc45b9fdd13ae68dbcd, type: 3}
   - {fileID: 21300000, guid: 3f9cea1c32d263642b9222ff82b32c78, type: 3}

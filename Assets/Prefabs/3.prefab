@@ -72,6 +72,8 @@ MonoBehaviour:
   resourceBuilding: 1
   decoration: 0
   minigame: Minigame1
+  buildingInformation: The Headquarter is the base of all operations. This is where
+    human resources is headed and where you get your salary.
   buildingSprites:
   - {fileID: 21300000, guid: bb739d86f7d8b8946942541543bfef9b, type: 3}
   - {fileID: 21300000, guid: 3021cef22d36eff4ba24760fdad29b5e, type: 3}

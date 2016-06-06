@@ -175,7 +175,7 @@ public class Quests : MonoBehaviour
         buttons[0].onClick.AddListener(delegate { PressedBack(); });
         
         Text[] allTexts = questInfoCanvas.GetComponentsInChildren<Text>();
-        allTexts = allTexts.Take(allTexts.Length - 1).ToArray();
+        allTexts = allTexts.Take(allTexts.Length - 2).ToArray();
         for (int i = 0; i < allTexts.Length; i++)
         {
             allTexts[i].text = "";
@@ -185,8 +185,8 @@ public class Quests : MonoBehaviour
             allTexts[i].text = text[i];
         }
         buttons[0].gameObject.SetActive(true);
-        buttons[1].gameObject.SetActive(true);
-        buttons[1].gameObject.SetActive(false);
+        //buttons[1].gameObject.SetActive(true);
+        //buttons[1].gameObject.SetActive(false);
         texts = new List<string>();
     }
 

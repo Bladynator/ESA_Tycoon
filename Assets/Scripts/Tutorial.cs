@@ -283,7 +283,7 @@ public class Tutorial : MonoBehaviour
                         case 4:
                             {
                                 hud.buildButton.interactable = false;
-                                if (account.money >= 1130)
+                                if (account.money >= 1230)
                                 {
                                     questPart++;
                                 }
