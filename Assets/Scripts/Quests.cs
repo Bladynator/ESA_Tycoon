@@ -233,7 +233,10 @@ public class Quests : MonoBehaviour
             canvas.SetActive(true);
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
             canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, quest); });
-            canvas.GetComponentInChildren<Text>().text = text;
+            Text[] allText = canvas.GetComponentsInChildren<Text>();
+            allText[0].text = text;
+            allText[2].text = addedMoney.ToString();
+            allText[3].text = addedRP.ToString();
         }
     }
 }
