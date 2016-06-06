@@ -39,7 +39,7 @@ public class BuildingMain : MonoBehaviour
     public bool building = false, doneWithTask = false, onceToCreate = false;
 
     float currentTime = 0;
-    
+    string[] minigameDiff = new string[4] {"Easy","Medium","Hard","Endless" };
 
     int[,] priceForUpgrading = new int[4, 3]
         { { 1, 100, 0}, // level 1
@@ -275,26 +275,22 @@ public class BuildingMain : MonoBehaviour
             
             if (resourceBuilding)
             {
-                allButtons[3].onClick.AddListener(delegate { TaskClicked(0); });
-                allButtons[3].GetComponentInChildren<Text>().text = taskNames[0] + "\n" + taskRewards[0] + "      " + timesForTasks[0];
-                allButtons[4].onClick.AddListener(delegate { TaskClicked(1); });
-                allButtons[4].GetComponentInChildren<Text>().text = taskNames[1] + "\n" + taskRewards[1] + "      " + timesForTasks[1];
-                allButtons[5].onClick.AddListener(delegate { TaskClicked(2); });
-                allButtons[5].GetComponentInChildren<Text>().text = taskNames[2] + "\n" + taskRewards[2] + "      " + timesForTasks[2];
-                allButtons[6].onClick.AddListener(delegate { TaskClicked(3); });
-                allButtons[6].GetComponentInChildren<Text>().text = taskNames[3] + "\n" + taskRewards[3] + "      " + timesForTasks[3];
+                for(int i = 0; i < 4; i++)
+                {
+                    int tempi = i;
+                    allButtons[tempi + 3].onClick.AddListener(delegate { TaskClicked(tempi); });
+                    allButtons[tempi + 3].GetComponentInChildren<Text>().text = taskNames[tempi] + "\n" + taskRewards[tempi] + "      " + timesForTasks[tempi];
+                }
             }
             else
             {
                 ChangeResourceIconsTasks(false);
-                allButtons[3].onClick.AddListener(delegate { ClickedMinigame(0, minigame); });
-                allButtons[3].GetComponentInChildren<Text>().text = "Easy";
-                allButtons[4].onClick.AddListener(delegate { ClickedMinigame(1, minigame); });
-                allButtons[4].GetComponentInChildren<Text>().text = "Medium";
-                allButtons[5].onClick.AddListener(delegate { ClickedMinigame(2, minigame); });
-                allButtons[5].GetComponentInChildren<Text>().text = "Hard";
-                allButtons[6].onClick.AddListener(delegate { ClickedMinigame(3, minigame); });
-                allButtons[6].GetComponentInChildren<Text>().text = "Endless";
+                for (int i = 0; i < 4; i++)
+                {
+                    int tempi = i;
+                    allButtons[tempi + 3].onClick.AddListener(delegate { ClickedMinigame(tempi, minigame); });
+                    allButtons[tempi + 3].GetComponentInChildren<Text>().text = minigameDiff[tempi];
+                }
             }
             for(int i = 3; i < 7; i++)
             {
