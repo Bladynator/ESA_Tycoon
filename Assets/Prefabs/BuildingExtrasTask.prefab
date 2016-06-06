@@ -88,9 +88,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3ee485ff7e2bcf2459d54cf912a5789a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8980c6f6395cc4448bf630a888ca4cf1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -115,9 +115,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 112a3df7cd966954d9c9ad2953ab3e05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5423811c6d711ba4ca298c878cd30e94, type: 3}
   m_Type: 3
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -159,8 +159,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 47cab40b8d4708f4cbb7b9537ad03639, type: 3}
-    m_FontSize: 10
+    m_Font: {fileID: 12800000, guid: f0187129cf299c14891d72a80d1bc11c, type: 3}
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time Left: '
+  m_Text: 
 --- !u!114 &11482264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,14 +254,14 @@ RectTransform:
   m_GameObject: {fileID: 133268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.1}
   m_Children: []
   m_Father: {fileID: 22446030}
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.18, y: 1.06}
-  m_SizeDelta: {x: 70.6, y: 15.11}
+  m_AnchoredPosition: {x: -1.03, y: 0.24}
+  m_SizeDelta: {x: 130, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22444534
 RectTransform:
@@ -277,8 +277,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.318, y: -0.242}
+  m_SizeDelta: {x: -1.923, y: -0.794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22446030
 RectTransform:
@@ -288,7 +288,7 @@ RectTransform:
   m_GameObject: {fileID: 179326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 22408354}
   - {fileID: 22444534}
@@ -297,7 +297,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -9.541187, y: 10.761618}
+  m_AnchoredPosition: {x: 6.8780966, y: 10.152288}
   m_SizeDelta: {x: 5.54, y: 1.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
