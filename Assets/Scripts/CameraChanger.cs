@@ -17,6 +17,7 @@ public class CameraChanger : MonoBehaviour
 
     void Update()
     {
+        
         if (GameObject.FindGameObjectWithTag("Canvas") == null)
         {
             if (Input.GetMouseButtonDown(0))
@@ -31,8 +32,24 @@ public class CameraChanger : MonoBehaviour
                 LeftMouseDrag();
             }
             transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
+            if (transform.position.x > 33)
+            {
+                transform.position = new Vector2(33, transform.position.y);
+            }
+            if (transform.position.x < -32)
+            {
+                transform.position = new Vector2(-32, transform.position.y);
+            }
+            if (transform.position.y > 63)
+            {
+                transform.position = new Vector2(transform.position.x, 63);
+            }
+            if (transform.position.y < 10)
+            {
+                transform.position = new Vector2(transform.position.x, 10);
+            }
         }
-
+        
         if (Input.touchCount == 2)
         {
             Touch touchZero = Input.GetTouch(0);
@@ -85,21 +102,5 @@ public class CameraChanger : MonoBehaviour
         direction = direction * -1;
         Vector3 position = camera_position + direction;
         transform.position = position;
-        if (transform.position.x > 33)
-        {
-            transform.position = new Vector2(33, position.y);
-        }
-        if (transform.position.x < -32)
-        {
-            transform.position = new Vector2(-32, position.y);
-        }
-        if (transform.position.y > 63)
-        {
-            transform.position = new Vector2(position.x, 63);
-        }
-        if (transform.position.y < 10)
-        {
-            transform.position = new Vector2(position.x, 10);
-        }
     }
 }
