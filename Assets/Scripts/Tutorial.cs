@@ -181,11 +181,11 @@ public class Tutorial : MonoBehaviour
                             {
                                 ShowDialog(6, false);
                                 account.waitForInput = true;
-                                ShowArrow(4);
                                 break;
                             }
                         case 4:
                             {
+                                ShowArrow(4);
                                 if (!account.waitForInput)
                                 {
                                     questLine.tutorialBack = true;

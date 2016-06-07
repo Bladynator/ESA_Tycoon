@@ -16,13 +16,13 @@ public class BuildingButtons : MonoBehaviour
     Account account;
     public bool tutorialBack = false;
     Button[] allButtons = new Button[6];
-    Image reset;
+    //Image reset;
     [SerializeField]
     Sprite pressed, unpressed;
     [SerializeField]
     Color tempColour;
 
-    void Start()
+    void OnEnable()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
         namesBuildings = new string[buildingsPrefabs.Length];
@@ -42,8 +42,8 @@ public class BuildingButtons : MonoBehaviour
         {
             allButtons[i].onClick.RemoveAllListeners();
         }
-        reset = GameObject.Find("ResetButton").GetComponent<Image>();
-        reset.raycastTarget = true;
+        //reset = GameObject.Find("ResetButton").GetComponent<Image>();
+        //reset.raycastTarget = true;
         allButtons[0].onClick.AddListener(delegate { PressedType(0); });
         allButtons[1].onClick.AddListener(delegate { PressedType(1); });
         allButtons[2].onClick.AddListener(delegate { PressedType(2); });

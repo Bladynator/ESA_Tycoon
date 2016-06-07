@@ -69,7 +69,7 @@ MonoBehaviour:
   - 
   - 
   taskRewards: 28000000f00a000028230000a8610000
-  resourceBuilding: 0
+  resourceBuilding: 1
   decoration: 0
   minigame: Minigame1
   buildingInformation: At the Science College, students are being educated to become
