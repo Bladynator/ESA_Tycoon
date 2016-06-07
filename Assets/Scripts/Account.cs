@@ -136,8 +136,7 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        AudioSource[] tempAudio = GameObject.Find("SoundController").GetComponents<AudioSource>();
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + tempAudio[0].mute.ToString() + "<DB>" + tempAudio[1].mute.ToString();
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + GameObject.Find("SoundController").GetComponent<AudioSource>().mute.ToString() + "<DB>" + GameObject.Find("SFXController").GetComponent<AudioSource>().mute.ToString();
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
     }
     string GetHighscores()
@@ -207,14 +206,14 @@ public class Account : MonoBehaviour
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i] = Convert.ToInt32(allScores[i]);
         }
-
+         
         GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = Convert.ToInt32(allInformation[9]);
         GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(Convert.ToInt32(allInformation[9]));
-        AudioSource[] tempAudio = GameObject.Find("SoundController").GetComponents<AudioSource>();
-        tempAudio[0].mute = Convert.ToBoolean(allInformation[10]);
-        tempAudio[1].mute = Convert.ToBoolean(allInformation[11]);
-        soundChecks[0].isOn = !tempAudio[0].mute;
-        soundChecks[1].isOn = !tempAudio[1].mute;
+        
+        GameObject.Find("SoundController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[10]);
+        GameObject.Find("SFXController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[11]);
+        soundChecks[0].isOn = Convert.ToBoolean(allInformation[10]);
+        soundChecks[1].isOn = Convert.ToBoolean(allInformation[11]);
 
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
 

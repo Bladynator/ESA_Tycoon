@@ -76,10 +76,10 @@ MonoBehaviour:
     Engineers, Scientists and Astronauts. The collaboration between your Space Centre
     and the school provides you with money.
   buildingSprites:
-  - {fileID: 21300000, guid: 5ffa6aff24073bc45b9fdd13ae68dbcd, type: 3}
-  - {fileID: 21300000, guid: 3f9cea1c32d263642b9222ff82b32c78, type: 3}
-  - {fileID: 21300000, guid: a4d110def95b61a4e829fbd3b1608858, type: 3}
-  - {fileID: 21300000, guid: 5f5f0e1596db09947bddb792c077c080, type: 3}
+  - {fileID: 21300000, guid: f94f87402699a4647b2536e05844dbad, type: 3}
+  - {fileID: 21300000, guid: cc77480f6d537334b8a2299311488eea, type: 3}
+  - {fileID: 21300000, guid: 888f636389d40f4489b575b1c40bc7ed, type: 3}
+  - {fileID: 21300000, guid: 656457713ac81c3468c7a0125949f588, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5ffa6aff24073bc45b9fdd13ae68dbcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f94f87402699a4647b2536e05844dbad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
