@@ -50,6 +50,7 @@ public class Tutorial : MonoBehaviour
                     {
                         case 1:
                             {
+                                GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
                                 GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
                                 tutorialDoing = true;
                                 menu.interactable = false;

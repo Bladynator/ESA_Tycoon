@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: dcfaef3f00cafa448b16608118fb90a6
+timeCreated: 1465314349
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ARROW SPRITE (1)_0
+    21300002: ARROW SPRITE (1)_1
+    21300004: ARROW SPRITE (1)_2
+    21300006: ARROW SPRITE (1)_3
+    21300008: ARROW SPRITE (1)_4
+    21300010: ARROW SPRITE (1)_5
+    21300012: ARROW SPRITE (1)_6
+    21300014: ARROW SPRITE (1)_7
+    21300016: ARROW SPRITE (1)_8
+    21300018: ARROW SPRITE (1)_9
+    21300020: ARROW SPRITE (1)_10
+    21300022: ARROW SPRITE (1)_11
+    21300024: ARROW SPRITE (1)_12
+    21300026: ARROW SPRITE (1)_13
+    21300028: ARROW SPRITE (1)_14
+    21300030: ARROW SPRITE (1)_15
+    21300032: ARROW SPRITE (1)_16
+    21300034: ARROW SPRITE (1)_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ARROW SPRITE (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 18.5}
+        - {x: -57, y: 4.5}
+        - {x: -57, y: -3.5}
+        - {x: -37, y: -18.5}
+        - {x: -1, y: -18.5}
+        - {x: 8, y: -15.5}
+        - {x: 8, y: 8.5}
+        - {x: 6, y: 10.5}
+        - {x: -14, y: 18.5}
+    - name: ARROW SPRITE (1)_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18.055557, y: 9.5}
+        - {x: -1.9444427, y: 18.5}
+        - {x: -17.944443, y: 18.5}
+        - {x: -48.944443, y: 2.5}
+        - {x: -48.944443, y: -7.5}
+        - {x: -16.944443, y: -18.5}
+        - {x: 1.0555573, y: -18.5}
+        - {x: 16.055557, y: -10.5}
+        - {x: 18.055557, y: -8.5}
+    - name: ARROW SPRITE (1)_2
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.111115, y: 10.5}
+        - {x: 5.1111145, y: 18.5}
+        - {x: -10.8888855, y: 18.5}
+        - {x: -38.888885, y: 2.5}
+        - {x: -38.888885, y: -7.5}
+        - {x: -7.8888855, y: -18.5}
+        - {x: 10.1111145, y: -18.5}
+        - {x: 25.111115, y: -10.5}
+        - {x: 27.111115, y: -8.5}
+        - {x: 27.111115, y: 8.5}
+    - name: ARROW SPRITE (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.833344, y: 18.5}
+        - {x: -30.833344, y: 8.5}
+        - {x: -30.833344, y: -4.5}
+        - {x: -9.8333435, y: -18.5}
+        - {x: 26.166656, y: -18.5}
+        - {x: 35.166656, y: -15.5}
+        - {x: 35.166656, y: 18.5}
+    - name: ARROW SPRITE (1)_4
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.777771, y: -2.5}
+        - {x: -1.777771, y: -18.5}
+        - {x: 32.22223, y: -18.5}
+        - {x: 43.22223, y: -14.5}
+        - {x: 43.22223, y: 12.5}
+        - {x: 20.222229, y: 18.5}
+        - {x: 5.222229, y: 18.5}
+        - {x: -23.777771, y: 1.5}
+    - name: ARROW SPRITE (1)_5
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.277771, y: 18.5}
+        - {x: -16.722229, y: 2.5}
+        - {x: -16.722229, y: -5.5}
+        - {x: 3.277771, y: -18.5}
+        - {x: 40.27777, y: -18.5}
+        - {x: 49.27777, y: -15.5}
+        - {x: 49.27777, y: 10.5}
+        - {x: 28.277771, y: 18.5}
+    - name: ARROW SPRITE (1)_6
+      rect:
+        serializedVersion: 2
+        x: 2640
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55.333313, y: 9.5}
+        - {x: 35.333313, y: 18.5}
+        - {x: 19.333313, y: 18.5}
+        - {x: -11.666687, y: 3.5}
+        - {x: -11.666687, y: -7.5}
+        - {x: 20.333313, y: -18.5}
+        - {x: 38.333313, y: -18.5}
+        - {x: 53.333313, y: -10.5}
+        - {x: 55.333313, y: -8.5}
+    - name: ARROW SPRITE (1)_7
+      rect:
+        serializedVersion: 2
+        x: 3080
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.388916, y: 18.5}
+        - {x: -6.611084, y: 5.5}
+        - {x: -6.611084, y: -4.5}
+        - {x: 14.388916, y: -18.5}
+        - {x: 48.388916, y: -18.5}
+        - {x: 57.388916, y: -15.5}
+        - {x: 57.388916, y: 10.5}
+        - {x: 42.388916, y: 18.5}
+    - name: ARROW SPRITE (1)_8
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.444458, y: 18.5}
+        - {x: -2.555542, y: 5.5}
+        - {x: -2.555542, y: -3.5}
+        - {x: 19.444458, y: -18.5}
+        - {x: 49.444458, y: -18.5}
+        - {x: 57.444458, y: -15.5}
+        - {x: 57.444458, y: 10.5}
+        - {x: 40.444458, y: 18.5}
+      - - {x: -56.555542, y: -10.5}
+        - {x: -53.555542, y: -9.5}
+        - {x: -53.555542, y: 8.5}
+        - {x: -55.555542, y: 10.5}
+        - {x: -56.555542, y: 10.5}
+    - name: ARROW SPRITE (1)_9
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39.5, y: 18.5}
+        - {x: 20.5, y: 18.5}
+        - {x: 9.5, y: 13.5}
+        - {x: -10.5, y: 2.5}
+        - {x: -10.5, y: -0.5}
+        - {x: -8.5, y: -4.5}
+        - {x: 11.5, y: -18.5}
+        - {x: 37.5, y: -18.5}
+        - {x: 54.5, y: -10.5}
+        - {x: 56.5, y: -8.5}
+        - {x: 56.5, y: 11.5}
+      - - {x: -56.5, y: 10.5}
+        - {x: -56.5, y: -10.5}
+        - {x: -51.5, y: -10.5}
+        - {x: -49.5, y: -8.5}
+        - {x: -49.5, y: 8.5}
+        - {x: -51.5, y: 10.5}
+    - name: ARROW SPRITE (1)_10
+      rect:
+        serializedVersion: 2
+        x: 4400
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.555542, y: 18.5}
+        - {x: -17.444458, y: 1.5}
+        - {x: -17.444458, y: -2.5}
+        - {x: 9.555542, y: -18.5}
+        - {x: 27.555542, y: -18.5}
+        - {x: 49.555542, y: -10.5}
+        - {x: 49.555542, y: 10.5}
+        - {x: 29.555542, y: 18.5}
+    - name: ARROW SPRITE (1)_11
+      rect:
+        serializedVersion: 2
+        x: 4840
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.611084, y: 18.5}
+        - {x: 6.611084, y: 18.5}
+        - {x: -23.388916, y: 1.5}
+        - {x: -23.388916, y: -2.5}
+        - {x: -4.388916, y: -14.5}
+        - {x: 6.611084, y: -18.5}
+        - {x: 24.611084, y: -18.5}
+        - {x: 43.611084, y: -11.5}
+        - {x: 43.611084, y: 12.5}
+    - name: ARROW SPRITE (1)_12
+      rect:
+        serializedVersion: 2
+        x: 5280
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.333374, y: -2.5}
+        - {x: -6.333374, y: -18.5}
+        - {x: 30.666626, y: -18.5}
+        - {x: 37.666626, y: -16.5}
+        - {x: 37.666626, y: 12.5}
+        - {x: 14.666626, y: 18.5}
+        - {x: 1.666626, y: 18.5}
+        - {x: -29.333374, y: 1.5}
+    - name: ARROW SPRITE (1)_13
+      rect:
+        serializedVersion: 2
+        x: 5720
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.27771, y: 18.5}
+        - {x: -33.27771, y: 1.5}
+        - {x: -33.27771, y: -3.5}
+        - {x: -5.27771, y: -18.5}
+        - {x: 10.72229, y: -18.5}
+        - {x: 33.72229, y: -9.5}
+        - {x: 33.72229, y: 14.5}
+        - {x: 18.72229, y: 18.5}
+    - name: ARROW SPRITE (1)_14
+      rect:
+        serializedVersion: 2
+        x: 6160
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.777832, y: 18.5}
+        - {x: -6.222168, y: 18.5}
+        - {x: -37.222168, y: 2.5}
+        - {x: -37.222168, y: -1.5}
+        - {x: -35.222168, y: -4.5}
+        - {x: -15.222168, y: -18.5}
+        - {x: 10.777832, y: -18.5}
+        - {x: 26.777832, y: -10.5}
+        - {x: 28.777832, y: -8.5}
+        - {x: 28.777832, y: 11.5}
+    - name: ARROW SPRITE (1)_15
+      rect:
+        serializedVersion: 2
+        x: 6600
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.166626, y: 18.5}
+        - {x: -37.166626, y: 6.5}
+        - {x: -40.166626, y: 3.5}
+        - {x: -40.166626, y: -8.5}
+        - {x: -19.166626, y: -18.5}
+        - {x: 15.833374, y: -18.5}
+        - {x: 25.833374, y: -9.5}
+        - {x: 25.833374, y: 11.5}
+        - {x: 7.833374, y: 18.5}
+    - name: ARROW SPRITE (1)_16
+      rect:
+        serializedVersion: 2
+        x: 7040
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.888916, y: 9.5}
+        - {x: 3.888916, y: 18.5}
+        - {x: -12.111084, y: 18.5}
+        - {x: -43.111084, y: 2.5}
+        - {x: -43.111084, y: -7.5}
+        - {x: -11.111084, y: -18.5}
+        - {x: 6.888916, y: -18.5}
+        - {x: 21.888916, y: -10.5}
+        - {x: 23.888916, y: -8.5}
+    - name: ARROW SPRITE (1)_17
+      rect:
+        serializedVersion: 2
+        x: 7480
+        y: 0
+        width: 440
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.944458, y: 9.5}
+        - {x: 1.944458, y: 18.5}
+        - {x: -14.055542, y: 18.5}
+        - {x: -45.055542, y: 2.5}
+        - {x: -45.055542, y: -7.5}
+        - {x: -13.055542, y: -18.5}
+        - {x: 4.944458, y: -18.5}
+        - {x: 19.944458, y: -10.5}
+        - {x: 21.944458, y: -8.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
