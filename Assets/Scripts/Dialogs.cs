@@ -5,18 +5,18 @@ using UnityEngine.UI;
 public class Dialogs : MonoBehaviour 
 {
     string[,] dialogText = new string[12,10]
-        {{"Hi Chief! Welcome to 2016. My name is PAOLO and I’m an Engineer, just like YOU.","I will help you fulfill your mission.","In order to start your mission you need to develop a SPACE CENTER.","Start by giving it a name.","","","","","",""},
-    {"Good! Cool name!","","","","","","","","",""},
-    {"Here YOU have some MONEY to get started.","MONEY is the primary currency. Use it wisely.","","","","","","","",""},
-    {"This is the HEADQUARTERS. The base of all operations.","QUESTS are the TASKS YOU need to perform to execute your mission properly.","Go ahead and have a look.","","","","","","",""},
-    {"","","","","","","","","",""},
-    {"Good job! You completed your first TASK.","","","","","","","","",""},
-    {"RESEARCH POINTS are the secondary currency. The better you learn, the more you get.","","","","","","","","",""},
-    {"Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","","",""},
-    {"Now, let’s assign a TASK to the EXHIBIT to generate revenue.","Click on exhibit to assign new task.","","","","","","","",""},
-    {"With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!","Place a FLAG of your choice to show who’s in charge.","","","","","","","",""},
-    {"What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","","",""},
-        {"Let me tell you one last thing before we finish...","You can play mini games in the mission buildings, if you want to.","They are pretty exciting and help you understand the mission better.","That’s it for now. Good luck on your mission Chief! And if you need any help, I’ll be there for you. Cheers!","","","","","",""}};
+        {{"a","Hi Chief! Welcome to 2016. My name is PAOLO and I’m an Engineer, just like YOU.","I will help you fulfill your mission.","In order to start your mission you need to develop a SPACE CENTER.","Start by giving it a name.","","","","",""},
+    {"a","Good! Cool name!","","","","","","","",""},
+    {"a","Here YOU have some MONEY to get started.","MONEY is the primary currency. Use it wisely.","","","","","","",""},
+    {"a","This is the HEADQUARTERS. The base of all operations.","QUESTS are the TASKS YOU need to perform to execute your mission properly.","Go ahead and have a look.","","","","","",""},
+    {"a","","","","","","","","",""},
+    {"a","Good job! You completed your first TASK.","","","","","","","",""},
+    {"a","RESEARCH POINTS are the secondary currency. The better you learn, the more you get.","","","","","","","",""},
+    {"a","Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","",""},
+    {"a","Now, let’s assign a TASK to the EXHIBIT to generate revenue.","Click on exhibit to assign new task.","","","","","","",""},
+    {"a","With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!","Place a FLAG of your choice to show who’s in charge.","","","","","","",""},
+    {"a","What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","",""},
+        {"a","Let me tell you one last thing before we finish...","You can play mini games in the mission buildings, if you want to.","They are pretty exciting and help you understand the mission better.","That’s it for now. Good luck on your mission Chief! And if you need any help, I’ll be there for you. Cheers!","","","","",""}};
 
     public bool talk = false, waitForInput = false;
     public string msg01;
@@ -28,6 +28,8 @@ public class Dialogs : MonoBehaviour
 
     [SerializeField]
     GameObject canvas;
+    [SerializeField]
+    Sprite[] peopleToTalkTo;
 
     void Update()
     {
@@ -81,12 +83,29 @@ public class Dialogs : MonoBehaviour
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
         canvas.SetActive(true);
-        msg01 = "";
-        pos = 0;
-        talk = true;
-        numberToSay = number;
-        dialogNumberMain = dialogNumber;
-        output = dialogText[dialogNumber, numberToSay];
-        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(false);
+        if (number == 0)
+        {
+            Image[] tempImages = canvas.GetComponentsInChildren<Image>();
+
+            if(dialogText[dialogNumber,number] == "f")
+            {
+                tempImages[1].sprite = peopleToTalkTo[1];
+            }
+            else
+            {
+                tempImages[1].sprite = peopleToTalkTo[0];
+            }
+            ActivateTalking(dialogNumberMain, 1);
+        }
+        else
+        {
+            msg01 = "";
+            pos = 0;
+            talk = true;
+            numberToSay = number;
+            dialogNumberMain = dialogNumber;
+            output = dialogText[dialogNumber, numberToSay];
+            GameObject.Find("Account").GetComponent<Account>().ChangeColliders(false);
+        }
     }
 }

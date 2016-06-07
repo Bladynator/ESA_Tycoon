@@ -4914,6 +4914,9 @@ MonoBehaviour:
   currentTime: 0
   tutorial: 0
   canvas: {fileID: 1991782588}
+  peopleToTalkTo:
+  - {fileID: 21300000, guid: 68773093f62944842916addf823cc01b, type: 3}
+  - {fileID: 21300000, guid: 1028bce95ed54a9408de82629a13ece4, type: 3}
 --- !u!1 &529365089
 GameObject:
   m_ObjectHideFlags: 0
@@ -9977,7 +9980,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1028bce95ed54a9408de82629a13ece4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68773093f62944842916addf823cc01b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
