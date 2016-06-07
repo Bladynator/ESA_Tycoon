@@ -20,7 +20,9 @@ public class HUD : MonoBehaviour
     public GameObject particleUpgrade;
     public GameObject particleReward;
     public GameObject notification;
+    public GameObject badges;
     public int notificationNumber = 2;
+    public Sprite[] allBadgesImages;
 
     void Start () 
 	{
@@ -43,6 +45,11 @@ public class HUD : MonoBehaviour
         {
             exp.text = "Max Level";
         }
+    }
+
+    public void ChangeBadge()
+    {
+        GameObject.Find("LevelIcon").GetComponent<Image>().sprite = allBadgesImages[account.level - 1];
     }
 
     public void UpdateNotification(int newNumber = 90)

@@ -75,11 +75,8 @@ public class Account : MonoBehaviour
     {
         exp -= expNeededForLevel[level];
         level++;
-        justLeveld = true;
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
-        
-        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(newbuildings[level]);
-
+        GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
     }
 
     public void Share()
@@ -216,6 +213,7 @@ public class Account : MonoBehaviour
         soundChecks[1].isOn = Convert.ToBoolean(allInformation[11]);
 
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
+        GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
 
         string[] quests = Regex.Split(allInformation[5], "<e>");
         int[] questsInt = new int[quests.Length - 1];

@@ -8,7 +8,9 @@ public class BadgeSorter : MonoBehaviour
     GameObject badges, infoscreen, link;
     [SerializeField]
     Account account;
-    Image[] allBadges, tempFull;
+    Image[] allBadges;
+    [SerializeField]
+    Sprite[] tempFull;
     [SerializeField]
     Sprite emptyBadge;
     [SerializeField]
@@ -20,20 +22,10 @@ public class BadgeSorter : MonoBehaviour
     [SerializeField]
     string[] badgeName, badgeInfo, urls;
 
-    void Start()
+    void OnEnable()
     {
         allBadges = badges.GetComponentsInChildren<Image>();
-        tempFull = badges.GetComponentsInChildren<Image>();
         Recount();
-    }
-
-    void Update()
-    {
-        if(account.justLeveld)
-        {
-            account.justLeveld = false;
-            Recount();
-        }
     }
 
     public void Recount()
@@ -42,10 +34,10 @@ public class BadgeSorter : MonoBehaviour
         {
             string temp = badgeName[i];
             string temp2 = badgeInfo[i];
-            Image temp3 = tempFull[i];
+            Sprite temp3 = tempFull[i];
             Sprite temp4 = links[i];
             string url = urls[i];
-            allBadges[i].sprite = tempFull[i].sprite;
+            allBadges[i].sprite = tempFull[i];
             allBadges[i].GetComponent<Button>().onClick.RemoveAllListeners();
             allBadges[i].GetComponent<Button>().onClick.AddListener(delegate { DisplayText(temp, temp2, temp3, temp4, url); });
         }
@@ -56,12 +48,12 @@ public class BadgeSorter : MonoBehaviour
     }
 
 
-    void DisplayText(string text, string infoText, Image image, Sprite linkst, string url)
+    void DisplayText(string text, string infoText, Sprite image, Sprite linkst, string url)
     {
         infoscreen.SetActive(true);
         textToDisplay.text = text;
         textInformation.text = infoText;
-        tempBadge.sprite = image.sprite;
+        tempBadge.sprite = image;
         link.GetComponent<Image>().sprite = linkst;
         string tempUrl = url;
         link.GetComponent<Button>().onClick.AddListener(delegate { ClickedLink(tempUrl); });
