@@ -33,7 +33,6 @@ public class Tutorial : MonoBehaviour
         hud = GameObject.Find("HUD").GetComponent<HUD>();
         account = GameObject.Find("Account").GetComponent<Account>();
         builderMenu = hud.buildMenu;
-        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
     }
     
     void FixedUpdate () 
@@ -51,6 +50,7 @@ public class Tutorial : MonoBehaviour
                     {
                         case 1:
                             {
+                                GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
                                 tutorialDoing = true;
                                 menu.interactable = false;
                                 account.ChangeColliders(false);

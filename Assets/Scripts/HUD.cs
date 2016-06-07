@@ -26,7 +26,6 @@ public class HUD : MonoBehaviour
 	{
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
-        UpdateNotification();
     }
 
     void Update()

@@ -18,6 +18,8 @@ public class Account : MonoBehaviour
     [SerializeField]
     BuildingButtons buildings;
     public string[] namesBuildings;
+    [SerializeField]
+    Toggle[] soundChecks;
 
     string save;
     bool waitOneSec = false;
@@ -134,7 +136,8 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber;
+        AudioSource[] tempAudio = GameObject.Find("SoundController").GetComponents<AudioSource>();
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + tempAudio[0].mute.ToString() + "<DB>" + tempAudio[1].mute.ToString();
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
     }
     string GetHighscores()
@@ -206,6 +209,12 @@ public class Account : MonoBehaviour
         }
 
         GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = Convert.ToInt32(allInformation[9]);
+        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(Convert.ToInt32(allInformation[9]));
+        AudioSource[] tempAudio = GameObject.Find("SoundController").GetComponents<AudioSource>();
+        tempAudio[0].mute = Convert.ToBoolean(allInformation[10]);
+        tempAudio[1].mute = Convert.ToBoolean(allInformation[11]);
+        soundChecks[0].isOn = !tempAudio[0].mute;
+        soundChecks[1].isOn = !tempAudio[1].mute;
 
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
 
