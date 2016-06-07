@@ -6,7 +6,7 @@ public class HUD : MonoBehaviour
 {
     Account account;
     public BuildingButtons buildMenu;
-    public Button buildButton;
+    public Toggle buildButton;
     public Text money;
     public Text researchPoints;
     public Text level;

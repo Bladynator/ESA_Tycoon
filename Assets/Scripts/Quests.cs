@@ -26,7 +26,7 @@ public class Quests : MonoBehaviour
     GameObject questInfoCanvas, questScreen, canvas;
     [SerializeField]
     Button[] buttons;
-    Button questButton;
+    Toggle questButton;
 
     List<string> texts = new List<string>();
     
@@ -104,7 +104,7 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Button>();
+        questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Toggle>();
         //questButton.gameObject.SetActive(false);
     }
 
@@ -145,13 +145,13 @@ public class Quests : MonoBehaviour
             if (questLineProgress[i] != 0)
             {
                 questButton.interactable = true;
-                questButton.onClick.AddListener(delegate { OpenQuest(); });
+                //questButton.onValueChanged.AddListener(delegate { OpenQuest(); });
                 texts.Add(allText[i, questLineProgress[i]]);
             }
         }
     }
 
-    void OpenQuest()
+    public void OpenQuest()
     {
         ResetQuests();
         ShowInformation(questOpen, texts);
