@@ -399,7 +399,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 326b20c8982efeb4abea74a0035107f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e14de4be2ea2a548afac18535c9acbb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_ScaleFactor: 1.51
   m_ReferenceResolution: {x: 500, y: 400}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.795
+  m_MatchWidthOrHeight: 0.859
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 72
   m_DefaultSpriteDPI: 72

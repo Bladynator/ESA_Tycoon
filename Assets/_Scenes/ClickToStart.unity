@@ -196,7 +196,7 @@ MonoBehaviour:
   m_ScaleFactor: 1.51
   m_ReferenceResolution: {x: 500, y: 400}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.795
+  m_MatchWidthOrHeight: 0.859
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 72
   m_DefaultSpriteDPI: 72
