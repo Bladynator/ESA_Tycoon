@@ -54,6 +54,15 @@ public class HUD : MonoBehaviour
 
     public void UpdateNotification(int newNumber = 90)
     {
+        if (notificationNumber <= 0)
+        {
+            notification.SetActive(false);
+        }
+        else
+        {
+            notification.SetActive(true);
+        }
+
         if (newNumber != 90)
         {
             notificationNumber = newNumber;
@@ -67,7 +76,7 @@ public class HUD : MonoBehaviour
             notification.GetComponentInChildren<Text>().text = old.ToString();
         }
 
-        if (notificationNumber == 0)
+        if (notificationNumber <= 0)
         {
             notification.SetActive(false);
         }

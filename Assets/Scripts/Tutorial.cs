@@ -15,7 +15,7 @@ public class Tutorial : MonoBehaviour
     int activeArrow = 0;
     string townName = "ESA ESTEC";
     [SerializeField]
-    GameObject hq;
+    GameObject hq, timemachine;
     public bool tutorialDoing = false;
     BuildingButtons builderMenu;
     [SerializeField]
@@ -62,6 +62,7 @@ public class Tutorial : MonoBehaviour
                                 dialogs.tutorial = true;
                                 skymap.SetActive(false);
                                 ShowDialog(0);
+                                //PlaceHQ(timemachine, new Vector2(10, 5));
                                 break;
                             }
                         case 2:
@@ -87,7 +88,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 6:
                             {
-                                PlaceHQ(hq);
+                                PlaceHQ(hq, new Vector2(2,5));
                                 questPart++;
                                 break;
                             }
@@ -457,6 +458,7 @@ public class Tutorial : MonoBehaviour
     void ShowArrow(int location)
     {
         arrowLocations[location].SetActive(true);
+        arrowLocations[location].GetComponent<RectTransform>().SetAsLastSibling();
         activeArrow = location;
     }
 
@@ -473,9 +475,9 @@ public class Tutorial : MonoBehaviour
         questPart = -1;
     }
 
-    void PlaceHQ(GameObject hq)
+    void PlaceHQ(GameObject hq, Vector2 positionNew)
     {
-        Vector2 activePlaceOnGrid = new Vector2(2, 5);
+        Vector2 activePlaceOnGrid = positionNew;
         EmptyField[,] grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < hq.GetComponent<BuildingMain>().size.x; i++)
         {
