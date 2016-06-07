@@ -61,6 +61,6 @@ public class BadgeSorter : MonoBehaviour
 
     void ClickedLink(string link)
     {
-
+        Application.OpenURL(link);
     }
 }
