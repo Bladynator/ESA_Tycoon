@@ -11195,9 +11195,9 @@ MonoBehaviour:
   buildingCanvas:
   - {fileID: 665622883}
   - {fileID: 168800, guid: 78f4024bb2726eb448389fdfe6311244, type: 2}
-  - {fileID: 129586, guid: 7417ee7b65acc9d4ea5c720f138263f0, type: 2}
-  - {fileID: 129386, guid: f248daee6a06b1248ab82d5b73c7b5a3, type: 2}
   - {fileID: 179326, guid: 1fb03a7e93804684aa587d0e86d070b8, type: 2}
+  - {fileID: 129386, guid: f248daee6a06b1248ab82d5b73c7b5a3, type: 2}
+  - {fileID: 129586, guid: 7417ee7b65acc9d4ea5c720f138263f0, type: 2}
   - {fileID: 157058, guid: 99cd6d62cb1db7948a82814e55484029, type: 2}
   reset: {fileID: 846582068}
   particleUpgrade: {fileID: 149828, guid: 89c9aed33651d654991c229f906239d0, type: 2}
@@ -15589,6 +15589,17 @@ MonoBehaviour:
       - m_Target: {fileID: 690773188}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 690773189}
+        m_MethodName: SetAsLastSibling
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

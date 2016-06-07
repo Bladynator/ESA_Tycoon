@@ -83,6 +83,7 @@ public class Dialogs : MonoBehaviour
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
         canvas.SetActive(true);
+        canvas.GetComponent<RectTransform>().SetAsLastSibling();
         if (number == 0)
         {
             Image[] tempImages = canvas.GetComponentsInChildren<Image>();
