@@ -331,10 +331,12 @@ public class BuildingMain : MonoBehaviour
         else
         {
             allButtons[1].onClick.AddListener(delegate { DeleteDeco(); });
-            for (int i = 3; i < allButtons.Length; i++)
+            for (int i = 3; i < 7; i++)
             {
                 allButtons[i].gameObject.SetActive(false);
             }
+            allButtons[7].gameObject.SetActive(true);
+            allButtons[8].gameObject.SetActive(true);
             allText[1].gameObject.SetActive(false);
             allText[2].text = "Destroy";
             
@@ -344,7 +346,7 @@ public class BuildingMain : MonoBehaviour
             }
             for (int i = 9; i < allImages.Length; i++)
             {
-                if (i != 16)
+                if (i != 16 && i != 19 && i != 20)
                 {
                     allImages[i].gameObject.SetActive(false);
                 }
