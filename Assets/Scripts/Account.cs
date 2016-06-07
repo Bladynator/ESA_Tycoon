@@ -134,7 +134,7 @@ public class Account : MonoBehaviour
         saveInSec = 5;
         string stringToPush = "";
         stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + GameObject.Find("SoundController").GetComponent<AudioSource>().mute.ToString() + "<DB>" + GameObject.Find("SFXController").GetComponent<AudioSource>().mute.ToString();
-        saveLoad.writeStringToFile(stringToPush, "SaveFile");
+        saveLoad.writeStringToFile(stringToPush, "Documents");
     }
     string GetHighscores()
     {
@@ -164,7 +164,7 @@ public class Account : MonoBehaviour
 
     public void PushLoad()
     {
-        save = saveLoad.readStringFromFile("SaveFile");
+        save = saveLoad.readStringFromFile("Documents");
         if(save == null)
         {
             GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
