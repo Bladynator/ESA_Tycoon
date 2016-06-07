@@ -87,7 +87,7 @@ public class Dialogs : MonoBehaviour
         {
             Image[] tempImages = canvas.GetComponentsInChildren<Image>();
 
-            if(dialogText[dialogNumber,number] == "f")
+            if(dialogText[dialogNumber, number] == "f")
             {
                 tempImages[1].sprite = peopleToTalkTo[1];
             }
@@ -95,7 +95,7 @@ public class Dialogs : MonoBehaviour
             {
                 tempImages[1].sprite = peopleToTalkTo[0];
             }
-            ActivateTalking(dialogNumberMain, 1);
+            ActivateTalking(dialogNumber, 1);
         }
         else
         {

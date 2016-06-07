@@ -105,6 +105,7 @@ public class BuildingButtons : MonoBehaviour
 
     void PressedBuilding(int i)
     {
+        GameObject.Find("ResetButton").GetComponent<Button>().onClick.Invoke();
         PlaceBuilder(i);
         tutorialBack = false;
         if (GameObject.Find("Tutorial") != null)
@@ -137,6 +138,6 @@ public class BuildingButtons : MonoBehaviour
         tempBuilding.builderPlacerTemp = builderPlacerTemp;
         tempBuilding.fieldID = fieldID;
         account.ChangeColliders(false);
-        GameObject.Find("BuildMenu").gameObject.SetActive(false);
+        //GameObject.Find("BuildMenu").gameObject.SetActive(false);
     }
 }

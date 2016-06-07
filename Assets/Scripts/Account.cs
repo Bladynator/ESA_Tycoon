@@ -23,7 +23,7 @@ public class Account : MonoBehaviour
     bool waitOneSec = false;
     public bool autoSave = true, justLeveld = false, waitForInput = false;
     int saveInSec = 5;
-    public int[] expNeededForLevel;
+    public int[] expNeededForLevel, newbuildings;
     public int[] amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
 	
 	void Start () 
@@ -55,10 +55,7 @@ public class Account : MonoBehaviour
         {
             if (exp >= expNeededForLevel[level])
             {
-                exp -= expNeededForLevel[level];
-                level++;
-                justLeveld = true;
-                GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
+                LevelUp();
             }
         }
         if (saveInSec <= 0 && autoSave)
@@ -70,6 +67,17 @@ public class Account : MonoBehaviour
         {
             StartCoroutine(ToSave());
         }
+    }
+
+    void LevelUp()
+    {
+        exp -= expNeededForLevel[level];
+        level++;
+        justLeveld = true;
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
+        
+        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(newbuildings[level]);
+
     }
 
     public void Share()
@@ -126,7 +134,7 @@ public class Account : MonoBehaviour
         StopCoroutine(ToSave());
         saveInSec = 5;
         string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores();
+        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber;
         saveLoad.writeStringToFile(stringToPush, "SaveFile");
     }
     string GetHighscores()
@@ -196,6 +204,8 @@ public class Account : MonoBehaviour
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i] = Convert.ToInt32(allScores[i]);
         }
+
+        GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = Convert.ToInt32(allInformation[9]);
 
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
 

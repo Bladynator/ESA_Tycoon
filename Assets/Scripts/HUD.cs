@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class HUD : MonoBehaviour 
 {
@@ -18,11 +19,14 @@ public class HUD : MonoBehaviour
     public GameObject reset;
     public GameObject particleUpgrade;
     public GameObject particleReward;
+    public GameObject notification;
+    public int notificationNumber = 2;
 
     void Start () 
 	{
         account = GameObject.Find("Account").GetComponent<Account>();
         Input.simulateMouseWithTouches = true;
+        UpdateNotification();
     }
 
     void Update()
@@ -39,6 +43,31 @@ public class HUD : MonoBehaviour
         else
         {
             exp.text = "Max Level";
+        }
+    }
+
+    public void UpdateNotification(int newNumber = 90)
+    {
+        if (newNumber != 90)
+        {
+            notificationNumber = newNumber;
+            notification.GetComponentInChildren<Text>().text = newNumber.ToString();
+        }
+        else
+        {
+            int old = Convert.ToInt32(notification.GetComponentInChildren<Text>().text);
+            old--;
+            notificationNumber = old;
+            notification.GetComponentInChildren<Text>().text = old.ToString();
+        }
+
+        if (notificationNumber == 0)
+        {
+            notification.SetActive(false);
+        }
+        else
+        {
+            notification.SetActive(true);
         }
     }
 

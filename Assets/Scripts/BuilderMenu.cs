@@ -24,6 +24,7 @@ public class BuilderMenu : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("g");
         account = GameObject.Find("Account").GetComponent<Account>();
         namesBuildings = new string[buildingsPrefabs.Length];
         for(int i = 0; i < buildingsPrefabs.Length; i++)
@@ -39,20 +40,10 @@ public class BuilderMenu : MonoBehaviour
         reset = GameObject.Find("ResetButton").GetComponent<Image>();
         reset.raycastTarget = true;
         tempCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
-        /*
-        for (int i = 0; i < allButtons.Length; i++)
-        {
-            allButtons[i].onClick.RemoveAllListeners();
-            allButtons[i].onClick.AddListener(delegate { PressedType(i); });
-            allButtons[i].GetComponentInChildren<Text>().text = namesButtons[i];
-        }
-        */
     }
 
     void PressedType(int p)
     {
-        
-
         for (int i = 0; i < allButtons.Length; i++)
         {
             string buttonText;
@@ -73,7 +64,9 @@ public class BuilderMenu : MonoBehaviour
     {
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
         {
+            Debug.Log("d");
             allButtons[i].GetComponent<Image>().color = Color.white;
+            allButtons[i].onClick.RemoveAllListeners();
             allButtons[i].onClick.AddListener(delegate { PressedBuilding(i); });
         }
         else
@@ -84,6 +77,8 @@ public class BuilderMenu : MonoBehaviour
 
     void PressedBuilding(int i)
     {
+        Debug.Log("t");
+        GameObject.Find("ResetButton").GetComponent<Button>().onClick.Invoke();
         PlaceBuilder(i);
         tutorialBack = false;
         if (GameObject.Find("Tutorial") != null)

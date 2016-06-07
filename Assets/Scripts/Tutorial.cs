@@ -21,7 +21,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     GameObject canvas, nameInputCanvas, skymap;
     [SerializeField]
-    Button menu;
+    Toggle menu;
     [SerializeField]
     GameObject[] arrowLocations;
     bool onceName = false, onceCanvas = false;
@@ -33,6 +33,7 @@ public class Tutorial : MonoBehaviour
         hud = GameObject.Find("HUD").GetComponent<HUD>();
         account = GameObject.Find("Account").GetComponent<Account>();
         builderMenu = hud.buildMenu;
+        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
     }
     
     void FixedUpdate () 

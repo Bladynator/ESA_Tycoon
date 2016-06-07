@@ -116,6 +116,8 @@ public class BuildingPlacer : MonoBehaviour
             if (!tempBuilding.GetComponent<BuildingMain>().decoration && !rePos)
             {
                 account.exp += tempBuilding.GetComponent<BuildingMain>().exp[tempBuilding.GetComponent<BuildingMain>().level];
+                GameObject.Find("HUD").GetComponent<HUD>().notificationNumber--;
+                GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification();
             }
             account.UpdateAmountOFBuildings();
             if (GameObject.Find("Tutorial") != null)
