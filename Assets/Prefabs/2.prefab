@@ -76,10 +76,10 @@ MonoBehaviour:
     People need to pay an entrance fee to visit the Exhibition Centre, which will
     generate money for your mission.
   buildingSprites:
-  - {fileID: 21300000, guid: bd5480c381885a245a8a765ddcef1a3b, type: 3}
-  - {fileID: 21300000, guid: e1715800a315ea24888640708fa8ff74, type: 3}
-  - {fileID: 21300000, guid: 5a7a2dda89271804a80e03f2ecc62fc9, type: 3}
-  - {fileID: 21300000, guid: d5530c503aea11740a1c97a4050fe8e0, type: 3}
+  - {fileID: 21300000, guid: 532ec503bb8802d4e84596d0022b4708, type: 3}
+  - {fileID: 21300000, guid: 844b5d718a06d5b43b39d3dcd663a99b, type: 3}
+  - {fileID: 21300000, guid: b2b3c29e52f190141a05c349b0f2bd13, type: 3}
+  - {fileID: 21300000, guid: 257b6ec52c3f9664daa049200e67e6d4, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bd5480c381885a245a8a765ddcef1a3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 532ec503bb8802d4e84596d0022b4708, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

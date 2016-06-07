@@ -49,7 +49,12 @@ public class BuildingPlacer : MonoBehaviour
         {
             case 1:
                 {
-
+                    Arrows[1].localPosition = new Vector2(1.33f, 1.02f);
+                    Arrows[2].localPosition = new Vector2(-1.27f, 1f);
+                    Arrows[3].localPosition = new Vector2(1.35f, -0.37f);
+                    Arrows[4].localPosition = new Vector2(-1.29f, -0.38f);
+                    Arrows[5].localPosition = new Vector2(0.85f, 2.08f);
+                    Arrows[6].localPosition = new Vector2(-0.66f, 2.08f);
                     break;
                 }
             case 2:
@@ -64,6 +69,12 @@ public class BuildingPlacer : MonoBehaviour
                 }
             case 3:
                 {
+                    Arrows[1].localPosition = new Vector2(1.6f, 1.6f);
+                    Arrows[2].localPosition = new Vector2(-1.6f, 1.6f);
+                    Arrows[3].localPosition = new Vector2(1.6f, -0.2f);
+                    Arrows[4].localPosition = new Vector2(-1.6f, -0.2f);
+                    Arrows[5].localPosition = new Vector2(0.85f, 2.81f);
+                    Arrows[6].localPosition = new Vector2(-0.66f, 2.81f);
                     break;
                 }
         }

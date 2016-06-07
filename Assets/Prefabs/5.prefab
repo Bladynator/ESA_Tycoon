@@ -60,7 +60,7 @@ MonoBehaviour:
   levelsNeededNewBuilding: 02000000050000005a000000
   levelsNeededUpgrade: 02000000040000000600000009000000
   moneyNeededUpgrade: f40100007017000050460000f0490200
-  rpNeededUpgrade: f4010000000000000000000000000000
+  rpNeededUpgrade: 00000000000000000000000000000000
   timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskNames:
@@ -75,10 +75,10 @@ MonoBehaviour:
   buildingInformation: 'The Launchpad building is for launching the rocket with the
     satellite inside. '
   buildingSprites:
-  - {fileID: 21300000, guid: 5ce808ad4a3784b4ea10fcfe3c50f4bf, type: 3}
-  - {fileID: 21300000, guid: 1f37ec7f9070769408f3395a248dba91, type: 3}
-  - {fileID: 21300000, guid: 0c981cd1bf1d5c14da0c7efe436426c1, type: 3}
-  - {fileID: 21300000, guid: f6d2589a0ffdf344db4730f6b47fa0d3, type: 3}
+  - {fileID: 21300000, guid: f8948bd8fb794c34fb416518b58c29aa, type: 3}
+  - {fileID: 21300000, guid: cc98857e17c8ad54b835714ac11f94b1, type: 3}
+  - {fileID: 21300000, guid: 543fb0eee9f5f4f4c9f3812f48cfad41, type: 3}
+  - {fileID: 21300000, guid: 5639456cfd607944b9da7881812cad81, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5ce808ad4a3784b4ea10fcfe3c50f4bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8948bd8fb794c34fb416518b58c29aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
