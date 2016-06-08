@@ -62,7 +62,7 @@ public class Tutorial : MonoBehaviour
                                 dialogs.tutorial = true;
                                 skymap.SetActive(false);
                                 ShowDialog(0);
-                                //PlaceHQ(timemachine, new Vector2(10, 5));
+                                PlaceHQ(timemachine, new Vector2(24, 0));
                                 break;
                             }
                         case 2:
