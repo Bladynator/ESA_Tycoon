@@ -75,10 +75,10 @@ MonoBehaviour:
   buildingInformation: The Headquarter is the base of all operations. This is where
     human resources is headed and where you get your salary.
   buildingSprites:
-  - {fileID: 21300000, guid: 8fc910d758677e64386f94bdc32b1236, type: 3}
-  - {fileID: 21300000, guid: 73285588505609b43a4954253410e270, type: 3}
-  - {fileID: 21300000, guid: 87b5a6bebf3bd6346b771f2629d8db42, type: 3}
-  - {fileID: 21300000, guid: 743faf6722ce0c741934f1abebd645a3, type: 3}
+  - {fileID: 21300000, guid: 2a7e11f1014e4c64f9735b04af071b84, type: 3}
+  - {fileID: 21300000, guid: 8c77e3482d5dd24488681f10dfd99e7e, type: 3}
+  - {fileID: 21300000, guid: a9d89d4aca49a8849a07e74a734753af, type: 3}
+  - {fileID: 21300000, guid: 3618bbeb1a412834fa3df3df89029a0e, type: 3}
   exp: 00000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8fc910d758677e64386f94bdc32b1236, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a7e11f1014e4c64f9735b04af071b84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
