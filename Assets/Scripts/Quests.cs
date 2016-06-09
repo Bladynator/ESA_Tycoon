@@ -26,6 +26,7 @@ public class Quests : MonoBehaviour
     GameObject questInfoCanvas, questScreen, canvas;
     [SerializeField]
     Button[] buttons;
+    [SerializeField]
     Toggle questButton;
 
     List<string> texts = new List<string>();
@@ -104,7 +105,7 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Toggle>();
+        //questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Toggle>();
         //questButton.gameObject.SetActive(false);
     }
 
