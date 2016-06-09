@@ -35,7 +35,13 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         CheckBorders();
-        
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject tempBuilding in allBuildings)
+        {
+            tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
+            tempBuilding.GetComponent<BuildingMain>().canClick = false;
+            GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = true;
+        }
         //transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
     }
 
@@ -102,6 +108,13 @@ public class BuildingPlacer : MonoBehaviour
 
     public void Done()
     {
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject tempBuilding in allBuildings)
+        {
+            tempBuilding.GetComponent<CircleCollider2D>().enabled = true;
+            tempBuilding.GetComponent<BuildingMain>().canClick = true;
+            GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = false;
+        }
         if (placeAble)
         {
             grid = GameObject.Find("Grid").GetComponent<Grid>().grid;

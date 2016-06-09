@@ -13,6 +13,8 @@ public class CameraChanger : MonoBehaviour
     float touchDuration;
     Touch touch;
 
+    public bool builderOn = false;
+
     void Start () 
 	{
         camera = GetComponent<Camera>();
@@ -32,7 +34,7 @@ public class CameraChanger : MonoBehaviour
                 current_position = Input.mousePosition;
                 LeftMouseDrag();
             }
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && !builderOn)
             {
                 StartCoroutine(WaitForSmallTime());
             }
