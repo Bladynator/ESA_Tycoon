@@ -30,6 +30,8 @@ public class Dialogs : MonoBehaviour
     GameObject canvas;
     [SerializeField]
     Sprite[] peopleToTalkTo;
+    [SerializeField]
+    Image character;
 
     void Update()
     {
@@ -90,11 +92,11 @@ public class Dialogs : MonoBehaviour
 
             if(dialogText[dialogNumber, number] == "f")
             {
-                tempImages[1].sprite = peopleToTalkTo[1];
+                character.sprite = peopleToTalkTo[1];
             }
             else
             {
-                tempImages[1].sprite = peopleToTalkTo[0];
+                character.sprite = peopleToTalkTo[0];
             }
             ActivateTalking(dialogNumber, 1);
         }

@@ -270,27 +270,30 @@ public class Account : MonoBehaviour
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
                         tempBuilding2.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
                         //tempBuilding2.transform.localScale = new Vector2(3 * 0.98f, 3 * 0.95f);
-                        tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
-                        TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
-                        if (Convert.ToInt32(informationOneBuilding[2]) > 0)
+                        if (tempBuilding2.GetComponent<BuildingMain>().buildingName != "TimeMachine")
                         {
-                            tempBuilding2.busy = true;
-                            tempBuilding2.timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
+                            tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
+                            TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
+                            if (Convert.ToInt32(informationOneBuilding[2]) > 0)
+                            {
+                                tempBuilding2.busy = true;
+                                tempBuilding2.timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
+                            }
+                            if (Convert.ToInt32(informationOneBuilding[1]) != -1)
+                            {
+                                tempBuilding2.busy = true;
+                            }
+                            tempBuilding2.timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
+                            tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
+                            if (Convert.ToInt32(informationOneBuilding[4]) > 0)
+                            {
+                                tempBuilding2.building = true;
+                                tempBuilding2.SetMaxTime();
+                            }
+                            tempBuilding2.timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
+                            tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
+                            tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                         }
-                        if(Convert.ToInt32(informationOneBuilding[1]) != -1)
-                        {
-                            tempBuilding2.busy = true;
-                        }
-                        tempBuilding2.timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
-                        tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
-                        if(Convert.ToInt32(informationOneBuilding[4]) > 0)
-                        {
-                            tempBuilding2.building = true;
-                            tempBuilding2.SetMaxTime();
-                        }
-                        tempBuilding2.timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
-                        tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
-                        tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                         break;
                     }
                 }

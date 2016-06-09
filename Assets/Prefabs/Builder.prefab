@@ -354,6 +354,13 @@ MonoBehaviour:
   fieldID: 0
   placeAble: 1
   rePos: 0
+  Arrows:
+  - {fileID: 462262}
+  - {fileID: 407406}
+  - {fileID: 489582}
+  - {fileID: 455342}
+  - {fileID: 454174}
+  - {fileID: 468190}
 --- !u!114 &11458228
 MonoBehaviour:
   m_ObjectHideFlags: 1

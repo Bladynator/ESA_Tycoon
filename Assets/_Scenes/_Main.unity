@@ -4488,6 +4488,7 @@ MonoBehaviour:
   - {fileID: 194780, guid: 03cafe7d005532d40b13921ed650ea40, type: 2}
   - {fileID: 180442, guid: 41e89bee992dd3e41b073cd10b405ac5, type: 2}
   - {fileID: 127016, guid: bc193132ccc5c674db185cf4725d6d02, type: 2}
+  - {fileID: 121188, guid: ffb694a27dbe5ff4fa937245b7b67c49, type: 2}
   builderPlacerTemp: {fileID: 11450434, guid: 6f31afe9d9a45254ebd2a7112f747e7f, type: 2}
   fieldLocation: {fileID: 0}
   fieldGridLocation: {x: 0, y: 0}
@@ -5081,6 +5082,7 @@ MonoBehaviour:
   peopleToTalkTo:
   - {fileID: 21300000, guid: 68773093f62944842916addf823cc01b, type: 3}
   - {fileID: 21300000, guid: 2968dd0163f2c864b806a15acec632fc, type: 3}
+  character: {fileID: 1109494732}
 --- !u!1 &529365089
 GameObject:
   m_ObjectHideFlags: 0

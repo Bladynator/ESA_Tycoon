@@ -226,11 +226,11 @@ public class BuildingMain : MonoBehaviour
             }
             else if(min < 3600)
             {
-                tempBar.GetComponentInChildren<Text>().text = min / 60 + " m";
+                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(min / 60) + " m";
             }
             else if(min < 216000)
             {
-                tempBar.GetComponentInChildren<Text>().text = min / 60 / 60 + " h";
+                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(min / 60 / 60) + " h";
             }
         }
     }
@@ -424,6 +424,7 @@ public class BuildingMain : MonoBehaviour
             timeLeftToFinishBuild = timesForBuilding[level];
             SetMaxTime();
             BackClicked();
+            DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
         }
     }
 
@@ -439,6 +440,7 @@ public class BuildingMain : MonoBehaviour
         }
         BackClicked();
         busy = true;
+        DrawBar(timeToFinishTaskTotal, timeToFinishTask);
     }
 
     public void BackClicked()

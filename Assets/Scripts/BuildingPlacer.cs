@@ -11,6 +11,8 @@ public class BuildingPlacer : MonoBehaviour
     public bool placeAble = true;
     public bool rePos = false;
     Account account;
+    [SerializeField]
+    Transform[] Arrows;
 
     void Start()
     {
@@ -49,40 +51,49 @@ public class BuildingPlacer : MonoBehaviour
     {
         CheckBorders();
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y);
-        Transform[] Arrows = GetComponentsInChildren<Transform>();
+        //Transform[] Arrows = GetComponentsInChildren<Transform>();
         int tempSize = (int)buildingToPlace.GetComponent<BuildingMain>().size.x;
         switch (tempSize)
         {
             case 1:
                 {
-                    Arrows[1].localPosition = new Vector2(1.33f, 1.02f);
-                    Arrows[2].localPosition = new Vector2(-1.27f, 1f);
-                    Arrows[3].localPosition = new Vector2(1.35f, -0.37f);
-                    Arrows[4].localPosition = new Vector2(-1.29f, -0.38f);
-                    Arrows[5].localPosition = new Vector2(0.85f, 2.08f);
-                    Arrows[6].localPosition = new Vector2(-0.66f, 2.08f);
+                    GiveArrowPosition(0, 1.33f, 1.02f);
+                    GiveArrowPosition(1, -1.27f, 1f);
+                    GiveArrowPosition(2, 1.35f, -0.37f);
+                    GiveArrowPosition(3, -1.29f, -0.38f);
+                    GiveArrowPosition(4, 0.85f, 2.08f);
+                    GiveArrowPosition(5, -0.66f, 2.08f);
                     break;
                 }
             case 2:
                 {
-                    Arrows[1].localPosition = new Vector2(1.33f, 1.02f);
-                    Arrows[2].localPosition = new Vector2(-1.27f, 1f);
-                    Arrows[3].localPosition = new Vector2(1.35f, -0.37f);
-                    Arrows[4].localPosition = new Vector2(-1.29f, -0.38f);
-                    Arrows[5].localPosition = new Vector2(0.85f, 2.08f);
-                    Arrows[6].localPosition = new Vector2(-0.66f, 2.08f);
+                    GiveArrowPosition(0, 1.33f, 1.02f);
+                    GiveArrowPosition(1, -1.27f, 1f);
+                    GiveArrowPosition(2, 1.35f, -0.37f);
+                    GiveArrowPosition(3, -1.29f, -0.38f);
+                    GiveArrowPosition(4, 0.85f, 2.08f);
+                    GiveArrowPosition(5, -0.66f, 2.08f);
                     break;
                 }
             case 3:
                 {
-                    Arrows[1].localPosition = new Vector2(1.6f, 1.6f);
-                    Arrows[2].localPosition = new Vector2(-1.6f, 1.6f);
-                    Arrows[3].localPosition = new Vector2(1.6f, -0.2f);
-                    Arrows[4].localPosition = new Vector2(-1.6f, -0.2f);
-                    Arrows[5].localPosition = new Vector2(0.85f, 2.81f);
-                    Arrows[6].localPosition = new Vector2(-0.66f, 2.81f);
+                    GiveArrowPosition(0, 1.6f, 1.6f);
+                    GiveArrowPosition(1, -1.6f, 1.6f);
+                    GiveArrowPosition(2, 1.6f, -0.2f);
+                    GiveArrowPosition(3, -1.6f, -0.2f);
+                    GiveArrowPosition(4, 0.85f, 2.81f);
+                    GiveArrowPosition(5, -0.66f, 2.81f);
                     break;
                 }
+        }
+    }
+
+    void GiveArrowPosition(int arrow, float positionX, float positionY)
+    {
+        Vector2 positionA = new Vector2(positionX, positionY);
+        if (Arrows[arrow] != null)
+        {
+            Arrows[arrow].localPosition = positionA;
         }
     }
 
