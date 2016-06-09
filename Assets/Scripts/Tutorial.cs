@@ -73,12 +73,12 @@ public class Tutorial : MonoBehaviour
                             }
                         case 3:
                             {
-                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 0);
+                                ShowDialog(1);
                                 break;
                             }
                         case 4:
                             {
-                                ShowDialog(1);
+                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 0);
                                 break;
                             }
                         case 5:

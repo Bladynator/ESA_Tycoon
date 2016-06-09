@@ -36,7 +36,7 @@ public class BuildingMain : MonoBehaviour
     public int level, ID, taskDoing = -1;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
-    public bool building = false, doneWithTask = false, onceToCreate = false;
+    public bool building = false, doneWithTask = false, onceToCreate = false, canClick = true;
 
     float currentTime = 0;
     string[] minigameDiff = new string[4] {"Easy","Medium","Hard","Endless" };
@@ -160,14 +160,17 @@ public class BuildingMain : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (canClick)
         {
-            if (!busy && !building && !doneWithTask)
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                canvas[0].SetActive(true);
-                setupFirstButtons(canvas[0]);
-                account.ChangeColliders(false);
-                GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
+                if (!busy && !building && !doneWithTask)
+                {
+                    canvas[0].SetActive(true);
+                    setupFirstButtons(canvas[0]);
+                    account.ChangeColliders(false);
+                    GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
+                }
             }
         }
     }

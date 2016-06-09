@@ -9,7 +9,10 @@ public class CameraChanger : MonoBehaviour
     Vector3 camera_position = Vector3.zero;
     
     public float orthoZoomSpeed = 0.2f;
-    
+
+    float touchDuration;
+    Touch touch;
+
     void Start () 
 	{
         camera = GetComponent<Camera>();
@@ -17,20 +20,23 @@ public class CameraChanger : MonoBehaviour
 
     void Update()
     {
-        
         if (GameObject.FindGameObjectWithTag("Canvas") == null)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 hit_position = Input.mousePosition;
                 camera_position = transform.position;
-
             }
             if (Input.GetMouseButton(0))
             {
                 current_position = Input.mousePosition;
                 LeftMouseDrag();
             }
+            if (Input.GetMouseButtonUp(0))
+            {
+                StartCoroutine(WaitForSmallTime());
+            }
+
             transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
             if (transform.position.x > 33)
             {
@@ -76,6 +82,44 @@ public class CameraChanger : MonoBehaviour
                 camera.orthographicSize = 20;
             }
         }
+
+
+        if (Input.touchCount > 0)
+        {
+            touchDuration += Time.deltaTime;
+            touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Ended && touchDuration < 0.2f)
+            {
+                StartCoroutine("singleOrDouble");
+            }
+            else
+            {
+                touchDuration = 0.0f;
+            }
+        }
+    }
+
+    IEnumerator singleOrDouble()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (touch.tapCount == 2)
+        {
+            StopCoroutine("singleOrDouble");
+            camera.orthographicSize = 20;
+        }
+    }
+
+    IEnumerator WaitForSmallTime()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject tempBuilding in allBuildings)
+        {
+            tempBuilding.GetComponent<CircleCollider2D>().enabled = true;
+            tempBuilding.GetComponent<BuildingMain>().canClick = true;
+        }
     }
 
     public GameObject Field()
@@ -100,6 +144,15 @@ public class CameraChanger : MonoBehaviour
         current_position.z = hit_position.z = camera_position.y;
         Vector3 direction = Camera.main.ScreenToWorldPoint(current_position) - Camera.main.ScreenToWorldPoint(hit_position);
         direction = direction * -1;
+        if(direction.x > 1 || direction.x < -1 || direction.y > 1 || direction.y < -1)
+        {
+            GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+            foreach (GameObject tempBuilding in allBuildings)
+            {
+                tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
+                tempBuilding.GetComponent<BuildingMain>().canClick = false;
+            }
+        }
         Vector3 position = camera_position + direction;
         transform.position = position;
     }
