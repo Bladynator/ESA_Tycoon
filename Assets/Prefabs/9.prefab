@@ -56,9 +56,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Flag3
-  size: {x: 2, y: 1}
+  size: {x: 1, y: 1}
   levelsNeededNewBuilding: 01000000020000005a000000
-  levelsNeededUpgrade: 
+  levelsNeededUpgrade: 02000000020000000200000002000000020000000200000002000000020000000200000002000000
   moneyNeededUpgrade: 88130000
   rpNeededUpgrade: c8000000
   timesForTasks: 0a0000003200000064000000c8000000
@@ -72,6 +72,7 @@ MonoBehaviour:
   resourceBuilding: 0
   decoration: 1
   minigame: Minigame1
+  buildingInformation: 
   buildingSprites:
   - {fileID: 21300000, guid: c1813a678ba3cd343b80977813337b4a, type: 3}
   exp: 28000000320000003c00000050000000
