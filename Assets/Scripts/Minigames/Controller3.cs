@@ -39,6 +39,11 @@ public class Controller3 : MonoBehaviour
         EditTimer("Time: " + timer.ToString());
     }
 
+    void OnMouseUp()
+    {
+        Calculate(pressedButtonFirst);
+    }
+
     void Update()
     {
         if (numberToClick == amountToShow)

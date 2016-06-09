@@ -14,7 +14,7 @@ public class ButtonToConnect : MonoBehaviour
         GetComponentInChildren<Text>().text = number.ToString();
     }
 
-    void OnMouseDown()
+    void OnMouseOver()
     {
         Clicked();
     }
