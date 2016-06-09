@@ -112,7 +112,7 @@ public class CameraChanger : MonoBehaviour
 
     IEnumerator WaitForSmallTime()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
@@ -144,7 +144,7 @@ public class CameraChanger : MonoBehaviour
         current_position.z = hit_position.z = camera_position.y;
         Vector3 direction = Camera.main.ScreenToWorldPoint(current_position) - Camera.main.ScreenToWorldPoint(hit_position);
         direction = direction * -1;
-        if(direction.x > 1 || direction.x < -1 || direction.y > 1 || direction.y < -1)
+        if(direction.x > 1.5f || direction.x < -1.5f || direction.y > 1.5f || direction.y < -1.5f)
         {
             GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
             foreach (GameObject tempBuilding in allBuildings)
