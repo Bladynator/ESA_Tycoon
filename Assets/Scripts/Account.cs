@@ -366,7 +366,7 @@ public class Account : MonoBehaviour
         if (reset == "DELETE")
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = false;
-            File.Delete(saveLoad.pathForDocumentsFile("SaveFile"));
+            File.Delete(saveLoad.pathForDocumentsFile("Documents"));
             SceneManager.LoadScene("_Main");
         }
     }
