@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Negative : MonoBehaviour 
 {
-	
+    [SerializeField]
+    Sprite[] allSprites;
+
+	void Start()
+    {
+        int numberToLoad = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, allSprites.Length)));
+        GetComponent<SpriteRenderer>().sprite = allSprites[numberToLoad];
+
+    }
 	
 	void Update () 
 	{
         transform.position -= new Vector3(0.1f, 0, 0);
-        if(transform.position.x < - 10)
+        if(transform.position.x < - 14)
         {
             Destroy(gameObject);
         }

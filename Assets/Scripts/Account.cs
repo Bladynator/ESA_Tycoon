@@ -77,6 +77,8 @@ public class Account : MonoBehaviour
         level++;
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
         GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
+        GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = newbuildings[level];
+        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(newbuildings[level]);
     }
 
     public void Share()

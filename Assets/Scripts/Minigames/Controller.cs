@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour
                 randomHeight = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, spawns.Length)));
             }
             while (randomHeight == lastLocation);
-            GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(8, spawns[randomHeight].transform.position.y), this.transform.rotation);
+            GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
             spawnSpeed[difficulty] -= reduction[difficulty];
             if (spawnSpeed[difficulty] <= endspeed[difficulty])
             {

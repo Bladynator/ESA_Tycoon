@@ -23,28 +23,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    public void PressedUp()
     {
-        if (currentLocation != 0)
+        if (!waiting)
         {
-            if (GUI.Button(new Rect(0, 0, 75, 75), "^") || Input.GetKeyDown("up"))
+            if (currentLocation != 0)
             {
-                if (!waiting)
-                {
-                    currentLocation--;
-                    StartCoroutine(Wait());
-                }
+                currentLocation--;
+                StartCoroutine(Wait());
             }
         }
-        if (currentLocation != 4)
+    }
+
+    public void PressedDown()
+    {
+        if (!waiting)
         {
-            if (GUI.Button(new Rect(0, Screen.height - 75, 75, 75), "v") || Input.GetKeyDown("down"))
+            if (currentLocation != 4)
             {
-                if (!waiting)
-                {
-                    currentLocation++;
-                    StartCoroutine(Wait());
-                }
+                currentLocation++;
+                StartCoroutine(Wait());
             }
         }
     }
