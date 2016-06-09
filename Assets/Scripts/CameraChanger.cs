@@ -106,7 +106,14 @@ public class CameraChanger : MonoBehaviour
         if (touch.tapCount == 2)
         {
             StopCoroutine("singleOrDouble");
-            camera.orthographicSize = 20;
+            if (camera.orthographicSize == 4)
+            {
+                camera.orthographicSize = 20;
+            }
+            else
+            {
+                camera.orthographicSize = 4;
+            }
         }
     }
 
