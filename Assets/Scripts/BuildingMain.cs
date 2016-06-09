@@ -130,6 +130,7 @@ public class BuildingMain : MonoBehaviour
                     {
                         tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
                         tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                        tempBar.GetComponent<Canvas>().sortingOrder = -1;
                     }
                 }
 
