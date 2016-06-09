@@ -42,7 +42,7 @@ public class Controller3 : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount == 0)
+        if (Input.touchCount == 0 && pressedButtonFirst != null)
         {
             Calculate(pressedButtonFirst);
         }
@@ -162,6 +162,7 @@ public class Controller3 : MonoBehaviour
         }
         pressedButtonFirst.GetComponent<BoxCollider2D>().enabled = false;
         button.GetComponent<BoxCollider2D>().enabled = false;
+        pressedButtonFirst = null;
         if (numberToClick != amountToShow)
         {
             button.GetComponent<ButtonToConnect>().Clicked();
