@@ -22,6 +22,7 @@ public class Controller3 : MonoBehaviour
 
     bool waitingForTimer = false;
     int timer = 30;
+    bool holdingDown = true;
 
     [SerializeField]
     GameObject canvasEnd, CanvasTimer;
@@ -39,13 +40,12 @@ public class Controller3 : MonoBehaviour
         EditTimer("Time: " + timer.ToString());
     }
 
-    void OnMouseUp()
-    {
-        Calculate(pressedButtonFirst);
-    }
-
     void Update()
     {
+        if (Input.touchCount == 0)
+        {
+            Calculate(pressedButtonFirst);
+        }
         if (numberToClick == amountToShow)
         {
             excludedNumbers.Clear();
