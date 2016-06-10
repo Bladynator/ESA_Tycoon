@@ -71,7 +71,7 @@ MonoBehaviour:
   taskRewards: 32000000140000001e00000028000000
   resourceBuilding: 0
   decoration: 1
-  minigame: Minigame1
+  minigame: 
   buildingInformation: 'Flags are there to decorate your Space Centre and give it
     a nice look. '
   buildingSprites:
@@ -92,6 +92,7 @@ MonoBehaviour:
   building: 0
   doneWithTask: 0
   onceToCreate: 0
+  canClick: 1
   ableToSave: 1
 --- !u!212 &21203970
 SpriteRenderer:

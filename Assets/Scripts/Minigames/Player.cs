@@ -23,28 +23,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PressedUp()
+    public void NewLocation(float value)
     {
-        if (!waiting)
-        {
-            if (currentLocation != 0)
-            {
-                currentLocation--;
-                StartCoroutine(Wait());
-            }
-        }
-    }
-
-    public void PressedDown()
-    {
-        if (!waiting)
-        {
-            if (currentLocation != 4)
-            {
-                currentLocation++;
-                StartCoroutine(Wait());
-            }
-        }
+        currentLocation = (int)value;
+        StartCoroutine(Wait());
     }
 
     IEnumerator WaitScore()
