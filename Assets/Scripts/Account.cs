@@ -377,6 +377,11 @@ public class Account : MonoBehaviour
             File.Delete(saveLoad.pathForDocumentsFile("Documents"));
             SceneManager.LoadScene("_Main");
         }
+        if (reset == "TGM")
+        {
+            money += 1000;
+            researchPoints += 1000;
+        }
     }
 
     public void GoToScene(string scene)
