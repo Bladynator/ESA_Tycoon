@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
-public class Dialogs : MonoBehaviour 
+public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[12,10]
-        {{"a","Hi Chief! Welcome to 2016. My name is PAOLO and I’m an Engineer, just like YOU.","I will help you fulfill your mission.","In order to start your mission you need to develop a SPACE CENTER.","Start by giving it a name.","","","","",""},
-    {"a","Good! Cool name!","","","","","","","",""},
-    {"a","Here YOU have some MONEY to get started.","MONEY is the primary currency. Use it wisely.","","","","","","",""},
-    {"a","This is the HEADQUARTERS. The base of all operations.","QUESTS are the TASKS YOU need to perform to execute your mission properly.","Go ahead and have a look.","","","","","",""},
+    string[,] dialogText = new string[16, 10]
+        {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + " I will be your assistant and help you fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
+    {"a","Excellent! Cool name!","","","","","","","",""},
+    {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
+    {"a","These are the Headquarters. The base of all operations.","Quests are the tasks that you need to perform to accomplish your mission. Go ahead and have a look.","","","","","","",""},
     {"a","","","","","","","","",""},
-    {"a","Good job! You completed your first TASK.","","","","","","","",""},
-    {"a","RESEARCH POINTS are the secondary currency. The better you learn, the more you get.","","","","","","","",""},
-    {"a","Well done Chief! A SPACE EXHIBIT is a nice way of generating revenue.","","","","","","","",""},
-    {"a","Now, let’s assign a TASK to the EXHIBIT to generate revenue.","Click on exhibit to assign new task.","","","","","","",""},
-    {"a","With three buildings set, now it’s time to mark your SPACE CENTER as YOURS!","Place a FLAG of your choice to show who’s in charge.","","","","","","",""},
-    {"a","What a beautiful flag you have right there! Your SPACE CENTER looks so professional. Great!","","","","","","","",""},
-        {"a","Let me tell you one last thing before we finish...","You can play mini games in the mission buildings, if you want to.","They are pretty exciting and help you understand the mission better.","That’s it for now. Good luck on your mission Chief! And if you need any help, I’ll be there for you. Cheers!","","","","",""}};
+    {"a","Good job! You have completed your first task.","","","","","","","",""},
+    {"a","Research points are the secondary currency. The more you learn, the more points you get.","","","","","","","",""},
+    {"a","Well done! A Space Exhibition Centre is a nice way of generating revenue.","","","","","","","",""},
+    {"a","Now, let’s assign a task to the Exhibition Centre to start generating some revenue. Tap on the building to continue.","","","","","","","",""},
+    {"a","With three buildings in place, it’s time to mark your Space Centre as your own! Place a flag of your choice to show who is in charge here.","","","","","","","",""},
+    {"a","What a beautiful flag you have right there! Your Space Centre looks really professional. Great job!","","","","","","","",""},
+        {"a","Let me tell you one last thing before we finish...","You can play mini-games in the R&D, Mission Control and Launchpad sections.","They are pretty exciting and help you understand the mission better. Maybe you should start playing one right now.","Well, that’s it for now. Good luck on your mission! And if you need any help, I’ll be close-by. See you soon!","","","","",""},
+    {"a","Well done! Not bad for a first time.","","","","","","","",""},
+    {"a","Nice score! You’re getting better at this.","","","","","","","",""},
+    {"a","Wow, this is going pretty well! Keep up the good work.","","","","","","","",""},
+    {"a","Awesome! You should be proud of your score!","","","","","","","",""}};
+
 
     public bool talk = false, waitForInput = false;
     public string msg01;
@@ -56,6 +62,7 @@ public class Dialogs : MonoBehaviour
                         GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
                     }
                     canvas.SetActive(false);
+                    GameObject.Find("Main Camera").GetComponent<CameraChanger>().activeDialog = false;
                 }
                 else
                 {
@@ -85,6 +92,7 @@ public class Dialogs : MonoBehaviour
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
         canvas.SetActive(true);
+        GameObject.Find("Main Camera").GetComponent<CameraChanger>().activeDialog = true;
         canvas.GetComponent<RectTransform>().SetAsLastSibling();
         if (number == 0)
         {

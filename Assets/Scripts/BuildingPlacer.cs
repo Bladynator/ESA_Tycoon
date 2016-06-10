@@ -195,7 +195,8 @@ public class BuildingPlacer : MonoBehaviour
         {
             account = GameObject.Find("Account").GetComponent<Account>();
         }
-        account.ChangeColliders(false);
+        account.ChangeColliders(true);
+        GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = false;
         GameObject.Find("HUD").GetComponent<HUD>().reset.SetActive(false);
     }
 

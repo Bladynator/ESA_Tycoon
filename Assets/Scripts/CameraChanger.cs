@@ -7,8 +7,9 @@ public class CameraChanger : MonoBehaviour
     Vector3 hit_position = Vector3.zero;
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
+    public bool activeDialog = false;
     
-    public float orthoZoomSpeed = 0.2f;
+    public float orthoZoomSpeed = 0.1f;
 
     float touchDuration;
     Touch touch;
@@ -86,12 +87,12 @@ public class CameraChanger : MonoBehaviour
         }
 
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !activeDialog)
         {
             touchDuration += Time.deltaTime;
             touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Ended && touchDuration < 0.2f)
+            if (touch.phase == TouchPhase.Ended && touchDuration < 0.1f)
             {
                 StartCoroutine("singleOrDouble");
             }
@@ -108,13 +109,13 @@ public class CameraChanger : MonoBehaviour
         if (touch.tapCount == 2)
         {
             StopCoroutine("singleOrDouble");
-            if (camera.orthographicSize == 4)
+            if (camera.orthographicSize == 6.6f)
             {
                 camera.orthographicSize = 20;
             }
             else
             {
-                camera.orthographicSize = 4;
+                camera.orthographicSize = 6.6f;
             }
         }
     }

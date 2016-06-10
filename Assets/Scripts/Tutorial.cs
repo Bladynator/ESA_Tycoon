@@ -295,6 +295,7 @@ public class Tutorial : MonoBehaviour
                         case 5:
                             {
                                 ShowDialog(9, false);
+                                tutorialDoing = false;
                                 break;
                             }
                         case 6:

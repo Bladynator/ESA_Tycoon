@@ -185,7 +185,10 @@ public class Account : MonoBehaviour
         GameObject.Find("Quests").GetComponent<Quests>().ResetQuests();
         if(GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame)
         {
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame = false;
             researchPoints += GameObject.Find("MiniGameController").GetComponent<MiniGameController>().currencyGotFromMinigame;
+            int dialogToActivate = 12 + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
+            GameObject.Find("Quests").GetComponent<Dialogs>().ActivateTalking(dialogToActivate);
         }
     }
 

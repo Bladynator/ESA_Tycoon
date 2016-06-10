@@ -169,7 +169,7 @@ public class BuildingMain : MonoBehaviour
                 {
                     canvas[0].SetActive(true);
                     setupFirstButtons(canvas[0]);
-                    account.ChangeColliders(false);
+                    //account.ChangeColliders(false);
                     GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
                 }
             }

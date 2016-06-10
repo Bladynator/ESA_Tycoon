@@ -70,12 +70,15 @@ public class BuildingButtons : MonoBehaviour
 
         for (int p = 0; p < 3; p++)
         {
+
             Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
             allText[0].text = namesBuildings[(i * 3) + p];
             allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<SpriteRenderer>().sprite;
             allText[1].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.x + "x" + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.y;
             allText[2].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
             allText[3].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
+
+            
         }
         for (int p = 0; p < 3; p++)
         {
@@ -96,6 +99,17 @@ public class BuildingButtons : MonoBehaviour
             
             allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
             allButtons[p].GetComponent<Image>().color = Color.white;
+            if (GameObject.Find("Tutorial") != null)
+            {
+                if (GameObject.Find("Tutorial").GetComponent<Tutorial>() != null)
+                {
+                    if (GameObject.Find("Tutorial").GetComponent<Tutorial>().tutorialDoing && p == 0 & i == 6)
+                    {
+                        allButtons[p].onClick.RemoveAllListeners();
+                        allButtons[p].GetComponent<Image>().color = tempColour;
+                    }
+                }
+            }
         }
         else
         {
