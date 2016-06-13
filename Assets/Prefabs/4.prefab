@@ -64,10 +64,10 @@ MonoBehaviour:
   timesForTasks: 0a0000005802000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskNames:
-  - 
-  - 
-  - 
-  - 
+  - Enroll Students
+  - Cafeteria Sponsors
+  - International Program
+  - Sell Licences
   taskRewards: 28000000f00a000028230000a8610000
   resourceBuilding: 1
   decoration: 0
@@ -93,9 +93,11 @@ MonoBehaviour:
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
+  maxtimeForTask: 0
   building: 0
   doneWithTask: 0
   onceToCreate: 0
+  canClick: 1
   ableToSave: 1
 --- !u!212 &21215244
 SpriteRenderer:

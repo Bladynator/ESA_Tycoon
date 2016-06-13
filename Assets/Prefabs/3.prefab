@@ -64,10 +64,10 @@ MonoBehaviour:
   timesForTasks: 0a0000005802000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskNames:
-  - Task
-  - Task2
-  - Task3
-  - Task 4
+  - Conduct Experiments
+  - Fundraising Event
+  - Organise Open Day
+  - Foreign Contracts
   taskRewards: 140000007805000094110000983a0000
   resourceBuilding: 1
   decoration: 0
@@ -92,9 +92,11 @@ MonoBehaviour:
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
+  maxtimeForTask: 0
   building: 0
   doneWithTask: 0
   onceToCreate: 0
+  canClick: 1
   ableToSave: 1
 --- !u!212 &21272168
 SpriteRenderer:

@@ -14705,16 +14705,16 @@ MonoBehaviour:
   - 9
   - 10
   urls:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - 'www.esa.int/aim '
+  - www.esa.int
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Target_asteroid
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/TIRI
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Technology_demonstration
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Planetary_defence
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/CubeSats
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Lander
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/LFR
+  - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Science_goals
 --- !u!1 &1801302260
 GameObject:
   m_ObjectHideFlags: 0
