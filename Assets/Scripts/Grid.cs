@@ -24,7 +24,7 @@ public class Grid : MonoBehaviour
         {
             for (int y = 0; y < maxGridSize; y++)
             {
-                Vector3 newPos = new Vector3((x - y) * 2.09f, (x + y) * 1.19f, 0);
+                Vector3 newPos = new Vector3((x - y) * 2.09f, (x + y) * 1.21f, 0);
                 EmptyField tempField = (EmptyField)Instantiate(emptyField, newPos, emptyField.transform.rotation);
                 tempField.transform.SetParent(allFieldsTemp.transform);
                 tempField.ID = idToGive;
