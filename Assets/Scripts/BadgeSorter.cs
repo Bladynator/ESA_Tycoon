@@ -41,7 +41,7 @@ public class BadgeSorter : MonoBehaviour
             allBadges[i].GetComponent<Button>().onClick.RemoveAllListeners();
             allBadges[i].GetComponent<Button>().onClick.AddListener(delegate { DisplayText(temp, temp2, temp3, temp4, url); });
         }
-        for (int i = account.level; i < 10; i++)
+        for (int i = account.level; i < account.expNeededForLevel.Length; i++)
         {
             allBadges[i].sprite = emptyBadge;
         }

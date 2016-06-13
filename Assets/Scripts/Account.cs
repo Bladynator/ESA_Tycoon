@@ -53,7 +53,7 @@ public class Account : MonoBehaviour
 
     void Update()
     {
-        if (level != 10)
+        if (level != expNeededForLevel.Length)
         {
             if (exp >= expNeededForLevel[level])
             {

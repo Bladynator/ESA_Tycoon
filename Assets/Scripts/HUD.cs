@@ -35,7 +35,7 @@ public class HUD : MonoBehaviour
         money.text = account.money.ToString();
         researchPoints.text = account.researchPoints.ToString();
         level.text = "LVL " + account.level.ToString();
-        if (account.level != 10)
+        if (account.level != account.expNeededForLevel.Length)
         {
             exp.text = account.exp + "/" + account.expNeededForLevel[account.level] + " XP";
             float amount = (float)account.exp / (float)account.expNeededForLevel[account.level];
