@@ -15,7 +15,7 @@ public class ButtonToConnect : MonoBehaviour
         GetComponentInChildren<Text>().text = number.ToString();
     }
 
-    void OnMouseOver()
+    void OnMouseDown()
     {
         Clicked();
         
@@ -37,8 +37,8 @@ public class ButtonToConnect : MonoBehaviour
                 if (tempLiner == null)
                 {
                     tempLiner = (GameObject)Instantiate(liner, transform.position, transform.rotation);
-                    tempLiner.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    tempLiner.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+                    //tempLiner.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    //tempLiner.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                 }
             }
         }

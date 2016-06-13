@@ -25,8 +25,12 @@ public class Controller3 : MonoBehaviour
     bool holdingDown = true;
 
     [SerializeField]
+    Sprite[] icons;
+
+    [SerializeField]
     GameObject canvasEnd, CanvasTimer;
     GameObject tempCanvas;
+    ButtonToConnect[] temp;
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class Controller3 : MonoBehaviour
         {
             endLess = true;
         }
+        temp = new ButtonToConnect[amountToShow + 1];
         Place();
         EditTimer("Time: " + timer.ToString());
     }
@@ -55,9 +60,10 @@ public class Controller3 : MonoBehaviour
             {
                 Destroy(toDestroy[i]);
             }
+            numberToClick = 0;
             Place();
             score += amountToShow;
-            numberToClick = 0;
+            
             GameObject[] allLines = GameObject.FindGameObjectsWithTag("Liner");
             foreach (GameObject temp in allLines)
             {
@@ -131,9 +137,11 @@ public class Controller3 : MonoBehaviour
                 amountToShow++;
             }
         }
+        int number = 0;
+        temp = new ButtonToConnect[amountToShow + 1];
+        excludedNumbers = new List<int>();
         for (int i = 0; i < amountToShow; i++)
         {
-            int number;
             do
             {
                 number = Random.Range(0, positionsOfButtons.Length);
@@ -141,10 +149,36 @@ public class Controller3 : MonoBehaviour
             while (excludedNumbers.Contains(number));
             excludedNumbers.Add(number);
 
-            ButtonToConnect temp = (ButtonToConnect)Instantiate(button, positionsOfButtons[number].position, rotation);
-            temp.tag = "Connect";
-            temp.controller = GetComponent<Controller3>();
-            temp.number = i;
+            temp[i] = (ButtonToConnect)Instantiate(button, positionsOfButtons[number].position, rotation);
+            
+            temp[i].tag = "Connect";
+            temp[i].controller = GetComponent<Controller3>();
+            temp[i].number = i;
+        }
+        bool g = true;
+        foreach (ButtonToConnect temp2 in temp)
+        {
+            if (temp2 != null)
+            {
+                if (temp2.GetComponent<SpriteRenderer>() != null)
+                {
+                    if (g)
+                    {
+                        do
+                        {
+                            number = Random.Range(0, 21);
+                        }
+                        while (number % 2 != 0);
+                        g = false;
+                        temp2.GetComponent<SpriteRenderer>().sprite = icons[number];
+                    }
+                    else
+                    {
+                        g = true;
+                        temp2.GetComponent<SpriteRenderer>().sprite = icons[number + 1];
+                    }
+                }
+            }
         }
     }
 
@@ -155,11 +189,6 @@ public class Controller3 : MonoBehaviour
         positions[0] = pressedButtonFirst.transform.position;
         positions[1] = button.transform.position;
         pressedButtonFirst.GetComponent<LineRenderer>().SetPositions(positions);
-        GameObject[] allLines = GameObject.FindGameObjectsWithTag("Liner");
-        foreach (GameObject temp in allLines)
-        {
-            Destroy(temp);
-        }
         pressedButtonFirst.GetComponent<BoxCollider2D>().enabled = false;
         button.GetComponent<BoxCollider2D>().enabled = false;
         pressedButtonFirst = null;

@@ -4497,6 +4497,7 @@ MonoBehaviour:
   pressed: {fileID: 21300000, guid: e1257fe73d2d4524fa9a8c77e130e312, type: 3}
   unpressed: {fileID: 21300000, guid: b2065812a7898c146a2fb59e897aa99d, type: 3}
   tempColour: {r: 1, g: 1, b: 1, a: 0.209}
+  disabledColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &448113423
 GameObject:
   m_ObjectHideFlags: 0

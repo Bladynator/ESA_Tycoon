@@ -3096,6 +3096,27 @@ MonoBehaviour:
   difficulty: 0
   score: 0
   amountsToShow: 02000000040000000600000002000000
+  icons:
+  - {fileID: 21300000, guid: 9eec1fc8aa9496449b4ef561252aaaf7, type: 3}
+  - {fileID: 21300000, guid: b25dedbb3803ec34889f8c1f89af9fda, type: 3}
+  - {fileID: 21300000, guid: 3a1d599cfe3508549a8c6dd4d8ea4305, type: 3}
+  - {fileID: 21300000, guid: 12f376283fcdb064c94df28509fb553b, type: 3}
+  - {fileID: 21300000, guid: 30b6a5a48d9345d408ef6e8e6dff368b, type: 3}
+  - {fileID: 21300000, guid: 07ac10b34e37fb545b273a42069a02a5, type: 3}
+  - {fileID: 21300000, guid: 340278370846cf543bc56b39bb8e687f, type: 3}
+  - {fileID: 21300000, guid: 95f66671d6df0d049bc4dc35b2f7d977, type: 3}
+  - {fileID: 21300000, guid: 81a405d1780ae674b8122968fea37c13, type: 3}
+  - {fileID: 21300000, guid: 49852465d4ceb69458627bb6d29be6fc, type: 3}
+  - {fileID: 21300000, guid: 4f96c13a3b2f1f348aa59556d03cc476, type: 3}
+  - {fileID: 21300000, guid: c0450091c6306664cb9c09e7aeae50b0, type: 3}
+  - {fileID: 21300000, guid: 1b22b33d338a5894cb04a1492b5a5107, type: 3}
+  - {fileID: 21300000, guid: 53c320d66f8d5204f83bd6b3194a60ab, type: 3}
+  - {fileID: 21300000, guid: c9602bea3de680141a95c76c071709b2, type: 3}
+  - {fileID: 21300000, guid: 7e4ea5a5ede47464895684cc9ca861d4, type: 3}
+  - {fileID: 21300000, guid: 2ac3b1cec518636409a105cb14dc3c7b, type: 3}
+  - {fileID: 21300000, guid: a38de141b8e1fb04a958b85d9c523ab4, type: 3}
+  - {fileID: 21300000, guid: 4f71392400215ef42964a82578d79ee2, type: 3}
+  - {fileID: 21300000, guid: 84680401456da1d4bb9695f34a3cfec4, type: 3}
   canvasEnd: {fileID: 153488, guid: 9067123df0cf0bc4f863d5f3cc618da9, type: 2}
   CanvasTimer: {fileID: 550408483}
 --- !u!4 &858064461
