@@ -277,23 +277,28 @@ public class Account : MonoBehaviour
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                             TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
-                            if (Convert.ToInt32(informationOneBuilding[2]) > 0)
+                            
+                            if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
                                 tempBuilding2.busy = true;
-                                tempBuilding2.timeToFinishTaskTotal = Convert.ToInt32(informationOneBuilding[5]);
+                                //tempBuilding2.maxtimeForTask = Convert.ToInt32(informationOneBuilding[5]);
                             }
-                            if (Convert.ToInt32(informationOneBuilding[1]) != -1)
+                            else
                             {
-                                tempBuilding2.busy = true;
+                                tempBuilding2.busy = false;
                             }
-                            tempBuilding2.timeToFinishTask = Convert.ToInt32(informationOneBuilding[2]) - (int)sec.TotalSeconds;
+                            //tempBuilding2.maxtimeForTask = Convert.ToInt32(informationOneBuilding[2]);
                             tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
-                            if (Convert.ToInt32(informationOneBuilding[4]) > 0)
+                            if (Convert.ToBoolean(informationOneBuilding[8]))
                             {
                                 tempBuilding2.building = true;
-                                tempBuilding2.SetMaxTime();
+                                //tempBuilding2.SetMaxTime();
                             }
-                            tempBuilding2.timeLeftToFinishBuild = Convert.ToInt32(informationOneBuilding[4]) - (int)sec.TotalSeconds;
+                            else
+                            {
+                                tempBuilding2.building = false;
+                            }
+                            tempBuilding2.endTime = Convert.ToDateTime(informationOneBuilding[4]);
                             tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
                             tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                         }
@@ -360,7 +365,7 @@ public class Account : MonoBehaviour
                 fields += grid[i, p].building + "<e>";
                 if(tempBuilding != null)
                 {
-                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.timeToFinishTask + "<e>" + tempBuilding.level + "<e>" + tempBuilding.timeLeftToFinishBuild + "<e>" + tempBuilding.timeToFinishTaskTotal + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y;
+                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.busy + "<e>" + tempBuilding.level + "<e>" + tempBuilding.endTime + "<e>" + tempBuilding.maxtimeForTask + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y + "<e>" + tempBuilding.building;
                 }
                 fields += "<r>";
             }

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class BuildingMain : MonoBehaviour 
 {
@@ -36,6 +37,8 @@ public class BuildingMain : MonoBehaviour
     public int level, ID, taskDoing = -1;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
+    public DateTime endTime;
+    public float maxtimeForTask;
     public bool building = false, doneWithTask = false, onceToCreate = false, canClick = true;
 
     float currentTime = 0;
@@ -113,6 +116,26 @@ public class BuildingMain : MonoBehaviour
             currentTime = Time.time;
             if (busy)
             {
+                DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
+                if (endTime <= DateTime.Now)
+                {
+                    busy = false;
+                    doneWithTask = true;
+                    onceToCreate = true;
+                    GetComponent<CircleCollider2D>().enabled = false;
+                    Destroy(tempBar);
+                    if (!resourceBuilding)
+                    {
+                        GetReward();
+                    }
+                    else
+                    {
+                        tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
+                        tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                        tempBar.GetComponent<Canvas>().sortingOrder = -1;
+                    }
+                }
+                /*
                 timeToFinishTask--;
                 DrawBar(timeToFinishTaskTotal, timeToFinishTask);
                 if (timeToFinishTask <= 0 && !onceToCreate)
@@ -133,13 +156,34 @@ public class BuildingMain : MonoBehaviour
                         tempBar.GetComponent<Canvas>().sortingOrder = -1;
                     }
                 }
-
+                */
             }
+
             if(building)
             {
-                timeLeftToFinishBuild--;
-                DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+                DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
+                //Debug.Log(DateTime.Now.Second + " / " + endTime.Second + " / " + (DateTime.Now.Second - endTime.Second).ToString() + " / " + (endTime.Second - DateTime.Now.Second).ToString());
+                //timeLeftToFinishBuild--;
+                //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+                /*
                 if (timeLeftToFinishBuild <= 0)
+                {
+                    building = false;
+                    level++;
+                    Destroy(tempBar);
+                    account.exp += exp[level];
+                    Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
+                    if (buildingSprites[level] != null)
+                    {
+                        GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                    }
+                    if (ableToSave)
+                    {
+                        account.PushSave();
+                    }
+                }
+                */
+                if(endTime <= DateTime.Now)
                 {
                     building = false;
                     level++;
@@ -219,18 +263,17 @@ public class BuildingMain : MonoBehaviour
                     temp.fillAmount = (min / max);
                 }
             }
-
-            if(min < 60)
+            if(endTime.Second - DateTime.Now.Second < 60)
             {
-                tempBar.GetComponentInChildren<Text>().text = min + " s";
+                tempBar.GetComponentInChildren<Text>().text = endTime.Second - DateTime.Now.Second + " s";
             }
-            else if(min < 3600)
+            else if(endTime.Second - DateTime.Now.Second < 3600)
             {
-                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(min / 60) + " m";
+                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(endTime.Second - DateTime.Now.Second / 60) + " m";
             }
-            else if(min < 216000)
+            else if(endTime.Second - DateTime.Now.Second < 216000)
             {
-                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(min / 60 / 60) + " h";
+                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(endTime.Second - DateTime.Now.Second / 60 / 60) + " h";
             }
         }
     }
@@ -421,26 +464,45 @@ public class BuildingMain : MonoBehaviour
         {
             Building();
             building = true;
-            timeLeftToFinishBuild = timesForBuilding[level];
-            SetMaxTime();
+            endTime = DateTime.Now;
+            //SetMaxTime();
+            endTime = endTime.AddSeconds(Convert.ToDouble(timesForBuilding[level]));
+            maxtimeForTask = timesForBuilding[level];
+            //timeLeftToFinishBuild = timesForBuilding[level];
+            
             BackClicked();
-            DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+            //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+            DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
         }
     }
 
     public void TaskClicked(int task)
     {
         Busy();
+        /*
         timeToFinishTaskTotal = timesForTasks[task];
         timeToFinishTask = timeToFinishTaskTotal;
+        */
+        busy = true;
         taskDoing = task;
         if (ableToSave)
         {
             account.PushSave();
         }
         BackClicked();
-        busy = true;
-        DrawBar(timeToFinishTaskTotal, timeToFinishTask);
+        
+
+
+        endTime = DateTime.Now;
+        //SetMaxTime();
+        endTime = endTime.AddSeconds(Convert.ToDouble(timesForTasks[task]));
+        maxtimeForTask = timesForBuilding[level];
+        //timeLeftToFinishBuild = timesForBuilding[level];
+
+        BackClicked();
+        //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
+        DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
+
     }
 
     public void BackClicked()
