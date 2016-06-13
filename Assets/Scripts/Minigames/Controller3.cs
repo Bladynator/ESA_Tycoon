@@ -118,7 +118,7 @@ public class Controller3 : MonoBehaviour
 
     void EditTimer(string text)
     {
-        GameObject.Find("Canvas").GetComponentInChildren<Text>().text = text;
+        CanvasTimer.GetComponent<Text>().text = text;
     }
 
     void Place()

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 0
   controller: {fileID: 0}
-  liner: {fileID: 126290, guid: e15c343c8d18b814493f59741b2c59ea, type: 2}
+  liner: {fileID: 190306, guid: 795d7f08e6b03dd4fb9555837f3d0b12, type: 2}
 --- !u!120 &12000604
 LineRenderer:
   m_ObjectHideFlags: 1

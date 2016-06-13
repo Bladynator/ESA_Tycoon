@@ -8,6 +8,7 @@ public class ButtonToConnect : MonoBehaviour
     public Controller3 controller;
     [SerializeField]
     GameObject liner;
+    public GameObject tempLiner;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class ButtonToConnect : MonoBehaviour
     void OnMouseOver()
     {
         Clicked();
+        
     }
 
     public void Clicked()
@@ -32,7 +34,12 @@ public class ButtonToConnect : MonoBehaviour
                 controller.pressedButtonFirst = gameObject;
                 controller.pressedButton = true;
                 controller.numberToClick++;
-                Instantiate(liner, transform.position, transform.rotation);
+                if (tempLiner == null)
+                {
+                    tempLiner = (GameObject)Instantiate(liner, transform.position, transform.rotation);
+                    tempLiner.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    tempLiner.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+                }
             }
         }
     }
