@@ -200,11 +200,10 @@ public class Quests : MonoBehaviour
             myInformation[i + 2] = account.amountOfEachBuilding[i];
         }
         
-        for(int i = 11; i < 14; i++)
-        {
-            myInformation[i] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
-        }
-        
+        myInformation[11] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[0];
+        myInformation[12] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1];
+        myInformation[13] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2];
+
         bool ifEnough = true;
         for (int i = 0; i < myInformation.Length; i++)
         {

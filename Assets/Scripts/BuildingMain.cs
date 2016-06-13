@@ -31,6 +31,8 @@ public class BuildingMain : MonoBehaviour
     [HideInInspector]
     public Vector2 gridPosition;
 
+    Color disabledColour;
+
     [Header("Don't Change")]
     [SerializeField]
     BuildingPlacer buildingPlacer;
@@ -55,11 +57,13 @@ public class BuildingMain : MonoBehaviour
     Button[] allButtons;
     Image[] allImages;
     Text[] allText;
+    Text[] alltext2;
 
     public bool ableToSave = true;
     
     public virtual void Start()
     {
+        disabledColour = GameObject.Find("HUD").GetComponent<HUD>().disabledColour;
         if (!decoration)
         {
             for (int i = 0; i < 4; i++)
@@ -316,6 +320,21 @@ public class BuildingMain : MonoBehaviour
                 if (!CheckIfEnoughResources(false))
                 {
                     allButtons[1].interactable = false;
+                    alltext2 = allButtons[1].GetComponentsInChildren<Text>();
+                    foreach (Text temp in alltext2)
+                    {
+                        temp.color = disabledColour;
+                        allText[3].color = disabledColour;
+                    }
+                }
+                else
+                {
+                    alltext2 = allButtons[1].GetComponentsInChildren<Text>();
+                    foreach (Text temp in alltext2)
+                    {
+                        temp.color = Color.white;
+                        allText[3].color = Color.white;
+                    }
                 }
             }
             else
@@ -352,27 +371,53 @@ public class BuildingMain : MonoBehaviour
                     allText2[3].text = minigameDiff[tempi];
                 }
             }
-            for(int i = 3; i < 7; i++)
+            
+            for (int i = 3; i < 7; i++)
             {
                 allButtons[i].interactable = true;
+                alltext2 = allButtons[i].GetComponentsInChildren<Text>();
+                foreach (Text temp in alltext2)
+                {
+                    temp.color = Color.white;
+                }
             }
-
+            
             if(level < 3)
             {
                 allButtons[6].interactable = false;
+                alltext2 = allButtons[6].GetComponentsInChildren<Text>();
+                foreach (Text temp in alltext2)
+                {
+                    temp.color = disabledColour;
+                }
             }
             if(level < 2)
             {
                 allButtons[5].interactable = false;
+                alltext2 = allButtons[5].GetComponentsInChildren<Text>();
+                foreach (Text temp in alltext2)
+                {
+                    temp.color = disabledColour;
+                }
             }
             if(level < 1)
             {
                 allButtons[4].interactable = false;
+                alltext2 = allButtons[4].GetComponentsInChildren<Text>();
+                foreach (Text temp in alltext2)
+                {
+                    temp.color = disabledColour;
+                }
             }
 
             if(!resourceBuilding && account.level < 2)
             {
                 allButtons[3].interactable = false;
+                alltext2 = allButtons[3].GetComponentsInChildren<Text>();
+                foreach (Text temp in alltext2)
+                {
+                    temp.color = disabledColour;
+                }
             }
         }
         else
