@@ -67,7 +67,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}}, };
     #endregion
     #region questRewards
-    int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp
+    int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp, empty, dialogTrigger
     { { {0,0,0,0,0,0,0,0,0,0},
         {100,0,50,0,0,0,0,0,0,0},
         {0,0,40,0,0,0,0,0,0,0},
@@ -124,7 +124,7 @@ public class Quests : MonoBehaviour
                         break;
                     }
                     //texts.Add(allText[i, questLineProgress[i]]);
-                    MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i);
+                    MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i, questRewards[i, questLineProgress[i], 5]);
                     //texts = new List<string>();
                     wait = true;
                 }
@@ -216,7 +216,7 @@ public class Quests : MonoBehaviour
         return ifEnough;
     }
     
-    void PressedCollectButton(int addedMoney, int addedRP, int quest)
+    void PressedCollectButton(int addedMoney, int addedRP, int quest, int newDialog)
     {
         account.money += addedMoney;
         account.researchPoints += addedRP;
@@ -224,16 +224,20 @@ public class Quests : MonoBehaviour
         wait = false;
         questLineProgress[quest]++;
         canvas.SetActive(false);
+        if (newDialog != 0)
+        {
+            GetComponent<Dialogs>().ActivateTalking(newDialog);
+        }
     }
 
-    void MakeCanvas(string text, int addedMoney, int addedRP, int quest)
+    void MakeCanvas(string text, int addedMoney, int addedRP, int quest, int newDialog)
     {
         if (!onceCanvas)
         {
             onceCanvas = true;
             canvas.SetActive(true);
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, quest); });
+            canvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedCollectButton(addedMoney, addedRP, quest, newDialog); });
             Text[] allText = canvas.GetComponentsInChildren<Text>();
             allText[0].text = text;
             allText[2].text = addedMoney.ToString();
