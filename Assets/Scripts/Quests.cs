@@ -13,11 +13,11 @@ public class Quests : MonoBehaviour
     [SerializeField]
     string[,] allText = new string[3, 10]
     {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
-    {"","Play the second minigame","2","3","4","5","","","",""},
+    {"","Construct 3 Mission Buildings","Play all mini-games (easy mode)","3","4","5","","","",""},
     {"","heey","hello","","","","","","",""}};
     public int questOpen = -1;
 
-    int[] myInformation = new int[10];
+    int[] myInformation = new int[14];
     int[] questsActive = new int[3];
 
     public bool tutorialBack = false, wait = false;
@@ -32,39 +32,39 @@ public class Quests : MonoBehaviour
     List<string> texts = new List<string>();
     
     #region questRequirements
-    int[,,] questRequirements = new int[3, 10, 10] // money, researchPoints, buildings [ 1 - 8 ]
-    { { {0,0,0,0,0,0,0,0,0,1}, // {money, RP, building1, buildings2, Flag, minigame1Score, buildings5, buildings6, buildings7, buildings8}
-        {0,0,0,0,0,1,0,0,0,0},
-        {0,0,1,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,1,0}, // flag
-        {0,0,0,0,0,0,0,0,0,0},  // none
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0}},
+    int[,,] questRequirements = new int[3, 10, 14] // money, researchPoints, buildings [ 1 - 8 ]
+    { { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // {money, RP, ex, sc, hq, rnd, lp, mc, flag, tree, thing, minigame1, 2, 3}
+        {0,0,0,0,0,1,0,0,0,0,0,0,0,0},
+        {0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,1,0,0,0,0,0}, // flag
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},  // none
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 
-      { {0,0,0,0,0,0,0,0,0,1},
-        {0,0,0,0,0,10,0,0,0,0}, // minigame1 score
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0}},
+      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // empty / off
+        {0,0,0,0,0,1,1,1,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,10,10,10}, // minigames
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 
-      { {0,0,0,0,0,0,0,0,0,1},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0}}, };
+      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // empty / off
+        {0,0,0,0,0,1,1,1,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}} };
     #endregion
     #region questRewards
     int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp, empty, dialogTrigger
@@ -80,7 +80,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}},
 
         { {0,0,0,0,0,0,0,0,0,0},
-        {0,0,100,0,0,0,0,0,0,0},
+        {50,0,0,0,16,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -199,14 +199,14 @@ public class Quests : MonoBehaviour
         {
             myInformation[i + 2] = account.amountOfEachBuilding[i];
         }
-        /*
-        for(int i = 0; i < 1; i++)
+        
+        for(int i = 11; i < 14; i++)
         {
-            myInformation[i + 9] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
+            myInformation[i] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i];
         }
-        */
+        
         bool ifEnough = true;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < myInformation.Length; i++)
         {
             if(myInformation[i] < questRequirements[questline, quest, i])
             {

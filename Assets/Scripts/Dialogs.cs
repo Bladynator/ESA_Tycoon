@@ -5,7 +5,7 @@ using System;
 
 public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[16, 10]
+    string[,] dialogText = new string[17, 10]
         {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + " I will be your assistant and help you fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
     {"a","Excellent! Cool name!","","","","","","","",""},
     {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
@@ -21,7 +21,8 @@ public class Dialogs : MonoBehaviour
     {"a","Well done! Not bad for a first time.","","","","","","","",""},
     {"a","Nice score! You’re getting better at this.","","","","","","","",""},
     {"a","Wow, this is going pretty well! Keep up the good work.","","","","","","","",""},
-    {"a","Awesome! You should be proud of your score!","","","","","","","",""}};
+    {"a","Awesome! You should be proud of your score!","","","","","","","",""},
+    {"a","You have constructed not one, not two, but three Mission Buildings! Awesome! Keep up the good work.","","","","","","","",""}}; // first quest dialog
 
 
     public bool talk = false, waitForInput = false;

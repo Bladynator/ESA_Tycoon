@@ -89,7 +89,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.ESA.ESATycoon
+  bundleIdentifier: com.ESA.AIM-SpaceChallenge
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -179,65 +179,65 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a22dce8908da3ad4ba17193dcfd364f5, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5a1b667299dba114288d4e6f82eef7d2, type: 3}
       m_Width: 192
       m_Height: 192
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 192c0719d1f8fe742bbcb4b489cba688, type: 3}
+      m_Icon: {fileID: 2800000, guid: bf1af048b4f20054c89e713a1f110f24, type: 3}
       m_Width: 144
       m_Height: 144
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9803a4ed2ded70e48a2ed251a148851f, type: 3}
+      m_Icon: {fileID: 2800000, guid: dc91b58eba68f5f408d77cf746a9a61f, type: 3}
       m_Width: 96
       m_Height: 96
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c941d4e8567ff184ca503f2c8f11cb7e, type: 3}
+      m_Icon: {fileID: 2800000, guid: 26c692e8a3f3b384a90e792fad6dbe1c, type: 3}
       m_Width: 72
       m_Height: 72
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 6d4fbf15ae367ec4d9400ae90c150e52, type: 3}
+      m_Icon: {fileID: 2800000, guid: b2220b29f86497b47a9e87e71b6338df, type: 3}
       m_Width: 48
       m_Height: 48
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 493ab6d6ec5bc4e49a4eec1c9a8e2ecd, type: 3}
+      m_Icon: {fileID: 2800000, guid: 1fba10bdf3b1e9a429b6312d18a4c3be, type: 3}
       m_Width: 36
       m_Height: 36
   - m_BuildTarget: iPhone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 7b6144e7c221be9418379570da644fd9, type: 3}
+      m_Icon: {fileID: 2800000, guid: a6bfa4eecc51c8844b733dabc86ebdea, type: 3}
       m_Width: 180
       m_Height: 180
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 2f98d647646bee244b3f81bb14fa872a, type: 3}
+      m_Icon: {fileID: 2800000, guid: 800f1fb826383a2468f5252945fbee6e, type: 3}
       m_Width: 167
       m_Height: 167
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e98577fbfc69ed443a147d470454625e, type: 3}
+      m_Icon: {fileID: 2800000, guid: 1494414507c746147bc3a6931d323562, type: 3}
       m_Width: 152
       m_Height: 152
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 56e7a6856c9f6e64f9e0a73481321b06, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7db6d2b175bbeca49a420a750ba7122d, type: 3}
       m_Width: 144
       m_Height: 144
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: aa2da0dec58a5e54f96149261af61b89, type: 3}
+      m_Icon: {fileID: 2800000, guid: e64b4ccaaa772914eac8b0c02a85fc98, type: 3}
       m_Width: 120
       m_Height: 120
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e11801e033802da4587d24112ca0d06e, type: 3}
+      m_Icon: {fileID: 2800000, guid: c1fb12a2a880833478f48928d37e80ba, type: 3}
       m_Width: 114
       m_Height: 114
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b4999d52885e34e4d9c70b101eedc336, type: 3}
+      m_Icon: {fileID: 2800000, guid: f65a26980550cce4c9e56bf1f2c3e530, type: 3}
       m_Width: 76
       m_Height: 76
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 5ccb5056dbac88b468691470c1638004, type: 3}
+      m_Icon: {fileID: 2800000, guid: 0f833fe5b2ae9d74c8837af58089a735, type: 3}
       m_Width: 72
       m_Height: 72
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a22536be89641a84daafec38f317722b, type: 3}
+      m_Icon: {fileID: 2800000, guid: 0cf5f589e6cd1d5438f5e16ed6f3e396, type: 3}
       m_Width: 57
       m_Height: 57
   m_BuildTargetBatching: []
