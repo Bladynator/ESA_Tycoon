@@ -20,7 +20,7 @@ public class BuildingButtons : MonoBehaviour
     [SerializeField]
     Sprite pressed, unpressed;
     [SerializeField]
-    Color tempColour;
+    Color tempColour, disabledColour;
 
     void OnEnable()
     {
@@ -32,6 +32,7 @@ public class BuildingButtons : MonoBehaviour
         }
         account.namesBuildings = namesBuildings;
         account.UpdateAmountOFBuildings();
+        disabledColour = GameObject.Find("HUD").GetComponent<HUD>().disabledColour;
         MakeButtons();
     }
 
@@ -70,15 +71,26 @@ public class BuildingButtons : MonoBehaviour
 
         for (int p = 0; p < 3; p++)
         {
-
             Text[] allText = allButtons[p].GetComponentsInChildren<Text>();
             allText[0].text = namesBuildings[(i * 3) + p];
             allButtons[p].image.sprite = buildingsPrefabs[(i * 3) + p].GetComponent<SpriteRenderer>().sprite;
             allText[1].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.x + "x" + buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().size.y;
             allText[2].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().moneyNeededUpgrade[0].ToString();
             allText[3].text = buildingsPrefabs[(i * 3) + p].GetComponent<BuildingMain>().rpNeededUpgrade[0].ToString();
-
-            
+            if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
+            {
+                for (int g = 1; g < 4; g++)
+                {
+                    allText[g].color = Color.white;
+                }
+            }
+            else
+            {
+                for (int g = 1; g < 4; g++)
+                {
+                    allText[g].color = disabledColour;
+                }
+            }
         }
         for (int p = 0; p < 3; p++)
         {
@@ -96,7 +108,6 @@ public class BuildingButtons : MonoBehaviour
         account.UpdateAmountOFBuildings();
         if (buildingsPrefabs[i].GetComponent<BuildingMain>().levelsNeededNewBuilding[account.amountOfEachBuilding[i]] <= account.level && buildingsPrefabs[i].GetComponent<BuildingMain>().moneyNeededUpgrade[0] <= account.money && buildingsPrefabs[i].GetComponent<BuildingMain>().rpNeededUpgrade[0] <= account.researchPoints)
         {
-            
             allButtons[p].onClick.AddListener(delegate { PressedBuilding(i); });
             allButtons[p].GetComponent<Image>().color = Color.white;
             if (GameObject.Find("Tutorial") != null)
@@ -114,6 +125,7 @@ public class BuildingButtons : MonoBehaviour
         else
         {
             allButtons[p].GetComponent<Image>().color = tempColour;
+            
         }
     }
 
