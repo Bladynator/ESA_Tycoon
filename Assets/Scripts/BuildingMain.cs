@@ -422,7 +422,9 @@ public class BuildingMain : MonoBehaviour
         }
         else
         {
+            allButtons[1].interactable = true;
             allButtons[1].onClick.AddListener(delegate { DeleteDeco(); });
+            allText[3].text = "";
             for (int i = 3; i < 7; i++)
             {
                 allButtons[i].gameObject.SetActive(false);
