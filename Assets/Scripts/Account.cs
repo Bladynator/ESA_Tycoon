@@ -27,8 +27,10 @@ public class Account : MonoBehaviour
     int saveInSec = 5;
     public int[] expNeededForLevel, newbuildings;
     public int[] amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
-	
-	void Start () 
+
+    public AudioClip levelUpSound;
+    
+    void Start () 
 	{
         saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
@@ -73,6 +75,7 @@ public class Account : MonoBehaviour
 
     void LevelUp()
     {
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(levelUpSound);
         exp -= expNeededForLevel[level];
         level++;
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;

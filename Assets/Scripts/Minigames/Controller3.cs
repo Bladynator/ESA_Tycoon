@@ -49,12 +49,13 @@ public class Controller3 : MonoBehaviour
     {
         if (Input.touchCount == 0 && pressedButtonFirst != null)
         {
-            Calculate(pressedButtonFirst);
+            //Calculate(pressedButtonFirst);
         }
         if (numberToClick == amountToShow)
         {
             excludedNumbers.Clear();
             totalConnected = 0;
+            //pressedButtonFirst.GetComponent<ButtonToConnect>().newRope.Remove();
             GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Connect");
             for (int i = 0; i < toDestroy.Length; i++)
             {
@@ -63,12 +64,15 @@ public class Controller3 : MonoBehaviour
             numberToClick = 0;
             Place();
             score += amountToShow;
-            
+            //button.GetComponent<ButtonToConnect>().newRope.Remove();
+            //Destroy(GameObject.Find("RopeNew(Clone)"));
+            /*
             GameObject[] allLines = GameObject.FindGameObjectsWithTag("Liner");
             foreach (GameObject temp in allLines)
             {
                 Destroy(temp);
             }
+            */
             pressedButtonFirst = null;
             pressedButton = false;
         }
@@ -166,7 +170,7 @@ public class Controller3 : MonoBehaviour
                     {
                         do
                         {
-                            number = Random.Range(0, 21);
+                            number = Random.Range(0, 20);
                         }
                         while (number % 2 != 0);
                         g = false;
@@ -184,17 +188,21 @@ public class Controller3 : MonoBehaviour
 
     public void Calculate(GameObject button)
     {
+        Debug.Log("yes");
         pressedButton = false;
         Vector3[] positions = new Vector3[2];
         positions[0] = pressedButtonFirst.transform.position;
         positions[1] = button.transform.position;
-        pressedButtonFirst.GetComponent<LineRenderer>().SetPositions(positions);
+        //pressedButtonFirst.GetComponent<LineRenderer>().SetPositions(positions);
         pressedButtonFirst.GetComponent<BoxCollider2D>().enabled = false;
         button.GetComponent<BoxCollider2D>().enabled = false;
         pressedButtonFirst = null;
         if (numberToClick != amountToShow)
         {
             button.GetComponent<ButtonToConnect>().Clicked();
+            //button.GetComponent<ButtonToConnect>().newRope.Remove();
         }
+        
+        //Destroy(GameObject.Find("RopeNew(Clone)"));
     }
 }
