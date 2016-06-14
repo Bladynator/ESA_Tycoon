@@ -393,4 +393,9 @@ public class Account : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void ClickedLink(string link)
+    {
+        Application.OpenURL(link);
+    }
 }
