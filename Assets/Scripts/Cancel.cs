@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Cancel : MonoBehaviour 
 {
-	public void OnMouseDown()
+    public AudioClip cancelSound;
+
+    public void OnMouseDown()
     {
         if (GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().rePos)
         {
@@ -26,6 +28,7 @@ public class Cancel : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(true);
         }
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(cancelSound);
         GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
     }

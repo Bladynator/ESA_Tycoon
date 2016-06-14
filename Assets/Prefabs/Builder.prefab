@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa26e71f6c083e445a662af71bc4aeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelSound: {fileID: 8300000, guid: 570c7e57bd9178940b87a7063e27de2e, type: 3}
 --- !u!114 &11465452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fd5638f602d7b459bfe3cba4a350f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doneSound: {fileID: 8300000, guid: 59e065c8f2f66e04da7fabbb753efc8a, type: 3}
 --- !u!212 &21208468
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -58,11 +58,14 @@ public class BuildingMain : MonoBehaviour
     Image[] allImages;
     Text[] allText;
     Text[] alltext2;
+    AudioClip upgradeSound, rewardSound;
 
     public bool ableToSave = true;
     
     public virtual void Start()
     {
+        upgradeSound = GameObject.Find("HUD").GetComponent<HUD>().upgradeSound;
+        rewardSound = GameObject.Find("HUD").GetComponent<HUD>().rewardSound;
         disabledColour = GameObject.Find("HUD").GetComponent<HUD>().disabledColour;
         if (!decoration)
         {
@@ -191,6 +194,7 @@ public class BuildingMain : MonoBehaviour
                 {
                     building = false;
                     level++;
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(upgradeSound);
                     Destroy(tempBar);
                     account.exp += exp[level];
                     Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
@@ -600,6 +604,7 @@ public class BuildingMain : MonoBehaviour
     public void GetReward()
     {
         doneWithTask = false;
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(rewardSound);
         account.money += taskRewards[taskDoing];
         taskDoing = -1;
         Destroy(tempBar);

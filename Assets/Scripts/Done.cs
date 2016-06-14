@@ -7,6 +7,7 @@ public class Done : MonoBehaviour
     int price, rpPrice;
     Account account;
     bool rePos;
+    public AudioClip doneSound;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class Done : MonoBehaviour
     {
         if (buildingPlacer.placeAble)
         {
+            GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(doneSound);
             if (!rePos)
             {
                 if (account.money >= price && account.researchPoints >= rpPrice)
