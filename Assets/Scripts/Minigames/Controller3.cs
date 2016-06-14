@@ -32,6 +32,15 @@ public class Controller3 : MonoBehaviour
     GameObject tempCanvas;
     ButtonToConnect[] temp;
 
+    public Rope2D newRope;
+    GameObject tempLiner;
+    Breakable[] temp2;
+    Vector2 positionOld;
+    [SerializeField]
+    GameObject liner, chainObject;
+    [SerializeField]
+    Material tempMat;
+
     void Start()
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
@@ -47,34 +56,13 @@ public class Controller3 : MonoBehaviour
 
     void Update()
     {
+        if (temp2 != null)
+        {
+            temp2[temp2.Length - 1].transform.position = positionOld;
+        }
         if (Input.touchCount == 0 && pressedButtonFirst != null)
         {
             //Calculate(pressedButtonFirst);
-        }
-        if (numberToClick == amountToShow)
-        {
-            excludedNumbers.Clear();
-            totalConnected = 0;
-            //pressedButtonFirst.GetComponent<ButtonToConnect>().newRope.Remove();
-            GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Connect");
-            for (int i = 0; i < toDestroy.Length; i++)
-            {
-                Destroy(toDestroy[i]);
-            }
-            numberToClick = 0;
-            Place();
-            score += amountToShow;
-            //button.GetComponent<ButtonToConnect>().newRope.Remove();
-            //Destroy(GameObject.Find("RopeNew(Clone)"));
-            /*
-            GameObject[] allLines = GameObject.FindGameObjectsWithTag("Liner");
-            foreach (GameObject temp in allLines)
-            {
-                Destroy(temp);
-            }
-            */
-            pressedButtonFirst = null;
-            pressedButton = false;
         }
         if(!endLess && !end)
         {
@@ -144,6 +132,9 @@ public class Controller3 : MonoBehaviour
         int number = 0;
         temp = new ButtonToConnect[amountToShow + 1];
         excludedNumbers = new List<int>();
+        
+        DeleteRope();
+        
         for (int i = 0; i < amountToShow; i++)
         {
             do
@@ -186,23 +177,72 @@ public class Controller3 : MonoBehaviour
         }
     }
 
+    public void MakeRope()
+    {
+        Debug.Log("t");
+        pressedButtonFirst = gameObject;
+        pressedButton = true;
+        numberToClick++;
+        tempLiner = Instantiate(liner);
+
+        Transform[] childerenFromRope = tempLiner.GetComponentsInChildren<Transform>();
+        tempLiner.transform.position = transform.position;
+        childerenFromRope[0].transform.position = transform.position;
+        childerenFromRope[1].transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        newRope = new Rope2D();
+        newRope.CreateRope(tempLiner, chainObject, childerenFromRope[0], childerenFromRope[1], true, false, true, true, true, true, tempMat, 0.3f);
+        temp2 = GameObject.Find("RopeNew(Clone)").GetComponentsInChildren<Breakable>();
+        temp2[0].gameObject.AddComponent<ToMouse>();
+        foreach (Breakable temp3 in temp2)
+        {
+            temp3.enabled = false;
+            if (temp3.GetComponent<HingeJoint2D>() != null)
+            {
+                temp3.GetComponent<HingeJoint2D>().useLimits = false;
+            }
+            temp3.GetComponent<Rigidbody2D>().mass = 0;
+            temp3.GetComponent<Rigidbody2D>().gravityScale = 0;
+            temp3.gameObject.layer = 2;
+        }
+        positionOld = temp2[temp2.Length - 1].transform.position;
+
+        temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().mass = 90000;
+    }
+
     public void Calculate(GameObject button)
     {
-        Debug.Log("yes");
         pressedButton = false;
         Vector3[] positions = new Vector3[2];
         positions[0] = pressedButtonFirst.transform.position;
         positions[1] = button.transform.position;
-        //pressedButtonFirst.GetComponent<LineRenderer>().SetPositions(positions);
-        pressedButtonFirst.GetComponent<BoxCollider2D>().enabled = false;
-        button.GetComponent<BoxCollider2D>().enabled = false;
         pressedButtonFirst = null;
         if (numberToClick != amountToShow)
         {
-            button.GetComponent<ButtonToConnect>().Clicked();
-            //button.GetComponent<ButtonToConnect>().newRope.Remove();
+            excludedNumbers.Clear();
+            totalConnected = 0;
+            GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Connect");
+            for (int i = 0; i < toDestroy.Length; i++)
+            {
+                Destroy(toDestroy[i]);
+            }
+            numberToClick = 0;
+            Place();
+            score += amountToShow;
+            pressedButtonFirst = null;
+            pressedButton = false;
         }
-        
-        //Destroy(GameObject.Find("RopeNew(Clone)"));
+    }
+
+    public void DeleteRope()
+    {
+
+        if (newRope != null)
+        {
+            Destroy(tempLiner);
+            temp2 = null;
+            newRope = null;
+        }
+
     }
 }

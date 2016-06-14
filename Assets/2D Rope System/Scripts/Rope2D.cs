@@ -177,7 +177,7 @@ public class Rope2D
 					chain.GetComponent<Rigidbody2D>().isKinematic = true;
 
 				GameObject.DestroyImmediate (chain.GetComponent<HingeJoint2D>()); //remove HingeJoint2D component for last chain
-			
+
 				//if useLineRenderer is true, add UseLineRenderer.cs to rope parent, set it material and width
 				if(useLineRenderer)
 				{
