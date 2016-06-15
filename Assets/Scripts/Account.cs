@@ -279,7 +279,7 @@ public class Account : MonoBehaviour
                         if (tempBuilding2.GetComponent<BuildingMain>().buildingName != "TimeMachine")
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
-                            TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
+                            //TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                             
                             if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
@@ -301,7 +301,8 @@ public class Account : MonoBehaviour
                             {
                                 tempBuilding2.building = false;
                             }
-                            tempBuilding2.endTime = Convert.ToDateTime(informationOneBuilding[4]);
+                            Debug.Log(informationOneBuilding[4]);
+                            tempBuilding2.timer = Convert.ToDouble(informationOneBuilding[4]);
                             tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
                             tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                         }
@@ -368,7 +369,7 @@ public class Account : MonoBehaviour
                 fields += grid[i, p].building + "<e>";
                 if(tempBuilding != null)
                 {
-                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.busy + "<e>" + tempBuilding.level + "<e>" + tempBuilding.endTime + "<e>" + tempBuilding.maxtimeForTask + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y + "<e>" + tempBuilding.building;
+                    fields += tempBuilding.taskDoing + "<e>" + tempBuilding.busy + "<e>" + tempBuilding.level + "<e>" + tempBuilding.timer + "<e>" + tempBuilding.maxtimeForTask + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y + "<e>" + tempBuilding.building;
                 }
                 fields += "<r>";
             }

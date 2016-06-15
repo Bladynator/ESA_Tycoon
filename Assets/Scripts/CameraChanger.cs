@@ -108,6 +108,7 @@ public class CameraChanger : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         if (touch.tapCount == 2)
         {
+            /*
             StopCoroutine("singleOrDouble");
             if (camera.orthographicSize == 6.6f)
             {
@@ -117,6 +118,7 @@ public class CameraChanger : MonoBehaviour
             {
                 camera.orthographicSize = 6.6f;
             }
+            */
         }
     }
 

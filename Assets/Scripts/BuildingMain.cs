@@ -39,9 +39,10 @@ public class BuildingMain : MonoBehaviour
     public int level, ID, taskDoing = -1;
     Account account;
     public float timeToFinishTask, timeToFinishTaskTotal, timeToFinishBuildTotal, timeLeftToFinishBuild;
-    public DateTime endTime;
-    public float maxtimeForTask;
+    public TimeSpan endTime, startTime;
+    public double maxtimeForTask, timer;
     public bool building = false, doneWithTask = false, onceToCreate = false, canClick = true;
+    public TimeSpan timeSpan;
 
     float currentTime = 0;
     string[] minigameDiff = new string[4] {"Easy","Medium","Hard","Endless" };
@@ -117,97 +118,60 @@ public class BuildingMain : MonoBehaviour
     public virtual void Update()
     {
         SortingLayers();
+        //Debug.Log(timer);
+        if (busy)
+        {
+            timer -= Time.deltaTime;
+            timeSpan = TimeSpan.FromSeconds(timer);
+            DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
+            if (timeSpan.Seconds <= 0)
+            {
+                busy = false;
+                doneWithTask = true;
+                onceToCreate = true;
+                GetComponent<CircleCollider2D>().enabled = false;
+                Destroy(tempBar);
+                if (!resourceBuilding)
+                {
+                    GetReward();
+                }
+                else
+                {
+                    tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
+                    tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
+                    tempBar.GetComponent<Canvas>().sortingOrder = -1;
+                }
+            }
+        }
 
-        if(Time.time >= currentTime + 1f)
+        if (building)
+        {
+            timer -= Time.deltaTime;
+            timeSpan = TimeSpan.FromSeconds(timer);
+            DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
+            if (timeSpan.Seconds <= 0)
+            {
+                building = false;
+                level++;
+                GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(upgradeSound);
+                Destroy(tempBar);
+                account.exp += exp[level];
+                Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
+                if (buildingSprites[level] != null)
+                {
+                    GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
+                }
+                if (ableToSave)
+                {
+                    account.PushSave();
+                }
+            }
+        }
+
+        if (Time.time >= currentTime + 1f)
         {
             currentTime = Time.time;
-            if (busy)
-            {
-                DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
-                if (endTime <= DateTime.Now)
-                {
-                    busy = false;
-                    doneWithTask = true;
-                    onceToCreate = true;
-                    GetComponent<CircleCollider2D>().enabled = false;
-                    Destroy(tempBar);
-                    if (!resourceBuilding)
-                    {
-                        GetReward();
-                    }
-                    else
-                    {
-                        tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
-                        tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
-                        tempBar.GetComponent<Canvas>().sortingOrder = -1;
-                    }
-                }
-                /*
-                timeToFinishTask--;
-                DrawBar(timeToFinishTaskTotal, timeToFinishTask);
-                if (timeToFinishTask <= 0 && !onceToCreate)
-                {
-                    busy = false;
-                    doneWithTask = true;
-                    onceToCreate = true;
-                    GetComponent<CircleCollider2D>().enabled = false;
-                    Destroy(tempBar);
-                    if (!resourceBuilding)
-                    {
-                        GetReward();
-                    }
-                    else
-                    {
-                        tempBar = (GameObject)Instantiate(canvas[3], transform.position + new Vector3(0, 3, 0), transform.rotation);
-                        tempBar.GetComponentInChildren<Button>().onClick.AddListener(delegate { GetReward(); });
-                        tempBar.GetComponent<Canvas>().sortingOrder = -1;
-                    }
-                }
-                */
-            }
-
-            if(building)
-            {
-                DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
-                //Debug.Log(DateTime.Now.Second + " / " + endTime.Second + " / " + (DateTime.Now.Second - endTime.Second).ToString() + " / " + (endTime.Second - DateTime.Now.Second).ToString());
-                //timeLeftToFinishBuild--;
-                //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
-                /*
-                if (timeLeftToFinishBuild <= 0)
-                {
-                    building = false;
-                    level++;
-                    Destroy(tempBar);
-                    account.exp += exp[level];
-                    Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
-                    if (buildingSprites[level] != null)
-                    {
-                        GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
-                    }
-                    if (ableToSave)
-                    {
-                        account.PushSave();
-                    }
-                }
-                */
-                if(endTime <= DateTime.Now)
-                {
-                    building = false;
-                    level++;
-                    GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(upgradeSound);
-                    Destroy(tempBar);
-                    account.exp += exp[level];
-                    Instantiate(GameObject.Find("HUD").GetComponent<HUD>().particleUpgrade, transform.position, transform.rotation);
-                    if (buildingSprites[level] != null)
-                    {
-                        GetComponent<SpriteRenderer>().sprite = buildingSprites[level];
-                    }
-                    if (ableToSave)
-                    {
-                        account.PushSave();
-                    }
-                }
-            }
+            
         }
     }
 
@@ -221,7 +185,6 @@ public class BuildingMain : MonoBehaviour
                 {
                     canvas[0].SetActive(true);
                     setupFirstButtons(canvas[0]);
-                    //account.ChangeColliders(false);
                     GameObject.Find("HUD").GetComponent<HUD>().EnableButton(false);
                 }
             }
@@ -236,7 +199,8 @@ public class BuildingMain : MonoBehaviour
     #region Canvas
     void Busy()
     {
-        if(canvas == null)
+        maxtimeForTask = timesForTasks[taskDoing];
+        if (canvas == null)
         {
             canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
         }
@@ -252,6 +216,7 @@ public class BuildingMain : MonoBehaviour
 
     void Building()
     {
+        maxtimeForTask = timesForBuilding[level];
         if (canvas == null)
         {
             canvas = GameObject.Find("HUD").GetComponent<HUD>().buildingCanvas;
@@ -259,8 +224,9 @@ public class BuildingMain : MonoBehaviour
         tempBar = (GameObject)Instantiate(canvas[5], transform.position + new Vector3(0, 3, 0), transform.rotation);
     }
 
-    void DrawBar(float max, float min)
+    void DrawBar(double max, double min)
     {
+        Debug.Log(max + " / " + min);
         if (tempBar != null && tempBar != canvas[3])
         {
             Image[] all = tempBar.GetComponentsInChildren<Image>();
@@ -268,21 +234,24 @@ public class BuildingMain : MonoBehaviour
             {
                 if (temp.gameObject.tag == "Bar")
                 {
-                    temp.fillAmount = (min / max);
+                    temp.fillAmount = (float)(min / max);
                 }
             }
-            if(endTime.Second - DateTime.Now.Second < 60)
+            Debug.Log(timeSpan);
+            string timeToDisplay = "";
+            if(timeSpan.Minutes < 1)
             {
-                tempBar.GetComponentInChildren<Text>().text = endTime.Second - DateTime.Now.Second + " s";
+                timeToDisplay = timeSpan.Seconds + " s";
             }
-            else if(endTime.Second - DateTime.Now.Second < 3600)
+            else if(timeSpan.Hours < 1)
             {
-                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(endTime.Second - DateTime.Now.Second / 60) + " m";
+                timeToDisplay = timeSpan.Minutes + " m";
             }
-            else if(endTime.Second - DateTime.Now.Second < 216000)
+            else
             {
-                tempBar.GetComponentInChildren<Text>().text = Mathf.RoundToInt(endTime.Second - DateTime.Now.Second / 60 / 60) + " h";
+                timeToDisplay = timeSpan.Hours + " h";
             }
+            tempBar.GetComponentInChildren<Text>().text = timeToDisplay;
         }
     }
 
@@ -310,12 +279,6 @@ public class BuildingMain : MonoBehaviour
         {
             allText[2].text = "Upgrade";
             allText[1].text = "";
-            /*
-            allText[4].text = "Task 1";
-            allText[5].text = "Task 2";
-            allText[6].text = "Task 3";
-            allText[7].text = "Task 4";
-            */
             if (level != 3)
             {
                 allText[3].text = priceForUpgrading[level + 1, 0] + "\n" + priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2];
@@ -513,47 +476,31 @@ public class BuildingMain : MonoBehaviour
     {
         if (CheckIfEnoughResources())
         {
-            Building();
             building = true;
-            endTime = DateTime.Now;
-            //SetMaxTime();
-            endTime = endTime.AddSeconds(Convert.ToDouble(timesForBuilding[level]));
-            maxtimeForTask = timesForBuilding[level];
-            //timeLeftToFinishBuild = timesForBuilding[level];
-            
+            //endTime = DateTime.Now;
+            timer = timesForBuilding[level];
+            //endTime = endTime.AddSeconds(Convert.ToDouble(timesForBuilding[level]));
+            Building();
             BackClicked();
-            //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
-            DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
+            //DrawBar(maxtimeForTask, timeSpan.Seconds);
         }
     }
 
     public void TaskClicked(int task)
     {
-        Busy();
-        /*
-        timeToFinishTaskTotal = timesForTasks[task];
-        timeToFinishTask = timeToFinishTaskTotal;
-        */
         busy = true;
         taskDoing = task;
+        timer = timesForTasks[taskDoing];
         if (ableToSave)
         {
             account.PushSave();
         }
         BackClicked();
         
-
-
-        endTime = DateTime.Now;
-        //SetMaxTime();
-        endTime = endTime.AddSeconds(Convert.ToDouble(timesForTasks[task]));
-        maxtimeForTask = timesForBuilding[level];
-        //timeLeftToFinishBuild = timesForBuilding[level];
-
-        BackClicked();
-        //DrawBar(timeToFinishBuildTotal, timeLeftToFinishBuild);
-        DrawBar(maxtimeForTask, endTime.Second - DateTime.Now.Second);
-
+        //endTime = DateTime.Now;
+        //endTime = endTime.AddSeconds(Convert.ToDouble(timesForTasks[taskDoing]));
+        Busy();
+        //DrawBar(maxtimeForTask, timeSpan.Seconds);
     }
 
     public void BackClicked()
