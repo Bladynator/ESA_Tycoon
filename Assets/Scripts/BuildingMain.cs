@@ -124,7 +124,7 @@ public class BuildingMain : MonoBehaviour
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds <= 0)
+            if (timeSpan.Seconds < 0)
             {
                 busy = false;
                 doneWithTask = true;
@@ -149,7 +149,7 @@ public class BuildingMain : MonoBehaviour
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds <= 0)
+            if (timeSpan.Seconds < 0)
             {
                 building = false;
                 level++;
@@ -226,7 +226,6 @@ public class BuildingMain : MonoBehaviour
 
     void DrawBar(double max, double min)
     {
-        Debug.Log(max + " / " + min);
         if (tempBar != null && tempBar != canvas[3])
         {
             Image[] all = tempBar.GetComponentsInChildren<Image>();
@@ -237,7 +236,6 @@ public class BuildingMain : MonoBehaviour
                     temp.fillAmount = (float)(min / max);
                 }
             }
-            Debug.Log(timeSpan);
             string timeToDisplay = "";
             if(timeSpan.Minutes < 1)
             {

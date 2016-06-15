@@ -301,7 +301,6 @@ public class Account : MonoBehaviour
                             {
                                 tempBuilding2.building = false;
                             }
-                            Debug.Log(informationOneBuilding[4]);
                             tempBuilding2.timer = Convert.ToDouble(informationOneBuilding[4]);
                             tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
                             tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
