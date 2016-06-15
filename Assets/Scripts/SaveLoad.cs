@@ -46,7 +46,7 @@ public class SaveLoad : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            var path = Application.dataPath.Substring(0, Application.dataPath.Length - 4) + filename;
+            var path = Application.dataPath.Substring(0, Application.dataPath.Length - 5) + filename;
             return path;
             /*
             string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
