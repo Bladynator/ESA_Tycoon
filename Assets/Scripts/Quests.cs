@@ -14,7 +14,7 @@ public class Quests : MonoBehaviour
     string[,] allText = new string[4, 10]
     {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
     {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
-    {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade 10 buildings to Level 2","","","","",""},
+    {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","","","","",""},
     {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};
     public int questOpen = -1;
 
@@ -60,7 +60,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0}, 
         {0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},// 10 buildings lvl 2 TODO
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

@@ -29,7 +29,7 @@ public class Dialogs : MonoBehaviour
         {"a","Good job! You played all the mini-games on the easy level. It’s time to take it to the next level.","","","","","","","",""},
         {"a","Hey! Listen: yesterday, over 250 people visited the Exhibition Centre! This means you earned a lot of money. Check your balance.","","","","","","","",""},
         {"a","Hey! Now you don’t have one, but two Exhibition Centres! This means more money coming you way. Well done!","","","","","","","",""},
-        {"a","Good job! You have reached a new level.","","","","","","","",""},
+        {"a","Good job! All your Mission buildings have been upgraded.","","","","","","","",""},
         {"a","Hi there! Quick update: the Science College funded a few new projects for your Space Centre. You received some money from them. Go check it out.","","","","","","","",""},
         {"a","Seems like the testing phase went pretty well because you have just reached level 2. Nice!","","","","","","","",""},
         {"a","Hey! Now you don’t have one, but two Research & Development Centres. This means you can double your research and earn double the amount of research points. Well done!","","","","","","","",""},
