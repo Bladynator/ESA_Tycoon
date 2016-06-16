@@ -377,6 +377,8 @@ public class Tutorial : MonoBehaviour
                                 }
                                 Destroy(gameObject);
                                 questLine.questLineProgress[1] = 1;
+                                questLine.questLineProgress[2] = 1;
+                                questLine.questLineProgress[3] = 1;
                                 questLine.ResetQuests();
                                 menu.interactable = true;
                                 skymap.SetActive(true);

@@ -5,7 +5,7 @@ using System;
 
 public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[17, 10]
+    string[,] dialogText = new string[28, 10]
         {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + " I will be your assistant and help you fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
     {"a","Excellent! Cool name!","","","","","","","",""},
     {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
@@ -22,7 +22,18 @@ public class Dialogs : MonoBehaviour
     {"a","Nice score! You’re getting better at this.","","","","","","","",""},
     {"a","Wow, this is going pretty well! Keep up the good work.","","","","","","","",""},
     {"a","Awesome! You should be proud of your score!","","","","","","","",""},
-    {"a","You have constructed not one, not two, but three Mission Buildings! Awesome! Keep up the good work.","","","","","","","",""}}; // first quest dialog
+    {"a","You have constructed not one, not two, but three Mission Buildings! Awesome! Keep up the good work.","","","","","","","",""},// first quest dialog
+        {"a","Wow, your building has an amazing new look. Cool!","","","","","","","",""},
+        {"a","You are pretty good in generating revenue because you just reached level 2. Nice!","","","","","","","",""},
+        {"a","Those trees look lovely! Good to see you are styling your Space Centre. It looks amazing!","","","","","","","",""},
+        {"a","Good job! You played all the mini-games on the easy level. It’s time to take it to the next level.","","","","","","","",""},
+        {"a","Hey! Listen: yesterday, over 250 people visited the Exhibition Centre! This means you earned a lot of money. Check your balance.","","","","","","","",""},
+        {"a","Hey! Now you don’t have one, but two Exhibition Centres! This means more money coming you way. Well done!","","","","","","","",""},
+        {"a","Good job! You have reached a new level.","","","","","","","",""},
+        {"a","Hi there! Quick update: the Science College funded a few new projects for your Space Centre. You received some money from them. Go check it out.","","","","","","","",""},
+        {"a","Seems like the testing phase went pretty well because you have just reached level 2. Nice!","","","","","","","",""},
+        {"a","Hey! Now you don’t have one, but two Research & Development Centres. This means you can double your research and earn double the amount of research points. Well done!","","","","","","","",""},
+        {"a","Hello there. How are you? You have received a paycheck this morning. Go to the Headquarters to pick it up.","","","","","","","",""}}; // last quest dialog
 
 
     public bool talk = false, waitForInput = false;

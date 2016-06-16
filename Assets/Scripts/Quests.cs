@@ -11,13 +11,14 @@ public class Quests : MonoBehaviour
     [Tooltip("Requirements")]
     public int[] questLineProgress; // 0 = off
     [SerializeField]
-    string[,] allText = new string[3, 10]
+    string[,] allText = new string[4, 10]
     {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
-    {"","Construct 3 Mission Buildings","Play all mini-games (easy mode)","3","4","5","","","",""},
-    {"","heey","hello","","","","","","",""}};
+    {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
+    {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade 10 buildings to Level 2","","","","",""},
+    {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};
     public int questOpen = -1;
 
-    int[] myInformation = new int[14];
+    int[] myInformation = new int[20];
     int[] questsActive = new int[3];
 
     public bool tutorialBack = false, wait = false;
@@ -32,42 +33,53 @@ public class Quests : MonoBehaviour
     List<string> texts = new List<string>();
     
     #region questRequirements
-    int[,,] questRequirements = new int[3, 10, 14] // money, researchPoints, buildings [ 1 - 8 ]
-    { { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // {money, RP, ex, sc, hq, rnd, lp, mc, flag, tree, thing, minigame1, 2, 3}
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0},
-        {0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,1,0,0,0,0,0}, // flag
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},  // none
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
+    int[,,] questRequirements = new int[4, 10, 20] // money, researchPoints, buildings [ 1 - 8 ]
+    { { {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0}, // {money, RP, ex, sc, hq, rnd, lp, mc, flag, tree, thing, minigame1, 2, 3} AMOUNT after: level {ex, sc, hq, rnd, lp, mc}
+        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0}, // flag
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},  // none
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 
-      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // empty / off
-        {0,0,0,0,0,1,1,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,10,10,10}, // minigames
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
+      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0}, // empty / off
+        {0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0}, 
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0}, 
+        {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 
-      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0}, // empty / off
-        {0,0,0,0,0,1,1,1,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0}} };
+      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0}, // empty / off
+        {0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0}, 
+        {0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},// 10 buildings lvl 2 TODO
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
+
+      { {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0}, // empty / off
+        {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2},
+        {0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, 
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} };
     #endregion
     #region questRewards
-    int[,,] questRewards = new int[3, 10, 10] // money, researchPoints, exp, empty, dialogTrigger
+    int[,,] questRewards = new int[4, 10, 10] // money, researchPoints, exp, empty, dialogTrigger
     { { {0,0,0,0,0,0,0,0,0,0},
         {100,0,50,0,0,0,0,0,0,0},
         {0,0,40,0,0,0,0,0,0,0},
@@ -81,9 +93,9 @@ public class Quests : MonoBehaviour
 
         { {0,0,0,0,0,0,0,0,0,0},
         {50,0,0,0,16,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        {50,0,0,0,17,0,0,0,0,0},
+        {100,0,0,0,18,0,0,0,0,0},
+        {200,0,0,0,19,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -91,10 +103,21 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0}},
 
         { {0,0,0,0,0,0,0,0,0,0},
+        {0,200,0,0,20,0,0,0,0,0},
+        {200,0,0,0,21,0,0,0,0,0},
+        {200,0,0,0,22,0,0,0,0,0},
+        {0,200,0,0,23,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0}},
+
+        { {100,0,0,0,0,0,0,0,0,0},
+        {0,200,0,0,24,0,0,0,0,0},
+        {100,0,0,0,25,0,0,0,0,0},
+        {200,0,0,0,26,0,0,0,0,0},
+        {0,0,0,0,27,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
@@ -204,11 +227,78 @@ public class Quests : MonoBehaviour
         myInformation[12] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1];
         myInformation[13] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2];
 
+        for (int i = 14; i < myInformation.Length; i++)
+        {
+            myInformation[i] = 0;
+        }
+
         bool ifEnough = true;
         for (int i = 0; i < myInformation.Length; i++)
         {
             if(myInformation[i] < questRequirements[questline, quest, i])
             {
+                if(questRequirements[questline, quest, i] != 0)
+                {
+                    GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
+                    for(int h = 0; h < buildings.Length; h++)
+                    {
+                        switch(buildings[i].GetComponent<BuildingMain>().buildingName) // level {ex, sc, hq, rnd, lp, mc}
+                        {
+                            case "Exhibition Centre":
+                                {
+                                    if(buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[14])
+                                    {
+                                        myInformation[14] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Science College":
+                                {
+                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[15])
+                                    {
+                                        myInformation[15] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "HQ":
+                                {
+                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[16])
+                                    {
+                                        myInformation[16] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "R&D Center":
+                                {
+                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[17])
+                                    {
+                                        myInformation[17] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Launchpad":
+                                {
+                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[18])
+                                    {
+                                        myInformation[18] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Mission Control":
+                                {
+                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[19])
+                                    {
+                                        myInformation[19] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+                    }
+                }
                 ifEnough = false;
             }
         }

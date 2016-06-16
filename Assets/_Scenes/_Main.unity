@@ -5245,7 +5245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e019c1efc71c1468f21e54bff28c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questLineProgress: 000000000000000000000000
+  questLineProgress: 00000000000000000000000000000000
   questOpen: -1
   tutorialBack: 0
   wait: 0
@@ -11313,7 +11313,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -158}
-  m_SizeDelta: {x: 217, y: 42}
+  m_SizeDelta: {x: 217, y: 53}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1146070663
 MonoBehaviour:
@@ -15456,27 +15456,37 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a0075ea707dd0ca4b8a0929f1fdbfa9b, type: 3}
   - {fileID: 21300000, guid: 1d3b1a2c716e4e549ab748b550fea4d1, type: 3}
   badgeName:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
+  - Patch of Asteroid Impact Mission
+  - Patch of Tutorial Completion
+  - Patch of Deep Space Manoeuvre
+  - Patch of Thermal Infrared Imager
+  - Patch of Laser Communication
+  - Patch of Shaping the Space Centre
+  - Patch of CubeSats
+  - Patch of Lander MASCOT-2
+  - Patch of Low-Frequency Radar
+  - Patch of Completion Levels
   badgeInfo:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
+  - This is your first patch, the overall of the AIM mission. Each time you reach
+    a new level you receive a new patch.
+  - You finished the tutorial! To reward you for your achievement you get this new
+    patch. It looks good on you!
+  - A new level means a new patch. You played all the mini-games. The patch portrays
+    the Deep Space Manoeuvre.
+  - You improved your researching skills! Because of that you get a new patch. This
+    one shows the thermal imaging process.
+  - You have upgraded your buildings! Here, have a new patch as a reward. It shows
+    AIM communicating with earth via a laser system.
+  - Wow, you have so many buildings right now! Your Space Centre starts to look like
+    a real city.
+  - You upgraded your buildings again. Nice! Your research skills have also improved.
+    Your new patch shows the CubeSats.
+  - Time for a new patch! You got better in playing the mini-games. In this patch
+    the MASCOT-2 lands on the asteroid.
+  - Almost all your buildings have been upgraded now! In this patch, the low-frequency
+    radar system is shown.
+  - You have reached level 10. Amazing! You have upgraded all your buildings and reached
+    the highest level in every mini-game.
   urls:
   - 'www.esa.int/aim '
   - www.esa.int
