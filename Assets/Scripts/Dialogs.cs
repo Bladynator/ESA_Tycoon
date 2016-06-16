@@ -5,7 +5,7 @@ using System;
 
 public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[28, 10]
+    string[,] dialogText = new string[33, 10]
         {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + " I will be your assistant and help you fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
     {"a","Excellent! Cool name!","","","","","","","",""},
     {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
@@ -33,7 +33,12 @@ public class Dialogs : MonoBehaviour
         {"a","Hi there! Quick update: the Science College funded a few new projects for your Space Centre. You received some money from them. Go check it out.","","","","","","","",""},
         {"a","Seems like the testing phase went pretty well because you have just reached level 2. Nice!","","","","","","","",""},
         {"a","Hey! Now you don’t have one, but two Research & Development Centres. This means you can double your research and earn double the amount of research points. Well done!","","","","","","","",""},
-        {"a","Hello there. How are you? You have received a paycheck this morning. Go to the Headquarters to pick it up.","","","","","","","",""}}; // last quest dialog
+        {"a","Hello there. How are you? You have unlocked a new task, which is organizing an open day. Go to the Headquarters to check it out.","","","","","","","",""},
+        {"a","Hey! How are you doing?","You launched the satellite? That’s amazing! Good job.","Everyone is so proud of you. We hope you know that.","Okay, talk to you soon. Bye!","","","","",""},
+        {"a","Hi there! How is it going?","Good to know. Oh, your research is coming in. Thank you!","We all think it is so cool what you’re doing. Anyway, good luck with the rest of your mission.","Talk to you soon. Bye bye!","","","","",""},
+        {"a","Hello there! What’s going on?","The research you sent last time was really valuable. Did you discover anything new?","Ah, you’re sending it right now. Thanks!","Talk to you later. See you!","","","","",""},
+        {"a","Hello there! Thank you for the files you sent us.","And for the ones you’re sending right now. Awesome!","Talk to you in a bit. Bye!","","","","","",""},
+        {"a","Hi! How is your operation going?","You have over 13.000 people who are following you on our livestream channel. That’s crazy, right?","You have fans here and they look up to you and… Okay, I’ll just let you get on with your mission. Bye!","","","","","",""}}; // last quest dialog
 
 
     public bool talk = false, waitForInput = false;

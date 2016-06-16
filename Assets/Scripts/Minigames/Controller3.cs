@@ -179,7 +179,6 @@ public class Controller3 : MonoBehaviour
 
     public void MakeRope()
     {
-        Debug.Log("t");
         pressedButtonFirst = gameObject;
         pressedButton = true;
         numberToClick++;

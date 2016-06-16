@@ -175,7 +175,7 @@ public class BuildingMain : MonoBehaviour
         }
     }
 
-    public void OnMouseUp()
+    public virtual void OnMouseUp()
     {
         if (canClick)
         {
