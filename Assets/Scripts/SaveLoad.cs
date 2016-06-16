@@ -8,6 +8,9 @@ public class SaveLoad : MonoBehaviour
 
     public void writeStringToFile(string str, string filename)
     {
+        PlayerPrefs.SetString("save", str);
+        PlayerPrefs.Save();
+        /*
         string path = pathForDocumentsFile(filename);
         FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write);
         
@@ -16,10 +19,20 @@ public class SaveLoad : MonoBehaviour
 
         sw.Close();
         file.Close();
+        */
     }
 
     public string readStringFromFile(string filename)//, int lineIndex )
     {
+        if(PlayerPrefs.HasKey("save"))
+        {
+            return PlayerPrefs.GetString("save");
+        }
+        else
+        {
+            return null;
+        }
+        /*
         string path = pathForDocumentsFile(filename);
 
         if (File.Exists(path))
@@ -39,6 +52,7 @@ public class SaveLoad : MonoBehaviour
         {
             return null;
         }
+        */
     }
 
 
