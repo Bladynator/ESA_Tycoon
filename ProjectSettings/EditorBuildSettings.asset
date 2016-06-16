@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/_Scenes/_Main.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/MainMenu.unity
   - enabled: 1
     path: Assets/_Scenes/Minigame1.unity
@@ -21,23 +21,23 @@ EditorBuildSettings:
     path: Assets/_Scenes/ClickToStart.unity
   - enabled: 1
     path: Assets/_Scenes/Skymap.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/AccessTokenMenu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/AppEvents.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/AppInvites.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/AppLinks.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/AppRequests.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/DialogShare.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/GameGroups.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/GraphRequest.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/LogView.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/Pay.unity
