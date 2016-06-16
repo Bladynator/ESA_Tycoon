@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934b0d3a2740d92489f869df0167e930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: HQ
+  buildingName: Headquarters
   size: {x: 3, y: 3}
   levelsNeededNewBuilding: 010000005a000000
   levelsNeededUpgrade: 01000000030000000600000008000000
@@ -93,6 +93,7 @@ MonoBehaviour:
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
   maxtimeForTask: 0
+  timer: 0
   building: 0
   doneWithTask: 0
   onceToCreate: 0

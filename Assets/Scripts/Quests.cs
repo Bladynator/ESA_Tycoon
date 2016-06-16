@@ -242,60 +242,63 @@ public class Quests : MonoBehaviour
                     GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
                     for(int h = 0; h < buildings.Length; h++)
                     {
-                        switch(buildings[i].GetComponent<BuildingMain>().buildingName) // level {ex, sc, hq, rnd, lp, mc}
+                        if (buildings[h].GetComponent<BuildingMain>() != null)
                         {
-                            case "Exhibition Centre":
-                                {
-                                    if(buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[14])
+                            switch (buildings[h].GetComponent<BuildingMain>().buildingName) // level {ex, sc, hq, rnd, lp, mc}
+                            {
+                                case "Exhibition Centre":
                                     {
-                                        myInformation[14] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[14])
+                                        {
+                                            myInformation[14] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "Science College":
-                                {
-                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[15])
+                                case "Science College":
                                     {
-                                        myInformation[15] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[15])
+                                        {
+                                            myInformation[15] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "HQ":
-                                {
-                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[16])
+                                case "Headquarters":
                                     {
-                                        myInformation[16] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[16])
+                                        {
+                                            myInformation[16] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "R&D Center":
-                                {
-                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[17])
+                                case "R&D Centre":
                                     {
-                                        myInformation[17] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[17])
+                                        {
+                                            myInformation[17] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "Launchpad":
-                                {
-                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[18])
+                                case "Launchpad":
                                     {
-                                        myInformation[18] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[18])
+                                        {
+                                            myInformation[18] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "Mission Control":
-                                {
-                                    if (buildings[i].GetComponent<BuildingMain>().level + 1 > myInformation[19])
+                                case "Mission Control":
                                     {
-                                        myInformation[19] = buildings[i].GetComponent<BuildingMain>().level + 1;
+                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[19])
+                                        {
+                                            myInformation[19] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                        }
+                                        break;
                                     }
-                                    break;
-                                }
-                            default:
-                                {
-                                    break;
-                                }
+                                default:
+                                    {
+                                        break;
+                                    }
+                            }
                         }
                     }
                 }
