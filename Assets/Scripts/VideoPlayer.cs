@@ -15,7 +15,7 @@ public class VideoPlayer : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID || UNITY_IPHONE
-        PlayVideo("intro video.ogv");
+        PlayVideo("Assets/intro video.ogv");
 
 
 #else
