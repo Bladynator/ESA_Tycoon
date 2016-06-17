@@ -7,6 +7,7 @@ public class ClickToStart : MonoBehaviour
 	public void ToGame()
     {
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = true;
-        SceneManager.LoadScene("Video");
+        Handheld.PlayFullScreenMovie("convert2.mp4");
+        SceneManager.LoadScene("_Main");
     }
 }

@@ -12,7 +12,8 @@ public class VideoPlayer : MonoBehaviour
 #endif
     IEnumerator Example()
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "intro video.ogv");
+        //string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "intro video.ogv");
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "convert2.mp4");
         string result = "";
         if (filePath.Contains("://"))
         {
@@ -24,15 +25,16 @@ public class VideoPlayer : MonoBehaviour
         {
             result = System.IO.File.ReadAllText(filePath);
         }
-        PlayVideo(result);
+        //Debug.Log(filePath);
+        PlayVideo(filePath);
     }
 
     void Start()
     {
 #if UNITY_ANDROID || UNITY_IOS
-        StartCoroutine(Example());
-        
-    
+        //StartCoroutine(Example());
+        Handheld.PlayFullScreenMovie("convert2.mp4");
+
 
 #else
         GetComponent<RawImage>().texture = introvideo;
@@ -42,7 +44,7 @@ public class VideoPlayer : MonoBehaviour
         introvideo.Play();
 #endif
 
-}
+    }
 
     void Update()
     {
@@ -64,7 +66,7 @@ public class VideoPlayer : MonoBehaviour
 
     IEnumerator PlayVideoCoroutine(string videoPath)
     {
-        Handheld.PlayFullScreenMovie(videoPath);
+        Handheld.PlayFullScreenMovie("convert2.mp4", Color.black, FullScreenMovieControlMode.Full, FullScreenMovieScalingMode.AspectFill);
         yield return new WaitForEndOfFrame();
         SceneManager.LoadScene("_Main");
     }

@@ -395,7 +395,14 @@ public class Account : MonoBehaviour
 
     public void GoToScene(string scene)
     {
-        SceneManager.LoadScene(scene);
+        if (scene == "Video")
+        {
+            Handheld.PlayFullScreenMovie("convert2.mp4");
+        }
+        else
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
 
     public void ClickedLink(string link)
