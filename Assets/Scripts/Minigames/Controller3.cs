@@ -155,23 +155,22 @@ public class Controller3 : MonoBehaviour
         {
             if (temp2 != null)
             {
-                if (temp2.GetComponent<SpriteRenderer>() != null)
+                Image[] allsprites = temp2.GetComponentsInChildren<Image>();
+                if (g)
                 {
-                    if (g)
+                    do
                     {
-                        do
-                        {
-                            number = Random.Range(0, 20);
-                        }
-                        while (number % 2 != 0);
-                        g = false;
-                        temp2.GetComponent<SpriteRenderer>().sprite = icons[number];
+                        number = Random.Range(0, 20);
                     }
-                    else
-                    {
-                        g = true;
-                        temp2.GetComponent<SpriteRenderer>().sprite = icons[number + 1];
-                    }
+                    while (number % 2 != 0);
+                    g = false;
+
+                    allsprites[1].sprite = icons[number];
+                }
+                else
+                {
+                    g = true;
+                    allsprites[1].sprite = icons[number + 1];
                 }
             }
         }
