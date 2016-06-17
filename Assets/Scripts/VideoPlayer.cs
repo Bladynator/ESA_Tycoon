@@ -5,18 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class VideoPlayer : MonoBehaviour 
 {
-#if UNITY_ANDROID || UNITY_IPHONE
-    
+#if UNITY_ANDROID || UNITY_IOS
+
 #else
      public MovieTexture introvideo;
 #endif
-
+    IEnumerator Example()
+    {
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "intro video.ogv");
+        string result = "";
+        if (filePath.Contains("://"))
+        {
+            WWW www = new WWW(filePath);
+            yield return www;
+            result = www.text;
+        }
+        else
+        {
+            result = System.IO.File.ReadAllText(filePath);
+        }
+        PlayVideo(result);
+    }
 
     void Start()
     {
-#if UNITY_ANDROID || UNITY_IPHONE
-        PlayVideo("Assets/intro video.ogv");
-
+#if UNITY_ANDROID || UNITY_IOS
+        StartCoroutine(Example());
+        
+    
 
 #else
         GetComponent<RawImage>().texture = introvideo;
@@ -26,11 +42,11 @@ public class VideoPlayer : MonoBehaviour
         introvideo.Play();
 #endif
 
-    }
+}
 
     void Update()
     {
-#if UNITY_ANDROID || UNITY_IPHONE
+#if UNITY_ANDROID || UNITY_IOS
 
 #else
      if (!introvideo.isPlaying)
@@ -48,7 +64,7 @@ public class VideoPlayer : MonoBehaviour
 
     IEnumerator PlayVideoCoroutine(string videoPath)
     {
-        Handheld.PlayFullScreenMovie(videoPath, Color.black, FullScreenMovieControlMode.CancelOnInput);
+        Handheld.PlayFullScreenMovie(videoPath);
         yield return new WaitForEndOfFrame();
         SceneManager.LoadScene("_Main");
     }
