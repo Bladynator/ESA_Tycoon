@@ -8,10 +8,13 @@ public class Player : MonoBehaviour
     int currentLocation = 2;
     bool waiting = false, waitingScore = false;
     public int endScore = 0;
+    Color oldColour;
+    public Color redColour, redColourLast;
 
     void Start()
     {
         locations = GameObject.Find("Controller").GetComponent<Controller>().spawns;
+        oldColour = GetComponent<SpriteRenderer>().color;
     }
     
     void Update()
@@ -24,6 +27,37 @@ public class Player : MonoBehaviour
             StartCoroutine(WaitScore());
         }
         */
+    }
+
+    public void Hit()
+    {
+        hp--;
+        switch(hp)
+        {
+            case 2:
+                {
+                    GetComponent<SpriteRenderer>().color = redColour;
+                    break;
+                }
+            case 1:
+                {
+                    GetComponent<SpriteRenderer>().color = redColourLast;
+                    break;
+                }
+            case 0:
+                {
+                    GameObject.Find("Controller").GetComponent<Controller>().Ending();
+                    break;
+                }
+        }
+        
+        StartCoroutine(WaitToTurnBack());
+    }
+
+    IEnumerator WaitToTurnBack()
+    {
+        yield return new WaitForSeconds(1);
+        GetComponent<SpriteRenderer>().color = oldColour;
     }
 
     public void NewLocation(float value)

@@ -27,11 +27,8 @@ public class Negative : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<Player>().hp--;
-            if(other.GetComponent<Player>().hp <= 0)
-            {
-                GameObject.Find("Controller").GetComponent<Controller>().Ending();
-            }
+            other.GetComponent<Player>().Hit();
+            
             Destroy(gameObject);
         }
     }
