@@ -41,3 +41,5 @@ EditorBuildSettings:
     path: Assets/FacebookSDK/Examples/LogView.unity
   - enabled: 0
     path: Assets/FacebookSDK/Examples/Pay.unity
+  - enabled: 1
+    path: Assets/_Scenes/Video.unity

@@ -22,11 +22,11 @@ public class Player : MonoBehaviour
         transform.position = new Vector2(-6, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         /*
         transform.position = new Vector2(-8, locations[currentLocation].transform.position.y);
+        */
         if(!waitingScore)
         {
             StartCoroutine(WaitScore());
         }
-        */
     }
 
     public void Hit()
