@@ -279,7 +279,7 @@ public class Account : MonoBehaviour
                         if (tempBuilding2.GetComponent<BuildingMain>().buildingName != "TimeMachine")
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
-                            //TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
+                            TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
                             
                             if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
@@ -302,6 +302,7 @@ public class Account : MonoBehaviour
                                 tempBuilding2.building = false;
                             }
                             tempBuilding2.timer = Convert.ToDouble(informationOneBuilding[4]);
+                            tempBuilding2.timer -= sec.TotalSeconds;
                             tempBuilding2.gridPosition.x = Convert.ToInt32(informationOneBuilding[6]);
                             tempBuilding2.gridPosition.y = Convert.ToInt32(informationOneBuilding[7]);
                         }
