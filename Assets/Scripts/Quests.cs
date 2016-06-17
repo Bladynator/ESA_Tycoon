@@ -231,77 +231,81 @@ public class Quests : MonoBehaviour
         {
             myInformation[i] = 0;
         }
+        for (int i = 0; i < myInformation.Length; i++)
+        {
+            if (questRequirements[questline, quest, i] != 0)
+            {
+                GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
+                for (int h = 0; h < buildings.Length; h++)
+                {
+                    if (buildings[h].GetComponent<BuildingMain>() != null)
+                    {
+                        switch (buildings[h].GetComponent<BuildingMain>().buildingName) // level {ex, sc, hq, rnd, lp, mc}
+                        {
+                            case "Exhibition Centre":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[14])
+                                    {
+                                        myInformation[14] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Science College":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[15])
+                                    {
+                                        myInformation[15] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Headquarters":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[16])
+                                    {
+                                        myInformation[16] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "R&D Centre":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[17])
+                                    {
+                                        myInformation[17] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Launchpad":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[18])
+                                    {
+                                        myInformation[18] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            case "Mission Control":
+                                {
+                                    if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[19])
+                                    {
+                                        myInformation[19] = buildings[h].GetComponent<BuildingMain>().level + 1;
+                                    }
+                                    break;
+                                }
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+                    }
+                }
+            }
+        }
 
         bool ifEnough = true;
         for (int i = 0; i < myInformation.Length; i++)
         {
             if(myInformation[i] < questRequirements[questline, quest, i])
             {
-                if(questRequirements[questline, quest, i] != 0)
-                {
-                    GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
-                    for(int h = 0; h < buildings.Length; h++)
-                    {
-                        if (buildings[h].GetComponent<BuildingMain>() != null)
-                        {
-                            switch (buildings[h].GetComponent<BuildingMain>().buildingName) // level {ex, sc, hq, rnd, lp, mc}
-                            {
-                                case "Exhibition Centre":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[14])
-                                        {
-                                            myInformation[14] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                case "Science College":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[15])
-                                        {
-                                            myInformation[15] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                case "Headquarters":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[16])
-                                        {
-                                            myInformation[16] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                case "R&D Centre":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[17])
-                                        {
-                                            myInformation[17] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                case "Launchpad":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[18])
-                                        {
-                                            myInformation[18] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                case "Mission Control":
-                                    {
-                                        if (buildings[h].GetComponent<BuildingMain>().level + 1 > myInformation[19])
-                                        {
-                                            myInformation[19] = buildings[h].GetComponent<BuildingMain>().level + 1;
-                                        }
-                                        break;
-                                    }
-                                default:
-                                    {
-                                        break;
-                                    }
-                            }
-                        }
-                    }
-                }
+                
                 ifEnough = false;
             }
         }
