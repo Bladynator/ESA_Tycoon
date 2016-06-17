@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int endScore = 0;
     Color oldColour;
     public Color redColour, redColourLast;
+    public int diff;
 
     void Start()
     {
@@ -70,6 +71,30 @@ public class Player : MonoBehaviour
     {
         waitingScore = true;
         yield return new WaitForSeconds(1);
+        switch(diff)
+        {
+            case 0:
+                {
+                    endScore += 3;
+                    break;
+                }
+            case 1:
+                {
+                    endScore += 5;
+                    break;
+                }
+            case 2:
+                {
+                    endScore += 7;
+                    break;
+                }
+            case 3:
+                {
+                    endScore += 7;
+                    hp = 1;
+                    break;
+                }
+        }
         endScore++;
         waitingScore = false;
     }

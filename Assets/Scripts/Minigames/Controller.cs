@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
+        GameObject.Find("Player").GetComponent<Player>().diff = difficulty;
     }
     
     void Update()

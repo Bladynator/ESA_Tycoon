@@ -57,10 +57,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Tree
   size: {x: 1, y: 1}
-  levelsNeededNewBuilding: 01000000020000005a000000
-  levelsNeededUpgrade: 02000000020000000200000002000000020000000200000002000000020000000200000002000000
-  moneyNeededUpgrade: 88130000
-  rpNeededUpgrade: c8000000
+  levelsNeededNewBuilding: 04000000040000000400000004000000040000000400000004000000040000000400000004000000
+  levelsNeededUpgrade: 04000000040000000400000004000000040000000400000004000000040000000400000004000000
+  moneyNeededUpgrade: f4010000
+  rpNeededUpgrade: 64000000
   timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskNames:
@@ -89,6 +89,8 @@ MonoBehaviour:
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
+  maxtimeForTask: 0
+  timer: 0
   building: 0
   doneWithTask: 0
   onceToCreate: 0

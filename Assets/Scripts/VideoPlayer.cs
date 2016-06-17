@@ -15,7 +15,7 @@ public class VideoPlayer : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID || UNITY_IPHONE
-        PlayVideo("Assets/intro_video.ogv");
+        PlayVideo("intro video.ogv");
 
 
 #else
@@ -50,6 +50,6 @@ public class VideoPlayer : MonoBehaviour
     {
         Handheld.PlayFullScreenMovie(videoPath, Color.black, FullScreenMovieControlMode.CancelOnInput);
         yield return new WaitForEndOfFrame();
-        Debug.Log("Video playback completed.");
+        SceneManager.LoadScene("_Main");
     }
 }

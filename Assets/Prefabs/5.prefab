@@ -60,7 +60,7 @@ MonoBehaviour:
   levelsNeededNewBuilding: 02000000050000005a000000
   levelsNeededUpgrade: 02000000040000000600000009000000
   moneyNeededUpgrade: f40100007017000050460000f0490200
-  rpNeededUpgrade: 00000000000000000000000000000000
+  rpNeededUpgrade: 00000000b00400000000000000000000
   timesForTasks: 0a0000003200000064000000c8000000
   timesForBuilding: 0a000000140000001e0000002800000032000000
   taskNames:
@@ -92,9 +92,12 @@ MonoBehaviour:
   timeToFinishTaskTotal: 0
   timeToFinishBuildTotal: 0
   timeLeftToFinishBuild: 0
+  maxtimeForTask: 0
+  timer: 0
   building: 0
   doneWithTask: 0
   onceToCreate: 0
+  canClick: 1
   ableToSave: 1
 --- !u!212 &21284932
 SpriteRenderer:
