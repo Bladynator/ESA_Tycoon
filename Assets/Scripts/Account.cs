@@ -177,7 +177,7 @@ public class Account : MonoBehaviour
             PlaceBuildings();
             UpdateAmountOFBuildings();
             Destroy(GameObject.Find("Tutorial"));
-            GameObject.Find("SoundController").GetComponent<AudioSource>().Play();
+            //GameObject.Find("SoundController").GetComponent<AudioSource>().Play();
         }
         else
         {
