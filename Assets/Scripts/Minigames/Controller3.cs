@@ -145,7 +145,7 @@ public class Controller3 : MonoBehaviour
             while (excludedNumbers.Contains(number));
             excludedNumbers.Add(number);
 
-            temp[i] = (ButtonToConnect)Instantiate(button, positionsOfButtons[number].position, rotation);
+            temp[i] = (ButtonToConnect)Instantiate(button, positionsOfButtons[number].position, positionsOfButtons[number].rotation);
             
             temp[i].tag = "Connect";
             temp[i].controller = GetComponent<Controller3>();

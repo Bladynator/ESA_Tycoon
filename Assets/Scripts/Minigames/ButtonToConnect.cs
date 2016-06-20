@@ -13,7 +13,7 @@ public class ButtonToConnect : MonoBehaviour
 
     void Start()
     {
-        GetComponentInChildren<Text>().text = number.ToString();
+        GetComponentInChildren<Text>().text = (number + 1).ToString();
     }
     
     void OnMouseOver()
