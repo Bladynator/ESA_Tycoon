@@ -296,8 +296,8 @@ public class Account : MonoBehaviour
                         }
 
                         GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.buildingName;
-
-                        ChangeColliders(true);
+                        MainGameController.ChangeColliders(true);
+                        //ChangeColliders(true);
                         Vector2 size = buildingToPlace.size;
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
@@ -341,34 +341,6 @@ public class Account : MonoBehaviour
         }
     }
 
-    public void ChangeColliders(bool toChange)
-    {
-        GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
-        foreach (GameObject tempField in allFields)
-        {
-            if (tempField.GetComponent<EmptyField>() != null)
-            {
-                tempField.GetComponent<EmptyField>().ChangeColor(Color.white);
-                {
-                    tempField.GetComponent<BoxCollider>().enabled = toChange;
-                }
-            }
-        }
-        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
-        foreach (GameObject tempField in allBuildings)
-        {
-            if (tempField.GetComponent<CircleCollider2D>() != null)
-            {
-                tempField.GetComponent<CircleCollider2D>().enabled = toChange;
-            }
-        }
-        //GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
-        if (toChange)
-        {
-            GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-        }
-    }
-
     string GetFieldsToString()
     {
         string fields = "";
@@ -406,43 +378,19 @@ public class Account : MonoBehaviour
 
     public void ResetSave()
     {
-        string reset = GameObject.Find("InputField").GetComponent<InputField>().text;
-        if (reset == "DELETE")
-        {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = false;
-            PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene("_Main");
-        }
-        if (reset == "TGM")
-        {
-            money += 1000;
-            researchPoints += 1000;
-        }
+        MainGameController.ResetSave();
     }
 
     public void GoToScene(string scene)
     {
-        if (scene == "Video")
-        {
-#if UNITY_ANDROID || UNITY_IOS
-                Handheld.PlayFullScreenMovie("convert2.mp4");
-#else
-
-#endif
-
-        }
-        else
-        {
-            SceneManager.LoadScene(scene);
-        }
+        MainGameController.GoToScene(scene);
     }
 
     public void ClickedLink(string link)
     {
         Application.OpenURL(link);
     }
-
-
+    
     void OnApplicationPause(bool pauseStatus)
     {
         Application.Quit();

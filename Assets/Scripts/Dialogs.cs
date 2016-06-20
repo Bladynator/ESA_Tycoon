@@ -76,7 +76,8 @@ public class Dialogs : MonoBehaviour
                     talk = false;
                     if (!tutorial)
                     {
-                        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+                        //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+                        MainGameController.ChangeColliders(true);
                     }
                     canvas.SetActive(false);
                     GameObject.Find("Main Camera").GetComponent<CameraChanger>().activeDialog = false;
@@ -133,7 +134,8 @@ public class Dialogs : MonoBehaviour
             numberToSay = number;
             dialogNumberMain = dialogNumber;
             output = dialogText[dialogNumber, numberToSay];
-            GameObject.Find("Account").GetComponent<Account>().ChangeColliders(false);
+            //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(false);
+            MainGameController.ChangeColliders(false);
         }
     }
 }

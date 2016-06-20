@@ -158,7 +158,8 @@ public class BuildingButtons : MonoBehaviour
         tempBuilding.activePlaceOnGrid = fieldGridLocation;
         tempBuilding.builderPlacerTemp = builderPlacerTemp;
         tempBuilding.fieldID = fieldID;
-        account.ChangeColliders(false);
+        //account.ChangeColliders(false);
+        MainGameController.ChangeColliders(false);
         //GameObject.Find("BuildMenu").gameObject.SetActive(false);
     }
 }

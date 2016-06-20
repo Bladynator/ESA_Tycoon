@@ -10,11 +10,13 @@ public class RotateSatellite : MonoBehaviour
     [SerializeField]
     Controller2 controller;
     float rotation;
+    public Material lineMaterial;
 
     void Start()
     {
         GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, 1));
-        GetComponent<LineRenderer>().material = new Material(Shader.Find("Particles/Additive"));
+        //GetComponent<LineRenderer>().material = new Material(Shader.Find("Particles/Additive"));
+        GetComponent<LineRenderer>().material = lineMaterial;
         GetComponent<LineRenderer>().SetColors(Color.red, Color.red);
 
         var direction = transform.forward;

@@ -77,7 +77,6 @@ public class BuilderMenu : MonoBehaviour
 
     void PressedBuilding(int i)
     {
-        Debug.Log("t");
         GameObject.Find("ResetButton").GetComponent<Button>().onClick.Invoke();
         PlaceBuilder(i);
         tutorialBack = false;
@@ -98,7 +97,8 @@ public class BuilderMenu : MonoBehaviour
         //reset.raycastTarget = false;
         allButtons = new Button[5];
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-        account.ChangeColliders(true);
+        //account.ChangeColliders(true);
+        MainGameController.ChangeColliders(true);
     }
     
     public void PlaceBuilder(int i)
@@ -111,7 +111,8 @@ public class BuilderMenu : MonoBehaviour
         tempBuilding.activePlaceOnGrid = fieldGridLocation;
         tempBuilding.builderPlacerTemp = builderPlacerTemp;
         tempBuilding.fieldID = fieldID;
-        account.ChangeColliders(false);
+        MainGameController.ChangeColliders(false);
+        //account.ChangeColliders(false);
         gameObject.SetActive(false);
     }
 }

@@ -454,7 +454,8 @@ public class BuildingMain : MonoBehaviour
         BackClicked();
         tempBuilding.Delete();
         GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete();
-        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+        MainGameController.ChangeColliders(true);
+        //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
         Destroy(gameObject);
         account.PushSave();
@@ -518,7 +519,8 @@ public class BuildingMain : MonoBehaviour
         {
             allImages[i].gameObject.SetActive(true);
         }
-        account.ChangeColliders(true);
+        //account.ChangeColliders(true);
+        MainGameController.ChangeColliders(true);
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
 

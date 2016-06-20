@@ -29,7 +29,8 @@ public class Cancel : MonoBehaviour
             GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete(true);
         }
         GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(cancelSound);
-        GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+        //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
+        MainGameController.ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
     }
 }

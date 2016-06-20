@@ -126,7 +126,8 @@ public class HUD : MonoBehaviour
     {
         if(!enable)
         {
-            account.ChangeColliders(false);
+            //account.ChangeColliders(false);
+            MainGameController.ChangeColliders(false);
         }
         buildButton.interactable = enable;
     }

@@ -6,15 +6,15 @@ public class Controller2 : MonoBehaviour
 {
     public float[] resources = new float[3] { 100, 100, 100 };
     public float[,] reduceAmount = new float[4, 3]
-        {   {0.02f,0.04f,0.06f},
-            {0.04f,0.06f,0.08f},
-            {0.06f,0.08f,0.10f},
-            {0.02f,0.04f,0.06f} };
+        {   {0.06f,0.06f,0.06f},
+            {0.08f,0.08f,0.08f},
+            {0.10f,0.10f,0.10f},
+            {0.08f,0.08f,0.08f} };
     public float[,] increaseAmount = new float[4,3]
-        {   {0.04f,0.08f,0.12f},
-            {0.08f,0.12f,0.16f},
-            {0.12f,0.16f,0.20f},
-            {0.04f,0.08f,0.12f} };
+        {   {0.08f,0.08f,0.08f},
+            {0.16f,0.16f,0.16f},
+            {0.20f,0.20f,0.20f},
+            {0.16f,0.16f,0.16f} };
     [SerializeField]
     Image[] bars;
     public bool charging = false, overcharging = false;

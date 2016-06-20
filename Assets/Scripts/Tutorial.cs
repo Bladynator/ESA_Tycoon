@@ -54,7 +54,8 @@ public class Tutorial : MonoBehaviour
                                 GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
                                 tutorialDoing = true;
                                 menu.interactable = false;
-                                account.ChangeColliders(false);
+                                //account.ChangeColliders(false);
+                                MainGameController.ChangeColliders(false);
                                 account.autoSave = false;
                                 hud.EnableButton(false);
                                 hud.CanvasEnabled(false);
@@ -126,8 +127,9 @@ public class Tutorial : MonoBehaviour
                         case 10:
                             {
                                 ShowArrow(4);
-                                account.ChangeColliders(true);
-                                if(GameObject.Find("BuildMenu") != null)
+                                //account.ChangeColliders(true);
+                                MainGameController.ChangeColliders(true);
+                                if (GameObject.Find("BuildMenu") != null)
                                 {
                                     GameObject.Find("BuildMenu").GetComponentInChildren<BuildingButtons>().tutorialBack = true;
                                     questPart++;

@@ -17,7 +17,8 @@ public class BuildingPlacer : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        account.ChangeColliders(false);
+        //account.ChangeColliders(false);
+        MainGameController.ChangeColliders(false);
         grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
         {
@@ -139,7 +140,8 @@ public class BuildingPlacer : MonoBehaviour
             }
 
             GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].building = buildingToPlace.GetComponent<BuildingMain>().buildingName;
-            account.ChangeColliders(true);
+            //account.ChangeColliders(true);
+            MainGameController.ChangeColliders(true);
             Vector2 size = buildingToPlace.GetComponent<BuildingMain>().size;
             Vector3 newPosition = GameObject.Find("Grid").GetComponent<Grid>().grid[(int)activePlaceOnGrid.x, (int)activePlaceOnGrid.y].transform.position;
             GameObject tempBuilding = (GameObject)Instantiate(buildingToPlace, newPosition, transform.rotation);
@@ -196,7 +198,8 @@ public class BuildingPlacer : MonoBehaviour
         {
             account = GameObject.Find("Account").GetComponent<Account>();
         }
-        account.ChangeColliders(true);
+        //account.ChangeColliders(true);
+        MainGameController.ChangeColliders(true);
         GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = false;
         GameObject.Find("HUD").GetComponent<HUD>().reset.SetActive(false);
     }
