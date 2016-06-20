@@ -78,7 +78,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 0);
+                                MakeCanvas("You get: 1000 Coins!", 1000, 0, 0);
                                 break;
                             }
                         case 5:
@@ -94,13 +94,14 @@ public class Tutorial : MonoBehaviour
                             }
                         case 7:
                             {
+                                ShowArrow(0);
                                 ShowDialog(3);
                                 account.waitForInput = true;
                                 break;
                             }
                         case 8:
                             {
-                                ShowArrow(0);
+                                
                                 questLine.ShowQuests(true);
                                 if (!account.waitForInput)
                                 {
@@ -137,14 +138,27 @@ public class Tutorial : MonoBehaviour
                             }
                         case 11:
                             {
-                                if(GameObject.Find("BuildMenu").GetComponentInChildren<BuildingButtons>().tutorialBack == false)
+                                if (!GameObject.Find("BuildButton").GetComponent<Toggle>().isOn)
                                 {
-                                    questPart++;
+                                    DestroyArrow();
+                                    questPart = 10;
+                                }
+                                else
+                                {
+                                    if (GameObject.Find("BuildMenu").GetComponentInChildren<BuildingButtons>().tutorialBack == false)
+                                    {
+                                        questPart++;
+                                    }
                                 }
                                 break;
                             }
                         case 12:
                             {
+                                if (!GameObject.Find("BuildButton").GetComponent<Toggle>().isOn)
+                                {
+                                    DestroyArrow();
+                                    questPart = 10;
+                                }
                                 DestroyArrow();
                                 ShowArrow(2);
                                 questPart = -2;
@@ -156,6 +170,17 @@ public class Tutorial : MonoBehaviour
                                 {
                                     questPart = ++oldQuestPart;
                                 }
+                                break;
+                            }
+                        case -2:
+                            {
+                                
+                                if (!GameObject.Find("BuildButton").GetComponent<Toggle>().isOn && GameObject.FindGameObjectWithTag("Builder") == null)
+                                {
+                                    DestroyArrow();
+                                    questPart = 10;
+                                }
+                                
                                 break;
                             }
                         default:
@@ -176,7 +201,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 2:
                             {
-                                MakeCanvas("You got 500 Research Points!", 0, 500, 1);
+                                MakeCanvas("You get 500 Research Points!", 0, 500, 1);
                                 break;
                             }
                         case 3:
@@ -248,6 +273,11 @@ public class Tutorial : MonoBehaviour
                                 questPart = 1;
                                 break;
                             }
+                        case 10:
+                            {
+                                questPart = 1;
+                                break;
+                            }
                         default:
                             {
                                 break;
@@ -266,7 +296,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 2:
                             {
-                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 2);
+                                MakeCanvas("You get: 1000 Coins!", 1000, 0, 2);
                                 break;
                             }
                         case 3:

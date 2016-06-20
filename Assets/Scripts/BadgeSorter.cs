@@ -56,6 +56,7 @@ public class BadgeSorter : MonoBehaviour
         tempBadge.sprite = image;
         link.GetComponent<Image>().sprite = linkst;
         string tempUrl = url;
+        link.GetComponent<Button>().onClick.RemoveAllListeners();
         link.GetComponent<Button>().onClick.AddListener(delegate { ClickedLink(tempUrl); });
     }
 

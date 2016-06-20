@@ -37,6 +37,12 @@ public class BuildingPlacer : MonoBehaviour
             }
         }
         CheckBorders();
+        
+        //transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
+    }
+
+    void Update()
+    {
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
         {
@@ -44,11 +50,6 @@ public class BuildingPlacer : MonoBehaviour
             tempBuilding.GetComponent<BuildingMain>().canClick = false;
             GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = true;
         }
-        //transform.localScale = buildingToPlace.GetComponent<BuildingMain>().size;
-    }
-
-    void Update()
-    {
         CheckBorders();
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y);
         //Transform[] Arrows = GetComponentsInChildren<Transform>();

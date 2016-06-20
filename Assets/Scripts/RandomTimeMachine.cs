@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class RandomTimeMachine : BuildingMain 
 {
@@ -13,7 +14,10 @@ public class RandomTimeMachine : BuildingMain
 
     public override void OnMouseUp() // 27 - 32
     {
-        int number = Random.Range(27, 33);
-        dialogs.ActivateTalking(number);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            int number = Random.Range(27, 33);
+            dialogs.ActivateTalking(number);
+        }
     }
 }

@@ -10,7 +10,7 @@ using Facebook.Unity.Editor;
 using Facebook.Unity;
 using UnityEngine.UI;
 
-public class Account : MonoBehaviour 
+public class Account : MonoBehaviour
 {
     public int level = 1, money = 0, researchPoints = 0, exp = 0;
     public string nameTown;
@@ -26,12 +26,12 @@ public class Account : MonoBehaviour
     public bool autoSave = true, justLeveld = false, waitForInput = false;
     int saveInSec = 5;
     public int[] expNeededForLevel, newbuildings;
-    public int[] amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 }; // 0 = HQ / 1 = 
+    public int[] amountOfEachBuilding = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; // 0 = HQ / 1 = 
 
     public AudioClip levelUpSound;
-    
-    void Start () 
-	{
+
+    void Start()
+    {
         saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
@@ -102,16 +102,16 @@ public class Account : MonoBehaviour
 
     public void UpdateAmountOFBuildings()
     {
-        amountOfEachBuilding = new int[10] {0,0,0,0,0,0,0,0,0,0 };
+        amountOfEachBuilding = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
-        for(int i = 0; i < allBuildings.Length; i++)
+        for (int i = 0; i < allBuildings.Length; i++)
         {
             if (allBuildings[i].GetComponent<BuildingMain>() != null)
             {
                 string nameOfBuilding = allBuildings[i].GetComponent<BuildingMain>().buildingName;
-                for(int p = 0; p < namesBuildings.Length; p++)
+                for (int p = 0; p < namesBuildings.Length; p++)
                 {
-                    if(nameOfBuilding == namesBuildings[p])
+                    if (nameOfBuilding == namesBuildings[p])
                     {
                         amountOfEachBuilding[p]++;
                     }
@@ -139,16 +139,18 @@ public class Account : MonoBehaviour
         saveInSec = 5;
         string stringToPush = "";
         stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + GameObject.Find("SoundController").GetComponent<AudioSource>().mute.ToString() + "<DB>" + GameObject.Find("SFXController").GetComponent<AudioSource>().mute.ToString();
-        saveLoad.writeStringToFile(stringToPush, "Documents");
+        PlayerPrefs.SetString("save", stringToPush);
+        PlayerPrefs.Save();
+        //saveLoad.writeStringToFile(stringToPush, "save");
     }
     string GetHighscores()
     {
         int[] allScores = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores;
         string scores = "";
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             scores += allScores[i].ToString();
-            if(i != 2)
+            if (i != 2)
             {
                 scores += "e";
             }
@@ -169,30 +171,55 @@ public class Account : MonoBehaviour
 
     public void PushLoad()
     {
-        save = saveLoad.readStringFromFile("Documents");
-        if(save == null)
+        if (PlayerPrefs.HasKey("save"))
         {
-            GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
-            GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
-            if(!GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart)
-            {
-                GoToScene("ClickToStart");
-            }
-        }
-        else
-        {
+            save = PlayerPrefs.GetString("save");
             PlaceBuildings();
             UpdateAmountOFBuildings();
             Destroy(GameObject.Find("Tutorial"));
         }
+        else
+        {
+            GameObject.Find("Quests").GetComponent<Quests>().questLineProgress[0] = 1;
+            GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
+            if (!GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart)
+            {
+                GoToScene("ClickToStart");
+            }
+        }
         GameObject.Find("Quests").GetComponent<Quests>().ResetQuests();
-        if(GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame)
+        if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame)
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame = false;
             researchPoints += GameObject.Find("MiniGameController").GetComponent<MiniGameController>().currencyGotFromMinigame;
             int dialogToActivate = 12 + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
-            GameObject.Find("Quests").GetComponent<Dialogs>().ActivateTalking(dialogToActivate);
+
+            if (!PlayerPrefs.HasKey("Diff" + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().minigameToLoad))
+            {
+                GameObject.Find("Quests").GetComponent<Dialogs>().ActivateTalking(dialogToActivate);
+            }
+
+            PlayerPrefs.SetInt("Diff" + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().minigameToLoad, 1);
         }
+        if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().pressedBack)
+        {
+            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().pressedBack = false;
+            GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
+            foreach (GameObject temp in allBuildings)
+            {
+                if (temp.GetComponent<BuildingMain>() != null)
+                {
+                    if (temp.GetComponent<BuildingMain>().ID == GameObject.Find("MiniGameController").GetComponent<MiniGameController>().buildingID)
+                    {
+                        temp.GetComponent<BuildingMain>().busy = false;
+                        temp.GetComponent<BuildingMain>().timer = 0;
+                        temp.GetComponent<BuildingMain>().taskDoing = -1;
+                        PushSave();
+                    }
+                }
+            }
+        }
+        
     }
 
     void PlaceBuildings()
@@ -211,10 +238,10 @@ public class Account : MonoBehaviour
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i] = Convert.ToInt32(allScores[i]);
         }
-         
+
         GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = Convert.ToInt32(allInformation[9]);
         GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(Convert.ToInt32(allInformation[9]));
-        
+
         GameObject.Find("SoundController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[10]);
         GameObject.Find("SFXController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[11]);
         soundChecks[0].isOn = Convert.ToBoolean(allInformation[10]);
@@ -256,9 +283,9 @@ public class Account : MonoBehaviour
                             for (int y = 0; y < buildingToPlace.size.y; y++)
                             {
                                 GameObject[] allFieldsToFind = GameObject.FindGameObjectsWithTag("EmptyField");
-                                foreach(GameObject field in allFieldsToFind)
+                                foreach (GameObject field in allFieldsToFind)
                                 {
-                                    if(field.GetComponent<EmptyField>().ID == numberToPlace + 1)
+                                    if (field.GetComponent<EmptyField>().ID == numberToPlace + 1)
                                     {
                                         placeOfGridX = (int)field.GetComponent<EmptyField>().gridPosition.x;
                                         placeOfGridY = (int)field.GetComponent<EmptyField>().gridPosition.y;
@@ -269,7 +296,7 @@ public class Account : MonoBehaviour
                         }
 
                         GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.buildingName;
-                        
+
                         ChangeColliders(true);
                         Vector2 size = buildingToPlace.size;
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
@@ -280,7 +307,7 @@ public class Account : MonoBehaviour
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
                             TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
-                            
+
                             if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
                                 tempBuilding2.busy = true;
@@ -313,7 +340,7 @@ public class Account : MonoBehaviour
             numberToPlace++;
         }
     }
-    
+
     public void ChangeColliders(bool toChange)
     {
         GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
@@ -336,7 +363,7 @@ public class Account : MonoBehaviour
             }
         }
         //GameObject.Find("Quests").GetComponent<Quests>().enabled = toChange;
-        if(toChange)
+        if (toChange)
         {
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
         }
@@ -352,7 +379,7 @@ public class Account : MonoBehaviour
             for (int p = 0; p < GameObject.Find("Grid").GetComponent<Grid>().maxGridSize; p++)
             {
                 BuildingMain tempBuilding = null;
-                if(grid[i, p].building != "EmptyField")
+                if (grid[i, p].building != "EmptyField")
                 {
                     for (int k = 0; k < tempBuildings.Length; k++)
                     {
@@ -367,7 +394,7 @@ public class Account : MonoBehaviour
                     }
                 }
                 fields += grid[i, p].building + "<e>";
-                if(tempBuilding != null)
+                if (tempBuilding != null)
                 {
                     fields += tempBuilding.taskDoing + "<e>" + tempBuilding.busy + "<e>" + tempBuilding.level + "<e>" + tempBuilding.timer + "<e>" + tempBuilding.maxtimeForTask + "<e>" + tempBuilding.gridPosition.x + "<e>" + tempBuilding.gridPosition.y + "<e>" + tempBuilding.building;
                 }
@@ -397,7 +424,12 @@ public class Account : MonoBehaviour
     {
         if (scene == "Video")
         {
-            Handheld.PlayFullScreenMovie("convert2.mp4");
+#if UNITY_ANDROID || UNITY_IOS
+                Handheld.PlayFullScreenMovie("convert2.mp4");
+#else
+
+#endif
+
         }
         else
         {
@@ -408,5 +440,16 @@ public class Account : MonoBehaviour
     public void ClickedLink(string link)
     {
         Application.OpenURL(link);
+    }
+
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        Application.Quit();
+    }
+
+    void OnApplicationQuit()
+    {
+        Application.Quit();
     }
 }

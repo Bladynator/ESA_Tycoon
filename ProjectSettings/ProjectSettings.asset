@@ -25,9 +25,9 @@ PlayerSettings:
   m_MTRendering: 1
   m_MobileMTRendering: 0
   m_Stereoscopic3D: 0
-  iosShowActivityIndicatorOnLoading: -1
-  androidShowActivityIndicatorOnLoading: -1
-  iosAppInBackgroundBehavior: 0
+  iosShowActivityIndicatorOnLoading: 2
+  androidShowActivityIndicatorOnLoading: 2
+  iosAppInBackgroundBehavior: 1
   displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 0
@@ -39,7 +39,7 @@ PlayerSettings:
   disableDepthAndStencilBuffers: 0
   defaultIsFullScreen: 1
   defaultIsNativeResolution: 1
-  runInBackground: 0
+  runInBackground: 1
   captureSingleScreen: 0
   Override IPod Music: 0
   Prepare IOS For Recording: 0
@@ -90,7 +90,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.esa.AIMSpaceChallenge
-  bundleVersion: 1.1
+  bundleVersion: 1.6
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0

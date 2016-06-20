@@ -45,11 +45,13 @@ public class Controller : MonoBehaviour
             }
             while (randomHeight == lastLocation);
             GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
+            /*
             spawnSpeed[difficulty] -= reduction[difficulty];
             if (spawnSpeed[difficulty] <= endspeed[difficulty])
             {
                 spawnSpeed[difficulty] = endspeed[difficulty];
             }
+            */
             lastLocation = randomHeight;
         }
         yield return new WaitForSeconds(sec);
@@ -77,6 +79,7 @@ public class Controller : MonoBehaviour
         if(GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1] < endScore)
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1] = endScore;
+            PlayerPrefs.SetInt("Minigame1", endScore);
         }
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty, endScore);
     }

@@ -263,6 +263,8 @@ MonoBehaviour:
   minigameToLoad: 
   fromClickToStart: 0
   levelPlayer: 1
+  buildingID: 0
+  pressedBack: 0
 --- !u!4 &27170018
 Transform:
   m_ObjectHideFlags: 0
@@ -5924,7 +5926,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 88116a7de59ab4944a5055eb9a890f35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e72b8b30c633394db1a59d31d88d11f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14425,8 +14427,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21, y: -15}
-  m_SizeDelta: {x: 61, y: 18.3}
+  m_AnchoredPosition: {x: -21, y: -13.150028}
+  m_SizeDelta: {x: 67.3, y: 26.1}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1610997772
 MonoBehaviour:
@@ -14460,7 +14462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quests are updated automatically
+  m_Text: The Quests will update automatically
 --- !u!222 &1610997773
 CanvasRenderer:
   m_ObjectHideFlags: 0

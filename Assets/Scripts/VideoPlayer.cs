@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/*
 public class VideoPlayer : MonoBehaviour 
 {
 #if UNITY_ANDROID || UNITY_IOS
@@ -71,3 +71,4 @@ public class VideoPlayer : MonoBehaviour
         SceneManager.LoadScene("_Main");
     }
 }
+*/

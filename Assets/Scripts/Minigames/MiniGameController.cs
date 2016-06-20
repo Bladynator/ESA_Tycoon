@@ -13,6 +13,8 @@ public class MiniGameController : MonoBehaviour
 
     public bool fromClickToStart = false;
     public int levelPlayer = 1;
+    public int buildingID;
+    public bool pressedBack = false;
 
 	void Awake()
     {

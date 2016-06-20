@@ -12,7 +12,7 @@ public class Quests : MonoBehaviour
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[4, 10]
-    {{"","Construct a Research and Development center (RnD).","Construct an EXHIBIT.","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
+    {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre!","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
     {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
     {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","","","","",""},
     {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};
@@ -222,10 +222,10 @@ public class Quests : MonoBehaviour
         {
             myInformation[i + 2] = account.amountOfEachBuilding[i];
         }
-        
-        myInformation[11] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[0];
-        myInformation[12] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1];
-        myInformation[13] = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2];
+
+        myInformation[11] = PlayerPrefs.GetInt("Minigame1");
+        myInformation[12] = PlayerPrefs.GetInt("Minigame2");
+        myInformation[13] = PlayerPrefs.GetInt("Minigame3");
 
         for (int i = 14; i < myInformation.Length; i++)
         {

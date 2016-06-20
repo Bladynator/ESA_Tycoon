@@ -118,13 +118,12 @@ public class BuildingMain : MonoBehaviour
     public virtual void Update()
     {
         SortingLayers();
-        //Debug.Log(timer);
         if (busy)
         {
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds < 0)
+            if (timeSpan.Seconds <= 0)
             {
                 busy = false;
                 doneWithTask = true;
@@ -149,7 +148,7 @@ public class BuildingMain : MonoBehaviour
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds < 0)
+            if (timeSpan.Seconds <= 0)
             {
                 building = false;
                 level++;
@@ -463,6 +462,7 @@ public class BuildingMain : MonoBehaviour
     void ClickedMinigame(int minigameDifficulty, string minigame)
     {
         TaskClicked(minigameDifficulty);
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().buildingID = ID;
         if (ableToSave)
         {
             account.PushSave();

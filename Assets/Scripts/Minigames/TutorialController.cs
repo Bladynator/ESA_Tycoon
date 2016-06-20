@@ -38,6 +38,7 @@ public class TutorialController : MonoBehaviour
 
     public void PressedBack()
     {
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().pressedBack = true;
         SceneManager.LoadScene("_Main");
     }
 }
