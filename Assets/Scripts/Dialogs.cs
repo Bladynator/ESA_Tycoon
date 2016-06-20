@@ -55,6 +55,8 @@ public class Dialogs : MonoBehaviour
     Sprite[] peopleToTalkTo;
     [SerializeField]
     Image character;
+    [SerializeField]
+    AudioClip talkSound;
 
     void Update()
     {
@@ -66,6 +68,10 @@ public class Dialogs : MonoBehaviour
                 currentTime = Time.time;
                 msg01 = output.Substring(0, pos);
                 canvas.GetComponentInChildren<Text>().text = msg01;
+                if(msg01.Substring(msg01.Length - 1) != " ")
+                {
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(talkSound);
+                }
             }
             
             if(msg01 == output && !waitForInput && Input.GetMouseButtonUp(0))
