@@ -177,6 +177,7 @@ public class Account : MonoBehaviour
             PlaceBuildings();
             UpdateAmountOFBuildings();
             Destroy(GameObject.Find("Tutorial"));
+            GameObject.Find("SoundController").GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -393,11 +394,11 @@ public class Account : MonoBehaviour
     
     void OnApplicationPause(bool pauseStatus)
     {
-        Application.Quit();
+        //Application.Quit();
     }
 
     void OnApplicationQuit()
     {
-        Application.Quit();
+        //Application.Quit();
     }
 }

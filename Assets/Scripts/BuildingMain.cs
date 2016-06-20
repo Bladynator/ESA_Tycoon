@@ -398,8 +398,8 @@ public class BuildingMain : MonoBehaviour
             allButtons[8].gameObject.SetActive(true);
             allText[1].gameObject.SetActive(false);
             allText[2].text = "Destroy";
-            
-            for (int i = 4; i < allText.Length; i++)
+            allText[4].text = "";
+            for (int i = 5; i < allText.Length; i++)
             {
                 allText[i].gameObject.SetActive(false);
             }
