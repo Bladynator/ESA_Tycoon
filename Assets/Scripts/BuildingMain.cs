@@ -256,6 +256,7 @@ public class BuildingMain : MonoBehaviour
 
     public void setupFirstButtons(GameObject canvasTemp)
     {
+        canvasTemp.GetComponent<RectTransform>().SetAsLastSibling();
         allButtons = canvasTemp.GetComponentsInChildren<Button>();
         allImages = canvasTemp.GetComponentsInChildren<Image>();
         for (int i = 0; i < allButtons.Length; i++)
@@ -322,7 +323,7 @@ public class BuildingMain : MonoBehaviour
             }
             else
             {
-                allText[4].text = "Mini Game\nDifficulty";
+                allText[4].text = "Mini-game\nDifficulty";
                 ChangeResourceIconsTasks(false);
                 for (int i = 0; i < 4; i++)
                 {
@@ -398,7 +399,7 @@ public class BuildingMain : MonoBehaviour
             allText[1].gameObject.SetActive(false);
             allText[2].text = "Destroy";
             
-            for (int i = 5; i < allText.Length; i++)
+            for (int i = 4; i < allText.Length; i++)
             {
                 allText[i].gameObject.SetActive(false);
             }

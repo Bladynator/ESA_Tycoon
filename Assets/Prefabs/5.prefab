@@ -72,8 +72,8 @@ MonoBehaviour:
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame1
-  buildingInformation: 'The Launchpad building is for launching the rocket with the
-    satellite inside. '
+  buildingInformation: 'The Launchpad building is used for launching the rocket with
+    the satellite inside. '
   buildingSprites:
   - {fileID: 21300000, guid: be11bbdc2fb702e489d3684caca6e787, type: 3}
   - {fileID: 21300000, guid: a3f4f80e4ba081146aa5e72378142eb2, type: 3}

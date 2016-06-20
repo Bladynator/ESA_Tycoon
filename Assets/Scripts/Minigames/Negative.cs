@@ -16,7 +16,7 @@ public class Negative : MonoBehaviour
 	
 	void Update () 
 	{
-        transform.position -= new Vector3(0.1f, 0, 0);
+        transform.position -= new Vector3(0.13f, 0, 0);
         if(transform.position.x < - 14)
         {
             Destroy(gameObject);

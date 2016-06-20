@@ -72,7 +72,7 @@ MonoBehaviour:
   resourceBuilding: 1
   decoration: 0
   minigame: Minigame1
-  buildingInformation: The Exhibition Centre is like a museum with space-related things.
+  buildingInformation: The Exhibition Centre is a museum with space-related things.
     People need to pay an entrance fee to visit the Exhibition Centre, which will
     generate money for your mission.
   buildingSprites:

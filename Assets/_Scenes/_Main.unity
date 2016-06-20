@@ -671,7 +671,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: AIM is about doing a research space mission on asteroids. The objective
+    of the game is to develop a Space Centre and perform missions related to it.
 --- !u!222 &70153968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3901,7 +3902,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 718.1, y: 378.3}
+  m_SizeDelta: {x: 1231, y: 703}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &383430662
 MonoBehaviour:
@@ -6307,8 +6308,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 376, y: 83.54}
+  m_AnchoredPosition: {x: 0, y: -0.00000333786}
+  m_SizeDelta: {x: 376, y: 88.54}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &607813425
 MonoBehaviour:
@@ -6342,10 +6343,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "This game was developed as a cooperation between ESA and MediaLAB Amsterdam.
-    The MediaLAB Amsterdam team: Tarun Bhandari, Michel Dijkstra, Lisa Greuter, Br\xFBn
-    van der Horst, Yuna Song & Tamara Pinos Cisneros.\nSpecial thanks go to the AIM
-    support team at ESTEC and Ian Carnelli, AIM project manager."
+  m_Text: "\xA9 2016 European Space Agency (ESA) All rights reserved. This game was
+    developed as a cooperation between ESA and MediaLAB Amsterdam. The following students
+    were involved in the project: Tarun Bhandari, Michel Dijkstra, Lisa Greuter, Br\xFBn
+    van der Horst, Yuna Song. Special thanks to the AIM support team at ESTEC, Ian
+    Carnelli (AIM project manager) the University of Applied Sciences in Amsterdam
+    and Charlie Mulholland (narrator cut-scene).\r"
 --- !u!222 &607813426
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7395,7 +7398,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 681.8, y: 381.4}
+  m_SizeDelta: {x: 1194, y: 810}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &718294671
 MonoBehaviour:
@@ -10535,7 +10538,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decoration
+  m_Text: Decorations
 --- !u!222 &1054061828
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14535,7 +14538,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Receive patches by leveling up!
+  m_Text: Receive patches by levelling up!
 --- !u!222 &1623681161
 CanvasRenderer:
   m_ObjectHideFlags: 0

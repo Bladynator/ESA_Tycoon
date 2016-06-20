@@ -72,8 +72,8 @@ MonoBehaviour:
   resourceBuilding: 0
   decoration: 0
   minigame: Minigame2
-  buildingInformation: The Mission Control building gives you access to navigate the
-    satellite in space and control the inter satellite communication links.
+  buildingInformation: The Mission Control building allows you to navigate the satellite
+    in space and control the inter satellite communication links.
   buildingSprites:
   - {fileID: 21300000, guid: 73ead9e45f21062449d1e16114565429, type: 3}
   - {fileID: 21300000, guid: 796c1a0a9773d1c49ace662a43e9210e, type: 3}
