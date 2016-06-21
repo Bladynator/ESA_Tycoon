@@ -43,8 +43,12 @@ public class MainGameController : MonoBehaviour
         }
         if (reset == "TGM")
         {
-            GameObject.Find("Account").GetComponent<Account>().money += 1000;
-            GameObject.Find("Account").GetComponent<Account>().researchPoints += 1000;
+            DeleteSave();
+        }
+        if (reset == "TarunSucks")
+        {
+            GameObject.Find("Account").GetComponent<Account>().money += 5000;
+            GameObject.Find("Account").GetComponent<Account>().researchPoints += 5000;
         }
     }
 
