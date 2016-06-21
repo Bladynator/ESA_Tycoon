@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     Color oldColour;
     public Color redColour, redColourLast;
     public int diff;
+    [SerializeField]
+    AudioClip hit;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(hit);
         hp--;
         switch(hp)
         {

@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123901246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.155, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0.036, y: -0.493, z: 0}
   m_LocalScale: {x: 0.38861686, y: 0.37765145, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -356,7 +356,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 409794458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.36, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.36, y: 0.07, z: 0}
   m_LocalScale: {x: 0.38861686, y: 0.37765145, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -430,7 +430,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 435681941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36, y: 0.31, z: 0}
+  m_LocalPosition: {x: 0.488, y: 0.31, z: 0}
   m_LocalScale: {x: 0.38861686, y: 0.37765145, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -642,9 +642,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.15, y: -0.12}
   serializedVersion: 2
-  m_Radius: 0.64
+  m_Radius: 1.0652585
 --- !u!212 &833550615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1085,6 +1085,7 @@ MonoBehaviour:
     m_Bits: 1
   controller: {fileID: 567862868}
   lineMaterial: {fileID: 2100000, guid: 580ae72a33730114293b686066aeaec7, type: 2}
+  laserhit: {fileID: 8300000, guid: f2101d8465fb22e48a54640affa46b81, type: 3}
 --- !u!212 &1216859433
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2069,6 +2070,14 @@ Prefab:
     - target: {fileID: 445476, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226474, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226474, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}

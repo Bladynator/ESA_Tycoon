@@ -962,6 +962,7 @@ MonoBehaviour:
   redColour: {r: 1, g: 0, b: 0, a: 0.528}
   redColourLast: {r: 1, g: 0, b: 0, a: 1}
   diff: 0
+  hit: {fileID: 8300000, guid: d23ac8daad0136e44845f7a39ef69e62, type: 3}
 --- !u!61 &1085642618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1252,6 +1253,10 @@ Prefab:
     - target: {fileID: 445476, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226474, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}

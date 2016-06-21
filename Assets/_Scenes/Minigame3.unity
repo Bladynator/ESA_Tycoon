@@ -3289,6 +3289,8 @@ MonoBehaviour:
   liner: {fileID: 197584, guid: 46e73254a16fe834e8b50339a853d641, type: 2}
   chainObject: {fileID: 126774, guid: e20f5b19df3b7fc4b82a56b725dba1e3, type: 2}
   tempMat: {fileID: 2100000, guid: 9662fa21a7cd03c41aa438b0af58f2d7, type: 2}
+  hit: {fileID: 8300000, guid: eb6aede9d6442dd41a91c4ca6025873e, type: 3}
+  done: {fileID: 8300000, guid: 440c677f3f7490b4482edf8ac9bd1421, type: 3}
 --- !u!4 &858064461
 Transform:
   m_ObjectHideFlags: 0
@@ -6278,6 +6280,10 @@ Prefab:
     - target: {fileID: 445476, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226474, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58272e1a294597a48bb4f7d8db76b2c0, type: 2}

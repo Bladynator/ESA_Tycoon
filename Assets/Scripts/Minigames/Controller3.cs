@@ -41,11 +41,14 @@ public class Controller3 : MonoBehaviour
     [SerializeField]
     Material tempMat;
     bool touching = true;
+    [SerializeField]
+    AudioClip hit, done;
 
     void Start()
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
-        amountToShow = amountsToShow[difficulty];
+        //amountToShow = amountsToShow[difficulty];
+        amountToShow = 2;
         if(difficulty == 3)
         {
             endLess = true;
@@ -63,6 +66,7 @@ public class Controller3 : MonoBehaviour
             temp2[temp2.Length - 1].transform.position = positionOld;
         }
         */
+        /*
         if (Input.touchCount == 0 && pressedButtonFirst != null)
         {
             touching = false;
@@ -71,7 +75,8 @@ public class Controller3 : MonoBehaviour
         {
             touching = true;
         }
-        if(!endLess && !end)
+        */
+        if (!endLess && !end)
         {
             if(!waitingForTimer)
             {
@@ -104,6 +109,29 @@ public class Controller3 : MonoBehaviour
             Destroy(temp);
         }
         tempCanvas = Instantiate(canvasEnd);
+        switch(difficulty)
+        {
+            case 0:
+                {
+                    score = score + 0;
+                    break;
+                }
+            case 1:
+                {
+                    score = score + 20;
+                    break;
+                }
+            case 2:
+                {
+                    score = score + 40;
+                    break;
+                }
+            case 3:
+                {
+                    score = score + 60;
+                    break;
+                }
+        }
         tempCanvas.GetComponentInChildren<Text>().text = "Score: " + score.ToString();
         tempCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedEnd(); });
     }
@@ -195,6 +223,7 @@ public class Controller3 : MonoBehaviour
 
     public void MakeRope()
     {
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(hit);
         pressedButtonFirst = gameObject;
         pressedButton = true;
         numberToClick++;
@@ -203,8 +232,10 @@ public class Controller3 : MonoBehaviour
 
     void MakeRopeFinal()
     {
+        Instantiate(chainObject, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 30), transform.rotation);
+        /*
         tempLiner = Instantiate(liner);
-
+        
         Transform[] childerenFromRope = tempLiner.GetComponentsInChildren<Transform>();
         tempLiner.transform.position = transform.position;
         childerenFromRope[0].transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 30);
@@ -231,10 +262,12 @@ public class Controller3 : MonoBehaviour
 
         temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         //temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().mass = 1;
+        */
     }
 
     public void Calculate(GameObject button)
     {
+        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(done);
         pressedButton = false;
         Vector3[] positions = new Vector3[2];
         positions[0] = pressedButtonFirst.transform.position;
@@ -245,9 +278,10 @@ public class Controller3 : MonoBehaviour
         {
             Destroy(allRope[i]);
         }
+        
         if (touching)
         {
-            if (numberToClick != amountToShow)
+            if (numberToClick  != amountToShow)
             {
                 excludedNumbers.Clear();
                 totalConnected = 0;

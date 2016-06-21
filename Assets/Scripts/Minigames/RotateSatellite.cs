@@ -11,6 +11,8 @@ public class RotateSatellite : MonoBehaviour
     Controller2 controller;
     float rotation;
     public Material lineMaterial;
+    [SerializeField]
+    AudioClip laserhit;
 
     void Start()
     {
@@ -45,6 +47,12 @@ public class RotateSatellite : MonoBehaviour
         {
             case "Earth":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(1, 2, 0.1f);
                     controller.charging = true;
                     controller.overcharging = false;
                     controller.theOneToCharge = 0;
@@ -52,6 +60,12 @@ public class RotateSatellite : MonoBehaviour
                 }
             case "CriticalE":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(2, 1, 0.1f);
                     controller.charging = true;
                     controller.overcharging = true;
                     controller.theOneToCharge = 0;
@@ -59,6 +73,12 @@ public class RotateSatellite : MonoBehaviour
                 }
             case "Asteroid":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(1, 2, 0.1f);
                     controller.charging = true;
                     controller.overcharging = false;
                     controller.theOneToCharge = 1;
@@ -66,6 +86,12 @@ public class RotateSatellite : MonoBehaviour
                 }
             case "CriticalA":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(2, 1, 0.1f);
                     controller.overcharging = true;
                     controller.charging = true;
                     controller.theOneToCharge = 1;
@@ -73,6 +99,12 @@ public class RotateSatellite : MonoBehaviour
                 }
             case "Sun":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(1, 2, 0.1f);
                     controller.charging = true;
                     controller.overcharging = false;
                     controller.theOneToCharge = 2;
@@ -80,6 +112,13 @@ public class RotateSatellite : MonoBehaviour
                 }
             case "CriticalS":
                 {
+                    if (!GameObject.Find("SFXController").GetComponent<AudioSource>().isPlaying)
+                    {
+                        
+                        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(laserhit);
+                    }
+                    
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().pitch = Mathf.Lerp(2, 1, 0.1f);
                     controller.overcharging = true;
                     controller.charging = true;
                     controller.theOneToCharge = 2;
@@ -87,6 +126,7 @@ public class RotateSatellite : MonoBehaviour
                 }
             default:
                 {
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().Stop();
                     controller.charging = false;
                     controller.overcharging = false;
                     controller.theOneToCharge = -1;
