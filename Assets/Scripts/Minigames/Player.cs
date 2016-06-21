@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
                 }
             case 3:
                 {
-                    endScore += 7;
+                    endScore += 10;
                     hp = 1;
                     break;
                 }

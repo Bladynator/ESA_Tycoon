@@ -391,7 +391,7 @@ public class Account : MonoBehaviour
     {
         Application.OpenURL(link);
     }
-    
+    /*
     void OnApplicationPause(bool pauseStatus)
     {
         //Application.Quit();
@@ -401,4 +401,5 @@ public class Account : MonoBehaviour
     {
         //Application.Quit();
     }
+    */
 }

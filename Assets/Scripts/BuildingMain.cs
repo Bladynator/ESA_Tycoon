@@ -123,7 +123,7 @@ public class BuildingMain : MonoBehaviour
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds <= 0)
+            if (timeSpan.TotalSeconds <= 0)
             {
                 busy = false;
                 doneWithTask = true;
@@ -148,7 +148,7 @@ public class BuildingMain : MonoBehaviour
             timer -= Time.deltaTime;
             timeSpan = TimeSpan.FromSeconds(timer);
             DrawBar(maxtimeForTask, timeSpan.TotalSeconds);
-            if (timeSpan.Seconds <= 0)
+            if (timeSpan.TotalSeconds <= 0)
             {
                 building = false;
                 level++;

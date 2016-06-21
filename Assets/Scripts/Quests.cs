@@ -184,6 +184,7 @@ public class Quests : MonoBehaviour
 
     void PressedBack()
     {
+        
         questOpen = -1;
         if (tutorialBack)
         {
@@ -314,6 +315,8 @@ public class Quests : MonoBehaviour
     
     void PressedCollectButton(int addedMoney, int addedRP, int quest, int newDialog)
     {
+        MainGameController.ChangeColliders(true);
+        MainGameController.CanMove(true);
         account.money += addedMoney;
         account.researchPoints += addedRP;
         onceCanvas = false;
@@ -330,6 +333,8 @@ public class Quests : MonoBehaviour
     {
         if (!onceCanvas)
         {
+            MainGameController.ChangeColliders(false);
+            MainGameController.CanMove(false);
             onceCanvas = true;
             canvas.SetActive(true);
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();

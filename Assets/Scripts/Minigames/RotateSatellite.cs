@@ -14,14 +14,15 @@ public class RotateSatellite : MonoBehaviour
 
     void Start()
     {
-        GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, 1));
+        GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y, 0));
         //GetComponent<LineRenderer>().material = new Material(Shader.Find("Particles/Additive"));
         GetComponent<LineRenderer>().material = lineMaterial;
         GetComponent<LineRenderer>().SetColors(Color.red, Color.red);
 
         var direction = transform.forward;
-        direction = new Vector3(0, direction.z, 1);
+        direction = new Vector3(0, direction.z, 0);
         var endPoint = transform.position + direction * 13;
+        endPoint = new Vector3(endPoint.x, endPoint.y, 0);
         GetComponent<LineRenderer>().SetPosition(1, endPoint);
     }
 

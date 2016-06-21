@@ -123,6 +123,10 @@ public class Controller3 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         timer--;
+        if (timer <= 0)
+        {
+            timer = 0;
+        }
         EditTimer("Time: " + timer.ToString());
         waitingForTimer = false;
     }

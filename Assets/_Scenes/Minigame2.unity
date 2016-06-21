@@ -95,7 +95,7 @@ GameObject:
   - 224: {fileID: 39183066}
   - 222: {fileID: 39183068}
   - 114: {fileID: 39183067}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - 4: {fileID: 123901247}
   - 212: {fileID: 123901249}
   - 58: {fileID: 123901248}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CriticalE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - 223: {fileID: 345385028}
   - 114: {fileID: 345385027}
   - 114: {fileID: 345385026}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - 4: {fileID: 409794459}
   - 212: {fileID: 409794461}
   - 58: {fileID: 409794460}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CriticalA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - 4: {fileID: 435681942}
   - 212: {fileID: 435681944}
   - 58: {fileID: 435681943}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CriticalS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - 224: {fileID: 778491776}
   - 212: {fileID: 778491775}
   - 58: {fileID: 778491774}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - 224: {fileID: 833550616}
   - 212: {fileID: 833550615}
   - 58: {fileID: 833550614}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 835668966}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CanvasStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - 224: {fileID: 897910941}
   - 222: {fileID: 897910943}
   - 114: {fileID: 897910942}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   - 224: {fileID: 912658578}
   - 212: {fileID: 912658580}
   - 61: {fileID: 912658579}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +893,7 @@ GameObject:
   - 224: {fileID: 1107124858}
   - 222: {fileID: 1107124860}
   - 114: {fileID: 1107124859}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   - 114: {fileID: 1216859432}
   - 120: {fileID: 1216859431}
   - 58: {fileID: 1216859435}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Satellite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 32
   controller: {fileID: 567862868}
   lineMaterial: {fileID: 2100000, guid: 580ae72a33730114293b686066aeaec7, type: 2}
 --- !u!212 &1216859433
@@ -1096,7 +1096,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1253888378}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1134,7 @@ GameObject:
   - 224: {fileID: 1275524232}
   - 222: {fileID: 1275524234}
   - 114: {fileID: 1275524233}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,7 +1202,7 @@ GameObject:
   - 224: {fileID: 1317341123}
   - 222: {fileID: 1317341125}
   - 114: {fileID: 1317341124}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1276,7 +1276,7 @@ GameObject:
   - 224: {fileID: 1371517314}
   - 212: {fileID: 1371517316}
   - 61: {fileID: 1371517315}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1353,7 +1353,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1398355166}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1453,7 +1453,7 @@ GameObject:
   - 224: {fileID: 1603123853}
   - 222: {fileID: 1603123855}
   - 114: {fileID: 1603123854}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1643,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1678262926}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Course
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,7 +1681,7 @@ GameObject:
   - 224: {fileID: 1693118663}
   - 212: {fileID: 1693118665}
   - 61: {fileID: 1693118664}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ GameObject:
   - 224: {fileID: 1720567905}
   - 212: {fileID: 1720567904}
   - 58: {fileID: 1720567903}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   - 224: {fileID: 1783667389}
   - 212: {fileID: 1783667391}
   - 61: {fileID: 1783667390}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1919,7 +1919,7 @@ GameObject:
   - 224: {fileID: 1820781135}
   - 222: {fileID: 1820781137}
   - 114: {fileID: 1820781136}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1987,7 +1987,7 @@ GameObject:
   - 224: {fileID: 1866324298}
   - 222: {fileID: 1866324300}
   - 114: {fileID: 1866324299}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866324297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2055,7 +2055,7 @@ GameObject:
   - 224: {fileID: 1985911807}
   - 222: {fileID: 1985911809}
   - 114: {fileID: 1985911808}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2123,7 +2123,7 @@ GameObject:
   - 224: {fileID: 2030869721}
   - 222: {fileID: 2030869723}
   - 114: {fileID: 2030869722}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2191,7 +2191,7 @@ GameObject:
   - 224: {fileID: 2129489490}
   - 222: {fileID: 2129489492}
   - 114: {fileID: 2129489491}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -68,8 +68,32 @@ public class Controller2 : MonoBehaviour
 
     void End(int scoreTotal)
     {
+        float lastScore = scoreTotal;
+        switch(difficulty)
+        {
+            case 0:
+                {
+                    lastScore /= 1.5f;
+                    break;
+                }
+            case 1:
+                {
+                    lastScore /= 1f;
+                    break;
+                }
+            case 2:
+                {
+                    lastScore /= 0.7f;
+                    break;
+                }
+            case 3:
+                {
+                    lastScore /= 1f;
+                    break;
+                }
+        }
         end = true;
-        score = scoreTotal;
+        score = Mathf.FloorToInt(lastScore);
         tempCanvas = Instantiate(canvasEnd);
         tempCanvas.GetComponentInChildren<Text>().text = "Score: " + score.ToString();
         tempCanvas.GetComponentInChildren<Button>().onClick.AddListener(delegate { PressedEnd(); });
@@ -102,12 +126,17 @@ public class Controller2 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         timer--;
+        if(timer <= 0)
+        {
+            timer = 0;
+        }
         EditTimer("Time: " + timer.ToString());
         waitingForTimer = false;
     }
 
     void EditTimer(string text)
     {
+
         GameObject.Find("Canvas").GetComponentInChildren<Text>().text = text;
     }
 

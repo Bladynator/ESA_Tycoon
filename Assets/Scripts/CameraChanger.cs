@@ -14,6 +14,8 @@ public class CameraChanger : MonoBehaviour
     float touchDuration;
     Touch touch;
 
+    public bool canMove = true;
+
     public bool builderOn = false;
 
     void Start () 
@@ -23,82 +25,85 @@ public class CameraChanger : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Canvas") == null)
+        if (canMove)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (GameObject.FindGameObjectWithTag("Canvas") == null)
             {
-                hit_position = Input.mousePosition;
-                camera_position = transform.position;
-            }
-            if (Input.GetMouseButton(0))
-            {
-                current_position = Input.mousePosition;
-                LeftMouseDrag();
-            }
-            if (Input.GetMouseButtonUp(0) && !builderOn)
-            {
-                StartCoroutine(WaitForSmallTime());
+                if (Input.GetMouseButtonDown(0))
+                {
+                    hit_position = Input.mousePosition;
+                    camera_position = transform.position;
+                }
+                if (Input.GetMouseButton(0))
+                {
+                    current_position = Input.mousePosition;
+                    LeftMouseDrag();
+                }
+                if (Input.GetMouseButtonUp(0) && !builderOn)
+                {
+                    StartCoroutine(WaitForSmallTime());
+                }
+
+                transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
+                if (transform.position.x > 33)
+                {
+                    transform.position = new Vector2(33, transform.position.y);
+                }
+                if (transform.position.x < -32)
+                {
+                    transform.position = new Vector2(-32, transform.position.y);
+                }
+                if (transform.position.y > 63)
+                {
+                    transform.position = new Vector2(transform.position.x, 63);
+                }
+                if (transform.position.y < 10)
+                {
+                    transform.position = new Vector2(transform.position.x, 10);
+                }
             }
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, -26f);
-            if (transform.position.x > 33)
+            if (Input.touchCount == 2)
             {
-                transform.position = new Vector2(33, transform.position.y);
-            }
-            if (transform.position.x < -32)
-            {
-                transform.position = new Vector2(-32, transform.position.y);
-            }
-            if (transform.position.y > 63)
-            {
-                transform.position = new Vector2(transform.position.x, 63);
-            }
-            if (transform.position.y < 10)
-            {
-                transform.position = new Vector2(transform.position.x, 10);
-            }
-        }
-        
-        if (Input.touchCount == 2)
-        {
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-            
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-            
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-            
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-            
-            camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-            
-            camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
 
-            if (camera.orthographicSize < 6.6f)
-            {
-                camera.orthographicSize = 6.6f;
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+                camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+
+                if (camera.orthographicSize < 6.6f)
+                {
+                    camera.orthographicSize = 6.6f;
+                }
+                if (camera.orthographicSize > 20)
+                {
+                    camera.orthographicSize = 20;
+                }
             }
-            if (camera.orthographicSize > 20)
-            {
-                camera.orthographicSize = 20;
-            }
-        }
 
 
-        if (Input.touchCount > 0 && !activeDialog)
-        {
-            touchDuration += Time.deltaTime;
-            touch = Input.GetTouch(0);
+            if (Input.touchCount > 0 && !activeDialog)
+            {
+                touchDuration += Time.deltaTime;
+                touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Ended && touchDuration < 0.1f)
-            {
-                StartCoroutine("singleOrDouble");
-            }
-            else
-            {
-                touchDuration = 0.0f;
+                if (touch.phase == TouchPhase.Ended && touchDuration < 0.1f)
+                {
+                    StartCoroutine("singleOrDouble");
+                }
+                else
+                {
+                    touchDuration = 0.0f;
+                }
             }
         }
     }

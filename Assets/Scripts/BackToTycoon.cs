@@ -8,15 +8,15 @@ public class BackToTycoon : MonoBehaviour
     float level;
     [SerializeField]
     Image barToFill;
+    [SerializeField]
+    GameObject objectToMove;
+    [SerializeField]
+    GameObject[] positions;
 
     public void Start()
     {
         level = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer;
         barToFill.fillAmount = (float)(level / 10);
-    }
-
-	public void Back()
-    {
-        SceneManager.LoadScene("_Main");
+        objectToMove.transform.position = positions[(int)level - 1].transform.position;
     }
 }

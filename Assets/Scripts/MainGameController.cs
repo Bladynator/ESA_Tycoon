@@ -50,6 +50,10 @@ public class MainGameController : MonoBehaviour
         }
     }
 
+    public static void CanMove(bool canmove)
+    {
+        GameObject.Find("Main Camera").GetComponent<CameraChanger>().canMove = canmove;
+    }
 
     public static void GoToScene(string scene)
     {
