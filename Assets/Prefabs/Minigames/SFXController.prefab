@@ -1,28 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &109370
+--- !u!1 &135290
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 441856}
-  - 82: {fileID: 8285320}
-  - 114: {fileID: 11429786}
+  - 4: {fileID: 445476}
+  - 82: {fileID: 8226474}
+  - 114: {fileID: 11455984}
   m_Layer: 0
-  m_Name: SoundController
+  m_Name: SFXController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &441856
+--- !u!4 &445476
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109370}
+  m_GameObject: {fileID: 135290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.0923097, y: 1.1394936, z: -2.765625}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -30,16 +30,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8285320
+--- !u!82 &8226474
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109370}
+  m_GameObject: {fileID: 135290}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2ff91df04c316074f846f4afc9b9eba1, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -104,18 +104,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11429786
+--- !u!114 &11455984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109370}
+  m_GameObject: {fileID: 135290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dee4070eb993cd429163a6833d7c697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicType: Music
+  musicType: SFX
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -125,5 +125,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 109370}
+  m_RootGameObject: {fileID: 135290}
   m_IsPrefabParent: 1

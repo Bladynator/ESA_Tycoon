@@ -4,8 +4,10 @@ using System;
 
 public class CheckForSound : MonoBehaviour 
 {
+    public string musicType;
+
 	void Start () 
 	{
-        GetComponent<AudioSource>().mute = Convert.ToBoolean(PlayerPrefs.GetInt("Music"));
+        GetComponent<AudioSource>().mute = Convert.ToBoolean(PlayerPrefs.GetInt(musicType));
 	}
 }
