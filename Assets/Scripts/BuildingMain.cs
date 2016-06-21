@@ -59,7 +59,7 @@ public class BuildingMain : MonoBehaviour
     Image[] allImages;
     Text[] allText;
     Text[] alltext2;
-    AudioClip upgradeSound, rewardSound;
+    AudioClip upgradeSound, rewardSound, timelockSound;
 
     public bool ableToSave = true;
     
@@ -67,6 +67,7 @@ public class BuildingMain : MonoBehaviour
     {
         upgradeSound = GameObject.Find("HUD").GetComponent<HUD>().upgradeSound;
         rewardSound = GameObject.Find("HUD").GetComponent<HUD>().rewardSound;
+        timelockSound = GameObject.Find("HUD").GetComponent<HUD>().timelockSound;
         disabledColour = GameObject.Find("HUD").GetComponent<HUD>().disabledColour;
         disabledRed = GameObject.Find("HUD").GetComponent<HUD>().disabledRed;
         if (!decoration)
@@ -133,6 +134,7 @@ public class BuildingMain : MonoBehaviour
                 Destroy(tempBar);
                 if (!resourceBuilding)
                 {
+                    GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(timelockSound);
                     GetReward();
                 }
                 else
@@ -295,13 +297,25 @@ public class BuildingMain : MonoBehaviour
                         {
                             allText[3].color = disabledRed;
                         }
+                        else
+                        {
+                            allText[3].color = Color.white;
+                        }
                         if (priceForUpgrading[level + 1, 1] > account.money)
                         {
                             allText[22].color = disabledRed;
                         }
+                        else
+                        {
+                            allText[2].color = Color.white;
+                        }
                         if (priceForUpgrading[level + 1, 2] > account.researchPoints)
                         {
                             allText[23].color = disabledRed;
+                        } 
+                        else
+                        {
+                            allText[23].color = Color.white;
                         }
                     }
                 }
@@ -492,12 +506,9 @@ public class BuildingMain : MonoBehaviour
         if (CheckIfEnoughResources())
         {
             building = true;
-            //endTime = DateTime.Now;
             timer = timesForBuilding[level];
-            //endTime = endTime.AddSeconds(Convert.ToDouble(timesForBuilding[level]));
             Building();
             BackClicked();
-            //DrawBar(maxtimeForTask, timeSpan.Seconds);
         }
     }
 
@@ -511,11 +522,7 @@ public class BuildingMain : MonoBehaviour
             account.PushSave();
         }
         BackClicked();
-        
-        //endTime = DateTime.Now;
-        //endTime = endTime.AddSeconds(Convert.ToDouble(timesForTasks[taskDoing]));
         Busy();
-        //DrawBar(maxtimeForTask, timeSpan.Seconds);
     }
 
     public void BackClicked()
@@ -534,7 +541,6 @@ public class BuildingMain : MonoBehaviour
         {
             allImages[i].gameObject.SetActive(true);
         }
-        //account.ChangeColliders(true);
         MainGameController.ChangeColliders(true);
         GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
     }
@@ -567,7 +573,10 @@ public class BuildingMain : MonoBehaviour
     public void GetReward()
     {
         doneWithTask = false;
-        GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(rewardSound);
+        if (resourceBuilding)
+        {
+            GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(rewardSound);
+        }
         account.money += taskRewards[taskDoing];
         taskDoing = -1;
         Destroy(tempBar);

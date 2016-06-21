@@ -24,7 +24,7 @@ public class HUD : MonoBehaviour
     public int notificationNumber = 2;
     public Sprite[] allBadgesImages;
     public Color disabledColour, disabledRed;
-    public AudioClip upgradeSound, rewardSound;
+    public AudioClip upgradeSound, rewardSound, timelockSound;
 
     void Start () 
 	{

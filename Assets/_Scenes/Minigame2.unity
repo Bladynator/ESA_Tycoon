@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 1
   controller: {fileID: 567862868}
   lineMaterial: {fileID: 2100000, guid: 580ae72a33730114293b686066aeaec7, type: 2}
 --- !u!212 &1216859433

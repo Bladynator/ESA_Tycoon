@@ -39,15 +39,20 @@ public class MainGameController : MonoBehaviour
         string reset = GameObject.Find("InputField").GetComponent<InputField>().text;
         if (reset == "DELETE")
         {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = false;
-            PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene("_Main");
+            DeleteSave();
         }
         if (reset == "TGM")
         {
             GameObject.Find("Account").GetComponent<Account>().money += 1000;
             GameObject.Find("Account").GetComponent<Account>().researchPoints += 1000;
         }
+    }
+
+    public static void DeleteSave()
+    {
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().fromClickToStart = false;
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("_Main");
     }
 
     public static void CanMove(bool canmove)

@@ -50,7 +50,7 @@ public class Dialogs : MonoBehaviour
     public bool tutorial = false;
 
     [SerializeField]
-    GameObject canvas;
+    GameObject canvas, continueButton;
     [SerializeField]
     Sprite[] peopleToTalkTo;
     [SerializeField]
@@ -68,21 +68,25 @@ public class Dialogs : MonoBehaviour
                 currentTime = Time.time;
                 msg01 = output.Substring(0, pos);
                 canvas.GetComponentInChildren<Text>().text = msg01;
-                if(msg01.Substring(msg01.Length - 1) != " ")
+                if (msg01.Substring(msg01.Length - 1) != " ")
                 {
                     GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(talkSound);
                 }
             }
-            
-            if(msg01 == output && !waitForInput && Input.GetMouseButtonUp(0))
+
+            if (msg01 == output)
+            {
+                continueButton.SetActive(true);
+            }
+
+            if (msg01 == output && !waitForInput && Input.GetMouseButtonUp(0))
             {
                 numberToSay++;
-                if(dialogText[dialogNumberMain, numberToSay] == "")
+                if (dialogText[dialogNumberMain, numberToSay] == "")
                 {
                     talk = false;
                     if (!tutorial)
                     {
-                        //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
                         MainGameController.ChangeColliders(true);
                     }
                     canvas.SetActive(false);
@@ -93,28 +97,31 @@ public class Dialogs : MonoBehaviour
                     waitForInput = true;
                 }
             }
-            
+
             if (msg01 != output && Input.GetMouseButtonUp(0))
             {
                 msg01 = output;
                 canvas.GetComponentInChildren<Text>().text = msg01;
             }
-        }
 
-        if (waitForInput)
-        {
-            if (Input.GetMouseButtonUp(0))
+
+            if (waitForInput)
             {
-                waitForInput = false;
-                pos = 0;
-                canvas.SetActive(true);
-                ActivateTalking(dialogNumberMain, numberToSay);
+                if (Input.GetMouseButtonUp(0))
+                {
+                    waitForInput = false;
+                    pos = 0;
+                    canvas.SetActive(true);
+                    ActivateTalking(dialogNumberMain, numberToSay);
+                }
             }
         }
     }
 
     public void ActivateTalking(int dialogNumber, int number = 0)
     {
+        
+        continueButton.SetActive(false);
         canvas.SetActive(true);
         GameObject.Find("Main Camera").GetComponent<CameraChanger>().activeDialog = true;
         canvas.GetComponent<RectTransform>().SetAsLastSibling();
@@ -140,7 +147,6 @@ public class Dialogs : MonoBehaviour
             numberToSay = number;
             dialogNumberMain = dialogNumber;
             output = dialogText[dialogNumber, numberToSay];
-            //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(false);
             MainGameController.ChangeColliders(false);
         }
     }
