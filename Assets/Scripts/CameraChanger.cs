@@ -134,8 +134,11 @@ public class CameraChanger : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
         {
-            tempBuilding.GetComponent<CircleCollider2D>().enabled = true;
-            tempBuilding.GetComponent<BuildingMain>().canClick = true;
+            if (tempBuilding.GetComponent<CircleCollider2D>() != null)
+            {
+                tempBuilding.GetComponent<CircleCollider2D>().enabled = true;
+                tempBuilding.GetComponent<BuildingMain>().canClick = true;
+            }
         }
     }
 
@@ -166,8 +169,11 @@ public class CameraChanger : MonoBehaviour
             GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
             foreach (GameObject tempBuilding in allBuildings)
             {
-                tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
-                tempBuilding.GetComponent<BuildingMain>().canClick = false;
+                if (tempBuilding.GetComponent<CircleCollider2D>() != null)
+                {
+                    tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
+                    tempBuilding.GetComponent<BuildingMain>().canClick = false;
+                }
             }
         }
         Vector3 position = camera_position + direction;

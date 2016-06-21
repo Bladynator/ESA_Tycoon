@@ -31,7 +31,7 @@ public class BuildingMain : MonoBehaviour
     [HideInInspector]
     public Vector2 gridPosition;
 
-    Color disabledColour;
+    Color disabledColour, disabledRed;
 
     [Header("Don't Change")]
     [SerializeField]
@@ -68,6 +68,7 @@ public class BuildingMain : MonoBehaviour
         upgradeSound = GameObject.Find("HUD").GetComponent<HUD>().upgradeSound;
         rewardSound = GameObject.Find("HUD").GetComponent<HUD>().rewardSound;
         disabledColour = GameObject.Find("HUD").GetComponent<HUD>().disabledColour;
+        disabledRed = GameObject.Find("HUD").GetComponent<HUD>().disabledRed;
         if (!decoration)
         {
             for (int i = 0; i < 4; i++)
@@ -270,7 +271,7 @@ public class BuildingMain : MonoBehaviour
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         GameObject.Find("FullBarLevelBuilding").GetComponent<Image>().fillAmount = (float)(level + 1) / 4;
-
+        //Debug.Log(allText.Length);
         ChangeResourceIconsTasks(true);
 
         if (!decoration)
@@ -279,7 +280,9 @@ public class BuildingMain : MonoBehaviour
             allText[1].text = "";
             if (level != 3)
             {
-                allText[3].text = priceForUpgrading[level + 1, 0] + "\n" + priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2];
+                allText[3].text = priceForUpgrading[level + 1, 0].ToString(); // + "\n" + priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2];
+                allText[22].text = priceForUpgrading[level + 1, 1].ToString();
+                allText[23].text = priceForUpgrading[level + 1, 2].ToString();
                 allButtons[1].interactable = true;
                 allButtons[1].onClick.AddListener(delegate { UpgradeClickedFinal(); });
                 if (!CheckIfEnoughResources(false))
@@ -288,8 +291,18 @@ public class BuildingMain : MonoBehaviour
                     alltext2 = allButtons[1].GetComponentsInChildren<Text>();
                     foreach (Text temp in alltext2)
                     {
-                        temp.color = disabledColour;
-                        allText[3].color = disabledColour;
+                        if (priceForUpgrading[level + 1, 0] > account.level)
+                        {
+                            allText[3].color = disabledRed;
+                        }
+                        if (priceForUpgrading[level + 1, 1] > account.money)
+                        {
+                            allText[22].color = disabledRed;
+                        }
+                        if (priceForUpgrading[level + 1, 2] > account.researchPoints)
+                        {
+                            allText[23].color = disabledRed;
+                        }
                     }
                 }
                 else
@@ -299,6 +312,8 @@ public class BuildingMain : MonoBehaviour
                     {
                         temp.color = Color.white;
                         allText[3].color = Color.white;
+                        allText[22].color = Color.white;
+                        allText[23].color = Color.white;
                     }
                 }
             }
