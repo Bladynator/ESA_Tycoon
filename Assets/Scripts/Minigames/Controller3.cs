@@ -223,6 +223,7 @@ public class Controller3 : MonoBehaviour
             //}
 
             //temp3.GetComponent<Rigidbody2D>().mass = 1;
+            temp3.gameObject.tag = "rope2D";
             temp3.GetComponent<Rigidbody2D>().gravityScale = 0;
             temp3.gameObject.layer = 2;
         }

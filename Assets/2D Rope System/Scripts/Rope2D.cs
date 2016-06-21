@@ -139,18 +139,20 @@ public class Rope2D
 			//if it's last chain, make it isKinematic(physics won't affect it)
 			if(remainChainCount < 1)
 			{
-				//don't limit angle
-				var tempChainJoint = tempChain.GetComponent<HingeJoint2D>();
-				tempChainJoint.useLimits = false;
+                //don't limit angle
+                var tempChainJoint = tempChain.GetComponent<HingeJoint2D>();
+                tempChainJoint.useLimits = false;
 
-				//set anchor position
-				if(connectToB)
-				{
-					tempChainJoint.connectedAnchor = Vector2.zero;
-					tempChainJoint.anchor = tempChain.transform.InverseTransformPoint(chain.position);
-				}
+                //set anchor position
+                if (connectToB)
+                {
+                    tempChainJoint.connectedAnchor = Vector2.zero;
+                    tempChainJoint.anchor = tempChain.transform.InverseTransformPoint(chain.position);
+                }
+                    
 
-				chain.GetComponent<Collider2D>().isTrigger = true;
+
+                chain.GetComponent<Collider2D>().isTrigger = true;
 
 				//if hideEndObjects is true, disable chain's renderer
 				if(hideEndObjects)
