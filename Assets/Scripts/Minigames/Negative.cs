@@ -6,6 +6,7 @@ public class Negative : MonoBehaviour
 {
     [SerializeField]
     Sprite[] allSprites;
+    float speedMultiplier = 1, currentTime = 0;
 
 	void Start()
     {
@@ -16,12 +17,18 @@ public class Negative : MonoBehaviour
 	
 	void Update () 
 	{
-        transform.position -= new Vector3(0.13f, 0, 0);
+        transform.position -= new Vector3(0.13f * speedMultiplier, 0, 0);
         if(transform.position.x < - 14)
         {
             Destroy(gameObject);
         }
-	}
+
+        if (Time.time >= currentTime + 1f)
+        {
+            currentTime = Time.time;
+            speedMultiplier += 0.01f;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
