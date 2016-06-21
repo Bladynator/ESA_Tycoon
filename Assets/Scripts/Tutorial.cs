@@ -465,7 +465,8 @@ public class Tutorial : MonoBehaviour
     {
         account.money += addedMoney;
         account.researchPoints += addedRP;
-
+        MainGameController.ChangeColliders(true);
+        MainGameController.CanMove(true);
         questPart++;
         if (time != 2)
         {
@@ -479,6 +480,8 @@ public class Tutorial : MonoBehaviour
     {
         if(!onceCanvas)
         {
+            MainGameController.ChangeColliders(false);
+            MainGameController.CanMove(false);
             onceCanvas = true;
             canvas.SetActive(true);
             canvas.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
