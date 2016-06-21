@@ -59,10 +59,10 @@ public class BuildingPlacer : MonoBehaviour
         {
             case 1:
                 {
-                    GiveArrowPosition(0, 1.33f, 1.02f);
-                    GiveArrowPosition(1, -1.27f, 1f);
-                    GiveArrowPosition(2, 1.35f, -0.37f);
-                    GiveArrowPosition(3, -1.29f, -0.38f);
+                    GiveArrowPosition(0, 0.916f, 0.513f);
+                    GiveArrowPosition(1, -0.916f, 0.513f);
+                    GiveArrowPosition(2, 0.916f, -0.508f);
+                    GiveArrowPosition(3, -0.916f, -0.508f);
                     GiveArrowPosition(4, 0.85f, 2.08f);
                     GiveArrowPosition(5, -0.66f, 2.08f);
                     break;

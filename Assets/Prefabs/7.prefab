@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.816876, y: 14.762074, z: 3.5097656}
   m_LocalScale: {x: 0.98, y: 0.95, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Flag
-  size: {x: 2, y: 1}
+  size: {x: 1, y: 1}
   levelsNeededNewBuilding: 01000000020000005a000000
   levelsNeededUpgrade: 
   moneyNeededUpgrade: f4010000
@@ -75,7 +76,7 @@ MonoBehaviour:
   buildingInformation: 'Flags are there to decorate your Space Centre and give it
     a nice look. '
   buildingSprites:
-  - {fileID: 21300000, guid: 4fcf9a4a4b495254198564c42112a27f, type: 3}
+  - {fileID: 21300000, guid: 23c37b2836cf28b49ac6368a34d12ecb, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -122,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 4fcf9a4a4b495254198564c42112a27f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23c37b2836cf28b49ac6368a34d12ecb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
