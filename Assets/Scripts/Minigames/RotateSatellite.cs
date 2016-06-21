@@ -40,9 +40,7 @@ public class RotateSatellite : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * rotation);
         }
-        Debug.DrawRay(transform.position, transform.up * 50);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * 50, Mathf.Infinity, mask);
-        Debug.Log(hit.collider.name);
         switch(hit.collider.name)
         {
             case "Earth":
