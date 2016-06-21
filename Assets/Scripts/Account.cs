@@ -20,8 +20,7 @@ public class Account : MonoBehaviour
     public string[] namesBuildings;
     [SerializeField]
     Toggle[] soundChecks;
-
-    string save;
+    
     bool waitOneSec = false;
     public bool autoSave = true, justLeveld = false, waitForInput = false;
     int saveInSec = 5;
@@ -137,25 +136,18 @@ public class Account : MonoBehaviour
     {
         StopCoroutine(ToSave());
         saveInSec = 5;
-        string stringToPush = "";
-        stringToPush += GetFieldsToString() + "<DB>" + level + "<DB>" + money + "<DB>" + researchPoints + "<DB>" + DateTime.Now.ToString() + "<DB>" + GetQuestLines() + "<DB>" + exp + "<DB>" + nameTown + "<DB>" + GetHighscores() + "<DB>" + GameObject.Find("HUD").GetComponent<HUD>().notificationNumber + "<DB>" + GameObject.Find("SoundController").GetComponent<AudioSource>().mute.ToString() + "<DB>" + GameObject.Find("SFXController").GetComponent<AudioSource>().mute.ToString();
-        PlayerPrefs.SetString("save", stringToPush);
+        PlayerPrefs.SetString("Buildings", GetFieldsToString());
+        PlayerPrefs.SetInt("Level", level);
+        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.SetInt("RP", researchPoints);
+        PlayerPrefs.SetString("LastTimeOnline", DateTime.Now.ToString());
+        PlayerPrefs.SetString("Quests", GetQuestLines());
+        PlayerPrefs.SetInt("EXP", exp);
+        PlayerPrefs.SetString("NameTown", nameTown);
+        PlayerPrefs.SetInt("notificationNumber", GameObject.Find("HUD").GetComponent<HUD>().notificationNumber);
+        PlayerPrefs.SetInt("Music", Convert.ToInt32(GameObject.Find("SoundController").GetComponent<AudioSource>().mute));
+        PlayerPrefs.SetInt("SFX", Convert.ToInt32(GameObject.Find("SFXController").GetComponent<AudioSource>().mute));
         PlayerPrefs.Save();
-        //saveLoad.writeStringToFile(stringToPush, "save");
-    }
-    string GetHighscores()
-    {
-        int[] allScores = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores;
-        string scores = "";
-        for (int i = 0; i < 3; i++)
-        {
-            scores += allScores[i].ToString();
-            if (i != 2)
-            {
-                scores += "e";
-            }
-        }
-        return scores;
     }
 
     string GetQuestLines()
@@ -171,13 +163,11 @@ public class Account : MonoBehaviour
 
     public void PushLoad()
     {
-        if (PlayerPrefs.HasKey("save"))
+        if (PlayerPrefs.HasKey("Buildings"))
         {
-            save = PlayerPrefs.GetString("save");
             PlaceBuildings();
             UpdateAmountOFBuildings();
             Destroy(GameObject.Find("Tutorial"));
-            //GameObject.Find("SoundController").GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -227,31 +217,24 @@ public class Account : MonoBehaviour
     {
         GameObject[] allBuildingsToPlace = buildings.GetAllBuildings();
         GameObject.Find("Grid").GetComponent<Grid>().MakeGrid();
-        string[] allInformation = Regex.Split(save, "<DB>");
-        level = Convert.ToInt32(allInformation[1]);
-        money = Convert.ToInt32(allInformation[2]);
-        researchPoints = Convert.ToInt32(allInformation[3]);
-        exp = Convert.ToInt32(allInformation[6]);
-        nameTown = allInformation[7];
+        level = PlayerPrefs.GetInt("Level");
+        money = PlayerPrefs.GetInt("Money");
+        researchPoints = PlayerPrefs.GetInt("RP");
 
-        string[] allScores = Regex.Split(allInformation[8], "e");
-        for (int i = 0; i < 3; i++)
-        {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[i] = Convert.ToInt32(allScores[i]);
-        }
+        exp = PlayerPrefs.GetInt("EXP");
+        nameTown = PlayerPrefs.GetString("NameTown");
+        GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = PlayerPrefs.GetInt("notificationNumber");
+        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(PlayerPrefs.GetInt("notificationNumber"));
 
-        GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = Convert.ToInt32(allInformation[9]);
-        GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(Convert.ToInt32(allInformation[9]));
-
-        GameObject.Find("SoundController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[10]);
-        GameObject.Find("SFXController").GetComponent<AudioSource>().mute = Convert.ToBoolean(allInformation[11]);
-        soundChecks[0].isOn = Convert.ToBoolean(allInformation[10]);
-        soundChecks[1].isOn = Convert.ToBoolean(allInformation[11]);
+        GameObject.Find("SoundController").GetComponent<AudioSource>().mute = Convert.ToBoolean(PlayerPrefs.GetInt("Music"));
+        GameObject.Find("SFXController").GetComponent<AudioSource>().mute = Convert.ToBoolean(PlayerPrefs.GetInt("SFX"));
+        soundChecks[0].isOn = Convert.ToBoolean(PlayerPrefs.GetInt("Music"));
+        soundChecks[1].isOn = Convert.ToBoolean(PlayerPrefs.GetInt("SFX"));
 
         GameObject.Find("HUD").GetComponent<HUD>().SetName(nameTown);
         GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
 
-        string[] quests = Regex.Split(allInformation[5], "<e>");
+        string[] quests = Regex.Split(PlayerPrefs.GetString("Quests"), "<e>");
         int[] questsInt = new int[quests.Length - 1];
         for (int i = 0; i < quests.Length; i++)
         {
@@ -262,7 +245,7 @@ public class Account : MonoBehaviour
         }
         GameObject.Find("Quests").GetComponent<Quests>().questLineProgress = questsInt;
 
-        string[] buildingsToPlace = Regex.Split(allInformation[0], "<r>");
+        string[] buildingsToPlace = Regex.Split(PlayerPrefs.GetString("Buildings"), "<r>");
         int numberToPlace = 0;
         foreach (string tempBuilding in buildingsToPlace)
         {
@@ -307,7 +290,7 @@ public class Account : MonoBehaviour
                         if (tempBuilding2.GetComponent<BuildingMain>().buildingName != "TimeMachine")
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
-                            TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(allInformation[4]));
+                            TimeSpan sec = DateTime.Now.Subtract(Convert.ToDateTime(PlayerPrefs.GetString("LastTimeOnline")));
 
                             if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
