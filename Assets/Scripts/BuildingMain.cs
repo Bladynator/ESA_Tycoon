@@ -293,6 +293,7 @@ public class BuildingMain : MonoBehaviour
                     alltext2 = allButtons[1].GetComponentsInChildren<Text>();
                     foreach (Text temp in alltext2)
                     {
+                        temp.color = disabledColour;
                         if (priceForUpgrading[level + 1, 0] > account.level)
                         {
                             allText[3].color = disabledRed;
