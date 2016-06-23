@@ -9,7 +9,7 @@ public class CameraChanger : MonoBehaviour
     Vector3 camera_position = Vector3.zero;
     public bool activeDialog = false;
     
-    public float orthoZoomSpeed = 0.1f;
+    public float orthoZoomSpeed = 0.03f;
 
     float touchDuration;
     Touch touch;
@@ -80,13 +80,13 @@ public class CameraChanger : MonoBehaviour
 
                 camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
 
-                if (camera.orthographicSize < 6.6f)
+                if (camera.orthographicSize < 10f)
                 {
-                    camera.orthographicSize = 6.6f;
+                    camera.orthographicSize = 10f;
                 }
-                if (camera.orthographicSize > 20)
+                if (camera.orthographicSize > 22)
                 {
-                    camera.orthographicSize = 20;
+                    camera.orthographicSize = 22;
                 }
             }
 
