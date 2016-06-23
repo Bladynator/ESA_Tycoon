@@ -11,18 +11,13 @@ public class Controller3 : MonoBehaviour
     Transform[] positionsOfButtons = new Transform[12];
     public GameObject pressedButtonFirst;
     public bool pressedButton = false;
-    int totalConnected = 0;
     List<int> excludedNumbers = new List<int>();
-    Quaternion rotation;
     public int amountToShow = 2, numberToClick = 0, difficulty = 0, score = 0;
-    [SerializeField]
-    int[] amountsToShow;
     bool endLess = false, end = false;
     int turn = 0;
 
     bool waitingForTimer = false;
     int timer = 30;
-    bool holdingDown = true;
 
     [SerializeField]
     Sprite[] icons;
@@ -33,13 +28,8 @@ public class Controller3 : MonoBehaviour
     ButtonToConnect[] temp;
 
     public Rope2D newRope;
-    GameObject tempLiner;
-    Breakable[] temp2;
-    Vector2 positionOld;
     [SerializeField]
-    GameObject liner, chainObject;
-    [SerializeField]
-    Material tempMat;
+    GameObject chainObject;
     bool touching = true;
     [SerializeField]
     AudioClip hit, done;
@@ -60,22 +50,6 @@ public class Controller3 : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (temp2 != null)
-        {
-            temp2[temp2.Length - 1].transform.position = positionOld;
-        }
-        */
-        /*
-        if (Input.touchCount == 0 && pressedButtonFirst != null)
-        {
-            touching = false;
-        }
-        else
-        {
-            touching = true;
-        }
-        */
         if (!endLess && !end)
         {
             if(!waitingForTimer)
@@ -233,36 +207,6 @@ public class Controller3 : MonoBehaviour
     void MakeRopeFinal()
     {
         Instantiate(chainObject, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 30), transform.rotation);
-        /*
-        tempLiner = Instantiate(liner);
-        
-        Transform[] childerenFromRope = tempLiner.GetComponentsInChildren<Transform>();
-        tempLiner.transform.position = transform.position;
-        childerenFromRope[0].transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 30);
-        childerenFromRope[1].transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 30);
-        newRope = new Rope2D();
-        newRope.CreateRope(tempLiner, chainObject, childerenFromRope[0], childerenFromRope[1], false, false, true, true, false, false, tempMat, 0.3f);
-
-        temp2 = GameObject.Find("RopeNew(Clone)").GetComponentsInChildren<Breakable>();
-        //temp2[0].gameObject.AddComponent<ToMouse>();
-        foreach (Breakable temp3 in temp2)
-        {
-            //temp3.enabled = false;
-            //if (temp3.GetComponent<HingeJoint2D>() != null)
-            //{
-            //    temp3.GetComponent<HingeJoint2D>().useLimits = true;
-            //}
-
-            //temp3.GetComponent<Rigidbody2D>().mass = 1;
-            temp3.gameObject.tag = "rope2D";
-            temp3.GetComponent<Rigidbody2D>().gravityScale = 0;
-            temp3.gameObject.layer = 2;
-        }
-        //positionOld = temp2[temp2.Length - 1].transform.position;
-
-        temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        //temp2[temp2.Length - 1].GetComponent<Rigidbody2D>().mass = 1;
-        */
     }
 
     public void Calculate(GameObject button)
@@ -284,7 +228,6 @@ public class Controller3 : MonoBehaviour
             if (numberToClick  != amountToShow)
             {
                 excludedNumbers.Clear();
-                totalConnected = 0;
                 GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Connect");
                 for (int i = 0; i < toDestroy.Length; i++)
                 {
@@ -303,8 +246,6 @@ public class Controller3 : MonoBehaviour
     {
         if (newRope != null)
         {
-            Destroy(tempLiner);
-            temp2 = null;
             newRope = null;
         }
     }

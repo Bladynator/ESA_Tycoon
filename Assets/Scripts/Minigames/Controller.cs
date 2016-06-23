@@ -10,7 +10,7 @@ public class Controller : MonoBehaviour
     public GameObject[] spawns;
     bool waitingForSpawn = false;
     [SerializeField]
-    float[] spawnSpeed, reduction, endspeed;
+    float[] spawnSpeed;
     bool end = false;
     int endScore;
     [SerializeField]
@@ -45,13 +45,6 @@ public class Controller : MonoBehaviour
             }
             while (randomHeight == lastLocation);
             GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
-            /*
-            spawnSpeed[difficulty] -= reduction[difficulty];
-            if (spawnSpeed[difficulty] <= endspeed[difficulty])
-            {
-                spawnSpeed[difficulty] = endspeed[difficulty];
-            }
-            */
             lastLocation = randomHeight;
         }
         yield return new WaitForSeconds(sec);

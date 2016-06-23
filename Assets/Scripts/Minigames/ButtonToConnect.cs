@@ -7,9 +7,6 @@ public class ButtonToConnect : MonoBehaviour
     public int number;
     public Controller3 controller;
     
-    Ray ray;
-    RaycastHit hit;
-    
 
     void Start()
     {

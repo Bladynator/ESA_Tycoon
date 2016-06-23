@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public int hp = 3;
     GameObject[] locations;
     int currentLocation = 2;
-    bool waiting = false, waitingScore = false;
+    bool waitingScore = false;
     public int endScore = 0;
     Color oldColour;
     public Color redColour, redColourLast;
@@ -23,9 +23,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.position = new Vector2(-6, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        /*
-        transform.position = new Vector2(-8, locations[currentLocation].transform.position.y);
-        */
         if(!waitingScore)
         {
             StartCoroutine(WaitScore());
@@ -64,12 +61,6 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = oldColour;
     }
 
-    public void NewLocation(float value)
-    {
-        currentLocation = (int)value;
-        StartCoroutine(Wait());
-    }
-
     IEnumerator WaitScore()
     {
         waitingScore = true;
@@ -100,12 +91,5 @@ public class Player : MonoBehaviour
         }
         endScore++;
         waitingScore = false;
-    }
-
-    IEnumerator Wait()
-    {
-        waiting = true;
-        yield return new WaitForSeconds(0.1f);
-        waiting = false;
     }
 }

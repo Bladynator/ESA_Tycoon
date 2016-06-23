@@ -26,7 +26,7 @@ public class Negative : MonoBehaviour
         if (Time.time >= currentTime + 1f)
         {
             currentTime = Time.time;
-            speedMultiplier += 0.01f;
+            speedMultiplier += 0.08f;
         }
     }
 
