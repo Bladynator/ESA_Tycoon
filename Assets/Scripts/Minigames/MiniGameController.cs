@@ -5,10 +5,7 @@ using UnityEngine.SceneManagement;
 public class MiniGameController : MonoBehaviour 
 {
     public int difficultyMiniGame = 0;
-    public int score;
-    public int currencyGotFromMinigame = 0;
     public bool backFromMinigame = false;
-    public int[] highscores = new int[3] {0,0,0 };
     public string minigameToLoad = "";
 
     public bool fromClickToStart = false;
@@ -26,7 +23,7 @@ public class MiniGameController : MonoBehaviour
         }
     }
 	
-	public void ActivateMiniGame(string minigame, int difficulty, int currencyGot = 0)
+	public void ActivateMiniGame(string minigame, int difficulty)
     {
         difficultyMiniGame = difficulty;
         minigameToLoad = minigame;
@@ -34,7 +31,6 @@ public class MiniGameController : MonoBehaviour
         {
             SceneManager.LoadScene("_Main");
             backFromMinigame = true;
-            currencyGotFromMinigame = currencyGot;
         }
         else
         {

@@ -15,7 +15,7 @@ public class BackToTycoon : MonoBehaviour
 
     public void Start()
     {
-        level = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer;
+        level = PlayerPrefs.GetInt("Level");
         barToFill.fillAmount = (float)(level / 10);
         objectToMove.transform.position = positions[(int)level - 1].transform.position;
     }

@@ -28,9 +28,9 @@ public class Controller : MonoBehaviour
     
     void Update()
     {
+        
         if (!waitingForSpawn && !end)
         {
-            GameObject.Find("Score").GetComponentInChildren<Text>().text = "Score: " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().endScore.ToString();
             StartCoroutine(waitForSec(spawnSpeed[difficulty]));
         }
         
@@ -78,12 +78,11 @@ public class Controller : MonoBehaviour
     
     void PressedEnd()
     {
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().score = endScore;
-        if(GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1] < endScore)
+        if(PlayerPrefs.GetInt("Minigame1") < endScore)
         {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[1] = endScore;
             PlayerPrefs.SetInt("Minigame1", endScore);
         }
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty, endScore);
+        PlayerPrefs.SetInt("RP", PlayerPrefs.GetInt("RP") + endScore);
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty);
     }
 }

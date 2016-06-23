@@ -101,13 +101,12 @@ public class Controller2 : MonoBehaviour
 
     void PressedEnd()
     {
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().score = score;
-        if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2] < score)
+        if (PlayerPrefs.GetInt("Minigame2") < score)
         {
-            GameObject.Find("MiniGameController").GetComponent<MiniGameController>().highscores[2] = score;
             PlayerPrefs.SetInt("Minigame2", score);
         }
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty, score);
+        PlayerPrefs.SetInt("RP", PlayerPrefs.GetInt("RP") + score);
+        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().ActivateMiniGame("_Main", difficulty);
     }
 
     void FixedUpdate()

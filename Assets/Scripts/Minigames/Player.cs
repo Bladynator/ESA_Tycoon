@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
     public int hp = 3;
-    GameObject[] locations;
-    int currentLocation = 2;
     bool waitingScore = false;
     public int endScore = 0;
     Color oldColour;
@@ -16,8 +15,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        locations = GameObject.Find("Controller").GetComponent<Controller>().spawns;
         oldColour = GetComponent<SpriteRenderer>().color;
+        GameObject.Find("Score").GetComponentInChildren<Text>().text = "Score: " + 0;
     }
     
     void Update()
@@ -65,6 +64,7 @@ public class Player : MonoBehaviour
     {
         waitingScore = true;
         yield return new WaitForSeconds(1);
+
         switch(diff)
         {
             case 0:
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
                     break;
                 }
         }
-        endScore++;
+        GameObject.Find("Score").GetComponentInChildren<Text>().text = "Score: " + endScore.ToString();
         waitingScore = false;
     }
 }

@@ -14,7 +14,6 @@ public class Account : MonoBehaviour
 {
     public int level = 1, money = 0, researchPoints = 0, exp = 0;
     public string nameTown;
-    SaveLoad saveLoad;
     [SerializeField]
     BuildingButtons buildings;
     public string[] namesBuildings;
@@ -31,9 +30,7 @@ public class Account : MonoBehaviour
 
     void Start()
     {
-        saveLoad = GameObject.Find("SaveLoad").GetComponent<SaveLoad>();
         PushLoad();
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
     }
 
     private void ShareCallback(IShareResult result)
@@ -79,10 +76,10 @@ public class Account : MonoBehaviour
         GameObject.Find("LevelIcon").GetComponent<Toggle>().isOn = true;
         GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>().Play();
         level++;
-        GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
         GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
         GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = newbuildings[level];
         GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(newbuildings[level]);
+        PushSave();
     }
 
     public void Share()
@@ -184,7 +181,6 @@ public class Account : MonoBehaviour
         if (GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame)
         {
             GameObject.Find("MiniGameController").GetComponent<MiniGameController>().backFromMinigame = false;
-            researchPoints += GameObject.Find("MiniGameController").GetComponent<MiniGameController>().currencyGotFromMinigame;
             int dialogToActivate = 12 + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
 
             if (!PlayerPrefs.HasKey("Diff" + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame + GameObject.Find("MiniGameController").GetComponent<MiniGameController>().minigameToLoad))
