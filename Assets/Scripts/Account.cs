@@ -76,6 +76,8 @@ public class Account : MonoBehaviour
     {
         GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(levelUpSound);
         exp -= expNeededForLevel[level];
+        GameObject.Find("LevelIcon").GetComponent<Toggle>().isOn = true;
+        GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>().Play();
         level++;
         GameObject.Find("MiniGameController").GetComponent<MiniGameController>().levelPlayer = level;
         GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
