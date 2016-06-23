@@ -245,11 +245,11 @@ public class BuildingMain : MonoBehaviour
             }
             else if(timeSpan.Hours < 1)
             {
-                timeToDisplay = timeSpan.Minutes + " m";
+                timeToDisplay = timeSpan.Minutes + 1 + " m";
             }
             else
             {
-                timeToDisplay = timeSpan.Hours + " h";
+                timeToDisplay = timeSpan.Hours + 1 + " h";
             }
             tempBar.GetComponentInChildren<Text>().text = timeToDisplay;
         }
