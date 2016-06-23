@@ -92,6 +92,8 @@ public class Controller2 : MonoBehaviour
                     break;
                 }
         }
+        GameObject.Find("SFXController").GetComponent<AudioSource>().Stop();
+        Destroy(GameObject.Find("SFXController"));
         end = true;
         score = Mathf.FloorToInt(lastScore);
         tempCanvas = Instantiate(canvasEnd);
