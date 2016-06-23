@@ -279,12 +279,10 @@ public class Account : MonoBehaviour
 
                         GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].building = buildingToPlace.buildingName;
                         MainGameController.ChangeColliders(true);
-                        //ChangeColliders(true);
                         Vector2 size = buildingToPlace.size;
                         BuildingMain tempBuilding2 = (BuildingMain)Instantiate(buildingToPlace, GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].transform.position, transform.rotation);
                         tempBuilding2.ID = GameObject.Find("Grid").GetComponent<Grid>().grid[placeOfGridX, placeOfGridY].ID;
                         tempBuilding2.transform.localScale = new Vector2(size.x * 0.98f, size.y * 0.95f);
-                        //tempBuilding2.transform.localScale = new Vector2(3 * 0.98f, 3 * 0.95f);
                         if (tempBuilding2.GetComponent<BuildingMain>().buildingName != "TimeMachine")
                         {
                             tempBuilding2.taskDoing = Convert.ToInt32(informationOneBuilding[1]);
@@ -293,18 +291,15 @@ public class Account : MonoBehaviour
                             if (Convert.ToBoolean(informationOneBuilding[2]))
                             {
                                 tempBuilding2.busy = true;
-                                //tempBuilding2.maxtimeForTask = Convert.ToInt32(informationOneBuilding[5]);
                             }
                             else
                             {
                                 tempBuilding2.busy = false;
                             }
-                            //tempBuilding2.maxtimeForTask = Convert.ToInt32(informationOneBuilding[2]);
                             tempBuilding2.level = Convert.ToInt32(informationOneBuilding[3]);
                             if (Convert.ToBoolean(informationOneBuilding[8]))
                             {
                                 tempBuilding2.building = true;
-                                //tempBuilding2.SetMaxTime();
                             }
                             else
                             {
