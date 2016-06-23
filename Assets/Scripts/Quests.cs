@@ -12,7 +12,7 @@ public class Quests : MonoBehaviour
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[4, 10]
-    {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre!","Place a FLAG from DECORATIONS-MENU of your choice.","","","","","",""},
+    {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre!","Place a FLAG (from the Decorations Menu) of your choice.","","","","","",""},
     {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
     {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","","","","",""},
     {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};

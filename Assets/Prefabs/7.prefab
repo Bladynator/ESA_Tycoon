@@ -76,7 +76,7 @@ MonoBehaviour:
   buildingInformation: 'Flags are there to decorate your Space Centre and give it
     a nice look. '
   buildingSprites:
-  - {fileID: 21300000, guid: 23c37b2836cf28b49ac6368a34d12ecb, type: 3}
+  - {fileID: 21300000, guid: 6e6ab3d4d0c87d04f9b7a5bbc3f0a390, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 23c37b2836cf28b49ac6368a34d12ecb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e6ab3d4d0c87d04f9b7a5bbc3f0a390, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour
     GameObject tempCanvas;
     int difficulty;
     int lastLocation = 0;
+    public float speedMultiplier = 1, currentTime = 0;
 
     void Start()
     {
@@ -29,14 +30,22 @@ public class Controller : MonoBehaviour
     {
         if (!waitingForSpawn && !end)
         {
+            GameObject.Find("Score").GetComponentInChildren<Text>().text = "Score: " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().endScore.ToString();
             StartCoroutine(waitForSec(spawnSpeed[difficulty]));
+        }
+        
+        if (Time.time >= currentTime + 1f)
+        {
+            currentTime = Time.time;
+            speedMultiplier += 0.02f;
         }
     }
 
     IEnumerator waitForSec(float sec)
     {
+        sec = sec / speedMultiplier;
         waitingForSpawn = true;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             int randomHeight = 0;
             do
@@ -45,6 +54,7 @@ public class Controller : MonoBehaviour
             }
             while (randomHeight == lastLocation);
             GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
+            negativeTemp.GetComponent<Negative>().speedMultiplier = speedMultiplier;
             lastLocation = randomHeight;
         }
         yield return new WaitForSeconds(sec);
