@@ -5484,7 +5484,7 @@ MonoBehaviour:
   canvas: {fileID: 1991782588}
   continueButton: {fileID: 1791830642}
   peopleToTalkTo:
-  - {fileID: 21300000, guid: 68773093f62944842916addf823cc01b, type: 3}
+  - {fileID: 21300000, guid: 171ddf2162bdc2c4fbca537012bb566e, type: 3}
   - {fileID: 21300000, guid: 2968dd0163f2c864b806a15acec632fc, type: 3}
   character: {fileID: 1109494732}
   talkSound: {fileID: 8300000, guid: 8b6fc89a7f9ca6e4981336703140b175, type: 3}
