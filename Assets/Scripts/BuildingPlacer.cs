@@ -42,7 +42,6 @@ public class BuildingPlacer : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(lastClick);
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
         {
@@ -127,9 +126,12 @@ public class BuildingPlacer : MonoBehaviour
             GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
             foreach (GameObject tempBuilding2 in allBuildings)
             {
-                tempBuilding2.GetComponent<CircleCollider2D>().enabled = true;
-                tempBuilding2.GetComponent<BuildingMain>().canClick = true;
-                GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = false;
+                if (tempBuilding2.GetComponent<CircleCollider2D>() != null)
+                {
+                    tempBuilding2.GetComponent<CircleCollider2D>().enabled = true;
+                    tempBuilding2.GetComponent<BuildingMain>().canClick = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = false;
+                }
             }
             grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
             for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
