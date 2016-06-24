@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5090826}
   - 233: {fileID: 23318230}
   - 114: {fileID: 11441550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chain new
   m_TagString: rope2D
   m_Icon: {fileID: 0}

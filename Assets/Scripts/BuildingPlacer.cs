@@ -13,11 +13,11 @@ public class BuildingPlacer : MonoBehaviour
     Account account;
     [SerializeField]
     Transform[] Arrows;
+    public int lastClick = 0;
 
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        //account.ChangeColliders(false);
         MainGameController.ChangeColliders(false);
         grid = GameObject.Find("Grid").GetComponent<Grid>().grid;
         for (int i = 0; i < buildingToPlace.GetComponent<BuildingMain>().size.x; i++)
@@ -42,6 +42,7 @@ public class BuildingPlacer : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(lastClick);
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
         {
@@ -206,7 +207,7 @@ public class BuildingPlacer : MonoBehaviour
         }
         else
         {
-            Arrows[0].GetComponent<ChangePositionBuilding>().OnMouseDown();
+            Arrows[lastClick].GetComponent<ChangePositionBuilding>().OnMouseDown();
         }
     }
 
@@ -237,7 +238,7 @@ public class BuildingPlacer : MonoBehaviour
         GameObject.Find("HUD").GetComponent<HUD>().reset.SetActive(false);
     }
 
-    public void ChangePosition(Vector2 newPostion)
+    public void ChangePosition(Vector2 newPostion, int lastClicked)
     {
         GameObject[] allFields = GameObject.FindGameObjectsWithTag("EmptyField");
         foreach (GameObject tempField in allFields)
@@ -253,6 +254,7 @@ public class BuildingPlacer : MonoBehaviour
                 tempBuilding.oldBuilding = oldBuilding;
                 tempBuilding.rePos = rePos;
                 tempBuilding.oldActivePlace = oldActivePlace;
+                tempBuilding.lastClick = lastClicked;
                 Destroy(gameObject);
             }
         }

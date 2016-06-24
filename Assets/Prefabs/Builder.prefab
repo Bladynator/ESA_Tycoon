@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newPostionOnGrid: {x: 1, y: 0}
   moveSound: {fileID: 8300000, guid: ec779233ae47f8744b0d7affb167be73, type: 3}
+  number: 0
 --- !u!114 &11428986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newPostionOnGrid: {x: 0, y: 1}
   moveSound: {fileID: 8300000, guid: ec779233ae47f8744b0d7affb167be73, type: 3}
+  number: 1
 --- !u!114 &11447086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newPostionOnGrid: {x: 0, y: -1}
   moveSound: {fileID: 8300000, guid: ec779233ae47f8744b0d7affb167be73, type: 3}
+  number: 2
 --- !u!114 &11450434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,6 +374,7 @@ MonoBehaviour:
   - {fileID: 455342}
   - {fileID: 454174}
   - {fileID: 468190}
+  lastClick: 0
 --- !u!114 &11458228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newPostionOnGrid: {x: -1, y: 0}
   moveSound: {fileID: 8300000, guid: ec779233ae47f8744b0d7affb167be73, type: 3}
+  number: 3
 --- !u!114 &11466206
 MonoBehaviour:
   m_ObjectHideFlags: 1

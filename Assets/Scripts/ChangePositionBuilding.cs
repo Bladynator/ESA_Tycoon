@@ -8,6 +8,7 @@ public class ChangePositionBuilding : MonoBehaviour
     Vector2 newPostionOnGrid;
     int gridSize;
     public AudioClip moveSound;
+    public int number;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class ChangePositionBuilding : MonoBehaviour
         if (buildingPlacer.activePlaceOnGrid.x + newPostionOnGrid.x >= 0 && buildingPlacer.activePlaceOnGrid.y + newPostionOnGrid.y >= 0 && buildingPlacer.activePlaceOnGrid.x + newPostionOnGrid.x <= gridSize - buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().size.x && buildingPlacer.activePlaceOnGrid.y + newPostionOnGrid.y <= gridSize - buildingPlacer.buildingToPlace.GetComponent<BuildingMain>().size.y + 1)
         {
             newPostionOnGrid = new Vector2(buildingPlacer.activePlaceOnGrid.x += newPostionOnGrid.x, buildingPlacer.activePlaceOnGrid.y += newPostionOnGrid.y);
-            buildingPlacer.ChangePosition(newPostionOnGrid);
+            buildingPlacer.ChangePosition(newPostionOnGrid, number);
         }
     }
 }
