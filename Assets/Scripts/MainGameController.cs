@@ -41,15 +41,6 @@ public class MainGameController : MonoBehaviour
         {
             DeleteSave();
         }
-        if (reset == "TGM")
-        {
-            DeleteSave();
-        }
-        if (reset == "TarunSucks")
-        {
-            GameObject.Find("Account").GetComponent<Account>().money += 5000;
-            GameObject.Find("Account").GetComponent<Account>().researchPoints += 5000;
-        }
     }
 
     public static void DeleteSave()
