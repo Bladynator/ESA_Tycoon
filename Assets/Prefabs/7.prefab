@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Flag
   size: {x: 1, y: 1}
-  levelsNeededNewBuilding: 01000000020000005a000000
+  levelsNeededNewBuilding: 0100000002000000020000000200000002000000020000000200000002000000020000005a000000
   levelsNeededUpgrade: 
   moneyNeededUpgrade: f4010000
   rpNeededUpgrade: c8000000

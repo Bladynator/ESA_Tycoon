@@ -45,9 +45,12 @@ public class BuildingPlacer : MonoBehaviour
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject tempBuilding in allBuildings)
         {
-            tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
-            tempBuilding.GetComponent<BuildingMain>().canClick = false;
-            GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = true;
+            if (tempBuilding.GetComponent<CircleCollider2D>() != null)
+            {
+                tempBuilding.GetComponent<CircleCollider2D>().enabled = false;
+                tempBuilding.GetComponent<BuildingMain>().canClick = false;
+                GameObject.Find("Main Camera").GetComponent<CameraChanger>().builderOn = true;
+            }
         }
         CheckBorders();
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y);
@@ -168,7 +171,7 @@ public class BuildingPlacer : MonoBehaviour
                 GameObject.Find("Account").GetComponent<Account>().autoSave = true;
             }
             GameObject.Find("HUD").GetComponent<HUD>().EnableButton();
-            if (!tempBuilding.GetComponent<BuildingMain>().decoration)
+            if (tempBuilding.GetComponent<BuildingMain>().buildingName != "Trees")
             {
                 Destroy(gameObject);
             }
