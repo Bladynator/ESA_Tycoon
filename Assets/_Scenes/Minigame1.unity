@@ -530,6 +530,8 @@ MonoBehaviour:
   - 0.8
   - 0.6
   canvasEnd: {fileID: 153488, guid: 9067123df0cf0bc4f863d5f3cc618da9, type: 2}
+  speedMultiplier: 1
+  currentTime: 0
 --- !u!1001 &793390576
 Prefab:
   m_ObjectHideFlags: 0
@@ -1282,11 +1284,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1329361382}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 318, y: 204.75}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 37.5}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1977991633
 MonoBehaviour:
   m_ObjectHideFlags: 0
