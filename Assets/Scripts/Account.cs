@@ -30,6 +30,7 @@ public class Account : MonoBehaviour
 
     void Start()
     {
+        MainGameController.Background();
         PushLoad();
     }
 

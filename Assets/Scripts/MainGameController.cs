@@ -80,4 +80,13 @@ public class MainGameController : MonoBehaviour
             SceneManager.LoadScene(scene);
         }
     }
+
+    public static void Background()
+    {
+#if UNITY_ANDROID
+        Application.runInBackground = true;
+#else
+
+#endif
+    }
 }
