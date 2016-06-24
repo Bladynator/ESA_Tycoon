@@ -176,6 +176,34 @@ public class BuildingPlacer : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                AutoMove();
+            }
+        }
+    }
+
+    void AutoMove()
+    {
+        if (activePlaceOnGrid.x == 0)
+        {
+            Arrows[0].GetComponent<ChangePositionBuilding>().OnMouseDown();
+        }
+        else if (activePlaceOnGrid.y == 0)
+        {
+            Arrows[1].GetComponent<ChangePositionBuilding>().OnMouseDown();
+        }
+        else if (activePlaceOnGrid.x == GameObject.Find("Grid").GetComponent<Grid>().maxGridSize - buildingToPlace.GetComponent<BuildingMain>().size.x)
+        {
+            Arrows[3].GetComponent<ChangePositionBuilding>().OnMouseDown();
+        }
+        else if (activePlaceOnGrid.y == GameObject.Find("Grid").GetComponent<Grid>().maxGridSize - buildingToPlace.GetComponent<BuildingMain>().size.y)
+        {
+            Arrows[2].GetComponent<ChangePositionBuilding>().OnMouseDown();
+        }
+        else
+        {
+            Arrows[0].GetComponent<ChangePositionBuilding>().OnMouseDown();
         }
     }
 
