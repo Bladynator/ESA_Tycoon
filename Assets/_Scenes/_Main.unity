@@ -2513,9 +2513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'How to play
-
-    AIM - Space Challenge'
+  m_Text: "How to play\nAIM \u2013 Space Challenge"
 --- !u!222 &248147479
 CanvasRenderer:
   m_ObjectHideFlags: 0

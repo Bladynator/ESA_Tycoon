@@ -267,7 +267,7 @@ public class BuildingMain : MonoBehaviour
             allButtons[i].onClick.RemoveAllListeners();
         }
         allText = canvasTemp.GetComponentsInChildren<Text>();
-        allText[0].text = buildingName + " - LVL " + (level + 1).ToString();
+        allText[0].text = buildingName + " – LVL " + (level + 1).ToString();
         allImages[16].sprite = buildingSprites[level];
         allButtons[0].onClick.AddListener(delegate { BackClicked(); });
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
