@@ -315,8 +315,16 @@ public class Tutorial : MonoBehaviour
                         case 4:
                             {
                                 hud.buildButton.interactable = false;
-                                //ShowArrow(5);
+                                ShowArrow(5);
                                 if (account.money >= 1210)
+                                {
+                                    questPart = 7;
+                                }
+                                if (GameObject.Find("2(Clone)").GetComponent<BuildingMain>().busy)
+                                {
+                                    questPart = 6;
+                                }
+                                if (GameObject.Find("CanvasBuilding") != null)
                                 {
                                     questPart++;
                                 }
@@ -324,17 +332,47 @@ public class Tutorial : MonoBehaviour
                             }
                         case 5:
                             {
-                                ShowDialog(9, false);
-                                tutorialDoing = false;
+                                DestroyArrow();
+                                ShowArrow(6);
+                                if (account.money >= 1210)
+                                {
+                                    questPart = 7;
+                                }
+                                if (GameObject.Find("2(Clone)").GetComponent<BuildingMain>().busy)
+                                {
+                                    questPart++;
+                                }
+                                if (GameObject.Find("CanvasBuilding") == null)
+                                {
+                                    DestroyArrow();
+                                    questPart--;
+                                }
                                 break;
                             }
                         case 6:
                             {
-                                questPart = -6;
+                                DestroyArrow();
+                                if (account.money >= 1210)
+                                {
+                                    questPart++;
+                                }
                                 break;
                             }
                         case 7:
                             {
+                                DestroyArrow();
+                                ShowDialog(9, false);
+                                tutorialDoing = false;
+                                break;
+                            }
+                        case 8:
+                            {
+                                questPart = -6;
+                                break;
+                            }
+                        case 9:
+                            {
+                                DestroyArrow();
                                 ShowArrow(1);
                                 if (questLine.tutorialBack == false)
                                 {
@@ -358,6 +396,17 @@ public class Tutorial : MonoBehaviour
                                 questPart = 1;
                                 break;
                             }
+                        case -6:
+                            {
+                                ShowArrow(4);
+                                if (GameObject.Find("BuildButton").GetComponent<Toggle>().isOn)
+                                {
+                                    DestroyArrow();
+                                    ShowArrow(2);
+                                    GameObject.Find("Decoration").GetComponent<Button>().onClick.Invoke();
+                                }
+                                break;
+                            }
                         default:
                             {
                                 break;
@@ -371,6 +420,7 @@ public class Tutorial : MonoBehaviour
                     {
                         case -6:
                             {
+                                DestroyArrow();
                                 if (questLine.questLineProgress[0] == 0)
                                 {
                                     questPart = 7;
@@ -498,7 +548,7 @@ public class Tutorial : MonoBehaviour
         activeArrow = location;
         if(location == 5)
         {
-            arrowLocations[location].GetComponent<RectTransform>().position = Camera.main.ScreenToWorldPoint(GameObject.Find("3").GetComponent<Transform>().position);
+            arrowLocations[location].GetComponent<RectTransform>().position = new Vector3(GameObject.Find("2(Clone)").GetComponent<Transform>().position.x + 1.3f, GameObject.Find("2(Clone)").GetComponent<Transform>().position.y + 6);
         }
     }
 
