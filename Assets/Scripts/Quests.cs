@@ -13,9 +13,9 @@ public class Quests : MonoBehaviour
     [SerializeField]
     string[,] allText = new string[4, 10]
     {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre","Place a Flag (from the Decorations Menu)","","","","","",""},
-    {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
-    {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","","","","",""},
-    {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};
+    {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 4 Trees","Place Installation from Decorations-menu","Plant 8 Trees","","",""},
+    {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","Construct 6 Mission Buildings ","","","",""},
+    {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","Upgrade the Mission Control to Level 4","Upgrade the Research & Development Centres to Level 4","","",""}};
     public int questOpen = -1;
 
     int[] myInformation = new int[20];
@@ -50,8 +50,8 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0}, 
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0}, 
         {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
@@ -61,7 +61,7 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0}, 
         {0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -72,8 +72,8 @@ public class Quests : MonoBehaviour
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2},
         {0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, 
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} };
@@ -96,8 +96,8 @@ public class Quests : MonoBehaviour
         {50,0,0,0,17,0,0,0,0,0},
         {100,0,0,0,18,0,0,0,0,0},
         {200,0,0,0,19,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        {200,0,0,0,28,0,0,0,0,0},
+        {200,0,0,0,29,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}},
@@ -107,19 +107,19 @@ public class Quests : MonoBehaviour
         {200,0,0,0,21,0,0,0,0,0},
         {200,0,0,0,22,0,0,0,0,0},
         {0,200,0,0,23,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        {500,0,0,0,30,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}},
 
-        { {100,0,0,0,0,0,0,0,0,0},
-        {0,200,0,0,24,0,0,0,0,0},
-        {100,0,0,0,25,0,0,0,0,0},
-        {200,0,0,0,26,0,0,0,0,0},
-        {0,0,0,0,27,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0},
+        { {00,0,0,0,0,0,0,0,0,0},
+        {100,0,0,0,24,0,0,0,0,0},
+        {0,200,0,0,25,0,0,0,0,0},
+        {100,0,0,0,26,0,0,0,0,0},
+        {200,0,0,0,27,0,0,0,0,0},
+        {500,0,0,0,31,0,0,0,0,0},
+        {200,0,0,0,32,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0}}, };
@@ -144,7 +144,7 @@ public class Quests : MonoBehaviour
                         ResetQuests();
                         break;
                     }
-                    MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i, questRewards[i, questLineProgress[i], 5]);
+                    MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i, questRewards[i, questLineProgress[i], 4]);
                     wait = true;
                 }
             }

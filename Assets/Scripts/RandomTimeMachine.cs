@@ -16,7 +16,7 @@ public class RandomTimeMachine : BuildingMain
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            int number = Random.Range(28, 33);
+            int number = Random.Range(33, 38);
             dialogs.ActivateTalking(number);
         }
     }

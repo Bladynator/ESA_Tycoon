@@ -5,7 +5,7 @@ using System;
 
 public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[33, 10]
+    string[,] dialogText = new string[38, 10]
         {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + ". I will be your assistant and will help you to fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
     {"a","Excellent! Cool name!","","","","","","","",""},
     {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
@@ -34,6 +34,11 @@ public class Dialogs : MonoBehaviour
         {"a","Seems like the testing phase went pretty well because you have just reached level 2. Nice!","","","","","","","",""},
         {"a","Hey! Now you don’t have one, but two Research & Development Centres. This means you can double your research and earn double the amount of research points. Well done!","","","","","","","",""},
         {"a","Hello there. How are you? You have unlocked a new task, which is organizing an open day. Go to the Headquarters to check it out.","","","","","","","",""},
+        {"a","Wow, that installation is really cool! Good to see you are styling your Space Centre. It looks amazing!","","","","","","","",""}, // new
+        {"a","Those trees look lovely! Good to see you are styling your Space Centre. It looks amazing!","","","","","","","",""},
+        {"a","Hey! Now you have 6 new Mission Buildings. This means you can generate more Research Points. Well done!","","","","","","","",""},
+        {"a","Hey! You upgraded your Mission Control. Nice! The building looks really good!","","","","","","","",""},
+        {"a","Hey! You upgraded your Research & Development Centres. Nice! The buildings look lovely.","","","","","","","",""}, // end
         {"f","Hey! How are you doing?","You launched the satellite? That’s amazing! Good job.","Everyone is so proud of you. We hope you know that.","Okay, talk to you soon. Bye!","","","","",""},
         {"f","Hi there! How is it going?","Good to know. Oh, your research is coming in. Thank you!","We all think it is so cool what you’re doing. Anyway, good luck with the rest of your mission.","Talk to you soon. Bye bye!","","","","",""},
         {"f","Hello there! What’s going on?","The research you sent last time was really valuable. Did you discover anything new?","Ah, you’re sending it right now. Thanks!","Talk to you later. See you!","","","","",""},
