@@ -308,7 +308,7 @@ public class BuildingMain : MonoBehaviour
                         }
                         else
                         {
-                            allText[2].color = Color.white;
+                            allText[22].color = Color.white;
                         }
                         if (priceForUpgrading[level + 1, 2] > account.researchPoints)
                         {
@@ -485,7 +485,6 @@ public class BuildingMain : MonoBehaviour
         tempBuilding.Delete();
         GameObject.FindGameObjectWithTag("Builder").GetComponent<BuildingPlacer>().Delete();
         MainGameController.ChangeColliders(true);
-        //GameObject.Find("Account").GetComponent<Account>().ChangeColliders(true);
         Destroy(GameObject.FindGameObjectWithTag("Builder"));
         Destroy(gameObject);
         account.PushSave();
