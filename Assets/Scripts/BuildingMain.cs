@@ -273,7 +273,6 @@ public class BuildingMain : MonoBehaviour
         GameObject.Find("BackButton2").GetComponent<Button>().onClick.AddListener(delegate { BackClicked(); });
         allButtons[2].onClick.AddListener(delegate { ReposClicked(); });
         GameObject.Find("FullBarLevelBuilding").GetComponent<Image>().fillAmount = (float)(level + 1) / 4;
-        //Debug.Log(allText.Length);
         ChangeResourceIconsTasks(true);
 
         if (!decoration)
@@ -282,7 +281,7 @@ public class BuildingMain : MonoBehaviour
             allText[1].text = "";
             if (level != 3)
             {
-                allText[3].text = priceForUpgrading[level + 1, 0].ToString(); // + "\n" + priceForUpgrading[level + 1, 1] + "\n" + priceForUpgrading[level + 1, 2];
+                allText[3].text = priceForUpgrading[level + 1, 0].ToString();
                 allText[22].text = priceForUpgrading[level + 1, 1].ToString();
                 allText[23].text = priceForUpgrading[level + 1, 2].ToString();
                 allButtons[1].interactable = true;
