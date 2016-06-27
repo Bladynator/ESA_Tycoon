@@ -37,7 +37,6 @@ public class Controller3 : MonoBehaviour
     void Start()
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
-        //amountToShow = amountsToShow[difficulty];
         amountToShow = 2;
         if(difficulty == 3)
         {

@@ -334,6 +334,7 @@ public class BuildingMain : MonoBehaviour
             else
             {
                 allText[3].text = "Max Level";
+                allButtons[1].interactable = false;
             }
             
             if (resourceBuilding)

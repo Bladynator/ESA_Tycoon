@@ -12,7 +12,7 @@ public class Quests : MonoBehaviour
     public int[] questLineProgress; // 0 = off
     [SerializeField]
     string[,] allText = new string[4, 10]
-    {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre!","Place a FLAG (from the Decorations Menu) of your choice.","","","","","",""},
+    {{"","Construct a Research and Development Centre (R&D)","Construct an Exhibition Centre","Place a Flag (from the Decorations Menu)","","","","","",""},
     {"","Construct 3 Mission Buildings","Upgrade the Headquarters to Level 2","Upgrade all the Resource Buildings to Level 2","Plant 2 Trees","","","","",""},
     {"","Play all mini-games (easy mode)","Upgrade the Exhibition Centre to Level 2","Construct a new Exhibition Centre","Upgrade Mission Buildings to Level 3","","","","",""},
     {"","Set up the Science College","Upgrade all the Mission Buildings to Level 2","Construct a new Research & Development Centre","Upgrade the Headquarters to Level 3","","","","",""}};
@@ -128,8 +128,6 @@ public class Quests : MonoBehaviour
     void Start()
     {
         account = GameObject.Find("Account").GetComponent<Account>();
-        //questButton = GameObject.Find("QuestsScreen").GetComponentInChildren<Toggle>();
-        //questButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -146,9 +144,7 @@ public class Quests : MonoBehaviour
                         ResetQuests();
                         break;
                     }
-                    //texts.Add(allText[i, questLineProgress[i]]);
                     MakeCanvas(allText[i, questLineProgress[i]], questRewards[i, questLineProgress[i], 0], questRewards[i, questLineProgress[i], 1], i, questRewards[i, questLineProgress[i], 5]);
-                    //texts = new List<string>();
                     wait = true;
                 }
             }
@@ -169,7 +165,6 @@ public class Quests : MonoBehaviour
             if (questLineProgress[i] != 0)
             {
                 questButton.interactable = true;
-                //questButton.onValueChanged.AddListener(delegate { OpenQuest(); });
                 texts.Add(allText[i, questLineProgress[i]]);
             }
         }
@@ -210,8 +205,6 @@ public class Quests : MonoBehaviour
             allTexts[i].text = text[i];
         }
         buttons[0].gameObject.SetActive(true);
-        //buttons[1].gameObject.SetActive(true);
-        //buttons[1].gameObject.SetActive(false);
         texts = new List<string>();
     }
 

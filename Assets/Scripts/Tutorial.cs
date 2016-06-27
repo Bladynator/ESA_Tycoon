@@ -54,7 +54,6 @@ public class Tutorial : MonoBehaviour
                                 GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(account.newbuildings[account.level]);
                                 tutorialDoing = true;
                                 menu.interactable = false;
-                                //account.ChangeColliders(false);
                                 MainGameController.ChangeColliders(false);
                                 account.autoSave = false;
                                 hud.EnableButton(false);
@@ -79,7 +78,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 4:
                             {
-                                MakeCanvas("You get: 1000 Coins!", 1000, 0, 0);
+                                MakeCanvas("You get 1000 Coins!", 1000, 0, 0);
                                 break;
                             }
                         case 5:
@@ -127,7 +126,6 @@ public class Tutorial : MonoBehaviour
                         case 10:
                             {
                                 ShowArrow(4);
-                                //account.ChangeColliders(true);
                                 MainGameController.ChangeColliders(true);
                                 if (GameObject.Find("BuildMenu") != null)
                                 {
@@ -182,7 +180,6 @@ public class Tutorial : MonoBehaviour
                                     DestroyArrow();
                                     questPart = 10;
                                 }
-                                
                                 break;
                             }
                         default:
@@ -298,7 +295,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 2:
                             {
-                                MakeCanvas("You get: 1000 Coins!", 1000, 0, 2);
+                                MakeCanvas("You get 1000 Coins!", 1000, 0, 2);
                                 break;
                             }
                         case 3:
@@ -318,6 +315,7 @@ public class Tutorial : MonoBehaviour
                         case 4:
                             {
                                 hud.buildButton.interactable = false;
+                                //ShowArrow(5);
                                 if (account.money >= 1210)
                                 {
                                     questPart++;
@@ -389,7 +387,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 8:
                             {
-                                MakeCanvas("You got: 1000 Gold!", 1000, 0, 3);
+                                MakeCanvas("You got: 1000 Coins!", 1000, 0, 3);
                                 break;
                             }
                         case 9:
@@ -498,6 +496,10 @@ public class Tutorial : MonoBehaviour
         arrowLocations[location].SetActive(true);
         arrowLocations[location].GetComponent<RectTransform>().SetAsLastSibling();
         activeArrow = location;
+        if(location == 5)
+        {
+            arrowLocations[location].GetComponent<RectTransform>().position = Camera.main.ScreenToWorldPoint(GameObject.Find("3").GetComponent<Transform>().position);
+        }
     }
 
     public void DestroyArrow()
