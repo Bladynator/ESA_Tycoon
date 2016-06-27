@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 29.507572, y: 18.818878, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,10 +76,10 @@ MonoBehaviour:
   buildingInformation: The Mission Control building allows you to navigate the satellite
     in space and control the inter satellite communication links.
   buildingSprites:
-  - {fileID: 21300000, guid: 73ead9e45f21062449d1e16114565429, type: 3}
-  - {fileID: 21300000, guid: 796c1a0a9773d1c49ace662a43e9210e, type: 3}
-  - {fileID: 21300000, guid: da0b26ec5cd9fca49b6d83aff784d5fd, type: 3}
-  - {fileID: 21300000, guid: f7b6cae7b7da7a5459ade6aa398fa852, type: 3}
+  - {fileID: 21300000, guid: de925584399c6ba46b58476e9d56a4ba, type: 3}
+  - {fileID: 21300000, guid: e80c92842e2ddc040907a8c761850837, type: 3}
+  - {fileID: 21300000, guid: aef26fba124fbdd49a39fee5874794c2, type: 3}
+  - {fileID: 21300000, guid: 0f819eff6a245c74c91e816d1db06075, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 73ead9e45f21062449d1e16114565429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de925584399c6ba46b58476e9d56a4ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

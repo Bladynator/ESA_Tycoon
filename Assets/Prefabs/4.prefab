@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2760034, y: 13.271781, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,10 +77,10 @@ MonoBehaviour:
     Engineers, Scientists and Astronauts. The collaboration between your Space Centre
     and the school provides you with money.
   buildingSprites:
-  - {fileID: 21300000, guid: e3d8259897e4b424ba30a9494d2768f0, type: 3}
-  - {fileID: 21300000, guid: 21c0fd3ab8f6b864cb35ff982a5eb600, type: 3}
-  - {fileID: 21300000, guid: 4a9f57a0ecdc0914c86c70ec775182ac, type: 3}
-  - {fileID: 21300000, guid: 107c30576c97a044082718305867ce78, type: 3}
+  - {fileID: 21300000, guid: 274e4d91949072e4cbe700affb5b5142, type: 3}
+  - {fileID: 21300000, guid: cc32039d056a1f64d8021c66b6aefa77, type: 3}
+  - {fileID: 21300000, guid: 3e6f249a07ceb4a4cb7c0c02cfc33f4a, type: 3}
+  - {fileID: 21300000, guid: b14343f79637be846ba2f3e27aecfa3c, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -126,7 +127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e3d8259897e4b424ba30a9494d2768f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 274e4d91949072e4cbe700affb5b5142, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

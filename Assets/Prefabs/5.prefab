@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.8562422, y: 36.773975, z: 3.5097656}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,10 +76,10 @@ MonoBehaviour:
   buildingInformation: 'The Launchpad building is used for launching the rocket with
     the satellite inside. '
   buildingSprites:
-  - {fileID: 21300000, guid: be11bbdc2fb702e489d3684caca6e787, type: 3}
-  - {fileID: 21300000, guid: a3f4f80e4ba081146aa5e72378142eb2, type: 3}
-  - {fileID: 21300000, guid: 79a4973392a6b4e4bac584f54c99dacf, type: 3}
-  - {fileID: 21300000, guid: dcac69f6313c59141a9a4c7530b27e0b, type: 3}
+  - {fileID: 21300000, guid: 0e1fbd25208951c46907156110d45379, type: 3}
+  - {fileID: 21300000, guid: 2da96cadafc8f594abdc89c26a1386b4, type: 3}
+  - {fileID: 21300000, guid: bf777ccbabdb8b84fa2b23b695d6a127, type: 3}
+  - {fileID: 21300000, guid: 00907729c5ad2d44f9381791ca392bec, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: be11bbdc2fb702e489d3684caca6e787, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e1fbd25208951c46907156110d45379, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

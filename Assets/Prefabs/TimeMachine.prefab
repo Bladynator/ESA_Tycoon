@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9443455, y: 20.242403, z: -2.671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,8 @@ MonoBehaviour:
   decoration: 0
   minigame: 
   buildingInformation: 
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: 50a43b374cc51014097f3c550b9cf768, type: 3}
   exp: 
   busy: 0
   buildingBusy: 0
@@ -120,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7dd3ec276a560df4e964d523c959b729, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50a43b374cc51014097f3c550b9cf768, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

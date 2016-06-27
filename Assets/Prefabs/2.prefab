@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.2976036, y: 14.873347, z: 3.5097656}
   m_LocalScale: {x: 0.98, y: 0.95, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,10 +77,10 @@ MonoBehaviour:
     People need to pay an entrance fee to visit the Exhibition Centre, which will
     generate money for your mission.
   buildingSprites:
-  - {fileID: 21300000, guid: 7edfd355b03266e4fb876bd2b0e41801, type: 3}
-  - {fileID: 21300000, guid: b467fd335f8f47d4f922c5f5a86cf0cb, type: 3}
-  - {fileID: 21300000, guid: c82ffe8b9a1088d45b8f2d9af23290c5, type: 3}
-  - {fileID: 21300000, guid: 76936df237924d542bb94f3f7191bf6f, type: 3}
+  - {fileID: 21300000, guid: a6a54b211f678c641ba638ed0cf8e8f7, type: 3}
+  - {fileID: 21300000, guid: 61cadc6986499ca4a82143b6b7e57572, type: 3}
+  - {fileID: 21300000, guid: f662e9a2a64cd4d42ae58d53c9fb0d0c, type: 3}
+  - {fileID: 21300000, guid: 3cac81849bbf61246839eac1da1247ab, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -126,7 +127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7edfd355b03266e4fb876bd2b0e41801, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6a54b211f678c641ba638ed0cf8e8f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

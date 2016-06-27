@@ -76,7 +76,7 @@ MonoBehaviour:
   buildingInformation: Trees are there to decorate your Space Centre and give it a
     nice look.
   buildingSprites:
-  - {fileID: 21300000, guid: 405948c57d4067a4995a010ecb490ffd, type: 3}
+  - {fileID: 21300000, guid: aea03953a31ae8c469c0a4e44cb09d00, type: 3}
   exp: 28000000320000003c00000050000000
   busy: 0
   buildingBusy: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 405948c57d4067a4995a010ecb490ffd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aea03953a31ae8c469c0a4e44cb09d00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
