@@ -38,10 +38,12 @@ public class Controller3 : MonoBehaviour
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
         amountToShow = 2;
+        /*
         if(difficulty == 3)
         {
             endLess = true;
         }
+        */
         temp = new ButtonToConnect[amountToShow + 1];
         Place();
         EditTimer("Time: " + timer.ToString());

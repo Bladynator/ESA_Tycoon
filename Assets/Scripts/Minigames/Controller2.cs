@@ -9,12 +9,12 @@ public class Controller2 : MonoBehaviour
         {   {0.06f,0.06f,0.06f},
             {0.08f,0.08f,0.08f},
             {0.10f,0.10f,0.10f},
-            {0.08f,0.08f,0.08f} };
+            {0.15f,0.15f,0.15f} };
     public float[,] increaseAmount = new float[4,3]
         {   {0.08f,0.08f,0.08f},
             {0.16f,0.16f,0.16f},
             {0.20f,0.20f,0.20f},
-            {0.16f,0.16f,0.16f} };
+            {0.25f,0.25f,0.25f} };
     [SerializeField]
     Image[] bars;
     public bool charging = false, overcharging = false;
@@ -88,7 +88,7 @@ public class Controller2 : MonoBehaviour
                 }
             case 3:
                 {
-                    lastScore /= 1f;
+                    lastScore /= 0.4f;
                     break;
                 }
         }

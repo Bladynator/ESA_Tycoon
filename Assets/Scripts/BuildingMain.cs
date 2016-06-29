@@ -183,7 +183,7 @@ public class BuildingMain : MonoBehaviour
         {
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                if (!busy && !building && !doneWithTask)
+                if (!busy && !building && !doneWithTask && GameObject.Find("BadgeScreen") == null)
                 {
                     canvas[0].SetActive(true);
                     setupFirstButtons(canvas[0]);

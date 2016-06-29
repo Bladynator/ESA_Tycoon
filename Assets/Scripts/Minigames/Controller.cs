@@ -29,13 +29,6 @@ public class Controller : MonoBehaviour
     
     void Update()
     {
-        /*
-        if (!waitingForSpawn && !end)
-        {
-            StartCoroutine(waitForSec(spawnSpeed[difficulty]));
-        }
-        */
-        Debug.Log(startSpeed);
         if (Time.time >= currentTime2 + startSpeed && !end)
         {
             currentTime2 = Time.time;
@@ -57,35 +50,14 @@ public class Controller : MonoBehaviour
         {
             currentTime = Time.time;
             speedMultiplier += 0.02f;
-            startSpeed -= 0.01f;
+            startSpeed -= 0.013f;
             if(startSpeed <= 0.2f)
             {
                 startSpeed = 0.2f;
             }
         }
     }
-    // old timer
-    /*
-    IEnumerator waitForSec(float sec)
-    {
-        sec = sec / speedMultiplier;
-        waitingForSpawn = true;
-        for (int i = 0; i < 3; i++)
-        {
-            int randomHeight = 0;
-            do
-            {
-                randomHeight = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, spawns.Length)));
-            }
-            while (randomHeight == lastLocation);
-            GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
-            negativeTemp.GetComponent<Negative>().speedMultiplier = speedMultiplier;
-            lastLocation = randomHeight;
-        }
-        yield return new WaitForSeconds(sec);
-        waitingForSpawn = false;
-    }
-    */
+
     public void Ending()
     {
         end = true;
