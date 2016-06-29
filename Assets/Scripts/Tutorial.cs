@@ -327,12 +327,12 @@ public class Tutorial : MonoBehaviour
                                 if (GameObject.Find("CanvasBuilding") != null)
                                 {
                                     questPart++;
+                                    DestroyArrow();
                                 }
                                 break;
                             }
                         case 5:
                             {
-                                DestroyArrow();
                                 ShowArrow(6);
                                 if (account.money >= 1210)
                                 {
@@ -401,9 +401,24 @@ public class Tutorial : MonoBehaviour
                                 ShowArrow(4);
                                 if (GameObject.Find("BuildButton").GetComponent<Toggle>().isOn)
                                 {
-                                    DestroyArrow();
-                                    ShowArrow(2);
-                                    GameObject.Find("Decoration").GetComponent<Button>().onClick.Invoke();
+                                    questPart--;
+                                    
+                                }
+                                break;
+                            }
+                        case -7:
+                            {
+                                DestroyArrow();
+                                ShowArrow(2);
+                                GameObject.Find("Decoration").GetComponent<Button>().onClick.Invoke();
+                                questPart--;
+                                break;
+                            }
+                        case -8:
+                            {
+                                if(!GameObject.Find("BuildButton").GetComponent<Toggle>().isOn)
+                                {
+                                    questPart--;
                                 }
                                 break;
                             }
@@ -418,7 +433,7 @@ public class Tutorial : MonoBehaviour
                 {
                     switch (questPart)
                     {
-                        case -6:
+                        case -9:
                             {
                                 DestroyArrow();
                                 if (questLine.questLineProgress[0] == 0)
@@ -437,7 +452,7 @@ public class Tutorial : MonoBehaviour
                             }
                         case 8:
                             {
-                                MakeCanvas("You got: 1000 Coins!", 1000, 0, 3);
+                                MakeCanvas("You get 1000 Coins!", 1000, 0, 3);
                                 break;
                             }
                         case 9:

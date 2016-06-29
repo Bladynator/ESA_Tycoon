@@ -14906,7 +14906,7 @@ RectTransform:
   m_RootOrder: 19
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 346, y: 259}
+  m_AnchoredPosition: {x: 412, y: 259}
   m_SizeDelta: {x: 89.3, y: 37}
   m_Pivot: {x: 0, y: 0}
 --- !u!95 &1500999438
@@ -17047,7 +17047,7 @@ MonoBehaviour:
     the highest level in every mini-game.
   urls:
   - 'http://www.esa.int/aim '
-  - http://www.esa.int
+  - http://www.esa.int/aim
   - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Target_asteroid
   - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/TIRI
   - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Technology_demonstration
@@ -17732,7 +17732,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -21758,7 +21758,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter name for your Space Agency
+  m_Text: Enter name for your Space Centre
 --- !u!222 &2006805200
 CanvasRenderer:
   m_ObjectHideFlags: 0

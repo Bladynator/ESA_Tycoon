@@ -18,29 +18,54 @@ public class Controller : MonoBehaviour
     GameObject tempCanvas;
     int difficulty;
     int lastLocation = 0;
-    public float speedMultiplier = 1, currentTime = 0;
+    public float speedMultiplier = 1, currentTime = 0, currentTime2 = 0, startSpeed = 0;
 
     void Start()
     {
         difficulty = GameObject.Find("MiniGameController").GetComponent<MiniGameController>().difficultyMiniGame;
         GameObject.Find("Player").GetComponent<Player>().diff = difficulty;
+        startSpeed = spawnSpeed[difficulty];
     }
     
     void Update()
     {
-        
+        /*
         if (!waitingForSpawn && !end)
         {
             StartCoroutine(waitForSec(spawnSpeed[difficulty]));
         }
-        
+        */
+        Debug.Log(startSpeed);
+        if (Time.time >= currentTime2 + startSpeed && !end)
+        {
+            currentTime2 = Time.time;
+            for (int i = 0; i < 3; i++)
+            {
+                int randomHeight = 0;
+                do
+                {
+                    randomHeight = Convert.ToInt32(Mathf.Floor(UnityEngine.Random.Range(0, spawns.Length)));
+                }
+                while (randomHeight == lastLocation);
+                GameObject negativeTemp = (GameObject)Instantiate(negative, new Vector2(14, spawns[randomHeight].transform.position.y), this.transform.rotation);
+                negativeTemp.GetComponent<Negative>().speedMultiplier = speedMultiplier;
+                lastLocation = randomHeight;
+            }
+        }
+
         if (Time.time >= currentTime + 1f)
         {
             currentTime = Time.time;
             speedMultiplier += 0.02f;
+            startSpeed -= 0.01f;
+            if(startSpeed <= 0.2f)
+            {
+                startSpeed = 0.2f;
+            }
         }
     }
-
+    // old timer
+    /*
     IEnumerator waitForSec(float sec)
     {
         sec = sec / speedMultiplier;
@@ -60,7 +85,7 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds(sec);
         waitingForSpawn = false;
     }
-
+    */
     public void Ending()
     {
         end = true;

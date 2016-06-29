@@ -12,11 +12,11 @@ public class RandomTimeMachine : BuildingMain
         //base.Start();
     }
 
-    public override void OnMouseUp() // 27 - 32
+    public override void OnMouseUp()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            int number = Random.Range(33, 38);
+            int number = Random.Range(34, 38);
             dialogs.ActivateTalking(number);
         }
     }

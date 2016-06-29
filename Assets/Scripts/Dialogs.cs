@@ -5,7 +5,7 @@ using System;
 
 public class Dialogs : MonoBehaviour
 {
-    string[,] dialogText = new string[38, 10]
+    string[,] dialogText = new string[39, 10]
         {{"a","Hi there! I was expecting you. Welcome to " + DateTime.Today.Year + ". I will be your assistant and will help you to fulfill your mission.","In order to start your mission you need to develop a Space Centre. Start by giving it a name.","","","","","","",""},
     {"a","Excellent! Cool name!","","","","","","","",""},
     {"a","Here you have some coins to get started. Coins are the primary currency. Use it wisely.","","","","","","","",""},
@@ -39,6 +39,7 @@ public class Dialogs : MonoBehaviour
         {"a","Hey! Now you have 6 new Mission Buildings. This means you can generate more Research Points. Well done!","","","","","","","",""},
         {"a","Hey! You upgraded your Mission Control. Nice! The building looks really good!","","","","","","","",""},
         {"a","Hey! You upgraded your Research & Development Centres. Nice! The buildings look lovely.","","","","","","","",""}, // end
+        {"a","Congratulations! You have achieved your objective and launched the AIM mission!","The science collected will help us to learn more about potentially dangerous asteroids, and how to deflect them to save the world in the future!","The world thanks you, and we encourage you to keep playing to collect even more science!","","","","","",""},
         {"f","Hey! How are you doing?","You launched the satellite? That’s amazing! Good job.","Everyone is so proud of you. We hope you know that.","Okay, talk to you soon. Bye!","","","","",""},
         {"f","Hi there! How is it going?","Good to know. Oh, your research is coming in. Thank you!","We all think it is so cool what you’re doing. Anyway, good luck with the rest of your mission.","Talk to you soon. Bye bye!","","","","",""},
         {"f","Hello there! What’s going on?","The research you sent last time was really valuable. Did you discover anything new?","Ah, you’re sending it right now. Thanks!","Talk to you later. See you!","","","","",""},

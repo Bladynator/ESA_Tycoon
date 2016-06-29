@@ -74,12 +74,21 @@ public class Account : MonoBehaviour
     {
         GameObject.Find("SFXController").GetComponent<AudioSource>().PlayOneShot(levelUpSound);
         exp -= expNeededForLevel[level];
-        GameObject.Find("LevelIcon").GetComponent<Toggle>().isOn = true;
+        
         GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>().Play();
         level++;
         GameObject.Find("HUD").GetComponent<HUD>().ChangeBadge();
         GameObject.Find("HUD").GetComponent<HUD>().notificationNumber = newbuildings[level];
         GameObject.Find("HUD").GetComponent<HUD>().UpdateNotification(newbuildings[level]);
+        GameObject.Find("LevelIcon").GetComponent<Toggle>().isOn = true;
+        if(GameObject.Find("CanvasBuilding") != null)
+        {
+            GameObject.Find("BackButton2").GetComponent<Button>().onClick.Invoke();
+        }
+        if(level == 10)
+        {
+            GameObject.Find("Quests").GetComponent<Dialogs>().ActivateTalking(33);
+        }
         PushSave();
     }
 
@@ -368,12 +377,20 @@ public class Account : MonoBehaviour
     {
         Application.OpenURL(link);
     }
-    /*
+    
     void OnApplicationPause(bool pauseStatus)
     {
-        //Application.Quit();
+        if(pauseStatus)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            GoToScene("_Main");
+        }
     }
 
+    /*
     void OnApplicationQuit()
     {
         //Application.Quit();
