@@ -79,6 +79,16 @@ public class BuildingMain : MonoBehaviour
                 priceForUpgrading[i, 2] = rpNeededUpgrade[i];
             }
         }
+        if(!resourceBuilding)
+        {
+            if(level == 3)
+            {
+                for(int i = 0; i < timesForTasks.Length; i++)
+                {
+                    timesForTasks[i] = 0;
+                }
+            }
+        }
         if(size.x != size.y)
         {
             float newSize;
