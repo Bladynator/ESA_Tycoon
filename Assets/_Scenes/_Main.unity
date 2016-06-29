@@ -17046,7 +17046,7 @@ MonoBehaviour:
   - You have reached level 10. Amazing! You have upgraded all your buildings and reached
     the highest level in every mini-game.
   urls:
-  - 'http://www.esa.int/aim '
+  - http://www.esa.int/aim
   - http://www.esa.int/aim
   - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/Target_asteroid
   - http://www.esa.int/Our_Activities/Space_Engineering_Technology/Asteroid_Impact_Mission/TIRI

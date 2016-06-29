@@ -377,10 +377,10 @@ public class Account : MonoBehaviour
     {
         Application.OpenURL(link);
     }
-    
+#if UNITY_ANDROID || UNITY_IOS
     void OnApplicationPause(bool pauseStatus)
     {
-        if(pauseStatus)
+        if (pauseStatus)
         {
             Application.Quit();
         }
@@ -389,7 +389,10 @@ public class Account : MonoBehaviour
             GoToScene("_Main");
         }
     }
+#else
 
+#endif
+    
     /*
     void OnApplicationQuit()
     {
